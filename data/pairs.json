@@ -1,0 +1,34 @@
+{
+  "items": [
+    {
+      "id": "xdAzDY",
+      "t": "Cute Monster",
+      "before": "../assets/img/portfolio/cute-monster-xdazdy-before.webp",
+      "after": "../assets/img/portfolio/cute-monster-xdazdy-after.webp"
+    },
+    {
+      "id": "vbNvDE",
+      "t": "Orc Fanart",
+      "before": "../assets/img/portfolio/orc-fanart-vbnvde-before.webp",
+      "after": "../assets/img/portfolio/orc-fanart-vbnvde-after.webp"
+    },
+    {
+      "id": "mAnNrv",
+      "t": "T-Rex - Crash Bandicoot 4 Fanart",
+      "before": "../assets/img/portfolio/t-rex-crash-bandicoot-4-fanart-mannrv-before.webp",
+      "after": "../assets/img/portfolio/t-rex-crash-bandicoot-4-fanart-mannrv-after.webp"
+    },
+    {
+      "id": "qJY3qa",
+      "t": "Orc",
+      "before": "../assets/img/portfolio/orc-qjy3qa-before.webp",
+      "after": "../assets/img/portfolio/orc-qjy3qa-after.webp"
+    },
+    {
+      "id": "dKWXLA",
+      "t": "Lehri",
+      "before": "../assets/img/portfolio/lehri-dkwxla-before.webp",
+      "after": "../assets/img/portfolio/lehri-dkwxla-after.webp"
+    }
+  ]
+}

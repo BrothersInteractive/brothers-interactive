@@ -1,0 +1,433 @@
+backend:
+  name: github
+  # The company GitHub account (created 1 Oct 2026) and its website repo.
+  repo: BrothersInteractive/brothers-interactive
+  branch: main
+  # Login = "Login with GitHub". Anyone with write access to the repo above can edit.
+  # The site is hosted on GitHub Pages, which cannot broker that login itself: base_url must
+  # point at a small OAuth helper (set up after go-live; see HANDOFF.md, "Going live").
+  # Until then /admin works on localhost only (local_backend below).
+  base_url: https://api.netlify.com
+
+# Saving in /admin commits straight to the "main" branch on GitHub; GitHub Pages sees the
+# commit and republishes the site automatically, usually within a minute or two.
+
+# When this page is opened on localhost AND a local proxy server (`npx decap-server`)
+# is running, the CMS uses that instead of the backend above — no login needed,
+# and it writes straight to the real files in this project. Safe to leave in for
+# production too: it only ever activates on localhost.
+# On Windows, start it with BIND_HOST=:: (see .claude/launch.json / README) so it
+# accepts the IPv6 loopback too — Chrome tries "localhost" as ::1 first, and a
+# plain IPv4-only bind makes that first probe fail outright on every page load.
+local_backend: true
+
+media_folder: "assets/img/portfolio"
+public_folder: "../assets/img/portfolio"
+
+collections:
+  - name: "hero"
+    label: "Homepage Hero"
+    files:
+      - name: "hero"
+        label: "Hero Section"
+        file: "data/hero.json"
+        format: "json"
+        description: "The very first thing visitors see: headline, subtitle and the three stats. The showcase image is a separate collection below (Hero Showcase Images)."
+        fields:
+          - { label: "Eyebrow text", name: "eyebrow", widget: "string", hint: "Small line above the headline, e.g. \"3D Game Art Studio · Est. 2019\"." }
+          - { label: "Headline — line 1", name: "titleLine1", widget: "string", hint: "e.g. \"We build the\"" }
+          - { label: "Headline — accent word", name: "titleAccent", widget: "string", hint: "The big gradient-coloured word, e.g. \"CHARACTERS\"" }
+          - { label: "Headline — line 3", name: "titleLine3", widget: "string", hint: "e.g. \"players remember.\"" }
+          - { label: "Subtitle paragraph", name: "subtitle", widget: "text" }
+          - { label: "Primary button label", name: "primaryBtnLabel", widget: "string", hint: "Links to the Portfolio section." }
+          - { label: "Secondary button label", name: "secondaryBtnLabel", widget: "string", hint: "Links to the Contact section. The arrow (→) is added automatically." }
+          - { label: "Stat 1 — number", name: "stat1Num", widget: "number", value_type: "int", hint: "The founding year. This one is the only stat number set here -- Stats 2 and 3 always show the real Portfolio and Games counts automatically, below." }
+          - { label: "Stat 1 — suffix", name: "stat1Suffix", widget: "string", required: false, hint: "e.g. \"+\". Leave empty for none." }
+          - { label: "Stat 1 — label", name: "stat1Label", widget: "string" }
+          - { label: "Stat 2 — suffix", name: "stat2Suffix", widget: "string", required: false, hint: "Number is automatic (counts the Portfolio collection)." }
+          - { label: "Stat 2 — label", name: "stat2Label", widget: "string" }
+          - { label: "Stat 3 — suffix", name: "stat3Suffix", widget: "string", required: false, hint: "Number is automatic (counts the Games collection)." }
+          - { label: "Stat 3 — label", name: "stat3Label", widget: "string" }
+
+  - name: "hero-showcase"
+    label: "Hero Showcase Images"
+    label_singular: "Showcase Image"
+    description: "What stands on the podium in the homepage hero. One entry is picked at random on every load: if it has a 3D model, visitors get a drag-to-rotate model; if not, its image. IMPORTANT: images must be PNGs with the background removed (transparent), or they show as a hard rectangle on the podium."
+    files:
+      - name: "items"
+        label: "Showcase Images"
+        file: "data/hero-showcase.json"
+        format: "json"
+        fields:
+          - label: "Showcase"
+            name: "items"
+            widget: "list"
+            label_singular: "Entry"
+            summary: "{{fields.alt}}"
+            fields:
+              - { label: "Image (transparent PNG)", name: "img", widget: "image", required: false, hint: "Shown on its own if the entry has no 3D model or video; otherwise it's the picture shown while those load. Background must be removed/transparent." }
+              - { label: "3D model (.glb)", name: "model", widget: "file", required: false, media_folder: "/assets/models", public_folder: "../assets/models", pattern: ['\.(glb|GLB)$', "This field only takes a .glb 3D model file."], hint: "Optional. Upload a .glb to show this entry as a drag-to-rotate 3D model instead of the image. Keep it under ~15 MB, textures 2K max. Leave empty for image only." }
+              - { label: "3D model size (%)", name: "modelSize", widget: "number", value_type: "int", min: 50, max: 150, step: 5, required: false, hint: "How big this 3D model appears. 100 = normal (whole model always fits). Higher = bigger, lower = smaller. Above ~120 the top or sides of tall or wide characters may get cut off. Leave empty for 100." }
+              - { label: "Video or GIF", name: "video", widget: "file", required: false, media_folder: "/assets/videos", public_folder: "../assets/videos", pattern: ['\.(mp4|webm|gif|MP4|WEBM|GIF)$', "This field only takes an MP4, WebM or GIF. For a 3D model (.glb) use the 3D model field above."], hint: "Optional. Plays silently on a loop in place of the image (a 3D model on the same entry takes priority). For a floating character use a WebM with a transparent background (Safari shows the image instead) or a GIF — a normal MP4 always shows as a rectangle. Keep it short and under ~8 MB." }
+              - { label: "Description", name: "alt", widget: "string", hint: "Describes the character for screen readers/SEO, e.g. \"Stylized orc warrior, game-ready\"." }
+
+  - name: "category-tiles"
+    label: "Category Tile Images"
+    description: "The picture on each category tile in the homepage Portfolio section. Leave a tile empty to use the first piece in that category automatically. A landscape image (about 4:3) fills the tile best."
+    files:
+      - name: "tiles"
+        label: "Category Tile Images"
+        file: "data/category-tiles.json"
+        format: "json"
+        fields:
+          - { label: "Modular CHR Skins", name: "modular_chr_skins", widget: "image", required: false, media_folder: "/assets/img/categories", public_folder: "../assets/img/categories" }
+          - { label: "Realistic CHR", name: "realistic_character", widget: "image", required: false, media_folder: "/assets/img/categories", public_folder: "../assets/img/categories" }
+          - { label: "Realistic Creature", name: "realistic_creature", widget: "image", required: false, media_folder: "/assets/img/categories", public_folder: "../assets/img/categories" }
+          - { label: "Realistic Hair Card", name: "realistic_hair", widget: "image", required: false, media_folder: "/assets/img/categories", public_folder: "../assets/img/categories" }
+          - { label: "Stylized CHR", name: "stylized_character", widget: "image", required: false, media_folder: "/assets/img/categories", public_folder: "../assets/img/categories" }
+          - { label: "Stylized Creature", name: "stylized_creature", widget: "image", required: false, media_folder: "/assets/img/categories", public_folder: "../assets/img/categories" }
+          - { label: "Realistic Props", name: "props", widget: "image", required: false, media_folder: "/assets/img/categories", public_folder: "../assets/img/categories" }
+          - { label: "Realistic Weapons", name: "weapons", widget: "image", required: false, media_folder: "/assets/img/categories", public_folder: "../assets/img/categories", hint: "Only shows once at least one piece is in this category — until then the tile says Coming soon." }
+          - { label: "Game - Midnight Walk", name: "midnight_walk", widget: "image", required: false, media_folder: "/assets/img/categories", public_folder: "../assets/img/categories" }
+          - { label: "Game - Lost in Random", name: "lost_in_random", widget: "image", required: false, media_folder: "/assets/img/categories", public_folder: "../assets/img/categories" }
+
+  - name: "portfolio"
+    label: "Portfolio"
+    label_singular: "Portfolio Piece"
+    description: "Add, edit or remove the work shown in the Portfolio section of the homepage. Changes go live automatically within a minute or two of saving."
+    files:
+      - name: "items"
+        label: "Portfolio Pieces"
+        file: "data/portfolio.json"
+        format: "json"
+        fields:
+          - label: "Pieces"
+            name: "items"
+            widget: "list"
+            label_singular: "Piece"
+            summary: "{{fields.t}} — {{fields.c}}"
+            fields:
+              - label: "Title"
+                name: "t"
+                widget: "string"
+                hint: "The name shown under the artwork, e.g. \"Nitro CR7\""
+
+              - label: "Category"
+                name: "c"
+                widget: "select"
+                hint: "The piece's main category. It decides the label shown on the piece."
+                options:
+                  - { label: "Modular CHR Skins", value: "modular-chr-skins" }
+                  - { label: "Realistic CHR", value: "realistic-humans" }
+                  - { label: "Realistic Creature", value: "realistic-creatures" }
+                  - { label: "Realistic Hair Card", value: "realistic-hairs" }
+                  - { label: "Stylized CHR", value: "stylized-human" }
+                  - { label: "Stylized Creature", value: "stylized-creature" }
+                  - { label: "Realistic Props", value: "props" }
+                  - { label: "Realistic Weapons", value: "weapons" }
+                  - { label: "Game - Midnight Walk", value: "mid-night-walk" }
+                  - { label: "Game - Lost in Random", value: "lost-in-random" }
+
+              - label: "Also show in (optional)"
+                name: "cats"
+                widget: "select"
+                multiple: true
+                required: false
+                hint: "Pick any other categories this same piece should also appear in. No need to upload it again."
+                options:
+                  - { label: "Modular CHR Skins", value: "modular-chr-skins" }
+                  - { label: "Realistic CHR", value: "realistic-humans" }
+                  - { label: "Realistic Creature", value: "realistic-creatures" }
+                  - { label: "Realistic Hair Card", value: "realistic-hairs" }
+                  - { label: "Stylized CHR", value: "stylized-human" }
+                  - { label: "Stylized Creature", value: "stylized-creature" }
+                  - { label: "Realistic Props", value: "props" }
+                  - { label: "Realistic Weapons", value: "weapons" }
+                  - { label: "Game - Midnight Walk", value: "mid-night-walk" }
+                  - { label: "Game - Lost in Random", value: "lost-in-random" }
+
+              - label: "ID"
+                name: "id"
+                widget: "string"
+                hint: "Any short unique code, letters and numbers, no spaces (e.g. AB12cd). Used in the piece's direct link — must not match any existing piece's ID."
+
+              - label: "Main Image"
+                name: "i"
+                widget: "image"
+                hint: "The image shown in the portfolio grid and as the first photo when opened."
+
+              - label: "Additional Images"
+                name: "imgs"
+                widget: "list"
+                required: false
+                label_singular: "Image"
+                field: { label: "Image", name: "image", widget: "image" }
+                hint: "Optional — other angles or close-ups of the same piece, shown as thumbnails when it's opened."
+
+              - label: "Description"
+                name: "desc"
+                widget: "text"
+                hint: "Shown on the piece's detail page. A short paragraph is enough."
+
+              - label: "Tags"
+                name: "tags"
+                widget: "list"
+                required: false
+                hint: "Optional keywords, one per line."
+
+              - label: "Original page link"
+                name: "src"
+                widget: "string"
+                required: false
+                hint: "Optional — a URL for the \"View on...\" link, if this piece has its own page elsewhere."
+
+              - label: "Image width (px)"
+                name: "w"
+                widget: "number"
+                value_type: "int"
+                required: false
+                default: 0
+                hint: "Optional — leave as 0 if unsure. Helps the page lay out smoothly while the image loads."
+
+              - label: "Image height (px)"
+                name: "h"
+                widget: "number"
+                value_type: "int"
+                required: false
+                default: 0
+                hint: "Optional — leave as 0 if unsure."
+
+  - name: "games"
+    label: "Games"
+    label_singular: "Game Credit"
+    description: "The games shown in the Games section of the homepage — key art, studio, and trailer."
+    files:
+      - name: "items"
+        label: "Games"
+        file: "data/games.json"
+        format: "json"
+        fields:
+          - label: "Games"
+            name: "items"
+            widget: "list"
+            label_singular: "Game"
+            summary: "{{fields.t}}"
+            fields:
+              - { label: "Title", name: "t", widget: "string" }
+              - { label: "Studio", name: "s", widget: "string", required: false }
+              - { label: "YouTube video ID", name: "yt", widget: "string", hint: "Pasting the full video URL also works now — but ideally just the ID, e.g. from https://www.youtube.com/watch?v=JAqvK1peFrA that's JAqvK1peFrA" }
+              - { label: "Key Art Image", name: "i", widget: "image", media_folder: "/assets/img/games", public_folder: "../assets/img/games" }
+
+  - name: "reviews"
+    label: "Reviews"
+    label_singular: "Review"
+    description: "Client testimonials shown on the homepage. Uncheck \"Sample / placeholder\" once you replace a sample with a real, approved quote."
+    files:
+      - name: "items"
+        label: "Reviews"
+        file: "data/testimonials.json"
+        format: "json"
+        fields:
+          - label: "Reviews"
+            name: "items"
+            widget: "list"
+            label_singular: "Review"
+            summary: "{{fields.n}} — {{fields.r}}"
+            fields:
+              - { label: "Quote", name: "q", widget: "text" }
+              - { label: "Name", name: "n", widget: "string", hint: "Use \"Client name\" if they'd rather stay anonymous." }
+              - { label: "Role / Studio", name: "r", widget: "string" }
+              - { label: "Project", name: "project", widget: "string", required: false, hint: "What kind of work this review refers to, e.g. \"Realistic characters\"." }
+              - { label: "Photo", name: "img", widget: "image", required: false, media_folder: "/assets/img/team", public_folder: "../assets/img/team" }
+              - { label: "Sample / placeholder", name: "sample", widget: "boolean", default: false, hint: "On = shows a \"Sample\" badge. Turn off once this is a real, approved quote." }
+
+  - name: "team"
+    label: "Team"
+    label_singular: "Team Member"
+    description: "The people shown on the Team page."
+    files:
+      - name: "items"
+        label: "Team Members"
+        file: "data/team.json"
+        format: "json"
+        fields:
+          - label: "Team Members"
+            name: "items"
+            widget: "list"
+            label_singular: "Person"
+            summary: "{{fields.name}} — {{fields.role}}"
+            fields:
+              - { label: "Name", name: "name", widget: "string" }
+              - { label: "Role", name: "role", widget: "string" }
+              - { label: "Initials", name: "initials", widget: "string", hint: "Shown if there's no photo, e.g. \"TN\"." }
+              - { label: "Photo", name: "photo", widget: "image", required: false, media_folder: "/assets/img/team", public_folder: "../assets/img/team", hint: "Optional — leave empty to show the initials instead." }
+              - { label: "Bio", name: "bio", widget: "text" }
+              - { label: "Tags", name: "tags", widget: "list", required: false, hint: "Short skill/focus tags, one per line." }
+              - label: "Links"
+                name: "links"
+                widget: "list"
+                required: false
+                label_singular: "Link"
+                summary: "{{fields.label}}"
+                fields:
+                  - { label: "Label", name: "label", widget: "string", hint: "e.g. \"LinkedIn\" or \"Email\"" }
+                  - { label: "URL", name: "url", widget: "string", hint: "Include https:// (e.g. https://www.linkedin.com/...). For email use mailto:name@example.com" }
+
+  - name: "sculpt-to-final"
+    label: "Sculpt to Final"
+    label_singular: "Comparison"
+    description: "Cards shown in the homepage Sculpt to Final section. Only the first 3 in this list are shown — drag entries up or down to choose which. Each card shows, in this order of priority: a YouTube video, a GIF/video file, or the before/after drag slider."
+    files:
+      - name: "items"
+        label: "Comparisons"
+        file: "data/pairs.json"
+        format: "json"
+        fields:
+          - label: "Comparisons"
+            name: "items"
+            widget: "list"
+            label_singular: "Comparison"
+            summary: "{{fields.t}}"
+            fields:
+              - { label: "Title", name: "t", widget: "string" }
+              - { label: "Piece ID", name: "id", widget: "string", required: false, hint: "Matches this piece's ID in the Portfolio collection, if it's also a portfolio piece (adds a Details link). Leave empty if not." }
+              - { label: "Before Image (sculpt)", name: "before", widget: "image", required: false, hint: "For the drag slider. Needs the After image too, and both should be the same size and framing." }
+              - { label: "After Image (final)", name: "after", widget: "image", required: false }
+              - { label: "YouTube video", name: "youtube", widget: "string", required: false, hint: "Optional. Paste a YouTube link — the card then shows the video's thumbnail and plays it in the pop-up player instead of the slider." }
+              - { label: "GIF or video file", name: "video", widget: "file", required: false, media_folder: "/assets/videos", public_folder: "../assets/videos", pattern: ['\.(mp4|webm|gif|MP4|WEBM|GIF)$', "Only an MP4, WebM or GIF file."], hint: "Optional. A GIF or short MP4/WebM that loops silently in the card instead of the slider. Keep it under ~8 MB." }
+
+  - name: "breakdowns"
+    label: "Breakdowns"
+    label_singular: "Breakdown"
+    description: "Production breakdowns. The homepage Breakdown section shows the first 6 as tiles (3 per row); each opens its own page. Every block below is optional — a breakdown page only shows the parts you fill in."
+    files:
+      - name: "items"
+        label: "Breakdowns"
+        file: "data/breakdowns.json"
+        format: "json"
+        fields:
+          - label: "Breakdowns"
+            name: "items"
+            widget: "list"
+            label_singular: "Breakdown"
+            summary: "{{fields.t}}"
+            fields:
+              - { label: "Title", name: "t", widget: "string", hint: "e.g. \"Orc Fanart\" — the page shows it as \"Orc Fanart Breakdown\"." }
+              - { label: "ID", name: "id", widget: "string", pattern: ['^[a-z0-9-]+$', "Lowercase letters, numbers and dashes only (e.g. orc-fanart)."], hint: "Short unique code used in the page link, e.g. orc-fanart. Lowercase, numbers and dashes only; don't change it once shared." }
+              - { label: "Tile image", name: "cover", widget: "image", required: false, hint: "The picture on the homepage tile (landscape ~4:3 fills best). Empty = uses the final image, first gallery image or video thumbnail." }
+              - { label: "Short description", name: "sub", widget: "string", required: false, hint: "One line under the title, e.g. \"Stylized creature sculpt, from blockout to game-ready.\"" }
+              - { label: "Longer description", name: "desc", widget: "text", required: false, hint: "Optional. Leave a blank line between paragraphs." }
+              - { label: "Sketchfab model", name: "sketchfab", widget: "string", required: false, hint: "Optional 3D viewer. Paste the Sketchfab model link (or just its ID). The model must be public or unlisted with embedding allowed." }
+              - { label: "Marmoset Viewer file (.mview)", name: "marmoset", widget: "file", required: false, media_folder: "/assets/mview", public_folder: "../assets/mview", pattern: ['\.(mview|MVIEW)$', "Only a Marmoset .mview file."], hint: "Optional 3D viewer. Export from Marmoset Toolbag (File > Export > Marmoset Viewer) and upload the .mview. Keep it small — it downloads when the page opens." }
+              - { label: "Sculpt image (before)", name: "before", widget: "image", required: false, hint: "With the Final image, adds the sculpt-to-final drag slider. Same size and framing for both." }
+              - { label: "Final image (after)", name: "after", widget: "image", required: false }
+              - { label: "YouTube video", name: "youtube", widget: "string", required: false, hint: "Optional. Paste a YouTube link — shown as a video player on the page." }
+              - { label: "GIF or video file", name: "video", widget: "file", required: false, media_folder: "/assets/videos", public_folder: "../assets/videos", pattern: ['\.(mp4|webm|gif|MP4|WEBM|GIF)$', "Only an MP4, WebM or GIF file."], hint: "Optional. A GIF or short MP4/WebM turntable that loops silently. Keep it under ~8 MB." }
+              - { label: "Gallery images", name: "gallery", widget: "list", required: false, field: { label: "Image", name: "image", widget: "image" }, hint: "Optional. Extra renders and angles, shown 3 per row." }
+              - { label: "Asset page ID", name: "assetId", widget: "string", required: false, hint: "Optional. The Portfolio piece ID (e.g. vbNvDE) to add a \"View full asset page\" button." }
+              - label: "Pipeline steps"
+                name: "steps"
+                widget: "list"
+                required: false
+                label_singular: "Step"
+                summary: "{{fields.t}}"
+                hint: "Optional. Leave empty to show the standard 6-step pipeline."
+                fields:
+                  - { label: "Step title", name: "t", widget: "string" }
+                  - { label: "Description", name: "d", widget: "string" }
+
+  - name: "clients"
+    label: "Clients"
+    label_singular: "Client"
+    description: "The client/studio logo wall shown on the homepage."
+    files:
+      - name: "items"
+        label: "Clients"
+        file: "data/clients.json"
+        format: "json"
+        fields:
+          - label: "Clients"
+            name: "items"
+            widget: "list"
+            label_singular: "Client"
+            summary: "{{fields.n}}"
+            fields:
+              - { label: "Name", name: "n", widget: "string" }
+              - { label: "Logo", name: "logo", widget: "image", required: false, media_folder: "/assets/img/logos", public_folder: "../assets/img/logos", hint: "Optional — only add this once you have permission to use the logo. Leave empty to show the name as text." }
+
+  - name: "blog"
+    label: "Blog Posts"
+    label_singular: "Post"
+    description: "Video recaps shown in the Blog section of the homepage, rendered as thumbnail cards like Games."
+    files:
+      - name: "items"
+        label: "Posts"
+        file: "data/posts.json"
+        format: "json"
+        fields:
+          - label: "Posts"
+            name: "items"
+            widget: "list"
+            label_singular: "Post"
+            summary: "{{fields.t}}"
+            fields:
+              - { label: "Title", name: "t", widget: "string" }
+              - { label: "YouTube video", name: "yt", widget: "string", hint: "Paste the full YouTube URL or just the video ID." }
+
+  - name: "careers"
+    label: "Careers"
+    label_singular: "Open Role"
+    description: "Open job roles shown on the Careers page. Leave empty when you're not hiring."
+    files:
+      - name: "items"
+        label: "Open Roles"
+        file: "data/roles.json"
+        format: "json"
+        fields:
+          - label: "Roles"
+            name: "items"
+            widget: "list"
+            label_singular: "Role"
+            summary: "{{fields.t}}"
+            fields:
+              - { label: "Title", name: "t", widget: "string", hint: "e.g. \"Senior Character Artist\"" }
+              - { label: "Type / Location", name: "type", widget: "string", hint: "e.g. \"Full-time · Jaipur\"" }
+              - { label: "Summary", name: "d", widget: "string", hint: "One line describing the role." }
+
+  - name: "careers-hero"
+    label: "Careers Images"
+    label_singular: "Careers Image"
+    description: "The images in the Careers section on the homepage. They show one at a time, each for 10 seconds, with a soft fade. Use PNG or WebP with the background removed (transparent) so they float on the page."
+    files:
+      - name: "items"
+        label: "Careers Images"
+        file: "data/careers-hero.json"
+        format: "json"
+        fields:
+          - label: "Images"
+            name: "items"
+            widget: "list"
+            label_singular: "Image"
+            summary: "{{fields.alt}}"
+            fields:
+              - { label: "Image (transparent PNG/WebP)", name: "img", widget: "image", media_folder: "/assets/img/careers", public_folder: "../assets/img/careers", hint: "Background removed/transparent. Around 1000px wide is plenty." }
+              - { label: "Description", name: "alt", widget: "string", hint: "Describes the image for screen readers/SEO, e.g. \"Tiger realistic creature\"." }
+
+  - name: "settings"
+    label: "Settings"
+    files:
+      - name: "site"
+        label: "Site Settings"
+        file: "data/config.json"
+        format: "json"
+        description: "Header availability pill, contact details, and integration IDs."
+        fields:
+          - { label: "Availability text", name: "availability", widget: "string", required: false, hint: "Shown as the header pill, e.g. \"Taking new projects\". Leave empty to hide it." }
+          - { label: "Availability note", name: "availabilityNote", widget: "string", required: false, hint: "Small line under the pill, e.g. \"Next start: on request\"." }
+          - { label: "Booking URL", name: "bookingUrl", widget: "string", required: false, hint: "e.g. a Calendly link. Leave empty to hide the booking button." }
+          - { label: "Plausible analytics domain", name: "plausibleDomain", widget: "string", required: false, hint: "Leave empty to keep analytics off." }
+          - { label: "Showreel YouTube ID", name: "showreelYouTubeId", widget: "string", required: false, hint: "Leave empty to show an image reel instead." }
+          - { label: "Capabilities deck (PDF)", name: "deckPdf", widget: "file", required: false, media_folder: "/assets", public_folder: "../assets" }
+          - { label: "Contact email", name: "email", widget: "string", hint: "Where the contact and job-application forms actually deliver to (via formsubmit.co, no signup needed) and the mailto fallback." }
+          - { label: "Address", name: "address", widget: "string" }
+          - { label: "Careers application form (Google Form link)", name: "careersFormUrl", widget: "string", required: false, hint: "Paste the Google Form share link (starts with https://forms.gle/ or https://docs.google.com/forms/). The Apply now button in the homepage Careers section opens it in a new tab. Leave empty to show Applications opening soon." }

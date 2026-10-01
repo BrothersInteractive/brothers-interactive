@@ -1,0 +1,25 @@
+{
+  "items": [
+    {
+      "sample": true,
+      "q": "The characters matched our in-house style so closely that our own team could not tell which ones were outsourced.",
+      "n": "Client name",
+      "r": "Art Director, AAA studio",
+      "project": "Realistic characters"
+    },
+    {
+      "sample": true,
+      "q": "Clear weekly updates, zero surprises on the deadline, and every revision note handled the same day.",
+      "n": "Client name",
+      "r": "Producer, indie studio",
+      "project": "Stylized cast"
+    },
+    {
+      "sample": true,
+      "q": "Sculpt quality was the best we have seen from an outsourcing partner. We brought them back for the next title.",
+      "n": "Client name",
+      "r": "Lead Character Artist",
+      "project": "Creatures & props"
+    }
+  ]
+}

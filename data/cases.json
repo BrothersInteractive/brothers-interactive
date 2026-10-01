@@ -1,0 +1,124 @@
+{
+  "items": [
+    {
+      "t": "Lost in Random",
+      "client": "Zoink Games / Thunderful",
+      "year": "2021",
+      "style": "Stylized",
+      "engine": "Unity",
+      "img": "../assets/img/games/lost-in-random.webp",
+      "yt": "diilMn5gSAg",
+      "cat": "lost-in-random",
+      "stats": [
+        [
+          "Published assets",
+          "11"
+        ],
+        [
+          "Style",
+          "Stylized"
+        ],
+        [
+          "Team size",
+          "Add"
+        ],
+        [
+          "Timeline",
+          "Add"
+        ]
+      ],
+      "summary": "Gothic fairy-tale characters for Zoink's action adventure. We produced a cast of NPCs and enemies in the game's hand-crafted, stop-motion inspired look, from sculpt through final textures, matched to the in-house cast so the additions are indistinguishable from the studio's own work.",
+      "scope": [
+        "Stylized character modeling and sculpting",
+        "Hand-painted PBR texturing",
+        "Game-res topology and UVs",
+        "Style matching to existing characters"
+      ]
+    },
+    {
+      "t": "The Midnight Walk",
+      "client": "MoonHood Studios",
+      "year": "2025",
+      "style": "Stylized claymation",
+      "engine": "Unreal Engine",
+      "img": "../assets/img/games/the-midnight-walk.webp",
+      "yt": "QnBE7mU6ZsI",
+      "cat": "mid-night-walk",
+      "stats": [
+        [
+          "Published assets",
+          "9"
+        ],
+        [
+          "Style",
+          "Claymation"
+        ],
+        [
+          "Team size",
+          "Add"
+        ],
+        [
+          "Timeline",
+          "Add"
+        ]
+      ],
+      "summary": "Clay-sculpted characters for MoonHood's dark fairy-tale adventure. Our work covered story characters and creatures translated from physical clay reference into game-ready assets that keep the fingerprints-and-tool-marks feel of the original sculpts.",
+      "scope": [
+        "Character and creature sculpting from clay reference",
+        "Retopology and UVs for a stylized pipeline",
+        "Texturing with hand-made surface detail",
+        "Engine-ready exports"
+      ]
+    },
+    {
+      "t": "Warhammer 40,000: Space Marine 2",
+      "client": "Saber Interactive",
+      "year": "2024",
+      "style": "Realistic AAA",
+      "engine": "Swarm Engine",
+      "img": "../assets/img/games/warhammer-40-000-space-marine-2.webp",
+      "yt": "A_HljUo8Jjk",
+      "cat": null,
+      "summary": "Character and asset production support on Saber Interactive's AAA action title. Details of individual assets are shared on request in line with the project's confidentiality terms.",
+      "scope": [
+        "3D modeling and sculpting",
+        "Texturing",
+        "Skinning and rigging",
+        "Engine integration support"
+      ]
+    },
+    {
+      "t": "Ready Or Not",
+      "client": "VOID Interactive",
+      "year": "2023",
+      "style": "Realistic",
+      "engine": "Unreal Engine",
+      "img": "../assets/img/games/ready-or-not.webp",
+      "yt": "lLNoftAmKr0",
+      "cat": null,
+      "summary": "Realistic character and equipment production support for VOID Interactive's tactical shooter. Asset breakdowns are available on request.",
+      "scope": [
+        "Realistic character modeling",
+        "Gear, equipment and prop texturing",
+        "Skinning and rigging support",
+        "Optimization for Unreal"
+      ]
+    },
+    {
+      "t": "Wavetale",
+      "client": "Thunderful Development",
+      "year": "2022",
+      "style": "Stylized",
+      "engine": "Unity",
+      "img": "../assets/img/games/wavetale.webp",
+      "yt": "Zeths3LNBgQ",
+      "cat": null,
+      "summary": "Stylized character work for Thunderful's ocean-surfing adventure. Asset breakdowns are available on request.",
+      "scope": [
+        "Stylized character modeling",
+        "Texturing",
+        "Game-res topology and UVs"
+      ]
+    }
+  ]
+}

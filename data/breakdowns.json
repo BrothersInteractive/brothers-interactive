@@ -1,0 +1,18 @@
+{
+  "items": [
+    {
+      "id": "orc-fanart",
+      "t": "Orc Fanart",
+      "sub": "Stylized creature sculpt, from first blockout to final game-ready asset.",
+      "desc": "Exploring shape language, facial storytelling and game-ready appeal, inspired by Wenmo Zhang's artwork.",
+      "cover": "../assets/img/portfolio/orc-fanart-vbnvde.webp",
+      "before": "../assets/img/portfolio/orc-fanart-vbnvde-before.webp",
+      "after": "../assets/img/portfolio/orc-fanart-vbnvde-after.webp",
+      "gallery": [
+        "../assets/img/portfolio/orc-fanart-vbnvde.webp",
+        "../assets/img/portfolio/orc-fanart-vbnvde-3.webp"
+      ],
+      "assetId": "vbNvDE"
+    }
+  ]
+}

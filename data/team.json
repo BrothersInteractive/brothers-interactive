@@ -1,0 +1,70 @@
+{
+  "items": [
+    {
+      "name": "Arun Nagar",
+      "role": "Founder & Art Director",
+      "initials": "AN",
+      "photo": "",
+      "bio": "A 3D artist since 2008, Arun founded Brothers Interactive in 2019 to build a character team that ships games, not just portfolio pieces. He sets the studio's art direction, reviews every asset before delivery and works directly with clients from first brief to final handoff.",
+      "tags": [
+        "Art direction",
+        "3D since 2008",
+        "Studio founder"
+      ],
+      "links": [
+        {
+          "label": "LinkedIn",
+          "url": "https://www.linkedin.com/company/brothers-interactive"
+        },
+        {
+          "label": "Email",
+          "url": "mailto:business@brothersinteractive.com"
+        }
+      ]
+    },
+    {
+      "name": "Yogesh Tiwari",
+      "role": "Business Head",
+      "initials": "YT",
+      "photo": "",
+      "bio": "Yogesh leads business development and client partnerships. He shapes each engagement model, from fixed-scope quotes to dedicated monthly teams, and keeps schedules, budgets and communication clear so producers always know where their project stands.",
+      "tags": [
+        "Business development",
+        "Client partnerships",
+        "Engagement planning"
+      ],
+      "links": [
+        {
+          "label": "LinkedIn",
+          "url": "https://www.linkedin.com/in/yogesh-tiwari2000"
+        }
+      ]
+    },
+    {
+      "name": "Deepak",
+      "role": "Lead Character Artist",
+      "initials": "D",
+      "photo": "",
+      "bio": "Deepak leads character production, from high-poly sculpt to game-ready model, and guides the artists on anatomy, form and style. He also heads the studio's AI R&D, testing new tools and workflows that speed up production without compromising quality.",
+      "tags": [
+        "Character sculpting",
+        "AI R&D",
+        "Team lead"
+      ],
+      "links": []
+    },
+    {
+      "name": "Krutik",
+      "role": "Lead Character Artist",
+      "initials": "K",
+      "photo": "",
+      "bio": "Krutik leads the texturing and technical department. He owns PBR and stylised texturing, material setup and the technical checks that keep every character clean, optimised and engine-ready in Unreal, Unity or a client's own engine.",
+      "tags": [
+        "Texturing",
+        "Technical art",
+        "Engine-ready delivery"
+      ],
+      "links": []
+    }
+  ]
+}
