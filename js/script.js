@@ -1664,12 +1664,13 @@ function siteMain() {
     if (url.pathname !== location.pathname || !url.hash || url.hash === "#") return;
     if (!document.getElementById(url.hash.slice(1))) return;
     e.preventDefault();
-    history.pushState(null, "", url.hash);
-    goToSection(url.hash.slice(1), true);
+    goToSection(url.hash.slice(1), true);   // scroll only: the owner wants the address bar without "#section"
   });
   if (location.hash.length > 1) {
     var hashId = decodeURIComponent(location.hash.slice(1));
     if ("scrollRestoration" in history) history.scrollRestoration = "manual";
+    // Arrived via a section link from another page (e.g. "./#portfolio"): jump there, then tidy the address.
+    if (document.getElementById(hashId)) history.replaceState(null, "", location.pathname + location.search);
     goToSection(hashId, false);
     var jobAtStart = sectionJob;
     // re-align once everything has loaded — but only if the visitor hasn't clicked/scrolled elsewhere since
