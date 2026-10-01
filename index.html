@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <!-- Every link and file below is resolved from the site root, so this page also works at deeper addresses (/portfolio/…/). -->
+  <base href="/" />
   <!-- Google tag (gtag.js) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-3TZV0J0289"></script>
   <script>
@@ -48,7 +50,7 @@
   <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin />
   <link rel="preconnect" href="https://www.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;900&family=Rajdhani:wght@400;500;600;700&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="css/style.css?v=20261001rt2" />
+  <link rel="stylesheet" href="css/style.css?v=20261001cu1" />
   <script>try { var q = (location.search.match(/[?&]theme=([a-z]+)/) || [])[1]; var t = q || localStorage.getItem("bi-theme"); if (t && t !== "midnight" && "arctic ocean steel aurora desert".split(" ").indexOf(t) !== -1) document.documentElement.setAttribute("data-theme", t); } catch (e) {}</script>
 </head>
 <body>
@@ -82,7 +84,7 @@
           <li><a href="#services" class="nav-link">Services</a></li>
           <li><a href="#team" class="nav-link">Team</a></li>
           <li><a href="#careers" class="nav-link">Careers</a></li>
-          <li><a href="contact.html" class="nav-link nav-link--cta">Contact</a></li>
+          <li><a href="/contact" class="nav-link nav-link--cta">Contact</a></li>
         </ul>
       </nav>
       <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation" aria-expanded="false" aria-controls="mainNav">
@@ -110,7 +112,7 @@
           </p>
           <div class="hero-actions">
             <a href="#portfolio" class="btn btn--primary" id="heroBtnPrimary">View Portfolio</a>
-            <a href="contact.html" class="btn btn--link" id="heroBtnSecondary">Start a Project &rarr;</a>
+            <a href="/contact" class="btn btn--link" id="heroBtnSecondary">Start a Project &rarr;</a>
           </div>
           <ul class="hero-stats">
             <li><span class="stat-num" id="heroStat1Num" data-count="2019">0</span><span class="stat-label" id="heroStat1Label">Founded</span></li>
@@ -269,7 +271,7 @@
         <!-- Rendered by script.js from data/breakdowns.json (edit in /admin > Breakdowns); each tile opens breakdown.html?id=... -->
         <div class="style-grid" id="breakdownGrid" aria-label="Production breakdowns"></div>
         <div class="portfolio-more reveal" id="breakdownMore" hidden>
-          <a class="btn btn--link" href="breakdown.html">See all breakdowns &rarr;</a>
+          <a class="btn btn--link" href="/breakdowns/">See all breakdowns &rarr;</a>
         </div>
       </div>
     </section>
@@ -401,7 +403,7 @@
         <div class="faq-intro reveal">
           <p class="eyebrow">// FAQ</p>
           <h2 class="section-title">Questions producers <span class="accent">ask us</span></h2>
-          <p>Everything a studio usually wants to know before the first call. Anything missing? <a href="contact.html">Ask us directly</a>.</p>
+          <p>Everything a studio usually wants to know before the first call. Anything missing? <a href="/contact">Ask us directly</a>.</p>
           <div class="faq-art" aria-hidden="true">
             <svg viewBox="0 0 520 300" fill="none" xmlns="http://www.w3.org/2000/svg">
               <defs>
@@ -445,7 +447,7 @@
           </details>
           <details class="faq-item">
             <summary>How do revisions work?</summary>
-            <p>On fixed-scope work, revisions within the agreed brief are included, with feedback checkpoints after blockout, sculpt and texture. On monthly engagements or open-ended pipelines where R&amp;D is involved, we are open to as many changes and improvements as the project needs. <a href="contact.html">Contact us</a> for details.</p>
+            <p>On fixed-scope work, revisions within the agreed brief are included, with feedback checkpoints after blockout, sculpt and texture. On monthly engagements or open-ended pipelines where R&amp;D is involved, we are open to as many changes and improvements as the project needs. <a href="/contact">Contact us</a> for details.</p>
           </details>
           <details class="faq-item">
             <summary>Do you sign NDAs and who owns the work?</summary>
@@ -461,7 +463,7 @@
           </details>
           <details class="faq-item">
             <summary>How do we start?</summary>
-            <p>Send a short brief with references, asset count, style and deadline through our <a href="contact.html">contact form</a>. We reply with questions, a quote and a proposed schedule, usually within two working days.</p>
+            <p>Send a short brief with references, asset count, style and deadline through our <a href="/contact">contact form</a>. We reply with questions, a quote and a proposed schedule, usually within two working days.</p>
           </details>
         </div>
       </div>
@@ -471,7 +473,7 @@
             <h3>Let's Create Your Game Together!</h3>
             <p>Looking for top-tier 3D game art? Get in touch with us to discuss your project!</p>
           </div>
-          <a href="contact.html" class="btn btn--primary">Get in touch</a>
+          <a href="/contact" class="btn btn--primary">Get in touch</a>
         </div>
       </div>
     </section>
@@ -605,8 +607,9 @@
     </div>
   </div>
 
-  <script src="js/data.js?v=20261001rt2"></script>
-  <script src="js/script.js?v=20261001rt2"></script>
+  <script src="js/urls.js?v=20261001cu1"></script>
+  <script src="js/data.js?v=20261001cu1"></script>
+  <script src="js/script.js?v=20261001cu1"></script>
   <!--/FOOTER-->
 </body>
 </html>

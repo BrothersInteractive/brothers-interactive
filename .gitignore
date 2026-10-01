@@ -8,3 +8,4 @@ node_modules/
 # Internal notes: keep out of the public GitHub repo
 HANDOFF.md
 DEPLOY.md
+_site/

@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <!-- Every link and file below is resolved from the site root, so this page also works at deeper addresses (/portfolio/…/). -->
+  <base href="/" />
   <!-- Google tag (gtag.js) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-3TZV0J0289"></script>
   <script>
@@ -21,7 +23,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;900&family=Rajdhani:wght@400;500;600;700&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="css/style.css?v=20261001rt2" />
+  <link rel="stylesheet" href="css/style.css?v=20261001cu1" />
   <script>try { var q = (location.search.match(/[?&]theme=([a-z]+)/) || [])[1]; var t = q || localStorage.getItem("bi-theme"); if (t && t !== "midnight" && "arctic ocean steel aurora desert".split(" ").indexOf(t) !== -1) document.documentElement.setAttribute("data-theme", t); } catch (e) {}</script>
 </head>
 <body class="subpage">
@@ -33,7 +35,7 @@
   <!--NAV-->
   <header class="site-header" id="siteHeader">
     <div class="container header-inner">
-      <a href="./" class="brand" aria-label="Brothers Interactive home">
+      <a href="/" class="brand" aria-label="Brothers Interactive home">
         <img src="assets/img/brand/logo.webp" alt="Brothers Interactive logo" class="brand-logo" width="52" height="52" />
         <span class="brand-text">
           <span class="brand-name">Brothers <em>Interactive</em></span>
@@ -42,16 +44,16 @@
       </a>
       <nav class="main-nav" id="mainNav" aria-label="Primary">
         <ul>
-          <li><a href="./#home" class="nav-link">Home</a></li>
-          <li><a href="./#games" class="nav-link">Games</a></li>
-          <li><a href="./#testimonials" class="nav-link">Testimonials</a></li>
-          <li><a href="./#about" class="nav-link">About</a></li>
-          <li><a href="./#portfolio" class="nav-link">Portfolio</a></li>
-          <li><a href="./#breakdown" class="nav-link">Breakdown</a></li>
-          <li><a href="./#services" class="nav-link">Services</a></li>
-          <li><a href="./#team" class="nav-link">Team</a></li>
-          <li><a href="./#careers" class="nav-link">Careers</a></li>
-          <li><a href="contact.html" class="nav-link nav-link--cta">Contact</a></li>
+          <li><a href="/" class="nav-link">Home</a></li>
+          <li><a href="/games/" class="nav-link">Games</a></li>
+          <li><a href="/testimonials/" class="nav-link">Testimonials</a></li>
+          <li><a href="/about/" class="nav-link">About</a></li>
+          <li><a href="/portfolio/" class="nav-link">Portfolio</a></li>
+          <li><a href="/breakdown/" class="nav-link">Breakdown</a></li>
+          <li><a href="/services/" class="nav-link">Services</a></li>
+          <li><a href="/team/" class="nav-link">Team</a></li>
+          <li><a href="/careers/" class="nav-link">Careers</a></li>
+          <li><a href="/contact" class="nav-link nav-link--cta">Contact</a></li>
         </ul>
       </nav>
       <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation" aria-expanded="false" aria-controls="mainNav">
@@ -69,8 +71,8 @@
           <h1 class="page-title">From first call <span class="accent">to signed agreement</span></h1>
           <p class="page-sub">A clear five-step process takes every project from the first call to a signed agreement, typically within 7&ndash;10 days.</p>
           <div class="hero-actions">
-            <a href="contact.html" class="btn btn--primary">Start a project</a>
-            <a href="./#services" class="btn btn--ghost">See our services</a>
+            <a href="/contact" class="btn btn--primary">Start a project</a>
+            <a href="/services/" class="btn btn--ghost">See our services</a>
           </div>
         </div>
       </div>
@@ -123,7 +125,7 @@
             <h3>Ready to talk about your project?</h3>
             <p>Send us your brief and we'll walk you through the process from here.</p>
           </div>
-          <a href="contact.html" class="btn btn--primary">Start a project</a>
+          <a href="/contact" class="btn btn--primary">Start a project</a>
         </div>
       </div>
     </section>
@@ -163,8 +165,9 @@
     </div>
   </div>
 
-  <script src="js/data.js?v=20261001rt2"></script>
-  <script src="js/script.js?v=20261001rt2"></script>
+  <script src="js/urls.js?v=20261001cu1"></script>
+  <script src="js/data.js?v=20261001cu1"></script>
+  <script src="js/script.js?v=20261001cu1"></script>
   <!--/FOOTER-->
 </body>
 </html>

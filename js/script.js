@@ -28,18 +28,15 @@ function siteMain() {
      everywhere else — lightbox, asset page, work-card badge — is unaffected).
      A slug with an empty match list has no tagged work yet and renders as a
      non-clickable "Coming soon" tile instead of linking to an empty page. */
-  var BROWSE_CATS = [
-    { slug: "modular-chr-skins", label: "Modular CHR Skins", match: ["modular-chr-skins"] },
-    { slug: "realistic-character", label: "Realistic CHR", match: ["realistic-humans"] },
-    { slug: "realistic-creature", label: "Realistic Creature", match: ["realistic-creatures"] },
-    { slug: "realistic-hair", label: "Realistic Hair Card", match: ["realistic-hairs"] },
-    { slug: "stylized-character", label: "Stylized CHR", match: ["stylized-human"] },
-    { slug: "stylized-creature", label: "Stylized Creature", match: ["stylized-creature"] },
-    { slug: "props", label: "Realistic Props", match: ["props"] },
-    { slug: "weapons", label: "Realistic Weapons", match: ["weapons"] },
-    { slug: "midnight-walk", label: "Game - Midnight Walk", match: ["mid-night-walk"] },
-    { slug: "lost-in-random", label: "Game - Lost in Random", match: ["lost-in-random"] }
-  ];
+  // Category list and every page address live in js/urls.js (shared with the GitHub build step).
+  var URLS = window.BIURL;
+  var BROWSE_CATS = URLS.BROWSE_CATS;
+  // What the build step baked into this page: { section } / { cat } / { asset } / { bd } (empty on plain pages)
+  var PAGE_INFO = window.__BI_PAGE || {};
+  // Show a clean address without reloading (old ?id= / ?cat= / #section links get tidied this way too)
+  function setAddress(path) {
+    if (path && location.pathname + location.search !== path) history.replaceState(history.state, "", path);
+  }
   /* A piece belongs to its main category (p.c) plus any extra ones listed in
      p.cats ("Also show in" in /admin), so one upload can appear in several
      category pages. p.c alone still drives the piece's label elsewhere. */
@@ -92,6 +89,9 @@ function siteMain() {
   }
 
   var PROJECTS = loadList("portfolio", BI.PROJECTS);
+  // Each piece's own address, e.g. /portfolio/realistic-character/lehri/ (falls back to the old ?id= page)
+  var PIECE_PATH = URLS.piecePaths(PROJECTS);
+  function pieceUrl(id) { return PIECE_PATH[id] || "/asset.html?id=" + encodeURIComponent(id); }
   var GAMES = loadList("games", BI.GAMES);
   var CASES = loadList("cases", BI.CASES);
   var POSTS = loadList("posts", BI.POSTS);
@@ -313,8 +313,8 @@ function siteMain() {
   var grid = $("#portfolioGrid");
   var loadMoreBtn = $("#loadMoreBtn");
   var PAGE = 12; // still used for the staggered fade-in animation, not for hiding items
-  // category.html links here as ?cat=<key> to land already filtered to one style
-  var qCat = (location.search.match(/[?&]cat=([^&]+)/) || [])[1];
+  // A category page knows its category from the build step (/category/<slug>/), or from an old ?cat= link
+  var qCat = PAGE_INFO.cat || (location.search.match(/[?&]cat=([^&]+)/) || [])[1];
   var activeFilter = qCat ? decodeURIComponent(qCat) : "all";
   var shown = Infinity; // show the whole portfolio at once, no "Load More" needed
   var visibleList = [];
@@ -328,6 +328,7 @@ function siteMain() {
     var catLabel = (activeBrowseCat && activeBrowseCat.label) || CAT[activeFilter] || "Portfolio";
     catTitleEl.textContent = catLabel;
     document.title = catLabel + " | Brothers Interactive";
+    if (activeBrowseCat) setAddress(URLS.categoryPath(activeBrowseCat.slug));
   }
 
   /* A fresh random order on every page load, so the portfolio never looks the same twice */
@@ -408,7 +409,7 @@ function siteMain() {
         );
       }
       return (
-        '<a class="style-tile reveal" href="category.html?cat=' + encodeURIComponent(b.slug) + '" style="transition-delay:' + (i % 3) * 70 + 'ms" aria-label="Browse ' + esc(b.label) + '">' +
+        '<a class="style-tile reveal" href="' + URLS.categoryPath(b.slug) + '" style="transition-delay:' + (i % 3) * 70 + 'ms" aria-label="Browse ' + esc(b.label) + '">' +
           '<img ' + imgAttrs(TILE_IMG[b.slug.replace(/-/g, "_")] || thumb.i, "(max-width: 600px) 50vw, 33vw") + ' alt="" loading="lazy" />' +
           '<span class="style-tile-label">' + esc(b.label) + '</span>' +
         '</a>'
@@ -512,11 +513,15 @@ function siteMain() {
     });
   }
 
+  // While the viewer is open the address bar shows that piece's own link (ready to copy and send);
+  // closing it puts the page's address back.
+  var addressBeforeLb = null;
   function openLightbox(projectIndex, fromEl) {
     var p = PROJECTS[projectIndex];
     if (visibleList.indexOf(p) === -1) visibleList = [p];
     lbPos = visibleList.indexOf(p);
     lbOrigin = fromEl || null;
+    if (addressBeforeLb === null) addressBeforeLb = location.pathname + location.search;
     showLightbox(p);
     lb.classList.add("open");
     lb.setAttribute("aria-hidden", "false");
@@ -530,8 +535,9 @@ function siteMain() {
       lbImg.classList.add("loaded");
       lbCat.textContent = CAT[p.c];
       lbTitle.textContent = p.t;
-      lbLink.href = "asset.html?id=" + p.id;
+      lbLink.href = pieceUrl(p.id);
       lbLink.textContent = "Asset details & breakdown \u2192";
+      setAddress(pieceUrl(p.id));
       var variants = [p.i].concat(p.imgs || []);
       lbThumbs.innerHTML = variants.length > 1 ? variants.map(function (u, i) {
         return '<button class="asset-thumb' + (i === 0 ? ' active' : '') + '" data-src="' + u + '" aria-label="View ' + (i + 1) + '"><img ' + imgAttrs(u, "120px") + ' alt="" loading="lazy" /></button>';
@@ -547,6 +553,7 @@ function siteMain() {
   }
   function closeLightbox() {
     if (!lb.classList.contains("open")) return;
+    if (addressBeforeLb !== null) { setAddress(addressBeforeLb); addressBeforeLb = null; }
     var origin = lbOrigin; lbOrigin = null;
     flipBack(origin, function () {
       lb.classList.remove("open");
@@ -763,7 +770,7 @@ function siteMain() {
       : '<p class="portfolio-empty">Client quotes are being collected. Ask us for references directly.</p>';
   }
   $$("[data-roles]").forEach(function (list) {
-    var applyHref = list.dataset.roles === "full" ? "./#careers" : null;
+    var applyHref = list.dataset.roles === "full" ? URLS.sectionPath("careers") : null;
     list.innerHTML = ROLES.length
       ? ROLES.map(function (r) {
           var href = applyHref || ("mailto:" + EMAIL + "?subject=" + encodeURIComponent("Application: " + r.t));
@@ -809,7 +816,15 @@ function siteMain() {
     var probe = y + window.innerHeight * 0.35;
     sections.forEach(function (s) { if (s.offsetTop <= probe) current = s; });
     navLinks.forEach(function (a) { a.classList.toggle("active", a.getAttribute("href") === "#" + current.id); });
+    // The address follows the highlighted menu item (/ , /portfolio/, /team/ …) once the visitor is
+    // moving around, never while an artwork is open in the viewer (that shows the artwork's own link).
+    if (addressFollowsScroll && addressBeforeLb === null && URLS.SECTIONS.indexOf(current.id) !== -1) setAddress(URLS.sectionPath(current.id));
   }
+  // Not on first paint: a /team/ page must not flash "/" before it has scrolled down to Team.
+  var addressFollowsScroll = false;
+  ["wheel", "touchstart", "keydown", "mousedown"].forEach(function (t) {
+    window.addEventListener(t, function () { addressFollowsScroll = true; }, { passive: true, once: true });
+  });
   window.addEventListener("scroll", onScroll, { passive: true });
   window.addEventListener("resize", onScroll);
   onScroll();
@@ -981,7 +996,7 @@ function siteMain() {
         '</div>';
       }
       return '<figure class="compare reveal" style="transition-delay:' + (i % 3) * 90 + 'ms">' + stage +
-        '<figcaption><span>' + esc(pr.t) + '</span>' + (pr.id ? '<a href="asset.html?id=' + encodeURIComponent(pr.id) + '">Details &rarr;</a>' : '') + '</figcaption>' +
+        '<figcaption><span>' + esc(pr.t) + '</span>' + (pr.id ? '<a href="' + pieceUrl(pr.id) + '">Details &rarr;</a>' : '') + '</figcaption>' +
       '</figure>';
     }).join("");
     cmp.addEventListener("click", function (e) {
@@ -992,7 +1007,7 @@ function siteMain() {
 
   /* ------------------------------------------------------------------
      Production breakdowns (/admin > Breakdowns -> data/breakdowns.json)
-     Homepage: tiles, 3 per row, each opening breakdown.html?id=<id>.
+     Homepage: tiles, 3 per row, each opening /breakdowns/<id>/.
      breakdown.html: one breakdown (any mix of Sketchfab / Marmoset 3D viewer,
      sculpt-to-final slider, YouTube, GIF/video, gallery, pipeline steps), or
      the list of all breakdowns when no id is given.
@@ -1009,7 +1024,7 @@ function siteMain() {
   }
   function bdTile(b, i) {
     var c = bdCover(b), badges = bdBadges(b);
-    return '<a class="style-tile bd-tile reveal" href="breakdown.html?id=' + encodeURIComponent(b.id) + '" style="transition-delay:' + (i % 3) * 70 + 'ms" aria-label="Open the ' + esc(b.t) + ' breakdown">' +
+    return '<a class="style-tile bd-tile reveal" href="' + URLS.breakdownPath(b.id) + '" style="transition-delay:' + (i % 3) * 70 + 'ms" aria-label="Open the ' + esc(b.t) + ' breakdown">' +
       (c ? '<img ' + imgAttrs(c, "(max-width: 600px) 50vw, 33vw") + ' alt="" loading="lazy" />' : '') +
       '<span class="style-tile-label">' + esc(b.t) +
         (badges.length ? '<small class="bd-badges">' + badges.map(function (x) { return '<i>' + esc(x) + '</i>'; }).join("") + '</small>' : '') +
@@ -1023,8 +1038,9 @@ function siteMain() {
 
   var bdPage = $("#breakdownPage");
   if (bdPage) {
-    var bdId = decodeURIComponent((location.search.match(/[?&]id=([^&#]+)/) || [])[1] || "");
+    var bdId = PAGE_INFO.bd || decodeURIComponent((location.search.match(/[?&]id=([^&#]+)/) || [])[1] || "");
     var B = bdId ? BREAKDOWNS.filter(function (b) { return b.id === bdId; })[0] : null;
+    setAddress(URLS.breakdownPath(B ? B.id : ""));
     var DEFAULT_STEPS = [
       { t: "Brief & Reference", d: "Concept art and reference gathered, style and quality target confirmed before any sculpting starts." },
       { t: "Blockout", d: "Fast proportion and silhouette pass to lock the read of the character early." },
@@ -1037,7 +1053,7 @@ function siteMain() {
       // List of every breakdown
       bdPage.innerHTML =
         '<section class="page-hero page-hero--compact"><div class="container page-hero-inner"><div class="reveal">' +
-          '<p class="eyebrow"><span class="eyebrow-dot"></span> <a href="./#breakdown">&larr; Home</a> / Breakdowns</p>' +
+          '<p class="eyebrow"><span class="eyebrow-dot"></span> <a href="' + URLS.sectionPath("breakdown") + '">&larr; Home</a> / Breakdowns</p>' +
           '<h1 class="page-title">Production <span class="accent">breakdowns</span></h1>' +
           '<p class="page-sub">' + (bdId ? 'That breakdown could not be found. Here are all of them.' : 'Sculpt to final, in detail, for selected characters.') + '</p>' +
         '</div></div></section>' +
@@ -1094,12 +1110,12 @@ function siteMain() {
       var descHtml = String(B.desc || "").split(/\n\s*\n/).filter(Boolean).map(function (p) { return '<p class="page-sub bd-desc">' + esc(p.trim()) + '</p>'; }).join("");
       bdPage.innerHTML =
         '<section class="page-hero page-hero--compact"><div class="container page-hero-inner"><div class="reveal">' +
-          '<p class="eyebrow"><span class="eyebrow-dot"></span> <a href="./#breakdown">&larr; Breakdowns</a> / ' + esc(B.t) + '</p>' +
+          '<p class="eyebrow"><span class="eyebrow-dot"></span> <a href="' + URLS.breakdownPath() + '">&larr; Breakdowns</a> / ' + esc(B.t) + '</p>' +
           '<h1 class="page-title">' + esc(B.t) + ' <span class="accent">Breakdown</span></h1>' +
           (B.sub ? '<p class="page-sub">' + esc(B.sub) + '</p>' : '') + descHtml +
           '<div class="hero-actions">' +
-            (B.assetId ? '<a href="asset.html?id=' + encodeURIComponent(B.assetId) + '" class="btn btn--primary">View full asset page</a>' : '') +
-            '<a href="contact.html" class="btn btn--ghost">Get a breakdown like this</a>' +
+            (B.assetId ? '<a href="' + pieceUrl(B.assetId) + '" class="btn btn--primary">View full asset page</a>' : '') +
+            '<a href="/contact" class="btn btn--ghost">Get a breakdown like this</a>' +
           '</div>' +
         '</div></div></section>' + secs.join("");
 
@@ -1231,14 +1247,15 @@ function siteMain() {
   }
 
   /* ------------------------------------------------------------------
-     Asset detail page (asset.html?id=XXXX)
+     Asset detail page: /portfolio/<category>/<name>/ (built by tools/build.js), or the old asset.html?id=XXXX
      ------------------------------------------------------------------ */
   var ap = $("#assetPage");
   if (ap && PROJECTS.length) {
-    var aid = (location.search.match(/[?&]id=([A-Za-z0-9]+)/) || [])[1];
+    var aid = PAGE_INFO.asset || decodeURIComponent((location.search.match(/[?&]id=([^&#]+)/) || [])[1] || "");
     var aidx = -1; PROJECTS.forEach(function (x, i) { if (x.id === aid) aidx = i; });
     if (aidx === -1) aidx = 0;
     var P = PROJECTS[aidx];
+    setAddress(pieceUrl(P.id));
     document.title = P.t + " | Brothers Interactive";
     $("#assetTitle").textContent = P.t; $("#assetCat").textContent = CAT[P.c] || "";
     var paras = (P.desc || "").split(/\n\n+/).filter(Boolean);
@@ -1252,7 +1269,7 @@ function siteMain() {
     });
     $("#assetTags").innerHTML = (P.tags || []).map(function (t) { return '<li>' + esc(t) + '</li>'; }).join("");
     var commissionBtn = $("#assetCommission");
-    if (commissionBtn) commissionBtn.href = "contact.html?ref=" + encodeURIComponent(P.id);
+    if (commissionBtn) commissionBtn.href = "/contact?ref=" + encodeURIComponent(P.id);
     var srcUrl = normalizeUrl(P.src);
     /* Seed data filled every piece's "src" with a https://brothersinteractive.com/projects/<id>
        placeholder (no such route exists on this site) — treat that as "not set yet" and send
@@ -1268,12 +1285,12 @@ function siteMain() {
     var specs = [["Category", CAT[P.c] || ""], ["Project", projName], ["Software", P.software && P.software.length ? P.software.join(", ") : "On request"], ["Poly count", P.polys || "On request"], ["Textures", P.textures || "On request"]];
     $("#assetSpecs").innerHTML = specs.map(function (s) { return '<li><span>' + esc(s[0]) + '</span><strong>' + esc(s[1]) + '</strong></li>'; }).join("");
     var prevP = PROJECTS[(aidx - 1 + PROJECTS.length) % PROJECTS.length], nextP = PROJECTS[(aidx + 1) % PROJECTS.length];
-    $("#assetPrev").href = "asset.html?id=" + prevP.id; $("#assetPrev").textContent = "← " + prevP.t;
-    $("#assetNext").href = "asset.html?id=" + nextP.id; $("#assetNext").textContent = nextP.t + " →";
+    $("#assetPrev").href = pieceUrl(prevP.id); $("#assetPrev").textContent = "← " + prevP.t;
+    $("#assetNext").href = pieceUrl(nextP.id); $("#assetNext").textContent = nextP.t + " →";
     var rel = PROJECTS.filter(function (x) { return x.c === P.c && x.id !== P.id; }).slice(0, 4);
     $("#assetRelated").innerHTML = rel.map(function (x) {
       var ar = x.w && x.h ? ' style="aspect-ratio:' + x.w + '/' + x.h + '"' : '';
-      return '<a class="work-card ripple-host" href="asset.html?id=' + x.id + '"' + ar + '><img ' + imgAttrs(x.i, "(max-width: 600px) 50vw, 25vw") + ' alt="' + esc(x.t) + '" loading="lazy" /><div class="work-info"><span class="work-cat">' + esc(CAT[x.c]) + '</span><span class="work-title">' + esc(x.t) + '</span></div></a>';
+      return '<a class="work-card ripple-host" href="' + pieceUrl(x.id) + '"' + ar + '><img ' + imgAttrs(x.i, "(max-width: 600px) 50vw, 25vw") + ' alt="' + esc(x.t) + '" loading="lazy" /><div class="work-info"><span class="work-cat">' + esc(CAT[x.c]) + '</span><span class="work-title">' + esc(x.t) + '</span></div></a>';
     }).join("");
   }
 
@@ -1643,6 +1660,7 @@ function siteMain() {
     var offBy = function () { return target.getBoundingClientRect().top - headerH; };
     var place = function (behavior) {
       window.scrollTo({ top: Math.max(0, offBy() + (window.scrollY || window.pageYOffset) + 1), behavior: behavior });
+      if (behavior === "instant") onScroll();   // update the menu highlight now, don't wait for a scroll event
     };
     place(smooth ? "smooth" : "instant");
     // Images/3D above may still be loading and push the section down. Once the scroll has
@@ -1660,21 +1678,28 @@ function siteMain() {
   document.addEventListener("click", function (e) {
     var a = e.target.closest && e.target.closest('a[href*="#"]');
     if (!a || e.defaultPrevented || e.button !== 0 || e.metaKey || e.ctrlKey || e.shiftKey) return;
-    var url = new URL(a.getAttribute("href"), location.href);
-    if (url.pathname !== location.pathname || !url.hash || url.hash === "#") return;
-    if (!document.getElementById(url.hash.slice(1))) return;
+    var url = new URL(a.getAttribute("href"), document.baseURI);
+    var id = url.hash.slice(1);
+    if (!id || !document.getElementById(id)) return;
+    // The homepage and its section copies (/portfolio/, /team/ …) all hold the same sections, so a
+    // "#team" link (which resolves to "/#team") is handled right here instead of loading a new page.
+    var homeLike = !!document.getElementById("home");
+    if (url.pathname !== location.pathname && !(homeLike && url.pathname === "/")) return;
     e.preventDefault();
-    goToSection(url.hash.slice(1), true);   // scroll only: the owner wants the address bar without "#section"
+    goToSection(id, true);
+    // The address shows the section as a real path (/portfolio/, Home = /), never "#section"
+    if (homeLike && URLS.SECTIONS.indexOf(id) !== -1) setAddress(URLS.sectionPath(id));
   });
-  if (location.hash.length > 1) {
-    var hashId = decodeURIComponent(location.hash.slice(1));
+  // Where to land on arrival: a section page made by the build step (/team/), or an old "/#team" link
+  var startId = PAGE_INFO.section || decodeURIComponent(location.hash.slice(1));
+  if (startId && document.getElementById(startId)) {
     if ("scrollRestoration" in history) history.scrollRestoration = "manual";
-    // Arrived via a section link from another page (e.g. "./#portfolio"): jump there, then tidy the address.
-    if (document.getElementById(hashId)) history.replaceState(null, "", location.pathname + location.search);
-    goToSection(hashId, false);
+    if (URLS.SECTIONS.indexOf(startId) !== -1) setAddress(URLS.sectionPath(startId));
+    else if (location.hash) setAddress(location.pathname + location.search);   // drop the "#…"
+    goToSection(startId, false);
     var jobAtStart = sectionJob;
     // re-align once everything has loaded — but only if the visitor hasn't clicked/scrolled elsewhere since
-    window.addEventListener("load", function () { if (sectionJob === jobAtStart) goToSection(hashId, false); });
+    window.addEventListener("load", function () { if (sectionJob === jobAtStart) goToSection(startId, false); });
   }
 }
 

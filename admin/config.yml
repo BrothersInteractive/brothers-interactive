@@ -106,6 +106,12 @@ collections:
                 widget: "string"
                 hint: "The name shown under the artwork, e.g. \"Nitro CR7\""
 
+              - label: "Link name (optional)"
+                name: "slug"
+                widget: "string"
+                required: false
+                hint: "The last part of this piece's web address, e.g. \"lehri\" gives brothersinteractive.in/portfolio/realistic-character/lehri/. Leave empty to use the title. Fill it in if you might rename the title later, so links already sent to clients keep working."
+
               - label: "Category"
                 name: "c"
                 widget: "select"
