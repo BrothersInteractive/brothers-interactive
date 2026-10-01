@@ -79,7 +79,7 @@ function siteMain() {
     var out = null;
     try {
       var xhr = new XMLHttpRequest();
-      xhr.open("GET", "../data/" + name + ".json?t=" + JSON_STAMP, false);
+      xhr.open("GET", "data/" + name + ".json?t=" + JSON_STAMP, false);
       xhr.send(null);
       if (xhr.status === 200) out = JSON.parse(xhr.responseText);
     } catch (e) {}
@@ -763,7 +763,7 @@ function siteMain() {
       : '<p class="portfolio-empty">Client quotes are being collected. Ask us for references directly.</p>';
   }
   $$("[data-roles]").forEach(function (list) {
-    var applyHref = list.dataset.roles === "full" ? "index.html#careers" : null;
+    var applyHref = list.dataset.roles === "full" ? "./#careers" : null;
     list.innerHTML = ROLES.length
       ? ROLES.map(function (r) {
           var href = applyHref || ("mailto:" + EMAIL + "?subject=" + encodeURIComponent("Application: " + r.t));
@@ -1037,7 +1037,7 @@ function siteMain() {
       // List of every breakdown
       bdPage.innerHTML =
         '<section class="page-hero page-hero--compact"><div class="container page-hero-inner"><div class="reveal">' +
-          '<p class="eyebrow"><span class="eyebrow-dot"></span> <a href="index.html#breakdown">&larr; Home</a> / Breakdowns</p>' +
+          '<p class="eyebrow"><span class="eyebrow-dot"></span> <a href="./#breakdown">&larr; Home</a> / Breakdowns</p>' +
           '<h1 class="page-title">Production <span class="accent">breakdowns</span></h1>' +
           '<p class="page-sub">' + (bdId ? 'That breakdown could not be found. Here are all of them.' : 'Sculpt to final, in detail, for selected characters.') + '</p>' +
         '</div></div></section>' +
@@ -1094,7 +1094,7 @@ function siteMain() {
       var descHtml = String(B.desc || "").split(/\n\s*\n/).filter(Boolean).map(function (p) { return '<p class="page-sub bd-desc">' + esc(p.trim()) + '</p>'; }).join("");
       bdPage.innerHTML =
         '<section class="page-hero page-hero--compact"><div class="container page-hero-inner"><div class="reveal">' +
-          '<p class="eyebrow"><span class="eyebrow-dot"></span> <a href="index.html#breakdown">&larr; Breakdowns</a> / ' + esc(B.t) + '</p>' +
+          '<p class="eyebrow"><span class="eyebrow-dot"></span> <a href="./#breakdown">&larr; Breakdowns</a> / ' + esc(B.t) + '</p>' +
           '<h1 class="page-title">' + esc(B.t) + ' <span class="accent">Breakdown</span></h1>' +
           (B.sub ? '<p class="page-sub">' + esc(B.sub) + '</p>' : '') + descHtml +
           '<div class="hero-actions">' +
@@ -1689,7 +1689,7 @@ function siteMain() {
   var store = window.__BI_JSON = {};
   if (!window.fetch || !window.Promise) { siteMain(); return; }
   Promise.all(names.map(function (n) {
-    return fetch("../data/" + n + ".json", { cache: "no-cache" })
+    return fetch("data/" + n + ".json", { cache: "no-cache" })
       .then(function (r) { return r.ok ? r.json() : null; })
       .then(function (j) { store[n] = j; }, function () { store[n] = null; });
   })).then(function () { siteMain(); });

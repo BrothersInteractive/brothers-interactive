@@ -1,8 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <!-- Served for ANY missing address, at any depth: resolve every relative link from the site root. -->
-  <base href="/" />
   <!-- Google tag (gtag.js) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-3TZV0J0289"></script>
   <script>
@@ -13,8 +11,11 @@
   </script>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Page not found | Brothers Interactive</title>
-  <meta name="robots" content="noindex" />
+  <title>Asset | Brothers Interactive</title>
+  <meta name="description" content="Breakdown of a 3D character, creature or prop from the Brothers Interactive portfolio." />
+  <meta property="og:type" content="article" />
+  <meta property="og:title" content="Asset breakdown | Brothers Interactive" />
+  <meta property="og:image" content="https://brothersinteractive.in/assets/img/brand/og-image.jpg" />
   <link rel="icon" href="assets/img/brand/favicon.png" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -60,15 +61,40 @@
   <!--/NAV-->
 
   <main id="main">
-    <section class="notfound">
+    <section class="asset-hero" id="assetPage">
       <div class="container">
-        <div class="code">404</div>
-        <h1 class="section-title">This asset was never <span class="accent">modelled</span></h1>
-        <p class="section-sub" style="margin-inline:auto">The page you asked for does not exist or has moved. Try the portfolio, or head back home.</p>
-        <div class="hero-actions" style="justify-content:center;margin-top:28px">
-          <a href="./" class="btn btn--primary">Home</a>
-          <a href="./#portfolio" class="btn btn--ghost">Portfolio</a>
+        <p class="eyebrow"><a href="./#portfolio">&larr; Portfolio</a> &nbsp;/&nbsp; <span id="assetCat">Category</span></p>
+        <div class="asset-grid">
+          <div>
+            <div class="asset-main"><img id="assetMain" alt="" /></div>
+            <div class="asset-thumbs" id="assetThumbs"></div>
+            <div class="asset-3d" id="asset3d" hidden style="margin-top:18px"><iframe title="Interactive 3D viewer" src="" allow="autoplay; fullscreen; xr-spatial-tracking"></iframe></div>
+          </div>
+          <div class="asset-body">
+            <h1 class="asset-title" id="assetTitle">Asset</h1>
+            <div class="asset-desc" id="assetDesc"></div>
+            <ul class="asset-specs" id="assetSpecs"></ul>
+            <ul class="asset-tags" id="assetTags"></ul>
+            <div class="hero-actions">
+              <a href="contact.html" id="assetCommission" class="btn btn--primary">Commission similar work</a>
+              <a href="#" id="assetSrc" class="btn btn--ghost" target="_blank" rel="noopener">View on ArtStation</a>
+            </div>
+            <nav class="asset-nav" aria-label="Previous and next asset">
+              <a href="#" id="assetPrev">Previous</a>
+              <a href="#" id="assetNext">Next</a>
+            </nav>
+          </div>
         </div>
+      </div>
+    </section>
+
+    <section class="section section--alt">
+      <div class="container">
+        <div class="section-head">
+          <p class="eyebrow">// Related</p>
+          <h2 class="section-title">More in this <span class="accent">category</span></h2>
+        </div>
+        <div class="related-grid" id="assetRelated"></div>
       </div>
     </section>
   </main>

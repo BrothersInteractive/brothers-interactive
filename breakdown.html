@@ -1,8 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <!-- Served for ANY missing address, at any depth: resolve every relative link from the site root. -->
-  <base href="/" />
   <!-- Google tag (gtag.js) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-3TZV0J0289"></script>
   <script>
@@ -13,8 +11,12 @@
   </script>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Page not found | Brothers Interactive</title>
-  <meta name="robots" content="noindex" />
+  <title>Production Breakdowns | Brothers Interactive</title>
+  <meta name="description" content="Production breakdowns from Brothers Interactive: sculpt to final, 3D viewers, videos and every stage of the pipeline for selected game characters." />
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Production Breakdowns | Brothers Interactive" />
+  <meta property="og:description" content="Sculpt to final, in detail: production breakdowns of game characters from Brothers Interactive." />
+  <meta property="og:image" content="https://brothersinteractive.in/assets/img/portfolio/orc-fanart-vbnvde.webp" />
   <link rel="icon" href="assets/img/brand/favicon.png" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -45,7 +47,7 @@
           <li><a href="./#testimonials" class="nav-link">Testimonials</a></li>
           <li><a href="./#about" class="nav-link">About</a></li>
           <li><a href="./#portfolio" class="nav-link">Portfolio</a></li>
-          <li><a href="./#breakdown" class="nav-link">Breakdown</a></li>
+          <li><a href="breakdown.html" class="nav-link active">Breakdown</a></li>
           <li><a href="./#services" class="nav-link">Services</a></li>
           <li><a href="./#team" class="nav-link">Team</a></li>
           <li><a href="./#careers" class="nav-link">Careers</a></li>
@@ -60,17 +62,15 @@
   <!--/NAV-->
 
   <main id="main">
-    <section class="notfound">
-      <div class="container">
-        <div class="code">404</div>
-        <h1 class="section-title">This asset was never <span class="accent">modelled</span></h1>
-        <p class="section-sub" style="margin-inline:auto">The page you asked for does not exist or has moved. Try the portfolio, or head back home.</p>
-        <div class="hero-actions" style="justify-content:center;margin-top:28px">
-          <a href="./" class="btn btn--primary">Home</a>
-          <a href="./#portfolio" class="btn btn--ghost">Portfolio</a>
-        </div>
-      </div>
-    </section>
+    <!-- Built by script.js from data/breakdowns.json (edit in /admin > Breakdowns).
+         breakdown.html?id=<id> shows one breakdown; without an id it lists them all. -->
+    <div id="breakdownPage">
+      <section class="page-hero page-hero--compact"><div class="container page-hero-inner"><div>
+        <p class="eyebrow"><span class="eyebrow-dot"></span> <a href="./#breakdown">&larr; Breakdowns</a></p>
+        <h1 class="page-title"><span class="accent">Production breakdown</span></h1>
+      </div></div></section>
+    </div>
+
   </main>
 
   <!--FOOTER-->

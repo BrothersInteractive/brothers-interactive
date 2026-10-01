@@ -13,7 +13,7 @@ window.BI = {
     bookingUrl: "",                                 // e.g. "https://calendly.com/brothersinteractive/intro" — empty hides the button
     plausibleDomain: "",                            // e.g. "brothersinteractive.com" — empty = analytics off
     showreelYouTubeId: "",                          // e.g. "dQw4w9WgXcQ" — empty = image reel from the portfolio
-    deckPdf: "../assets/brothers-interactive-capabilities.pdf",
+    deckPdf: "/assets/brothers-interactive-capabilities.pdf",
     email: "business@brothersinteractive.com",
     address: "79/5 Shipra Path, Mansarovar, Jaipur 302017, Rajasthan, India"
   },
@@ -36,9 +36,9 @@ window.BI = {
      rotating podium in the hero. One is picked at random on every page load. Use PNGs with the
      background removed — anything with a background will show as a hard rectangle over the podium. ---- */
   HERO_SHOWCASE: [
-    { img: "../assets/img/portfolio/placeholder-silhouette.png", alt: "Placeholder character — replace via admin panel" },
-    { img: "../assets/img/portfolio/placeholder-silhouette-2.png", alt: "Placeholder character — replace via admin panel" },
-    { img: "../assets/img/portfolio/placeholder-silhouette-3.png", alt: "Placeholder creature — replace via admin panel" }
+    { img: "/assets/img/portfolio/placeholder-silhouette.png", alt: "Placeholder character — replace via admin panel" },
+    { img: "/assets/img/portfolio/placeholder-silhouette-2.png", alt: "Placeholder character — replace via admin panel" },
+    { img: "/assets/img/portfolio/placeholder-silhouette-3.png", alt: "Placeholder creature — replace via admin panel" }
   ],
 
   /* ---- Quote estimator: typical artist-days per asset (ranges), editable ---- */
@@ -56,13 +56,13 @@ window.BI = {
     parallelArtists: 4     // how many artists typically work in parallel on one project
   },
 
-  /* ---- Client logo wall (text wordmarks; add {logo:"../assets/img/logos/x.webp"} when you have permission) ---- */
+  /* ---- Client logo wall (text wordmarks; add {logo:"/assets/img/logos/x.webp"} when you have permission) ---- */
   CLIENTS: [
     { n: "Saber Interactive" }, { n: "Thunderful" }, { n: "Midwinter Entertainment" }, { n: "Slipgate Ironworks" },
     { n: "MoonHood Studios" }, { n: "VOID Interactive" }, { n: "Zoink Games" }, { n: "Event Horizon" }
   ],
 
-  /* ---- Testimonials: { q: "quote", n: "Name", r: "Art Director, Studio", img: "../assets/img/team/x.webp" }
+  /* ---- Testimonials: { q: "quote", n: "Name", r: "Art Director, Studio", img: "/assets/img/team/x.webp" }
      The three entries below are SAMPLES (sample: true shows a badge). Replace them with real, approved quotes. ---- */
   TESTIMONIALS: [
     { sample: true, q: "The characters matched our in-house style so closely that our own team could not tell which ones were outsourced.", n: "Client name", r: "Art Director, AAA studio", project: "Realistic characters" },
@@ -81,38 +81,38 @@ window.BI = {
       {
           "id": "xdAzDY",
           "t": "Cute Monster",
-          "before": "../assets/img/portfolio/cute-monster-xdazdy-before.webp",
-          "after": "../assets/img/portfolio/cute-monster-xdazdy-after.webp"
+          "before": "/assets/img/portfolio/cute-monster-xdazdy-before.webp",
+          "after": "/assets/img/portfolio/cute-monster-xdazdy-after.webp"
       },
       {
           "id": "vbNvDE",
           "t": "Orc Fanart",
-          "before": "../assets/img/portfolio/orc-fanart-vbnvde-before.webp",
-          "after": "../assets/img/portfolio/orc-fanart-vbnvde-after.webp"
+          "before": "/assets/img/portfolio/orc-fanart-vbnvde-before.webp",
+          "after": "/assets/img/portfolio/orc-fanart-vbnvde-after.webp"
       },
       {
           "id": "mAnNrv",
           "t": "T-Rex - Crash Bandicoot 4 Fanart",
-          "before": "../assets/img/portfolio/t-rex-crash-bandicoot-4-fanart-mannrv-before.webp",
-          "after": "../assets/img/portfolio/t-rex-crash-bandicoot-4-fanart-mannrv-after.webp"
+          "before": "/assets/img/portfolio/t-rex-crash-bandicoot-4-fanart-mannrv-before.webp",
+          "after": "/assets/img/portfolio/t-rex-crash-bandicoot-4-fanart-mannrv-after.webp"
       },
       {
           "id": "rJVn4e",
           "t": "Zombie-2",
-          "before": "../assets/img/portfolio/zombie-2-rjvn4e-before.webp",
-          "after": "../assets/img/portfolio/zombie-2-rjvn4e-after.webp"
+          "before": "/assets/img/portfolio/zombie-2-rjvn4e-before.webp",
+          "after": "/assets/img/portfolio/zombie-2-rjvn4e-after.webp"
       },
       {
           "id": "qJY3qa",
           "t": "Orc",
-          "before": "../assets/img/portfolio/orc-qjy3qa-before.webp",
-          "after": "../assets/img/portfolio/orc-qjy3qa-after.webp"
+          "before": "/assets/img/portfolio/orc-qjy3qa-before.webp",
+          "after": "/assets/img/portfolio/orc-qjy3qa-after.webp"
       },
       {
           "id": "dKWXLA",
           "t": "Lehri",
-          "before": "../assets/img/portfolio/lehri-dkwxla-before.webp",
-          "after": "../assets/img/portfolio/lehri-dkwxla-after.webp"
+          "before": "/assets/img/portfolio/lehri-dkwxla-before.webp",
+          "after": "/assets/img/portfolio/lehri-dkwxla-after.webp"
       }
   ],
 
@@ -120,31 +120,31 @@ window.BI = {
   CASES: [
     {
       t: "Lost in Random", client: "Zoink Games / Thunderful", year: "2021", style: "Stylized", engine: "Unity",
-      img: "../assets/img/games/lost-in-random.webp", yt: "diilMn5gSAg", cat: "lost-in-random", stats: [["Published assets", "11"], ["Style", "Stylized"], ["Team size", "Add"], ["Timeline", "Add"]],
+      img: "/assets/img/games/lost-in-random.webp", yt: "diilMn5gSAg", cat: "lost-in-random", stats: [["Published assets", "11"], ["Style", "Stylized"], ["Team size", "Add"], ["Timeline", "Add"]],
       summary: "Gothic fairy-tale characters for Zoink's action adventure. We produced a cast of NPCs and enemies in the game's hand-crafted, stop-motion inspired look, from sculpt through final textures, matched to the in-house cast so the additions are indistinguishable from the studio's own work.",
       scope: ["Stylized character modeling and sculpting", "Hand-painted PBR texturing", "Game-res topology and UVs", "Style matching to existing characters"]
     },
     {
       t: "The Midnight Walk", client: "MoonHood Studios", year: "2025", style: "Stylized claymation", engine: "Unreal Engine",
-      img: "../assets/img/games/the-midnight-walk.webp", yt: "QnBE7mU6ZsI", cat: "mid-night-walk", stats: [["Published assets", "9"], ["Style", "Claymation"], ["Team size", "Add"], ["Timeline", "Add"]],
+      img: "/assets/img/games/the-midnight-walk.webp", yt: "QnBE7mU6ZsI", cat: "mid-night-walk", stats: [["Published assets", "9"], ["Style", "Claymation"], ["Team size", "Add"], ["Timeline", "Add"]],
       summary: "Clay-sculpted characters for MoonHood's dark fairy-tale adventure. Our work covered story characters and creatures translated from physical clay reference into game-ready assets that keep the fingerprints-and-tool-marks feel of the original sculpts.",
       scope: ["Character and creature sculpting from clay reference", "Retopology and UVs for a stylized pipeline", "Texturing with hand-made surface detail", "Engine-ready exports"]
     },
     {
       t: "Warhammer 40,000: Space Marine 2", client: "Saber Interactive", year: "2024", style: "Realistic AAA", engine: "Swarm Engine",
-      img: "../assets/img/games/warhammer-40-000-space-marine-2.webp", yt: "A_HljUo8Jjk", cat: null,
+      img: "/assets/img/games/warhammer-40-000-space-marine-2.webp", yt: "A_HljUo8Jjk", cat: null,
       summary: "Character and asset production support on Saber Interactive's AAA action title. Details of individual assets are shared on request in line with the project's confidentiality terms.",
       scope: ["3D modeling and sculpting", "Texturing", "Skinning and rigging", "Engine integration support"]
     },
     {
       t: "Ready Or Not", client: "VOID Interactive", year: "2023", style: "Realistic", engine: "Unreal Engine",
-      img: "../assets/img/games/ready-or-not.webp", yt: "lLNoftAmKr0", cat: null,
+      img: "/assets/img/games/ready-or-not.webp", yt: "lLNoftAmKr0", cat: null,
       summary: "Realistic character and equipment production support for VOID Interactive's tactical shooter. Asset breakdowns are available on request.",
       scope: ["Realistic character modeling", "Gear, equipment and prop texturing", "Skinning and rigging support", "Optimization for Unreal"]
     },
     {
       t: "Wavetale", client: "Thunderful Development", year: "2022", style: "Stylized", engine: "Unity",
-      img: "../assets/img/games/wavetale.webp", yt: "Zeths3LNBgQ", cat: null,
+      img: "/assets/img/games/wavetale.webp", yt: "Zeths3LNBgQ", cat: null,
       summary: "Stylized character work for Thunderful's ocean-surfing adventure. Asset breakdowns are available on request.",
       scope: ["Stylized character modeling", "Texturing", "Game-res topology and UVs"]
     }
@@ -166,16 +166,16 @@ window.BI = {
 
   /* ---- Game credits ---- */
   GAMES: [
-    {"t": "Tormentor", "s": "Slipgate Ironworks", "yt": "FRMIpc-JiOM", "i": "../assets/img/games/tormentor.webp"},
-    {"t": "The Midnight Walk", "s": "MoonHood Studios", "yt": "QnBE7mU6ZsI", "i": "../assets/img/games/the-midnight-walk.webp"},
-    {"t": "Warhammer 40,000: Space Marine 2", "s": "Saber Interactive", "yt": "A_HljUo8Jjk", "i": "../assets/img/games/warhammer-40-000-space-marine-2.webp"},
-    {"t": "Ready or Not", "s": "VOID Interactive", "yt": "lLNoftAmKr0", "i": "../assets/img/games/ready-or-not.webp"},
-    {"t": "Supermoves", "s": "Makea Games", "yt": "TetKQGIBjvo", "i": "../assets/img/games/supermoves.webp"},
-    {"t": "Warhammer 40,000: Speed Freeks", "s": "Caliber Games", "yt": "tqSelvOZnHU", "i": "../assets/img/games/warhammer-40-000-speed-freeks.webp"},
-    {"t": "Dark Envoy", "s": "Event Horizon", "yt": "I07Gm2dpiLs", "i": "../assets/img/games/dark-envoy.webp"},
-    {"t": "Lost in Random", "s": "Zoink / Thunderful", "yt": "diilMn5gSAg", "i": "../assets/img/games/lost-in-random.webp"},
-    {"t": "The Gunk", "s": "Image & Form / Thunderful", "yt": "Cs96h12uHiE", "i": "../assets/img/games/the-gunk.webp"},
-    {"t": "Wavetale", "s": "Thunderful Development", "yt": "Zeths3LNBgQ", "i": "../assets/img/games/wavetale.webp"},
-    {"t": "Scavengers", "s": "Midwinter Entertainment", "yt": "hvq9Ov6gXc4", "i": "../assets/img/games/scavengers.webp"}
+    {"t": "Tormentor", "s": "Slipgate Ironworks", "yt": "FRMIpc-JiOM", "i": "/assets/img/games/tormentor.webp"},
+    {"t": "The Midnight Walk", "s": "MoonHood Studios", "yt": "QnBE7mU6ZsI", "i": "/assets/img/games/the-midnight-walk.webp"},
+    {"t": "Warhammer 40,000: Space Marine 2", "s": "Saber Interactive", "yt": "A_HljUo8Jjk", "i": "/assets/img/games/warhammer-40-000-space-marine-2.webp"},
+    {"t": "Ready or Not", "s": "VOID Interactive", "yt": "lLNoftAmKr0", "i": "/assets/img/games/ready-or-not.webp"},
+    {"t": "Supermoves", "s": "Makea Games", "yt": "TetKQGIBjvo", "i": "/assets/img/games/supermoves.webp"},
+    {"t": "Warhammer 40,000: Speed Freeks", "s": "Caliber Games", "yt": "tqSelvOZnHU", "i": "/assets/img/games/warhammer-40-000-speed-freeks.webp"},
+    {"t": "Dark Envoy", "s": "Event Horizon", "yt": "I07Gm2dpiLs", "i": "/assets/img/games/dark-envoy.webp"},
+    {"t": "Lost in Random", "s": "Zoink / Thunderful", "yt": "diilMn5gSAg", "i": "/assets/img/games/lost-in-random.webp"},
+    {"t": "The Gunk", "s": "Image & Form / Thunderful", "yt": "Cs96h12uHiE", "i": "/assets/img/games/the-gunk.webp"},
+    {"t": "Wavetale", "s": "Thunderful Development", "yt": "Zeths3LNBgQ", "i": "/assets/img/games/wavetale.webp"},
+    {"t": "Scavengers", "s": "Midwinter Entertainment", "yt": "hvq9Ov6gXc4", "i": "/assets/img/games/scavengers.webp"}
   ],
 };

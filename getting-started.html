@@ -1,8 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <!-- Served for ANY missing address, at any depth: resolve every relative link from the site root. -->
-  <base href="/" />
   <!-- Google tag (gtag.js) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-3TZV0J0289"></script>
   <script>
@@ -13,8 +11,12 @@
   </script>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Page not found | Brothers Interactive</title>
-  <meta name="robots" content="noindex" />
+  <title>How to Get a Quote | Brothers Interactive</title>
+  <meta name="description" content="The five-step process Brothers Interactive follows from your first call to a signed agreement: discussion, rate card and sample, client scope and files, tier and engagement, agreement and NDA." />
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="How to Get a Quote | Brothers Interactive" />
+  <meta property="og:description" content="A clear five-step process takes every project from the first call to a signed agreement, typically within 7-10 days." />
+  <meta property="og:image" content="https://brothersinteractive.in/assets/img/brand/og-image.jpg" />
   <link rel="icon" href="assets/img/brand/favicon.png" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -60,14 +62,68 @@
   <!--/NAV-->
 
   <main id="main">
-    <section class="notfound">
+    <section class="page-hero">
+      <div class="container page-hero-inner">
+        <div class="reveal">
+          <p class="eyebrow"><span class="eyebrow-dot"></span> Get a quote</p>
+          <h1 class="page-title">From first call <span class="accent">to signed agreement</span></h1>
+          <p class="page-sub">A clear five-step process takes every project from the first call to a signed agreement, typically within 7&ndash;10 days.</p>
+          <div class="hero-actions">
+            <a href="contact.html" class="btn btn--primary">Start a project</a>
+            <a href="./#services" class="btn btn--ghost">See our services</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
       <div class="container">
-        <div class="code">404</div>
-        <h1 class="section-title">This asset was never <span class="accent">modelled</span></h1>
-        <p class="section-sub" style="margin-inline:auto">The page you asked for does not exist or has moved. Try the portfolio, or head back home.</p>
-        <div class="hero-actions" style="justify-content:center;margin-top:28px">
-          <a href="./" class="btn btn--primary">Home</a>
-          <a href="./#portfolio" class="btn btn--ghost">Portfolio</a>
+        <ol class="process-grid quote-steps">
+          <li class="process-step reveal">
+            <span class="service-badge">Day 1</span>
+            <span class="process-num">01</span>
+            <h3>Discussion</h3>
+            <p>Initial call to understand concept, references, scope and quality target.</p>
+          </li>
+          <li class="process-step reveal">
+            <span class="service-badge">Day 1&ndash;3</span>
+            <span class="process-num">02</span>
+            <h3>Rate Card &amp; Sample</h3>
+            <p>We share the rate card and sample production files for review.</p>
+          </li>
+          <li class="process-step reveal">
+            <span class="service-badge">Day 3&ndash;5</span>
+            <span class="process-num">03</span>
+            <h3>Client Scope &amp; Files</h3>
+            <p>You share the full task scope, references and technical files.</p>
+          </li>
+          <li class="process-step reveal">
+            <span class="service-badge">Day 5&ndash;7</span>
+            <span class="process-num">04</span>
+            <h3>Tier &amp; Engagement</h3>
+            <p>Tier and engagement model selected using historical benchmarks.</p>
+          </li>
+          <li class="process-step reveal">
+            <span class="service-badge">Day 7&ndash;10</span>
+            <span class="process-num">05</span>
+            <h3>Agreement &amp; NDA</h3>
+            <p>Agreement and NDA signed: rate &times; estimated production effort.</p>
+          </li>
+        </ol>
+
+        <div class="process-notes reveal">
+          <div class="note-card"><strong>Fixed Scope</strong><span>Defined deliverables at an agreed price, billed against milestone approvals.</span></div>
+          <div class="note-card"><strong>Time &amp; Materials</strong><span>Approved hours &times; rate, within an agreed range, for scope that's still evolving.</span></div>
+          <div class="note-card"><strong>Artist Pod</strong><span>A dedicated team billed monthly, best for volume, ongoing work or DLCs.</span></div>
+          <div class="note-card"><strong>Data-driven</strong><span>Production time is logged across every task, so estimates stay defensible and transparent.</span></div>
+        </div>
+
+        <div class="cta-band reveal">
+          <div>
+            <h3>Ready to talk about your project?</h3>
+            <p>Send us your brief and we'll walk you through the process from here.</p>
+          </div>
+          <a href="contact.html" class="btn btn--primary">Start a project</a>
         </div>
       </div>
     </section>

@@ -1,8 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <!-- Served for ANY missing address, at any depth: resolve every relative link from the site root. -->
-  <base href="/" />
   <!-- Google tag (gtag.js) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-3TZV0J0289"></script>
   <script>
@@ -13,8 +11,12 @@
   </script>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Page not found | Brothers Interactive</title>
-  <meta name="robots" content="noindex" />
+  <title>Contact | Brothers Interactive</title>
+  <meta name="description" content="Send Brothers Interactive a project brief for 3D game characters, creatures and props. We reply with questions, a quote and a proposed schedule." />
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Contact | Brothers Interactive" />
+  <meta property="og:description" content="Send Brothers Interactive a project brief for 3D game characters, creatures and props. We reply with questions, a quote and a proposed schedule." />
+  <meta property="og:image" content="https://brothersinteractive.in/assets/img/brand/og-image.jpg" />
   <link rel="icon" href="assets/img/brand/favicon.png" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -49,7 +51,7 @@
           <li><a href="./#services" class="nav-link">Services</a></li>
           <li><a href="./#team" class="nav-link">Team</a></li>
           <li><a href="./#careers" class="nav-link">Careers</a></li>
-          <li><a href="contact.html" class="nav-link nav-link--cta">Contact</a></li>
+          <li><a href="contact.html" class="nav-link nav-link--cta active">Contact</a></li>
         </ul>
       </nav>
       <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation" aria-expanded="false" aria-controls="mainNav">
@@ -60,17 +62,96 @@
   <!--/NAV-->
 
   <main id="main">
-    <section class="notfound">
-      <div class="container">
-        <div class="code">404</div>
-        <h1 class="section-title">This asset was never <span class="accent">modelled</span></h1>
-        <p class="section-sub" style="margin-inline:auto">The page you asked for does not exist or has moved. Try the portfolio, or head back home.</p>
-        <div class="hero-actions" style="justify-content:center;margin-top:28px">
-          <a href="./" class="btn btn--primary">Home</a>
-          <a href="./#portfolio" class="btn btn--ghost">Portfolio</a>
+
+    <!-- ================= CONTACT ================= -->
+    <section class="section section--page-top" id="contact">
+      <div class="container contact-grid">
+        <div class="contact-copy reveal">
+          <p class="eyebrow">// Contact</p>
+          <h1 class="section-title">Let's <span class="accent">talk</span></h1>
+          <p>Use the form and we'll be in touch with you shortly!</p>
+
+          <div class="hero-actions" style="margin-bottom:28px">
+            <a href="#" class="btn btn--ghost" data-booking target="_blank" rel="noopener" hidden>Book a 20-minute call</a>
+          </div>
+          <h3 class="contact-sub">Other places to find us</h3>
+          <div class="social-row">
+            <a href="https://www.artstation.com/brothersinteractive" target="_blank" rel="noopener" aria-label="ArtStation">ArtStation</a>
+            <a href="https://www.linkedin.com/company/brothers-interactive" target="_blank" rel="noopener" aria-label="LinkedIn">LinkedIn</a>
+            <a href="https://www.instagram.com/brothersinteractive" target="_blank" rel="noopener" aria-label="Instagram">Instagram</a>
+            <a href="https://www.facebook.com/Brothersinteractive" target="_blank" rel="noopener" aria-label="Facebook">Facebook</a>
+          </div>
         </div>
+
+        <form class="contact-form reveal" id="contactForm" novalidate>
+          <div class="ref-banner" id="cfRefBanner" hidden>
+            <img id="cfRefImg" alt="" />
+            <div class="ref-banner-text">
+              <span class="ref-banner-label">Asking about this piece</span>
+              <strong id="cfRefTitle"></strong>
+              <span id="cfRefCat"></span>
+            </div>
+            <button type="button" class="ref-banner-close" id="cfRefClose" aria-label="Remove reference">&times;</button>
+          </div>
+          <div class="field-row">
+            <div class="field">
+              <label for="cfName">Name</label>
+              <input type="text" id="cfName" name="name" placeholder="Your name" required autocomplete="name" />
+            </div>
+            <div class="field">
+              <label for="cfEmail">Your email</label>
+              <input type="email" id="cfEmail" name="email" placeholder="you@studio.com" required autocomplete="email" />
+            </div>
+          </div>
+          <div class="field">
+            <label for="cfStudio">Studio / company <span class="optional">optional</span></label>
+            <input type="text" id="cfStudio" name="studio" placeholder="Studio name" autocomplete="organization" />
+          </div>
+          <div class="field-row">
+            <div class="field">
+              <label for="cfType">Asset type</label>
+              <select id="cfType" name="type">
+                <option value="">Select...</option>
+                <option>Characters</option>
+                <option>Creatures</option>
+                <option>Props &amp; weapons</option>
+                <option>Hair &amp; grooming</option>
+                <option>Rigging &amp; skinning</option>
+                <option>Full character pipeline</option>
+                <option>Other / not sure yet</option>
+              </select>
+            </div>
+            <div class="field">
+              <label for="cfStyle">Art style</label>
+              <select id="cfStyle" name="style">
+                <option value="">Select...</option>
+                <option>Realistic</option>
+                <option>Stylized</option>
+                <option>Hand-painted</option>
+                <option>Mixed</option>
+              </select>
+            </div>
+          </div>
+          <div class="field-row">
+            <div class="field">
+              <label for="cfCount">Approx. asset count <span class="optional">optional</span></label>
+              <input type="text" id="cfCount" name="count" placeholder="e.g. 6 characters, 20 props" />
+            </div>
+            <div class="field">
+              <label for="cfDeadline">Target deadline <span class="optional">optional</span></label>
+              <input type="text" id="cfDeadline" name="deadline" placeholder="e.g. March 2027" />
+            </div>
+          </div>
+          <div class="field">
+            <label for="cfMessage">Project brief</label>
+            <textarea id="cfMessage" name="message" rows="6" placeholder="Tell us about the game, the engine, references, and anything else that helps us quote accurately..." required></textarea>
+          </div>
+          <button type="submit" class="btn btn--primary btn--block">Send brief</button>
+          <p class="form-note" id="formNote" role="status" aria-live="polite"></p>
+        </form>
       </div>
     </section>
+
   </main>
 
   <!--FOOTER-->
