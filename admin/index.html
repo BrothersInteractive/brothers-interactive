@@ -7,8 +7,10 @@
   <meta name="robots" content="noindex" />
 </head>
 <body>
-  <!-- Login: "Login with GitHub" (see config.yml backend). On localhost with `npx decap-server`
-       running, it opens straight away with no login and edits the local files. -->
-  <script src="https://unpkg.com/decap-cms@^3.0.0/dist/decap-cms.js"></script>
+  <!-- Sveltia CMS: reads the same config.yml Decap CMS used. Login = "Sign In with Token"
+       (a GitHub personal access token for BrothersInteractive/brothers-interactive), so no OAuth
+       helper is needed on GitHub Pages. On localhost in Chrome/Edge, "Work with Local Repository"
+       edits the files in this folder directly. -->
+  <script src="https://unpkg.com/@sveltia/cms/dist/sveltia-cms.js"></script>
 </body>
 </html>

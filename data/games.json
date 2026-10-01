@@ -3,84 +3,84 @@
     {
       "t": "Echoes of Aincrad",
       "yt": "https://youtu.be/5AN5ZGSUkcE",
-      "i": "../assets/img/games/echoes-of-aincrad.jpg"
+      "i": "/assets/img/games/echoes-of-aincrad.jpg"
     },
     {
       "t": "Shift At Midnight",
       "s": "",
       "yt": "JAqvK1peFrA",
-      "i": "../assets/img/games/shift-at-midnight.jpg"
+      "i": "/assets/img/games/shift-at-midnight.jpg"
     },
     {
       "t": "FIFA Heroes",
       "yt": "https://youtu.be/dbuYmAyYLlM",
-      "i": "../assets/img/games/fifa-heroes.jpg"
+      "i": "/assets/img/games/fifa-heroes.jpg"
     },
     {
       "t": "Tormentor",
       "s": "",
       "yt": "FRMIpc-JiOM",
-      "i": "../assets/img/games/tormentor.webp"
+      "i": "/assets/img/games/tormentor.webp"
     },
     {
       "t": "The Midnight Walk",
       "s": "",
       "yt": "QnBE7mU6ZsI",
-      "i": "../assets/img/games/the-midnight-walk.webp"
+      "i": "/assets/img/games/the-midnight-walk.webp"
     },
     {
       "t": "Warhammer 40,000: Space Marine 2",
       "s": "",
       "yt": "A_HljUo8Jjk",
-      "i": "../assets/img/games/warhammer-40-000-space-marine-2.webp"
+      "i": "/assets/img/games/warhammer-40-000-space-marine-2.webp"
     },
     {
       "t": "Ready or Not",
       "s": "",
       "yt": "lLNoftAmKr0",
-      "i": "../assets/img/games/ready-or-not.webp"
+      "i": "/assets/img/games/ready-or-not.webp"
     },
     {
       "t": "Supermoves",
       "s": "",
       "yt": "TetKQGIBjvo",
-      "i": "../assets/img/games/supermoves.webp"
+      "i": "/assets/img/games/supermoves.webp"
     },
     {
       "t": "Warhammer 40,000: Speed Freeks",
       "s": "",
       "yt": "tqSelvOZnHU",
-      "i": "../assets/img/games/warhammer-40-000-speed-freeks.webp"
+      "i": "/assets/img/games/warhammer-40-000-speed-freeks.webp"
     },
     {
       "t": "Dark Envoy",
       "s": "",
       "yt": "I07Gm2dpiLs",
-      "i": "../assets/img/games/dark-envoy.webp"
+      "i": "/assets/img/games/dark-envoy.webp"
     },
     {
       "t": "Lost in Random",
       "s": "",
       "yt": "diilMn5gSAg",
-      "i": "../assets/img/games/lost-in-random.webp"
+      "i": "/assets/img/games/lost-in-random.webp"
     },
     {
       "t": "The Gunk",
       "s": "",
       "yt": "Cs96h12uHiE",
-      "i": "../assets/img/games/the-gunk.webp"
+      "i": "/assets/img/games/the-gunk.webp"
     },
     {
       "t": "Wavetale",
       "s": "",
       "yt": "Zeths3LNBgQ",
-      "i": "../assets/img/games/wavetale.webp"
+      "i": "/assets/img/games/wavetale.webp"
     },
     {
       "t": "Scavengers",
       "s": "",
       "yt": "hvq9Ov6gXc4",
-      "i": "../assets/img/games/scavengers.webp"
+      "i": "/assets/img/games/scavengers.webp"
     }
   ]
 }

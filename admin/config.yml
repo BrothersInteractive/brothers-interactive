@@ -3,26 +3,20 @@ backend:
   # The company GitHub account (created 1 Oct 2026) and its website repo.
   repo: BrothersInteractive/brothers-interactive
   branch: main
-  # Login = "Login with GitHub". Anyone with write access to the repo above can edit.
-  # The site is hosted on GitHub Pages, which cannot broker that login itself: base_url must
-  # point at a small OAuth helper (set up after go-live; see HANDOFF.md, "Going live").
-  # Until then /admin works on localhost only (local_backend below).
-  base_url: https://api.netlify.com
+  # The admin runs on Sveltia CMS (admin/index.html), which reads this Decap-format file.
+  # Login = "Sign In with Token": a GitHub personal access token with Contents read/write on
+  # the repo above. No OAuth helper is needed, which matters because GitHub Pages can't host one.
 
 # Saving in /admin commits straight to the "main" branch on GitHub; GitHub Pages sees the
 # commit and republishes the site automatically, usually within a minute or two.
 
-# When this page is opened on localhost AND a local proxy server (`npx decap-server`)
-# is running, the CMS uses that instead of the backend above — no login needed,
-# and it writes straight to the real files in this project. Safe to leave in for
-# production too: it only ever activates on localhost.
-# On Windows, start it with BIND_HOST=:: (see .claude/launch.json / README) so it
-# accepts the IPv6 loopback too — Chrome tries "localhost" as ::1 first, and a
-# plain IPv4-only bind makes that first probe fail outright on every page load.
+# On localhost, Sveltia offers "Work with Local Repository" (Chrome/Edge): pick this project
+# folder and it edits the real files directly, with no login. local_backend is only read by Decap's
+# `npx decap-server` and is harmless otherwise.
 local_backend: true
 
 media_folder: "assets/img/portfolio"
-public_folder: "../assets/img/portfolio"
+public_folder: "/assets/img/portfolio"
 
 collections:
   - name: "hero"
@@ -66,9 +60,9 @@ collections:
             summary: "{{fields.alt}}"
             fields:
               - { label: "Image (transparent PNG)", name: "img", widget: "image", required: false, hint: "Shown on its own if the entry has no 3D model or video; otherwise it's the picture shown while those load. Background must be removed/transparent." }
-              - { label: "3D model (.glb)", name: "model", widget: "file", required: false, media_folder: "/assets/models", public_folder: "../assets/models", pattern: ['\.(glb|GLB)$', "This field only takes a .glb 3D model file."], hint: "Optional. Upload a .glb to show this entry as a drag-to-rotate 3D model instead of the image. Keep it under ~15 MB, textures 2K max. Leave empty for image only." }
+              - { label: "3D model (.glb)", name: "model", widget: "file", required: false, media_folder: "/assets/models", public_folder: "/assets/models", pattern: ['\.(glb|GLB)$', "This field only takes a .glb 3D model file."], hint: "Optional. Upload a .glb to show this entry as a drag-to-rotate 3D model instead of the image. Keep it under ~15 MB, textures 2K max. Leave empty for image only." }
               - { label: "3D model size (%)", name: "modelSize", widget: "number", value_type: "int", min: 50, max: 150, step: 5, required: false, hint: "How big this 3D model appears. 100 = normal (whole model always fits). Higher = bigger, lower = smaller. Above ~120 the top or sides of tall or wide characters may get cut off. Leave empty for 100." }
-              - { label: "Video or GIF", name: "video", widget: "file", required: false, media_folder: "/assets/videos", public_folder: "../assets/videos", pattern: ['\.(mp4|webm|gif|MP4|WEBM|GIF)$', "This field only takes an MP4, WebM or GIF. For a 3D model (.glb) use the 3D model field above."], hint: "Optional. Plays silently on a loop in place of the image (a 3D model on the same entry takes priority). For a floating character use a WebM with a transparent background (Safari shows the image instead) or a GIF — a normal MP4 always shows as a rectangle. Keep it short and under ~8 MB." }
+              - { label: "Video or GIF", name: "video", widget: "file", required: false, media_folder: "/assets/videos", public_folder: "/assets/videos", pattern: ['\.(mp4|webm|gif|MP4|WEBM|GIF)$', "This field only takes an MP4, WebM or GIF. For a 3D model (.glb) use the 3D model field above."], hint: "Optional. Plays silently on a loop in place of the image (a 3D model on the same entry takes priority). For a floating character use a WebM with a transparent background (Safari shows the image instead) or a GIF — a normal MP4 always shows as a rectangle. Keep it short and under ~8 MB." }
               - { label: "Description", name: "alt", widget: "string", hint: "Describes the character for screen readers/SEO, e.g. \"Stylized orc warrior, game-ready\"." }
 
   - name: "category-tiles"
@@ -80,16 +74,16 @@ collections:
         file: "data/category-tiles.json"
         format: "json"
         fields:
-          - { label: "Modular CHR Skins", name: "modular_chr_skins", widget: "image", required: false, media_folder: "/assets/img/categories", public_folder: "../assets/img/categories" }
-          - { label: "Realistic CHR", name: "realistic_character", widget: "image", required: false, media_folder: "/assets/img/categories", public_folder: "../assets/img/categories" }
-          - { label: "Realistic Creature", name: "realistic_creature", widget: "image", required: false, media_folder: "/assets/img/categories", public_folder: "../assets/img/categories" }
-          - { label: "Realistic Hair Card", name: "realistic_hair", widget: "image", required: false, media_folder: "/assets/img/categories", public_folder: "../assets/img/categories" }
-          - { label: "Stylized CHR", name: "stylized_character", widget: "image", required: false, media_folder: "/assets/img/categories", public_folder: "../assets/img/categories" }
-          - { label: "Stylized Creature", name: "stylized_creature", widget: "image", required: false, media_folder: "/assets/img/categories", public_folder: "../assets/img/categories" }
-          - { label: "Realistic Props", name: "props", widget: "image", required: false, media_folder: "/assets/img/categories", public_folder: "../assets/img/categories" }
-          - { label: "Realistic Weapons", name: "weapons", widget: "image", required: false, media_folder: "/assets/img/categories", public_folder: "../assets/img/categories", hint: "Only shows once at least one piece is in this category — until then the tile says Coming soon." }
-          - { label: "Game - Midnight Walk", name: "midnight_walk", widget: "image", required: false, media_folder: "/assets/img/categories", public_folder: "../assets/img/categories" }
-          - { label: "Game - Lost in Random", name: "lost_in_random", widget: "image", required: false, media_folder: "/assets/img/categories", public_folder: "../assets/img/categories" }
+          - { label: "Modular CHR Skins", name: "modular_chr_skins", widget: "image", required: false, media_folder: "/assets/img/categories", public_folder: "/assets/img/categories" }
+          - { label: "Realistic CHR", name: "realistic_character", widget: "image", required: false, media_folder: "/assets/img/categories", public_folder: "/assets/img/categories" }
+          - { label: "Realistic Creature", name: "realistic_creature", widget: "image", required: false, media_folder: "/assets/img/categories", public_folder: "/assets/img/categories" }
+          - { label: "Realistic Hair Card", name: "realistic_hair", widget: "image", required: false, media_folder: "/assets/img/categories", public_folder: "/assets/img/categories" }
+          - { label: "Stylized CHR", name: "stylized_character", widget: "image", required: false, media_folder: "/assets/img/categories", public_folder: "/assets/img/categories" }
+          - { label: "Stylized Creature", name: "stylized_creature", widget: "image", required: false, media_folder: "/assets/img/categories", public_folder: "/assets/img/categories" }
+          - { label: "Realistic Props", name: "props", widget: "image", required: false, media_folder: "/assets/img/categories", public_folder: "/assets/img/categories" }
+          - { label: "Realistic Weapons", name: "weapons", widget: "image", required: false, media_folder: "/assets/img/categories", public_folder: "/assets/img/categories", hint: "Only shows once at least one piece is in this category — until then the tile says Coming soon." }
+          - { label: "Game - Midnight Walk", name: "midnight_walk", widget: "image", required: false, media_folder: "/assets/img/categories", public_folder: "/assets/img/categories" }
+          - { label: "Game - Lost in Random", name: "lost_in_random", widget: "image", required: false, media_folder: "/assets/img/categories", public_folder: "/assets/img/categories" }
 
   - name: "portfolio"
     label: "Portfolio"
@@ -216,7 +210,7 @@ collections:
               - { label: "Title", name: "t", widget: "string" }
               - { label: "Studio", name: "s", widget: "string", required: false }
               - { label: "YouTube video ID", name: "yt", widget: "string", hint: "Pasting the full video URL also works now — but ideally just the ID, e.g. from https://www.youtube.com/watch?v=JAqvK1peFrA that's JAqvK1peFrA" }
-              - { label: "Key Art Image", name: "i", widget: "image", media_folder: "/assets/img/games", public_folder: "../assets/img/games" }
+              - { label: "Key Art Image", name: "i", widget: "image", media_folder: "/assets/img/games", public_folder: "/assets/img/games" }
 
   - name: "reviews"
     label: "Reviews"
@@ -238,7 +232,7 @@ collections:
               - { label: "Name", name: "n", widget: "string", hint: "Use \"Client name\" if they'd rather stay anonymous." }
               - { label: "Role / Studio", name: "r", widget: "string" }
               - { label: "Project", name: "project", widget: "string", required: false, hint: "What kind of work this review refers to, e.g. \"Realistic characters\"." }
-              - { label: "Photo", name: "img", widget: "image", required: false, media_folder: "/assets/img/team", public_folder: "../assets/img/team" }
+              - { label: "Photo", name: "img", widget: "image", required: false, media_folder: "/assets/img/team", public_folder: "/assets/img/team" }
               - { label: "Sample / placeholder", name: "sample", widget: "boolean", default: false, hint: "On = shows a \"Sample\" badge. Turn off once this is a real, approved quote." }
 
   - name: "team"
@@ -260,7 +254,7 @@ collections:
               - { label: "Name", name: "name", widget: "string" }
               - { label: "Role", name: "role", widget: "string" }
               - { label: "Initials", name: "initials", widget: "string", hint: "Shown if there's no photo, e.g. \"TN\"." }
-              - { label: "Photo", name: "photo", widget: "image", required: false, media_folder: "/assets/img/team", public_folder: "../assets/img/team", hint: "Optional — leave empty to show the initials instead." }
+              - { label: "Photo", name: "photo", widget: "image", required: false, media_folder: "/assets/img/team", public_folder: "/assets/img/team", hint: "Optional — leave empty to show the initials instead." }
               - { label: "Bio", name: "bio", widget: "text" }
               - { label: "Tags", name: "tags", widget: "list", required: false, hint: "Short skill/focus tags, one per line." }
               - label: "Links"
@@ -294,7 +288,7 @@ collections:
               - { label: "Before Image (sculpt)", name: "before", widget: "image", required: false, hint: "For the drag slider. Needs the After image too, and both should be the same size and framing." }
               - { label: "After Image (final)", name: "after", widget: "image", required: false }
               - { label: "YouTube video", name: "youtube", widget: "string", required: false, hint: "Optional. Paste a YouTube link — the card then shows the video's thumbnail and plays it in the pop-up player instead of the slider." }
-              - { label: "GIF or video file", name: "video", widget: "file", required: false, media_folder: "/assets/videos", public_folder: "../assets/videos", pattern: ['\.(mp4|webm|gif|MP4|WEBM|GIF)$', "Only an MP4, WebM or GIF file."], hint: "Optional. A GIF or short MP4/WebM that loops silently in the card instead of the slider. Keep it under ~8 MB." }
+              - { label: "GIF or video file", name: "video", widget: "file", required: false, media_folder: "/assets/videos", public_folder: "/assets/videos", pattern: ['\.(mp4|webm|gif|MP4|WEBM|GIF)$', "Only an MP4, WebM or GIF file."], hint: "Optional. A GIF or short MP4/WebM that loops silently in the card instead of the slider. Keep it under ~8 MB." }
 
   - name: "breakdowns"
     label: "Breakdowns"
@@ -318,11 +312,11 @@ collections:
               - { label: "Short description", name: "sub", widget: "string", required: false, hint: "One line under the title, e.g. \"Stylized creature sculpt, from blockout to game-ready.\"" }
               - { label: "Longer description", name: "desc", widget: "text", required: false, hint: "Optional. Leave a blank line between paragraphs." }
               - { label: "Sketchfab model", name: "sketchfab", widget: "string", required: false, hint: "Optional 3D viewer. Paste the Sketchfab model link (or just its ID). The model must be public or unlisted with embedding allowed." }
-              - { label: "Marmoset Viewer file (.mview)", name: "marmoset", widget: "file", required: false, media_folder: "/assets/mview", public_folder: "../assets/mview", pattern: ['\.(mview|MVIEW)$', "Only a Marmoset .mview file."], hint: "Optional 3D viewer. Export from Marmoset Toolbag (File > Export > Marmoset Viewer) and upload the .mview. Keep it small — it downloads when the page opens." }
+              - { label: "Marmoset Viewer file (.mview)", name: "marmoset", widget: "file", required: false, media_folder: "/assets/mview", public_folder: "/assets/mview", pattern: ['\.(mview|MVIEW)$', "Only a Marmoset .mview file."], hint: "Optional 3D viewer. Export from Marmoset Toolbag (File > Export > Marmoset Viewer) and upload the .mview. Keep it small — it downloads when the page opens." }
               - { label: "Sculpt image (before)", name: "before", widget: "image", required: false, hint: "With the Final image, adds the sculpt-to-final drag slider. Same size and framing for both." }
               - { label: "Final image (after)", name: "after", widget: "image", required: false }
               - { label: "YouTube video", name: "youtube", widget: "string", required: false, hint: "Optional. Paste a YouTube link — shown as a video player on the page." }
-              - { label: "GIF or video file", name: "video", widget: "file", required: false, media_folder: "/assets/videos", public_folder: "../assets/videos", pattern: ['\.(mp4|webm|gif|MP4|WEBM|GIF)$', "Only an MP4, WebM or GIF file."], hint: "Optional. A GIF or short MP4/WebM turntable that loops silently. Keep it under ~8 MB." }
+              - { label: "GIF or video file", name: "video", widget: "file", required: false, media_folder: "/assets/videos", public_folder: "/assets/videos", pattern: ['\.(mp4|webm|gif|MP4|WEBM|GIF)$', "Only an MP4, WebM or GIF file."], hint: "Optional. A GIF or short MP4/WebM turntable that loops silently. Keep it under ~8 MB." }
               - { label: "Gallery images", name: "gallery", widget: "list", required: false, field: { label: "Image", name: "image", widget: "image" }, hint: "Optional. Extra renders and angles, shown 3 per row." }
               - { label: "Asset page ID", name: "assetId", widget: "string", required: false, hint: "Optional. The Portfolio piece ID (e.g. vbNvDE) to add a \"View full asset page\" button." }
               - label: "Pipeline steps"
@@ -353,7 +347,7 @@ collections:
             summary: "{{fields.n}}"
             fields:
               - { label: "Name", name: "n", widget: "string" }
-              - { label: "Logo", name: "logo", widget: "image", required: false, media_folder: "/assets/img/logos", public_folder: "../assets/img/logos", hint: "Optional — only add this once you have permission to use the logo. Leave empty to show the name as text." }
+              - { label: "Logo", name: "logo", widget: "image", required: false, media_folder: "/assets/img/logos", public_folder: "/assets/img/logos", hint: "Optional — only add this once you have permission to use the logo. Leave empty to show the name as text." }
 
   - name: "blog"
     label: "Blog Posts"
@@ -410,7 +404,7 @@ collections:
             label_singular: "Image"
             summary: "{{fields.alt}}"
             fields:
-              - { label: "Image (transparent PNG/WebP)", name: "img", widget: "image", media_folder: "/assets/img/careers", public_folder: "../assets/img/careers", hint: "Background removed/transparent. Around 1000px wide is plenty." }
+              - { label: "Image (transparent PNG/WebP)", name: "img", widget: "image", media_folder: "/assets/img/careers", public_folder: "/assets/img/careers", hint: "Background removed/transparent. Around 1000px wide is plenty." }
               - { label: "Description", name: "alt", widget: "string", hint: "Describes the image for screen readers/SEO, e.g. \"Tiger realistic creature\"." }
 
   - name: "settings"
@@ -427,7 +421,7 @@ collections:
           - { label: "Booking URL", name: "bookingUrl", widget: "string", required: false, hint: "e.g. a Calendly link. Leave empty to hide the booking button." }
           - { label: "Plausible analytics domain", name: "plausibleDomain", widget: "string", required: false, hint: "Leave empty to keep analytics off." }
           - { label: "Showreel YouTube ID", name: "showreelYouTubeId", widget: "string", required: false, hint: "Leave empty to show an image reel instead." }
-          - { label: "Capabilities deck (PDF)", name: "deckPdf", widget: "file", required: false, media_folder: "/assets", public_folder: "../assets" }
+          - { label: "Capabilities deck (PDF)", name: "deckPdf", widget: "file", required: false, media_folder: "/assets", public_folder: "/assets" }
           - { label: "Contact email", name: "email", widget: "string", hint: "Where the contact and job-application forms actually deliver to (via formsubmit.co, no signup needed) and the mailto fallback." }
           - { label: "Address", name: "address", widget: "string" }
           - { label: "Careers application form (Google Form link)", name: "careersFormUrl", widget: "string", required: false, hint: "Paste the Google Form share link (starts with https://forms.gle/ or https://docs.google.com/forms/). The Apply now button in the homepage Careers section opens it in a new tab. Leave empty to show Applications opening soon." }

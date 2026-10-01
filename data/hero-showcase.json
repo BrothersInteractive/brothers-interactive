@@ -1,17 +1,17 @@
 {
   "items": [
     {
-      "model": "../assets/models/mint_-_neverness_to_everness.glb",
+      "model": "/assets/models/mint_-_neverness_to_everness.glb",
       "alt": "3D character model",
       "modelSize": 100
     },
     {
       "alt": "3D creature model",
-      "model": "../assets/models/bee.glb",
+      "model": "/assets/models/bee.glb",
       "modelSize": 100
     },
     {
-      "model": "../assets/models/indo_costume_with_wings.glb",
+      "model": "/assets/models/indo_costume_with_wings.glb",
       "alt": "Impressiev",
       "modelSize": 130
     }
