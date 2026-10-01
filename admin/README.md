@@ -28,10 +28,14 @@ mistake can be rolled back from the GitHub history.
 
 ## Adding a new portfolio piece
 
-Portfolio → Portfolio Pieces → **Add Piece** at the bottom of the list. Fill in Title, Category,
-optional "Also show in", a unique **ID** (no spaces, e.g. `orc-warrior-01`), Main Image, optional
-Additional Images, Description and Tags. Leave width and height at 0. Drag the piece to the top of
-the list to show it first, then **Save**.
+Portfolio → Portfolio Pieces → **Add Piece** at the bottom of the list. Fill in Title, optional
+Link name, Category, optional "Also show in", a unique **ID** (no spaces, e.g. `orc-warrior-01`),
+Main Image, optional Additional Images, Description and Tags. Leave width and height at 0. Drag the
+piece to the top of the list to show it first, then **Save**.
+
+About two minutes later the piece has its own shareable address, e.g.
+`https://brothersinteractive.in/portfolio/realistic-character/lehri/` (category + Link name, or the
+title when Link name is empty). Opening the piece on the site shows that address in the address bar.
 
 ## Good to know
 
