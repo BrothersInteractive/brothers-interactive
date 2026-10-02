@@ -11,16 +11,80 @@
   "primaryBtnLabel": "Business Inquiry",
   "secondaryBtnLabel": "Meet the team",
   "foundedYear": 2019,
+  "toolsTitle": "Tools we work in",
+  "toolGroups": [
+    {
+      "name": "Modeling",
+      "tools": [
+        "Blender",
+        "Maya",
+        "3ds Max",
+        "Zbrush"
+      ]
+    },
+    {
+      "name": "Sculpting",
+      "tools": [
+        "ZBrush",
+        "Blender"
+      ]
+    },
+    {
+      "name": "Cloth",
+      "tools": [
+        "Marvelous Designer",
+        "Zbrush",
+        "Modeling tools (for Anime Projects)"
+      ]
+    },
+    {
+      "name": "Texturing",
+      "tools": [
+        "Substance 3D Painter",
+        "Substance 3D Designer",
+        "Photoshop"
+      ]
+    },
+    {
+      "name": "Hairs",
+      "tools": [
+        "XGen",
+        "Blender",
+        "GS CurveTools",
+        "Zbrush",
+        "fibershop"
+      ]
+    },
+    {
+      "name": "Game Engine",
+      "tools": [
+        "Unreal Engine",
+        "Unity"
+      ]
+    },
+    {
+      "name": "Communication",
+      "tools": [
+        "Mail",
+        "Slack",
+        "Discord",
+        "Teams",
+        "Zoom / Google Meet"
+      ]
+    },
+    {
+      "name": "Pipeline & delivery",
+      "tools": [
+        "Jira",
+        "Perforce",
+        "Google Drive",
+        "Custom"
+      ]
+    }
+  ],
+  "toolsNote": "These are our main tools, and we're always open to learning and adopting new software.",
   "statFoundedLabel": "Founded",
   "statGamesLabel": "Titles shipped",
   "statProjectsLabel": "Published pieces",
-  "statYearsLabel": "Years in production",
-  "toolsTitle": "Tools we work in",
-  "toolGroups": [
-    { "name": "Modeling", "tools": ["Blender", "Maya", "3ds Max"] },
-    { "name": "Sculpting", "tools": ["ZBrush", "Blender"] },
-    { "name": "Texturing", "tools": ["Substance 3D Painter", "Photoshop"] },
-    { "name": "Game Engine", "tools": ["Unreal Engine", "Unity"] }
-  ],
-  "toolsNote": "These are our main tools, and we're always open to learning and adopting new software."
+  "statYearsLabel": "Years in production"
 }
