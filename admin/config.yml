@@ -75,6 +75,163 @@ collections:
               - { label: "Tools", name: "tools", widget: "list", hint: "One tool per item, e.g. ZBrush." }
           - { label: "Note under the tools", name: "toolsNote", widget: "text", required: false }
 
+  - name: "home"
+    label: "Homepage Text"
+    files:
+      - name: "home"
+        label: "Homepage Text"
+        file: "data/home.json"
+        format: "json"
+        description: "All the remaining homepage text: every section's heading and subtitle, the Testimonials number boxes, the Services cards, Why Choose Us, the FAQ and the 'Let's create your game together' band. In headings, put *stars* around the gold words. The About section has its own entry (About)."
+        fields:
+          - label: "Section headings"
+            name: "sections"
+            widget: "object"
+            fields:
+              - label: "Games"
+                name: "games"
+                widget: "object"
+                collapsed: true
+                fields:
+                  - { label: "Small line above the heading", name: "eyebrow", widget: "string", required: false }
+                  - { label: "Heading", name: "title", widget: "string", hint: "Put *stars* around the words that should be gold, e.g. Production *breakdowns*" }
+                  - { label: "Subtitle", name: "sub", widget: "text", required: false, hint: "A link can be written as [words](/contact)." }
+              - label: "Testimonials"
+                name: "testimonials"
+                widget: "object"
+                collapsed: true
+                fields:
+                  - { label: "Small line above the heading", name: "eyebrow", widget: "string", required: false }
+                  - { label: "Heading", name: "title", widget: "string", hint: "Put *stars* around the words that should be gold, e.g. Production *breakdowns*" }
+                  - { label: "Subtitle", name: "sub", widget: "text", required: false, hint: "A link can be written as [words](/contact)." }
+              - label: "Portfolio"
+                name: "portfolio"
+                widget: "object"
+                collapsed: true
+                fields:
+                  - { label: "Small line above the heading", name: "eyebrow", widget: "string", required: false }
+                  - { label: "Heading", name: "title", widget: "string", hint: "Put *stars* around the words that should be gold, e.g. Production *breakdowns*" }
+                  - { label: "Subtitle", name: "sub", widget: "text", required: false, hint: "A link can be written as [words](/contact)." }
+              - label: "Breakdowns"
+                name: "breakdown"
+                widget: "object"
+                collapsed: true
+                fields:
+                  - { label: "Small line above the heading", name: "eyebrow", widget: "string", required: false }
+                  - { label: "Heading", name: "title", widget: "string", hint: "Put *stars* around the words that should be gold, e.g. Production *breakdowns*" }
+                  - { label: "Subtitle", name: "sub", widget: "text", required: false, hint: "A link can be written as [words](/contact)." }
+              - label: "Sculpt to Final"
+                name: "compare"
+                widget: "object"
+                collapsed: true
+                fields:
+                  - { label: "Small line above the heading", name: "eyebrow", widget: "string", required: false }
+                  - { label: "Heading", name: "title", widget: "string", hint: "Put *stars* around the words that should be gold, e.g. Production *breakdowns*" }
+                  - { label: "Subtitle", name: "sub", widget: "text", required: false, hint: "A link can be written as [words](/contact)." }
+              - label: "Services"
+                name: "services"
+                widget: "object"
+                collapsed: true
+                fields:
+                  - { label: "Small line above the heading", name: "eyebrow", widget: "string", required: false }
+                  - { label: "Heading", name: "title", widget: "string", hint: "Put *stars* around the words that should be gold, e.g. Production *breakdowns*" }
+                  - { label: "Subtitle", name: "sub", widget: "text", required: false, hint: "A link can be written as [words](/contact)." }
+              - label: "FAQ"
+                name: "faq"
+                widget: "object"
+                collapsed: true
+                fields:
+                  - { label: "Small line above the heading", name: "eyebrow", widget: "string", required: false }
+                  - { label: "Heading", name: "title", widget: "string", hint: "Put *stars* around the words that should be gold, e.g. Production *breakdowns*" }
+                  - { label: "Text under the heading", name: "sub", widget: "text", required: false, hint: "A link can be written as [words](/contact)." }
+              - label: "Team"
+                name: "team"
+                widget: "object"
+                collapsed: true
+                fields:
+                  - { label: "Small line above the heading", name: "eyebrow", widget: "string", required: false }
+                  - { label: "Heading", name: "title", widget: "string", hint: "Put *stars* around the words that should be gold, e.g. Production *breakdowns*" }
+                  - { label: "Subtitle", name: "sub", widget: "text", required: false, hint: "A link can be written as [words](/contact)." }
+              - label: "Careers"
+                name: "careers"
+                widget: "object"
+                collapsed: true
+                fields:
+                  - { label: "Small line above the heading", name: "eyebrow", widget: "string", required: false }
+                  - { label: "Heading", name: "title", widget: "string", hint: "Put *stars* around the words that should be gold, e.g. Production *breakdowns*" }
+                  - { label: "Paragraph", name: "sub", widget: "text", required: false, hint: "A link can be written as [words](/contact)." }
+              - label: "Blog"
+                name: "blog"
+                widget: "object"
+                collapsed: true
+                fields:
+                  - { label: "Small line above the heading", name: "eyebrow", widget: "string", required: false }
+                  - { label: "Heading", name: "title", widget: "string", hint: "Put *stars* around the words that should be gold, e.g. Production *breakdowns*" }
+                  - { label: "Subtitle", name: "sub", widget: "text", required: false, hint: "A link can be written as [words](/contact)." }
+          - label: "Testimonials — number boxes"
+            name: "trustStats"
+            widget: "list"
+            label_singular: "Number box"
+            summary: "{{fields.label}}"
+            fields:
+              - label: "Number comes from"
+                name: "source"
+                widget: "select"
+                default: "fixed"
+                options:
+                  - { label: "The number typed below", value: "fixed" }
+                  - { label: "Count of Games (automatic)", value: "games" }
+                  - { label: "Years since founded (automatic)", value: "years" }
+                  - { label: "Count of Portfolio pieces (automatic)", value: "portfolio" }
+              - { label: "Number", name: "number", widget: "number", value_type: "int", required: false, default: 0, hint: "Only used when 'Number comes from' is 'The number typed below'." }
+              - { label: "After the number", name: "suffix", widget: "string", required: false, hint: "e.g. + or %" }
+              - { label: "Label", name: "label", widget: "string" }
+          - label: "Services cards"
+            name: "services"
+            widget: "list"
+            label_singular: "Service"
+            summary: "{{fields.title}}"
+            fields:
+              - { label: "Title", name: "title", widget: "string" }
+              - label: "Icon"
+                name: "icon"
+                widget: "select"
+                options:
+                  - { label: "Character (person)", value: "character" }
+                  - { label: "Hair", value: "hair" }
+                  - { label: "Props (box)", value: "props" }
+                  - { label: "Engine (screen)", value: "engine" }
+                  - { label: "Texture (palette)", value: "texture" }
+                  - { label: "Rigging (joints)", value: "rigging" }
+              - { label: "Show the blinking 'Specialization' badge", name: "specialization", widget: "boolean", default: false }
+              - { label: "Text", name: "text", widget: "text" }
+              - { label: "Bullet points", name: "points", widget: "list", required: false, hint: "One point per item." }
+          - { label: "Why Choose Us — heading", name: "whyTitle", widget: "string" }
+          - label: "Why Choose Us — items"
+            name: "why"
+            widget: "list"
+            label_singular: "Item"
+            summary: "{{fields.title}}"
+            fields:
+              - { label: "Icon (a symbol or emoji)", name: "icon", widget: "string", hint: "e.g. ⚡ ⚙ ✎ ⏱" }
+              - { label: "Title", name: "title", widget: "string" }
+              - { label: "Text", name: "text", widget: "string" }
+          - label: "FAQ"
+            name: "faq"
+            widget: "list"
+            label_singular: "Question"
+            summary: "{{fields.q}}"
+            fields:
+              - { label: "Question", name: "q", widget: "string" }
+              - { label: "Answer", name: "a", widget: "text", hint: "A link can be written as [words](/contact)." }
+          - label: "Call-to-action band (under the FAQ)"
+            name: "cta"
+            widget: "object"
+            fields:
+              - { label: "Heading", name: "title", widget: "string" }
+              - { label: "Text", name: "text", widget: "string" }
+              - { label: "Button label", name: "button", widget: "string", hint: "The button opens the Contact page." }
+
   - name: "hero-showcase"
     label: "Hero Showcase Images"
     label_singular: "Showcase Image"
@@ -212,6 +369,12 @@ collections:
                 widget: "string"
                 required: false
                 hint: "Optional — a URL for the \"View on...\" link, if this piece has its own page elsewhere."
+
+              - label: "3D viewer (Sketchfab link)"
+                name: "sketchfab"
+                widget: "string"
+                required: false
+                hint: "Optional. Paste the Sketchfab link of this model (or just its ID). Visitors can then spin the real model on the piece's details page. The model must be public or unlisted, with embedding allowed."
 
               - label: "Image width (px)"
                 name: "w"

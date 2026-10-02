@@ -268,6 +268,74 @@ function siteMain() {
     setText(".tools-note", ABOUT.toolsNote);
   }
 
+  /* Homepage text (/admin > Homepage Text -> data/home.json): every section's small line, heading and
+     subtitle, the Testimonials stat boxes, the Services cards, Why Choose Us, the FAQ and the call-to-action
+     band. In headings, *words in stars* become the gold accent; in longer text, [label](/link) becomes a
+     link. The words already in index.html stay as the fallback if the file is missing. */
+  var HOME = loadJSON("home");
+  var SERVICE_ICONS = {
+    character: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 3.6-7 8-7s8 3 8 7"/></svg>',
+    hair: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 20c2-6 4-9 8-9s6 3 8 9"/><path d="M8 11c0-4 1-7 4-7s4 3 4 7"/><path d="M6 14c-1-2-1-4 0-6M18 14c1-2 1-4 0-6"/></svg>',
+    props: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 7l9-4 9 4-9 4-9-4z"/><path d="M3 7v10l9 4 9-4V7"/><path d="M12 11v10"/></svg>',
+    engine: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="4" width="18" height="14" rx="2"/><path d="M8 21h8M12 18v3"/><path d="M7 12l3-3 3 3 4-4"/></svg>',
+    texture: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 3a9 9 0 100 18c1.5 0 2-1 2-2 0-1-1-1.5-1-2.5s1-1.5 2.5-1.5H17a4 4 0 004-4c0-4.5-4-8-9-8z"/><circle cx="7.5" cy="10.5" r="1"/><circle cx="10.5" cy="7" r="1"/><circle cx="15" cy="7.5" r="1"/></svg>',
+    rigging: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="4" r="2"/><circle cx="5" cy="12" r="2"/><circle cx="19" cy="12" r="2"/><circle cx="8" cy="20" r="2"/><circle cx="16" cy="20" r="2"/><path d="M12 6l-5.5 4M12 6l5.5 4M6 14l1.5 4M18 14l-1.5 4M7 12h10"/></svg>'
+  };
+  function accentTitle(t) { return esc(t || "").replace(/\*([^*]+)\*/g, '<span class="accent">$1</span>'); }
+  function richText(t) {
+    return esc(t || "").replace(/\[([^\]]+)\]\(([^)\s]+)\)/g, function (m, label, url) {
+      return /^(\/|https?:|mailto:)/.test(url) ? '<a href="' + url + '">' + label + '</a>' : label;
+    });
+  }
+  if (HOME && typeof HOME === "object") {
+    var HSEC = HOME.sections || {};
+    Object.keys(HSEC).forEach(function (id) {
+      var sec = document.getElementById(id), d = HSEC[id];
+      if (!sec || !d || id === "about" || id === "home") return;
+      var eb = $(".eyebrow", sec), ti = $(".section-title, .page-title", sec), sub = $(".section-sub, .page-sub, .faq-intro > p", sec);
+      if (eb && d.eyebrow) eb.innerHTML = ($(".eyebrow-dot", eb) ? '<span class="eyebrow-dot"></span> ' : "") + esc(d.eyebrow);
+      if (ti && d.title) ti.innerHTML = accentTitle(d.title);
+      if (sub && d.sub) sub.innerHTML = richText(d.sub);
+    });
+    var trust = $("#testimonials .trust-row");
+    if (trust && Array.isArray(HOME.trustStats) && HOME.trustStats.length) {
+      trust.innerHTML = HOME.trustStats.map(function (st) {
+        var auto = { games: "games", years: "years", portfolio: "projects" }[st.source];
+        var num = auto ? 'data-stat="' + auto + '"' : 'data-count="' + (+st.number || 0) + '"';
+        return '<li><span class="stat-num" ' + num + ' data-suffix="' + esc(st.suffix || "") + '">0</span><span class="stat-label">' + esc(st.label || "") + '</span></li>';
+      }).join("");
+    }
+    var svcGrid = $("#services .services-grid");
+    if (svcGrid && Array.isArray(HOME.services) && HOME.services.length) {
+      svcGrid.innerHTML = HOME.services.map(function (c) {
+        return '<article class="service-card reveal"><div class="service-icon">' + (SERVICE_ICONS[c.icon] || SERVICE_ICONS.character) + '</div>' +
+          (c.specialization ? '<span class="service-badge">Specialization</span>' : "") +
+          '<h3>' + esc(c.title || "") + '</h3><p>' + esc(c.text || "") + '</p>' +
+          ((c.points || []).length ? '<ul class="service-list">' + c.points.map(function (p) { return "<li>" + esc(p) + "</li>"; }).join("") + '</ul>' : "") +
+        '</article>';
+      }).join("");
+    }
+    var whyT = $("#services .why-title"); if (whyT && HOME.whyTitle) whyT.textContent = HOME.whyTitle;
+    var whyL = $("#services .why-list");
+    if (whyL && Array.isArray(HOME.why) && HOME.why.length) {
+      whyL.innerHTML = HOME.why.map(function (w) {
+        return '<li><span class="why-icon">' + esc(w.icon || "") + '</span><div><strong>' + esc(w.title || "") + '</strong><small>' + esc(w.text || "") + '</small></div></li>';
+      }).join("");
+    }
+    var faqL = $("#faqList");
+    if (faqL && Array.isArray(HOME.faq) && HOME.faq.length) {
+      faqL.innerHTML = HOME.faq.map(function (f, i) {
+        return '<details class="faq-item"' + (i ? "" : " open") + '><summary>' + esc(f.q || "") + '</summary><p>' + richText(f.a || "") + '</p></details>';
+      }).join("");
+    }
+    var ctaB = $("#faq .cta-band");
+    if (ctaB && HOME.cta) {
+      if (HOME.cta.title) $("h3", ctaB).textContent = HOME.cta.title;
+      if (HOME.cta.text) $("p", ctaB).textContent = HOME.cta.text;
+      if (HOME.cta.button) $(".btn", ctaB).textContent = HOME.cta.button;
+    }
+  }
+
   /* Stat counters that must track real data instead of a hand-typed number
      (data-stat="projects"/"games"/"clients"/"years" on any .stat-num, any page).
      Runs before the reveal/counter-animation wiring below picks up data-count. */
@@ -1576,7 +1644,8 @@ function siteMain() {
     $("#assetSrc").href = (srcUrl && srcUrl.indexOf(BASE) !== 0) ? srcUrl : "https://www.artstation.com/brothersinteractive";
     var view3d = $("#asset3d");
     if (view3d) {
-      if (P.sketchfab) { view3d.hidden = false; $("iframe", view3d).src = "https://sketchfab.com/models/" + P.sketchfab + "/embed?autostart=0&ui_theme=dark"; }
+      var sfAsset = sketchfabId(P.sketchfab);   // the /admin field takes a full Sketchfab link or just the ID
+      if (sfAsset) { view3d.hidden = false; $("iframe", view3d).src = "https://sketchfab.com/models/" + sfAsset + "/embed?autostart=0&ui_theme=dark&dnt=1"; }
       else view3d.hidden = true;
     }
     var projName = P.project || (P.c === "lost-in-random" ? "Lost in Random" : P.c === "mid-night-walk" ? "The Midnight Walk" : /fanart/i.test(P.t) ? "Fan art / studio piece" : "Studio work");
@@ -2010,6 +2079,7 @@ function siteMain() {
 (function () {
   var names = ["portfolio", "games", "cases", "posts", "testimonials", "roles", "pairs", "clients", "press", "team", "hero-showcase", "config", "hero", "breakdowns", "careers-hero"];
   if (document.getElementById("about")) names.push("about");
+  if (document.getElementById("services")) names.push("home");
   if (document.getElementById("categoryGrid")) names.push("category-tiles");
   var store = window.__BI_JSON = {};
   if (!window.fetch || !window.Promise) { siteMain(); return; }
