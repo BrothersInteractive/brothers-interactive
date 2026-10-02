@@ -7,5 +7,23 @@
   "deckPdf": "/assets/brothers-interactive-capabilities.pdf",
   "email": "business@brothersinteractive.com",
   "address": "Mansarovar, Jaipur 302017, Rajasthan, India",
-  "careersFormUrl": "https://docs.google.com/forms/d/e/1FAIpQLSe8rT44qVlI6PDX7eeMCQSsjN_6NS6AYAmG1lqGWEOkSfJeQA/viewform"
+  "careersFormUrl": "https://docs.google.com/forms/d/e/1FAIpQLSe8rT44qVlI6PDX7eeMCQSsjN_6NS6AYAmG1lqGWEOkSfJeQA/viewform",
+  "social": [
+    {
+      "label": "ArtStation",
+      "url": "https://www.artstation.com/brothersinteractive"
+    },
+    {
+      "label": "LinkedIn",
+      "url": "https://www.linkedin.com/company/brothers-interactive"
+    },
+    {
+      "label": "Instagram",
+      "url": "https://www.instagram.com/brothersinteractive"
+    },
+    {
+      "label": "Facebook",
+      "url": "https://www.facebook.com/Brothersinteractive"
+    }
+  ]
 }

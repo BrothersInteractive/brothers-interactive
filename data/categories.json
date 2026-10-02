@@ -1,0 +1,64 @@
+{
+  "items": [
+    {
+      "label": "Modular CHR Skins",
+      "slug": "modular-chr-skins",
+      "key": "",
+      "tile": ""
+    },
+    {
+      "label": "Realistic CHR",
+      "slug": "realistic-character",
+      "key": "realistic-humans",
+      "tile": ""
+    },
+    {
+      "label": "Realistic Creature",
+      "slug": "realistic-creature",
+      "key": "realistic-creatures",
+      "tile": ""
+    },
+    {
+      "label": "Realistic Hair Card",
+      "slug": "realistic-hair",
+      "key": "realistic-hairs",
+      "tile": ""
+    },
+    {
+      "label": "Stylized CHR",
+      "slug": "stylized-character",
+      "key": "stylized-human",
+      "tile": ""
+    },
+    {
+      "label": "Stylized Creature",
+      "slug": "stylized-creature",
+      "key": "",
+      "tile": ""
+    },
+    {
+      "label": "Realistic Props",
+      "slug": "props",
+      "key": "",
+      "tile": ""
+    },
+    {
+      "label": "Realistic Weapons",
+      "slug": "weapons",
+      "key": "",
+      "tile": ""
+    },
+    {
+      "label": "Game - Midnight Walk",
+      "slug": "midnight-walk",
+      "key": "mid-night-walk",
+      "tile": ""
+    },
+    {
+      "label": "Game - Lost in Random",
+      "slug": "lost-in-random",
+      "key": "",
+      "tile": ""
+    }
+  ]
+}

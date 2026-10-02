@@ -37,6 +37,19 @@
       .replace(/[^a-z0-9]+/g, "-").replace(/^-+|-+$/g, "");
   }
 
+  /* Replace the list above with the one edited in /admin (data/categories.json: label, slug = web address
+     name, optional key = the older code stored on pieces, optional tile picture). Changes the array in place,
+     so code already holding BROWSE_CATS sees the new list. */
+  function setCategories(items) {
+    var list = (items || []).filter(function (c) { return c && c.label && (c.slug || c.key); }).map(function (c) {
+      var slug = slugify(c.slug || c.key), key = String(c.key || "").trim() || slug;
+      return { slug: slug, label: String(c.label), match: key === slug ? [slug] : [key, slug], tile: c.tile || "" };
+    });
+    if (!list.length) return;
+    BROWSE_CATS.length = 0;
+    list.forEach(function (c) { BROWSE_CATS.push(c); });
+  }
+
   // Category key on a piece (e.g. "realistic-humans") -> the slug used in addresses ("realistic-character")
   function catSlug(key) {
     for (var i = 0; i < BROWSE_CATS.length; i++) if (BROWSE_CATS[i].match.indexOf(key) !== -1) return BROWSE_CATS[i].slug;
@@ -63,7 +76,7 @@
   function breakdownPath(id) { return id ? "/breakdowns/" + slugify(id) + "/" : "/breakdowns/"; }
 
   var api = {
-    BROWSE_CATS: BROWSE_CATS, SECTIONS: SECTIONS, slugify: slugify, catSlug: catSlug, piecePaths: piecePaths,
+    BROWSE_CATS: BROWSE_CATS, setCategories: setCategories, SECTIONS: SECTIONS, slugify: slugify, catSlug: catSlug, piecePaths: piecePaths,
     categoryPath: categoryPath, sectionPath: sectionPath, breakdownPath: breakdownPath
   };
   if (typeof module === "object" && module.exports) module.exports = api; else root.BIURL = api;

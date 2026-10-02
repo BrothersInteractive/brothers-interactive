@@ -262,25 +262,44 @@ collections:
               - { label: "Video or GIF", name: "video", widget: "file", required: false, media_folder: "/assets/videos", public_folder: "/assets/videos", pattern: ['\.(mp4|webm|gif|MP4|WEBM|GIF)$', "This field only takes an MP4, WebM or GIF. For a 3D model (.glb) use the 3D model field above."], hint: "Optional. Plays silently on a loop in place of the image (a 3D model on the same entry takes priority). For a floating character use a WebM with a transparent background (Safari shows the image instead) or a GIF — a normal MP4 always shows as a rectangle. Keep it short and under ~8 MB." }
               - { label: "Description", name: "alt", widget: "string", hint: "Describes the character for screen readers/SEO, e.g. \"Stylized orc warrior, game-ready\"." }
 
-  - name: "category-tiles"
-    label: "Category Tile Images"
-    description: "The picture on each category tile in the homepage Portfolio section. Leave a tile empty to use the first piece in that category automatically. A landscape image (about 4:3) fills the tile best."
+  - name: "categories"
+    label: "Categories"
     files:
-      - name: "tiles"
-        label: "Category Tile Images"
-        file: "data/category-tiles.json"
+      - name: "items"
+        label: "Categories"
+        file: "data/categories.json"
         format: "json"
+        description: "The portfolio categories. The order here is the order of the tiles in the homepage Portfolio section; drag to reorder, click Add for a new one. A new category appears on the site and in the Portfolio form's Category list about two minutes after saving (reload /admin to see it there)."
         fields:
-          - { label: "Modular CHR Skins", name: "modular_chr_skins", widget: "image", required: false, media_folder: "/assets/img/categories", public_folder: "/assets/img/categories" }
-          - { label: "Realistic CHR", name: "realistic_character", widget: "image", required: false, media_folder: "/assets/img/categories", public_folder: "/assets/img/categories" }
-          - { label: "Realistic Creature", name: "realistic_creature", widget: "image", required: false, media_folder: "/assets/img/categories", public_folder: "/assets/img/categories" }
-          - { label: "Realistic Hair Card", name: "realistic_hair", widget: "image", required: false, media_folder: "/assets/img/categories", public_folder: "/assets/img/categories" }
-          - { label: "Stylized CHR", name: "stylized_character", widget: "image", required: false, media_folder: "/assets/img/categories", public_folder: "/assets/img/categories" }
-          - { label: "Stylized Creature", name: "stylized_creature", widget: "image", required: false, media_folder: "/assets/img/categories", public_folder: "/assets/img/categories" }
-          - { label: "Realistic Props", name: "props", widget: "image", required: false, media_folder: "/assets/img/categories", public_folder: "/assets/img/categories" }
-          - { label: "Realistic Weapons", name: "weapons", widget: "image", required: false, media_folder: "/assets/img/categories", public_folder: "/assets/img/categories", hint: "Only shows once at least one piece is in this category — until then the tile says Coming soon." }
-          - { label: "Game - Midnight Walk", name: "midnight_walk", widget: "image", required: false, media_folder: "/assets/img/categories", public_folder: "/assets/img/categories" }
-          - { label: "Game - Lost in Random", name: "lost_in_random", widget: "image", required: false, media_folder: "/assets/img/categories", public_folder: "/assets/img/categories" }
+          - label: "Categories"
+            name: "items"
+            widget: "list"
+            collapsed: true
+            label_singular: "Category"
+            summary: "{{fields.label}}"
+            fields:
+              - { label: "Name", name: "label", widget: "string", hint: "Shown on the tile and on every piece in this category, e.g. Realistic Vehicles." }
+              - { label: "Web address name", name: "slug", widget: "string", pattern: ['^[a-z0-9-]+$', "Lowercase letters, numbers and dashes only, e.g. realistic-vehicles"], hint: "Used in the link: brothersinteractive.in/category/<this>/. Lowercase, no spaces. Don't change it once the category is live, or links already shared stop working." }
+              - { label: "Tile picture (optional)", name: "tile", widget: "image", required: false, media_folder: "/assets/img/categories", public_folder: "/assets/img/categories", hint: "The picture on the homepage tile (landscape about 4:3 fills best). Empty = the first piece in this category. The tile says Coming soon until the category has a piece." }
+              - { label: "Internal code (leave as it is)", name: "key", widget: "string", required: false, hint: "Only the original categories have one; it links them to the pieces already uploaded. Leave empty for a new category." }
+
+  - name: "projects"
+    label: "Projects"
+    files:
+      - name: "items"
+        label: "Projects"
+        file: "data/projects.json"
+        format: "json"
+        description: "Extra choices for the Project dropdown on each portfolio piece. Every game in the Games section is added to that dropdown automatically, so list here only projects that are not games, e.g. Studio work, Fan art, a client project. New ones appear in the dropdown about two minutes after saving (reload /admin)."
+        fields:
+          - label: "Projects"
+            name: "items"
+            widget: "list"
+            collapsed: true
+            label_singular: "Project"
+            summary: "{{fields.name}}"
+            fields:
+              - { label: "Name", name: "name", widget: "string" }
 
   - name: "portfolio"
     label: "Portfolio"
@@ -309,6 +328,7 @@ collections:
                 widget: "select"
                 hint: "The piece's main category. It decides the label shown on the piece."
                 options:
+                  # @categories (filled in from data/categories.json by tools/build.js)
                   - { label: "Modular CHR Skins", value: "modular-chr-skins" }
                   - { label: "Realistic CHR", value: "realistic-humans" }
                   - { label: "Realistic Creature", value: "realistic-creatures" }
@@ -319,6 +339,7 @@ collections:
                   - { label: "Realistic Weapons", value: "weapons" }
                   - { label: "Game - Midnight Walk", value: "mid-night-walk" }
                   - { label: "Game - Lost in Random", value: "lost-in-random" }
+                  # @end
 
               - label: "Also show in (optional)"
                 name: "cats"
@@ -327,6 +348,7 @@ collections:
                 required: false
                 hint: "Pick any other categories this same piece should also appear in. No need to upload it again."
                 options:
+                  # @categories (filled in from data/categories.json by tools/build.js)
                   - { label: "Modular CHR Skins", value: "modular-chr-skins" }
                   - { label: "Realistic CHR", value: "realistic-humans" }
                   - { label: "Realistic Creature", value: "realistic-creatures" }
@@ -337,6 +359,7 @@ collections:
                   - { label: "Realistic Weapons", value: "weapons" }
                   - { label: "Game - Midnight Walk", value: "mid-night-walk" }
                   - { label: "Game - Lost in Random", value: "lost-in-random" }
+                  # @end
 
               - label: "Project"
                 name: "project"
@@ -344,6 +367,7 @@ collections:
                 default: "Studio work"
                 hint: "Shown in the Project box on the piece's details page. Pick the game it was made for, or Studio work / Fan art. A new game can be added to this list on request."
                 options:
+                  # @projects (filled in from data/projects.json + the Games list by tools/build.js)
                   - "Studio work"
                   - "Fan art / studio piece"
                   - "Echoes of Aincrad"
@@ -360,6 +384,7 @@ collections:
                   - "Wavetale"
                   - "The Gunk"
                   - "Scavengers"
+                  # @end
 
               - label: "Software (optional)"
                 name: "software"
@@ -623,27 +648,6 @@ collections:
               - { label: "Title", name: "t", widget: "string" }
               - { label: "YouTube video", name: "yt", widget: "string", hint: "Paste the full YouTube URL or just the video ID." }
 
-  - name: "careers"
-    label: "Careers"
-    label_singular: "Open Role"
-    description: "Open job roles shown on the Careers page. Leave empty when you're not hiring."
-    files:
-      - name: "items"
-        label: "Open Roles"
-        file: "data/roles.json"
-        format: "json"
-        fields:
-          - label: "Roles"
-            name: "items"
-            widget: "list"
-            collapsed: true
-            label_singular: "Role"
-            summary: "{{fields.t}}"
-            fields:
-              - { label: "Title", name: "t", widget: "string", hint: "e.g. \"Senior Character Artist\"" }
-              - { label: "Type / Location", name: "type", widget: "string", hint: "e.g. \"Full-time · Jaipur\"" }
-              - { label: "Summary", name: "d", widget: "string", hint: "One line describing the role." }
-
   - name: "careers-hero"
     label: "Careers Images"
     label_singular: "Careers Image"
@@ -682,3 +686,14 @@ collections:
           - { label: "Contact email", name: "email", widget: "string", hint: "Where the contact and job-application forms actually deliver to (via formsubmit.co, no signup needed) and the mailto fallback." }
           - { label: "Address", name: "address", widget: "string" }
           - { label: "Careers application form (Google Form link)", name: "careersFormUrl", widget: "string", required: false, hint: "Paste the Google Form share link (starts with https://forms.gle/ or https://docs.google.com/forms/). The blinking Join Us button in the homepage Careers section opens it in a new tab. Leave empty to show Applications opening soon." }
+          - label: "Social links"
+            name: "social"
+            widget: "list"
+            collapsed: true
+            required: false
+            label_singular: "Social link"
+            summary: "{{fields.label}}"
+            hint: "The buttons in the footer of every page and on the Contact page. Drag to reorder, Add for a new one (e.g. YouTube, X, Behance), delete to remove one."
+            fields:
+              - { label: "Name", name: "label", widget: "string", hint: "The button text, e.g. YouTube" }
+              - { label: "Link", name: "url", widget: "string", pattern: ['^https?://', "Must start with https://"], hint: "The full address, starting with https://" }

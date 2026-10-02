@@ -229,6 +229,12 @@ function siteMain() {
     return list && list.length ? list : (fallback || []);
   }
 
+  // Categories as edited in /admin (data/categories.json): replaces the built-in list, and every category's
+  // name is known under both its code on pieces and its web address name
+  var CATEGORY_LIST = loadList("categories", []);
+  if (CATEGORY_LIST.length) URLS.setCategories(CATEGORY_LIST);
+  BROWSE_CATS.forEach(function (b) { b.match.forEach(function (k) { CAT[k] = b.label; }); });
+
   var PROJECTS = loadList("portfolio", BI.PROJECTS);
   // Each piece's own address, e.g. /portfolio/realistic-character/lehri/ (falls back to the old ?id= page)
   var PIECE_PATH = URLS.piecePaths(PROJECTS);
@@ -367,6 +373,20 @@ function siteMain() {
   })();
   var EMAIL = CFG.email || "business@brothersinteractive.com";
   var JOBS_EMAIL = "contact@brothersinteractive.com";
+
+  // Social links from Settings replace the ones written into each page (those stay as the fallback)
+  (function () {
+    var links = (Array.isArray(CFG.social) ? CFG.social : []).filter(function (l) { return l && l.label && /^https?:\/\//.test(l.url || ""); });
+    if (!links.length) return;
+    document.querySelectorAll(".social-row").forEach(function (row) {
+      row.innerHTML = "";
+      links.forEach(function (l) {
+        var a = document.createElement("a");
+        a.href = l.url; a.target = "_blank"; a.rel = "noopener"; a.textContent = l.label;
+        row.appendChild(a);
+      });
+    });
+  })();
 
   var HERO = BI.HERO || {};
   (function () {
@@ -637,9 +657,7 @@ function siteMain() {
      ------------------------------------------------------------------ */
   var categoryGridEl = $("#categoryGrid");
   if (categoryGridEl) {
-    // Optional hand-picked tile images from /admin ("Category Tile Images"),
-    // keyed by slug with "-" as "_". Empty = pick the first piece automatically.
-    var TILE_IMG = loadJSON("category-tiles") || {};
+    // Tile picture: the one set in /admin > Categories, else the first piece in that category.
     categoryGridEl.innerHTML = BROWSE_CATS.map(function (b, i) {
       // Prefer a piece whose main category is this one for the tile image; fall back to an "Also show in" piece
       var thumb = PROJECTS.filter(function (p) { return b.match.indexOf(p.c) !== -1; })[0] ||
@@ -653,7 +671,7 @@ function siteMain() {
       }
       return (
         '<a class="style-tile reveal" href="' + URLS.categoryPath(b.slug) + '" style="transition-delay:' + (i % 3) * 70 + 'ms" aria-label="Browse ' + esc(b.label) + '">' +
-          '<img ' + imgAttrs(TILE_IMG[b.slug.replace(/-/g, "_")] || thumb.i, "(max-width: 600px) 50vw, 33vw") + ' alt="" loading="lazy" />' +
+          '<img ' + imgAttrs(b.tile || thumb.i, "(max-width: 600px) 50vw, 33vw") + ' alt="" loading="lazy" />' +
           '<span class="style-tile-label">' + esc(b.label) + '</span>' +
         '</a>'
       );
@@ -2121,7 +2139,7 @@ function siteMain() {
   var names = ["portfolio", "games", "cases", "posts", "testimonials", "roles", "pairs", "clients", "press", "team", "hero-showcase", "config", "hero", "breakdowns", "careers-hero"];
   if (document.getElementById("about")) names.push("about");
   if (document.getElementById("services")) names.push("home");
-  if (document.getElementById("categoryGrid")) names.push("category-tiles");
+  names.push("categories");
   var store = window.__BI_JSON = {};
   if (!window.fetch || !window.Promise) { siteMain(); return; }
   Promise.all(names.map(function (n) {

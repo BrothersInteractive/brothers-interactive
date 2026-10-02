@@ -106,6 +106,8 @@ function writePage(address, tpl, info, meta) {
 for (const id of URLS.SECTIONS) if (id !== "home") writePage("/" + id + "/", "home", { section: id });
 
 // ---- 4. categories: /category/<slug>/ ---------------------------------------------
+// Categories as edited in /admin (data/categories.json) replace the built-in list
+URLS.setCategories(json("data/categories.json", {}).items);
 const PROJECTS = (json("data/portfolio.json", {}).items || []).filter((p) => p && p.id);
 const inCat = (p, key) => p.c === key || (Array.isArray(p.cats) && p.cats.indexOf(key) !== -1);
 for (const b of URLS.BROWSE_CATS) {
@@ -145,6 +147,39 @@ for (const b of BREAKDOWNS) {
     image: b.cover || b.after || (b.gallery && b.gallery[0])
   });
 }
+
+// ---- 6b. admin dropdowns ------------------------------------------------------------------
+/* The Portfolio form's Category, "Also show in" and Project dropdowns are filled from the Categories and
+   Projects lists (and the Games list) every build, so something added there appears in the form about two
+   minutes after saving. In admin/config.yml the option lines sit between "# @categories" / "# @projects"
+   and "# @end" marker comments; only the published copy in _site is rewritten. */
+(function fillAdminDropdowns() {
+  const cfgPath = path.join(OUT, "admin/config.yml");
+  if (!fs.existsSync(cfgPath)) return;
+  const q = (v) => JSON.stringify(String(v));
+  const catLines = URLS.BROWSE_CATS.map((b) => "{ label: " + q(b.label) + ", value: " + q(b.match[0]) + " }");
+  const projectNames = [];
+  (json("data/projects.json", {}).items || []).concat((json("data/games.json", {}).items || []).map((g) => ({ name: g && g.t })))
+    .forEach((p) => { const n = p && String(p.name || "").trim(); if (n && projectNames.indexOf(n) === -1) projectNames.push(n); });
+  const projLines = projectNames.map(q);
+  // Rebuild the option lines between each "# @categories" / "# @projects" marker and its "# @end"
+  const src = fs.readFileSync(cfgPath, "utf8").split(/\r?\n/), out = [];
+  let n = 0;
+  for (let i = 0; i < src.length; i++) {
+    const m = src[i].match(/^(\s*)# @(categories|projects)\b/);
+    if (!m) { out.push(src[i]); continue; }
+    const indent = m[1], kind = m[2];
+    let j = i + 1;
+    while (j < src.length && !/^\s*# @end\b/.test(src[j])) j++;
+    out.push(indent + "# @" + kind + " (filled in by tools/build.js)");
+    (kind === "categories" ? catLines : projLines).forEach((l) => out.push(indent + "- " + l));
+    out.push(indent + "# @end");
+    i = j; n++;
+  }
+  const cfg = out.join("\n");
+  fs.writeFileSync(cfgPath, cfg);
+  console.log("Admin dropdowns: " + n + " filled (" + catLines.length + " categories, " + projLines.length + " projects).");
+})();
 
 // ---- 7. sitemap ---------------------------------------------------------------------------
 const urls = ["/", "/contact", "/getting-started"].concat(written.filter((w) => w.sitemap).map((w) => w.address));

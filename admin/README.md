@@ -1,9 +1,13 @@
 # Content editor (/admin)
 
 `/admin` is a private page for editing the site's content without touching code:
-Homepage Hero, Hero Showcase (3D models / images / videos), Category Tile Images,
-Portfolio, Games, Reviews, Team, Sculpt to Final, Breakdowns, Clients, Blog Posts,
-Careers Images and Settings (email, availability text, Google Form link for applications).
+Homepage Hero, About, Homepage Text, Hero Showcase (3D models / images / videos), Categories
+(add / rename / reorder, tile pictures), Projects (choices for the Project dropdown), Portfolio, Games,
+Reviews, Team, Sculpt to Final, Breakdowns, Clients, Blog Posts, Careers Images and Settings (email,
+availability text, Google Form link for applications, social links in the footer).
+
+A new category or project appears in the Portfolio form's dropdowns about two minutes after saving
+(the build fills them in); reload /admin to see it.
 
 The editor is **Sveltia CMS** (loaded by `admin/index.html`, configured by `admin/config.yml`).
 
