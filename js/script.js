@@ -59,6 +59,10 @@ function siteMain() {
      lens showing that spot at 200%, taken from the full-size image. Up to 512px across, smaller on
      smaller pictures. One lens element is shared by every picture that has attachLens(). */
   var lensEl = null, lensImg = null;
+  // Lens size picked with the two lens buttons in the viewer: "small" = up to 512px, "big" = up to 750px
+  // (both never wider than the picture's shorter side). Remembered per visitor.
+  var lensMode = "small";
+  try { if (localStorage.getItem("bi-lens") === "big") lensMode = "big"; } catch (e) {}
   function hideLens() {
     if (lensEl) lensEl.classList.remove("on");
     if (lensImg) lensImg.classList.remove("lens-active");
@@ -83,7 +87,7 @@ function siteMain() {
       var pos = (getComputedStyle(img).objectPosition || "50% 50%").split(" ").map(function (v) { return /%$/.test(v) ? parseFloat(v) / 100 : 0.5; });
       var x = e.clientX - (r.left + (r.width - w) * pos[0]), y = e.clientY - (r.top + (r.height - h) * (pos[1] == null ? 0.5 : pos[1]));
       if (x < 0 || y < 0 || x > w || y > h) { hideLens(); return; }
-      var size = Math.round(Math.max(160, Math.min(512, Math.min(w, h) * 0.5)));
+      var size = Math.round(Math.max(160, lensMode === "big" ? Math.min(750, Math.min(w, h)) : Math.min(512, Math.min(w, h) * 0.7)));
       lensEl.style.setProperty("--r", (size / 2) + "px");   // the handle starts at the rim
       var src = img.currentSrc || img.src;
       if (lensEl.dataset.src !== src) { lensEl.style.backgroundImage = 'url("' + src.replace(/"/g, "%22") + '")'; lensEl.dataset.src = src; }
@@ -675,8 +679,8 @@ function siteMain() {
     if (lb.classList.contains("lb-split")) {
       var cap = $("figcaption", fig), strip = lbThumbs.children.length ? lbThumbs.offsetHeight : 0;
       var gap = parseFloat(cs.rowGap || cs.gap || 0);
-      boxW = fig.clientWidth;
-      boxH = fig.clientHeight - parseFloat(cs.paddingTop) - (cap ? cap.offsetHeight : 0) - strip - gap * (strip ? 2 : 1);
+      boxW = Math.min(fig.clientWidth, 1500);
+      boxH = Math.min(750, fig.clientHeight - parseFloat(cs.paddingTop) - (cap ? cap.offsetHeight : 0) - strip - gap * (strip ? 2 : 1));
     } else {
       boxW = Math.min(window.innerWidth * 0.9, 1500);
       boxH = Math.min(window.innerHeight * 0.66, 1000);
@@ -702,6 +706,21 @@ function siteMain() {
     return bt;
   }
   var lbCharNext = lbCharButton("lb-char--next", "Next piece"), lbCharPrev = lbCharButton("lb-char--prev", "Previous piece");
+  // Lens size buttons (mouse screens only): a small and a big magnifier, the chosen one lit up
+  var lensIcon = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="10" cy="10" r="6.5"/><path d="M15 15l5.5 5.5"/></svg>';
+  var lbLensPick = document.createElement("div");
+  lbLensPick.className = "lb-lens-pick";
+  lbLensPick.innerHTML = '<button type="button" class="lb-lens-btn lb-lens-btn--small" data-lens="small" aria-label="Normal lens">' + lensIcon + '</button>' +
+    '<button type="button" class="lb-lens-btn lb-lens-btn--big" data-lens="big" aria-label="Bigger lens">' + lensIcon + '</button>';
+  lb.appendChild(lbLensPick);
+  function showLensMode() { $$(".lb-lens-btn", lbLensPick).forEach(function (b) { var on = b.dataset.lens === lensMode; b.classList.toggle("on", on); b.setAttribute("aria-pressed", on ? "true" : "false"); }); }
+  showLensMode();
+  lbLensPick.addEventListener("click", function (e) {
+    var b = e.target.closest(".lb-lens-btn"); if (!b) return;
+    lensMode = b.dataset.lens;
+    try { localStorage.setItem("bi-lens", lensMode); } catch (err) {}
+    showLensMode();
+  });
   function showVariant(idx) {
     if (idx === lbActive || !lbVariants[idx]) return;
     lbActive = idx;
@@ -750,6 +769,8 @@ function siteMain() {
     var leftX = P.left - L.left - gap - bw, rightX = P.right - L.left + gap;
     lbPlace(lbCharPrev, leftX, midY - bw - 8); lbPlace(lbPrevBtn, leftX, midY + 8);
     lbPlace(lbCharNext, rightX, midY - bw - 8); lbPlace(lbNextBtn, rightX, midY + 8);
+    // lens buttons: right of the picture, standing on its bottom line
+    lbPlace(lbLensPick, rightX + (bw - lbLensPick.offsetWidth) / 2, P.bottom - L.top - lbLensPick.offsetHeight);
   }
   window.addEventListener("resize", function () { if (lb.classList.contains("open")) { fitLbImg(); placeLbSides(); } });
   if (wideViewer.addEventListener) wideViewer.addEventListener("change", function () { if (lb.classList.contains("open")) renderLbThumbs(); });

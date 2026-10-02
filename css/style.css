@@ -1312,7 +1312,7 @@ body.no-scroll .work-card img, body.no-scroll .work-card::before { animation-pla
 
 @media (min-width: 1001px) {
   .lightbox.lb-split .lightbox-figure {
-    width: 68vw; height: calc(100vh - 48px); max-width: none; max-height: none;
+    width: min(1500px, calc(100vw - 230px)); height: calc(100vh - 48px); max-width: none; max-height: none;
     padding-top: 0; gap: 3vh; justify-content: center; box-sizing: border-box;
   }
   .lightbox.lb-split .lightbox-figure img { flex: none; }
@@ -1342,6 +1342,20 @@ body.no-scroll .work-card img, body.no-scroll .work-card::before { animation-pla
 .lb-char--next span { transform: rotate(90deg); }
 .lb-char--prev span { transform: rotate(-90deg); }
 .lightbox-nav:disabled { opacity: 0.28; pointer-events: none; }
+/* Lens size buttons: small and big magnifier beside the picture (wide, mouse screens only) */
+.lb-lens-pick { position: absolute; display: none; flex-direction: column; align-items: center; gap: 10px; z-index: 2; }
+@media (min-width: 1001px) and (hover: hover) and (pointer: fine) { .lightbox.lb-split .lb-lens-pick { display: flex; } }
+.lb-lens-btn {
+  display: grid; place-items: center; border-radius: 50%; color: var(--accent);
+  background: rgba(var(--bg-rgb), 0.75); border: 1px solid rgba(var(--accent-rgb), 0.45);
+  transition: background 0.3s, color 0.3s, border-color 0.3s, box-shadow 0.3s;
+}
+.lb-lens-btn--small { width: 40px; height: 40px; }
+.lb-lens-btn--small svg { width: 17px; height: 17px; }
+.lb-lens-btn--big { width: 52px; height: 52px; }
+.lb-lens-btn--big svg { width: 26px; height: 26px; }
+.lb-lens-btn:hover { border-color: var(--accent); box-shadow: var(--glow); }
+.lb-lens-btn.on { background: var(--accent); color: var(--on-accent); border-color: var(--accent); box-shadow: var(--glow); }
 
 
 /* Magnifying lens over portfolio pictures (js: attachLens). Hides the normal cursor while it shows. */
