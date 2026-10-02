@@ -1,20 +1,6 @@
 {
   "items": [
     {
-      "img": "",
-      "model": "",
-      "modelSize": 100,
-      "video": "",
-      "alt": "3D character model"
-    },
-    {
-      "img": "",
-      "model": "",
-      "modelSize": 100,
-      "video": "",
-      "alt": "3D creature model"
-    },
-    {
       "img": "/assets/img/portfolio/monster-lizar-without-bg.png",
       "model": "",
       "modelSize": 130,
