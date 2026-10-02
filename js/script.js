@@ -282,10 +282,6 @@ function siteMain() {
     setText("#aboutPrimaryBtn", ABOUT.primaryBtnLabel);
     setText("#aboutSecondaryBtn", ABOUT.secondaryBtnLabel);
     if (+ABOUT.foundedYear > 1900) { FOUNDED = +ABOUT.foundedYear; var fy = $("#aboutFounded"); if (fy) fy.setAttribute("data-count", FOUNDED); }
-    setText("#aboutStatFounded", ABOUT.statFoundedLabel);
-    setText("#aboutStatGames", ABOUT.statGamesLabel);
-    setText("#aboutStatProjects", ABOUT.statProjectsLabel);
-    setText("#aboutStatYears", ABOUT.statYearsLabel);
     setText(".pipeline-title", ABOUT.toolsTitle);
     var aTools = $("#aboutTools");
     var groups = (ABOUT.toolGroups || []).filter(function (g) { return g && g.name; });
@@ -332,7 +328,7 @@ function siteMain() {
     Object.keys(HSEC).forEach(function (id) {
       var sec = document.getElementById(id), d = HSEC[id];
       if (!sec || !d || id === "about" || id === "home") return;
-      var eb = $(".eyebrow", sec), ti = $(".section-title, .page-title", sec), sub = $(".section-sub, .page-sub, .faq-intro > p", sec);
+      var eb = $(".eyebrow", sec), ti = $(".section-title, .page-title", sec), sub = $(".section-sub, .page-sub, .faq-intro > p:not(.eyebrow)", sec);
       if (eb && d.eyebrow) eb.innerHTML = ($(".eyebrow-dot", eb) ? '<span class="eyebrow-dot"></span> ' : "") + esc(d.eyebrow);
       if (ti && d.title) ti.innerHTML = accentTitle(d.title);
       if (sub && d.sub) sub.innerHTML = richText(d.sub);
@@ -690,13 +686,7 @@ function siteMain() {
       // Prefer a piece whose main category is this one for the tile image; fall back to an "Also show in" piece
       var thumb = PROJECTS.filter(function (p) { return b.match.indexOf(p.c) !== -1; })[0] ||
                   PROJECTS.filter(function (p) { return inAnyCat(p, b.match); })[0];
-      if (!thumb) {
-        return (
-          '<div class="style-tile style-tile--soon reveal" style="transition-delay:' + (i % 3) * 70 + 'ms" aria-hidden="true">' +
-            '<span class="style-tile-label">' + esc(b.label) + '<small>Coming soon</small></span>' +
-          '</div>'
-        );
-      }
+      if (!thumb) return "";   // a category with no pieces yet is left out; its tile appears once a piece is added
       return (
         '<a class="style-tile reveal" href="' + URLS.categoryPath(b.slug) + '" style="transition-delay:' + (i % 3) * 70 + 'ms" aria-label="Browse ' + esc(b.label) + '">' +
           '<img ' + imgAttrs(b.tile || thumb.i, "(max-width: 600px) 50vw, 33vw") + ' alt="" loading="lazy" />' +

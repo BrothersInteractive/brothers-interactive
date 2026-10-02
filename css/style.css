@@ -144,11 +144,8 @@ button { font: inherit; color: inherit; cursor: pointer; background: none; borde
 .eyebrow-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--accent); box-shadow: var(--glow); animation: pulse 2s infinite; }
 @keyframes pulse { 0%, 100% { transform: scale(1); opacity: 1; } 50% { transform: scale(1.5); opacity: 0.6; } }
 
-.section-title { font-size: clamp(2.2rem, 4.2vw, 4rem); font-weight: 800; text-transform: uppercase; }
-.section-title .accent {
-  background: linear-gradient(90deg, var(--accent), var(--accent-2));
-  -webkit-background-clip: text; background-clip: text; color: transparent;
-}
+.section-title { font-size: clamp(1.8rem, 3.4vw, 3.2rem); font-weight: 800; text-transform: uppercase; }
+.section-title .accent { color: var(--accent); }
 .section-sub { color: var(--text-muted); max-width: 900px; font-size: 1.3rem; margin-top: 18px; }
 .section-head { margin-bottom: 28px; }
 
@@ -301,7 +298,7 @@ button { font: inherit; color: inherit; cursor: pointer; background: none; borde
 @keyframes scrollDot { 0% { transform: translateY(0); opacity: 1; } 80% { transform: translateY(18px); opacity: 0; } 100% { opacity: 0; } }
 
 /* ---------- Sections ---------- */
-.section { padding: 36px 0; position: relative; }
+.section { padding: 110px 0; position: relative; }   /* breathing room between homepage sections (was 36px) */
 /* CTA band that continues the section above it instead of adding a full padded block */
 .section.section--cta { padding-top: 0; }
 .section--alt { background: linear-gradient(180deg, var(--tint), transparent); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
@@ -631,7 +628,13 @@ main#main { min-height: 100vh; }
 .case-thumb:hover { transform: translateY(-3px); border-color: var(--accent); box-shadow: var(--glow); }
 
 /* ---------- Services (detailed) ---------- */
-.services-grid--detailed { grid-template-columns: repeat(3, 1fr); }
+.services-grid--detailed { grid-template-columns: repeat(3, 1fr); gap: 36px; margin-bottom: 72px; }
+#services .service-card { padding: 36px 32px 32px; }
+#services .service-card p { font-size: 1.08rem; }
+#services .service-list { flex-direction: row; flex-wrap: wrap; gap: 8px; border-top: 0; padding-top: 0; margin-top: 22px; }
+#services .service-list li { padding: 5px 12px; border-radius: 999px; border: 1px solid var(--border-strong); font-size: 0.92rem; line-height: 1.35; color: var(--text-muted); }
+#services .service-list li::before { content: none; }
+#services .why-grid { margin-bottom: 0; }
 .service-list { margin-top: 18px; padding-top: 16px; border-top: 1px solid var(--border); display: flex; flex-direction: column; gap: 8px; }
 .service-list li { position: relative; padding-left: 20px; font-size: 1rem; color: var(--text); }
 .service-list li::before { content: "›"; position: absolute; left: 4px; top: -1px; color: var(--accent); font-weight: 700; }
@@ -759,7 +762,7 @@ main#main { min-height: 100vh; }
 .section.section--flush-top { padding-top: 0; }
 .page-hero-inner { display: grid; grid-template-columns: 1.2fr 0.8fr; gap: 64px; align-items: center; }
 .page-title { font-size: clamp(2.4rem, 5.2vw, 5rem); font-weight: 900; text-transform: uppercase; line-height: 1.02; margin-bottom: 22px; }
-.page-title .accent, .section-title .accent { background: linear-gradient(90deg, var(--accent), var(--accent-2)); -webkit-background-clip: text; background-clip: text; color: transparent; }
+.page-title .accent { background: linear-gradient(90deg, var(--accent), var(--accent-2)); -webkit-background-clip: text; background-clip: text; color: transparent; }
 .page-sub { font-size: 1.35rem; color: var(--text-muted); max-width: 760px; margin-bottom: 32px; }
 .page-stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
 .page-stats li { display: flex; flex-direction: column; padding: 24px; border-radius: var(--radius); background: var(--surface); border: 1px solid var(--border); }
@@ -1190,10 +1193,11 @@ body.art-cursor-on input:not([type="range"]):not([type="checkbox"]), body.art-cu
   .games-grid, .blog-grid { grid-template-columns: repeat(2, 1fr); }
   .style-grid { grid-template-columns: repeat(2, 1fr); }
   .about-grid, .contact-grid { grid-template-columns: 1fr; gap: 40px; }
-  .section { padding: 28px 0; }
+  .section { padding: 72px 0; }
 }
 @media (max-width: 600px) {
   body { font-size: 17px; }
+  .section { padding: 56px 0; }
   .portfolio-grid { columns: 1; column-gap: 12px; }
   .work-card { margin-bottom: 12px; }
   .cursor-glow, .art-cursor, .art-cursor-ring { display: none; }

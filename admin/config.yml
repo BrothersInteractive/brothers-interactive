@@ -113,33 +113,14 @@ collections:
     description: "The Testimonials section: heading, the number boxes, and the client quotes."
     files:
       - name: "text-testimonials"
-        label: "Section heading and number boxes"
+        label: "Section heading and text"
         file: "data/sections/testimonials.json"
         format: "json"
-        description: "The heading and subtitle, and the number boxes beside the quotes."
+        description: "The heading and subtitle above the client quotes."
         fields:
           - { label: "Small line above the heading", name: "eyebrow", widget: "string", required: false }
           - { label: "Heading", name: "title", widget: "string", hint: "Put *stars* around the words that should be gold, e.g. Production *breakdowns*" }
           - { label: "Subtitle", name: "sub", widget: "text", required: false, hint: "A link can be written as [words](/contact)." }
-          - label: "Testimonials — number boxes"
-            name: "trustStats"
-            widget: "list"
-            collapsed: true
-            label_singular: "Number box"
-            summary: "{{fields.label}}"
-            fields:
-              - label: "Number comes from"
-                name: "source"
-                widget: "select"
-                default: "fixed"
-                options:
-                  - { label: "The number typed below", value: "fixed" }
-                  - { label: "Count of Games (automatic)", value: "games" }
-                  - { label: "Years since founded (automatic)", value: "years" }
-                  - { label: "Count of Portfolio pieces (automatic)", value: "portfolio" }
-              - { label: "Number", name: "number", widget: "number", value_type: "int", required: false, default: 0, hint: "Only used when 'Number comes from' is 'The number typed below'." }
-              - { label: "After the number", name: "suffix", widget: "string", required: false, hint: "e.g. + or %" }
-              - { label: "Label", name: "label", widget: "string" }
       - name: "reviews"
         label: "Client quotes"
         file: "data/testimonials.json"
@@ -177,11 +158,7 @@ collections:
           - { label: "Paragraphs", name: "paragraphs", widget: "list", collapsed: true, label_singular: "Paragraph", field: { label: "Paragraph", name: "paragraph", widget: "text" }, hint: "Each item is one paragraph. Drag to reorder." }
           - { label: "Main button label", name: "primaryBtnLabel", widget: "string", hint: "Opens an email to your business address." }
           - { label: "Second button label", name: "secondaryBtnLabel", widget: "string", hint: "Scrolls to the Team section." }
-          - { label: "Founded (year)", name: "foundedYear", widget: "number", value_type: "int", hint: "Shown in the first stat. Years in production is worked out from it." }
-          - { label: "Stat label — Founded", name: "statFoundedLabel", widget: "string" }
-          - { label: "Stat label — titles shipped", name: "statGamesLabel", widget: "string", hint: "The number counts the Games collection." }
-          - { label: "Stat label — published pieces", name: "statProjectsLabel", widget: "string", hint: "The number counts the Portfolio collection." }
-          - { label: "Stat label — years in production", name: "statYearsLabel", widget: "string" }
+          - { label: "Founded (year)", name: "foundedYear", widget: "number", value_type: "int", hint: "The year the studio started. Years in production are counted from it." }
           - { label: "Tools heading", name: "toolsTitle", widget: "string" }
           - label: "Tool groups"
             name: "toolGroups"
