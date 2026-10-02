@@ -1,8 +1,12 @@
 {
+  "mode": "together",
   "items": [
     {
       "img": "/assets/img/portfolio/monster-lizar-without-bg.png",
       "imgSize": 150,
+      "animation": "glow",
+      "offsetX": -50,
+      "offsetY": null,
       "model": "",
       "modelSize": 150,
       "video": "",
