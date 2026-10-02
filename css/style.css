@@ -247,6 +247,22 @@ button { font: inherit; color: inherit; cursor: pointer; background: none; borde
 /* Use on any hero-card holding a landscape image instead of a portrait one, so it isn't cropped to fit a 4:5 frame. */
 .hero-card--wide { aspect-ratio: 16 / 9; }
 @keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-14px); } }
+/* Podium animations, picked per entry in /admin (Home > podium > Animation). All grow or turn from the feet. */
+@keyframes breathe { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.035); } }
+@keyframes sway { 0%, 100% { transform: rotate(-1.4deg); } 50% { transform: rotate(1.4deg); } }
+@keyframes drift { 0%, 100% { transform: translateX(-12px); } 50% { transform: translateX(12px); } }
+@keyframes glowPulse {
+  0%, 100% { filter: drop-shadow(0 24px 28px rgba(0,0,0,0.55)) drop-shadow(0 0 24px rgba(var(--accent-rgb), 0.15)); }
+  50% { filter: drop-shadow(0 24px 28px rgba(0,0,0,0.55)) drop-shadow(0 0 54px rgba(var(--accent-rgb), 0.45)); }
+}
+.hero-showcase-img[data-anim="breathe"] { animation: breathe 5s ease-in-out infinite; }
+.hero-showcase-img[data-anim="sway"] { animation: sway 7s ease-in-out infinite; }
+.hero-showcase-img[data-anim="drift"] { animation: drift 8s ease-in-out infinite; }
+.hero-showcase-img[data-anim="glow"] { animation: glowPulse 4s ease-in-out infinite; }
+.hero-showcase-img[data-anim="none"] { animation: none; }
+/* Move left/right/up/down from /admin: `translate` is separate from the animations' `transform`, so both apply */
+.hero-moved { translate: calc(var(--ox, 0) * var(--move-k, 1) * 1px) calc(var(--oy, 0) * var(--move-k, 1) * 1px); }
+@media (max-width: 1000px) { .hero-moved { --move-k: 0.5; } }
 
 /* Homepage hero showcase: one cutout character on a soft themed glow, shuffled on every load.
    No fixed aspect ratio anywhere in this block — a tall/vertical image is capped by max-height,

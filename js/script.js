@@ -516,6 +516,16 @@ function siteMain() {
       showImg.alt = pick.alt || "";
       if (pick.model) mountHeroModel(pick.model, showImg, pick.alt, pick.modelSize);
       else if (pick.video) mountHeroVideo(pick.video, showImg, pick.alt);
+      // Animation and position from /admin, on whatever is showing (picture, video or 3D model).
+      // Move: X + = right, - = left; Y + = up, - = down, in pixels (halved on tablets and phones, see .hero-stage)
+      var shown = showImg.hidden ? showImg.parentNode.querySelector(".hero-model, .hero-video") : showImg;
+      var ANIMS = ["float", "breathe", "sway", "drift", "glow", "none"];
+      if (shown) {
+        var anim = ANIMS.indexOf(pick.animation) !== -1 ? pick.animation : "float";
+        if (shown === showImg) shown.setAttribute("data-anim", anim);   // the 3D model spins on its own, so no extra motion
+        var ox = Math.max(-400, Math.min(400, +pick.offsetX || 0)), oy = Math.max(-400, Math.min(400, +pick.offsetY || 0));
+        if (ox || oy) { shown.style.setProperty("--ox", ox); shown.style.setProperty("--oy", -oy); shown.classList.add("hero-moved"); }
+      }
     }
   }
 
