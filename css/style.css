@@ -1111,9 +1111,7 @@ body.art-cursor-on input:not([type="range"]):not([type="checkbox"]), body.art-cu
 .theme-opt.active .sw { box-shadow: 0 0 0 2px var(--accent); }
 
 /* ---------- Responsive ---------- */
-@media (min-width: 1700px) {
-  .portfolio-grid { columns: 4; }
-}
+/* Category grids stay at 3 columns on every large screen (Arun: bigger pictures), 2 on tablets, 1 on phones */
 @media (max-width: 1400px) {
   .container { width: min(100% - 48px, var(--container)); }
   .hero-visual { min-height: 600px; }
