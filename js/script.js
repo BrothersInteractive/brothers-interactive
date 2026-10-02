@@ -61,8 +61,8 @@ function siteMain() {
   var lensEl = null, lensImg = null;
   // Lens size picked with the two lens buttons in the viewer: "small" = up to 512px, "big" = up to 750px
   // (both never wider than the picture's shorter side). Remembered per visitor.
-  var lensMode = "small";
-  try { if (localStorage.getItem("bi-lens") === "big") lensMode = "big"; } catch (e) {}
+  var lensMode = "small";   // "small", "big" or "off" (the crossed-out lens button: no lens)
+  try { var savedLens = localStorage.getItem("bi-lens"); if (savedLens === "big" || savedLens === "off") lensMode = savedLens; } catch (e) {}
   // Zoom inside the lens, picked with the two + buttons: 2 = 200% (default) or 3 = 300%
   var lensZoom = 2;
   try { if (localStorage.getItem("bi-zoom") === "3") lensZoom = 3; } catch (e) {}
@@ -87,8 +87,11 @@ function siteMain() {
     document.body.classList.remove("lens-on");   // brings the paintbrush cursor back
     lensImg = null;
   }
+  /* Mouse: the lens follows the pointer over the picture. Touch: press and hold on the picture (about a
+     quarter second, so normal swipes still scroll), then drag; the lens sits above the finger so the
+     finger never covers it, and it goes away when the finger lifts. lensMode "off" = no lens at all. */
   function attachLens(img, canShow) {
-    if (!img || !(window.matchMedia && window.matchMedia("(hover: hover) and (pointer: fine)").matches)) return;
+    if (!img) return;
     if (!lensEl) {
       lensEl = document.createElement("div");
       lensEl.className = "zoom-lens"; lensEl.setAttribute("aria-hidden", "true");
@@ -99,32 +102,89 @@ function siteMain() {
       sharpenDefs();
       lensPic.style.filter = "url(#biSharp)";
     }
-    img.addEventListener("pointermove", function (e) {
-      if (e.pointerType && e.pointerType !== "mouse") return;
-      if ((canShow && !canShow()) || !img.naturalWidth) { hideLens(); return; }
+    // Draw the lens for the point (cx, cy) on screen; touch = true lifts the lens above the finger
+    function showAt(cx, cy, touch) {
+      if (lensMode === "off" || (canShow && !canShow()) || !img.naturalWidth) { hideLens(); return false; }
       // The visible picture inside the element: object-fit: contain leaves empty bands around it, placed
       // by object-position (the viewer sits pictures on the bottom edge, so read it, don't assume centre)
       var r = img.getBoundingClientRect();
       var ratio = img.naturalWidth / img.naturalHeight, w = r.width, h = w / ratio;
       if (h > r.height) { h = r.height; w = h * ratio; }
       var pos = (getComputedStyle(img).objectPosition || "50% 50%").split(" ").map(function (v) { return /%$/.test(v) ? parseFloat(v) / 100 : 0.5; });
-      var x = e.clientX - (r.left + (r.width - w) * pos[0]), y = e.clientY - (r.top + (r.height - h) * (pos[1] == null ? 0.5 : pos[1]));
-      if (x < 0 || y < 0 || x > w || y > h) { hideLens(); return; }
-      var size = Math.round(Math.max(160, lensMode === "big" ? Math.min(750, Math.min(w, h)) : Math.min(512, Math.min(w, h) * 0.7)));
+      var x = cx - (r.left + (r.width - w) * pos[0]), y = cy - (r.top + (r.height - h) * (pos[1] == null ? 0.5 : pos[1]));
+      if (x < 0 || y < 0 || x > w || y > h) { hideLens(); return false; }
+      var size = Math.round(Math.max(touch ? 140 : 160, lensMode === "big" ? Math.min(750, Math.min(w, h)) : Math.min(512, Math.min(w, h) * 0.7)));
       lensEl.style.setProperty("--r", (size / 2) + "px");   // the handle starts at the rim
       var src = img.currentSrc || img.src;
       if (lensEl.dataset.src !== src) { lensPic.style.backgroundImage = 'url("' + src.replace(/"/g, "%22") + '")'; lensEl.dataset.src = src; }
       lensEl.style.width = lensEl.style.height = size + "px";
       lensPic.style.backgroundSize = (w * lensZoom) + "px " + (h * lensZoom) + "px";
       lensPic.style.backgroundPosition = (size / 2 - x * lensZoom) + "px " + (size / 2 - y * lensZoom) + "px";
-      lensEl.style.transform = "translate(" + (e.clientX - size / 2) + "px, " + (e.clientY - size / 2) + "px)";
+      var lx = cx - size / 2, ly = touch ? cy - size - 36 : cy - size / 2;
+      if (touch) {   // keep it on screen: above the finger, or below it near the top edge
+        lx = Math.max(6, Math.min(window.innerWidth - size - 6, lx));
+        if (ly < 6) ly = cy + 36;
+      }
+      lensEl.style.transform = "translate(" + lx + "px, " + ly + "px)";
       lensEl.classList.add("on");
       document.body.classList.add("lens-on");   // hide the paintbrush cursor: nothing in the middle of the lens
       if (lensImg !== img) { if (lensImg) lensImg.classList.remove("lens-active"); lensImg = img; img.classList.add("lens-active"); }
+      return true;
+    }
+    img.addEventListener("pointermove", function (e) {
+      if (e.pointerType && e.pointerType !== "mouse") return;
+      showAt(e.clientX, e.clientY, false);
     });
-    img.addEventListener("pointerleave", hideLens);
+    img.addEventListener("pointerleave", function (e) { if (!e.pointerType || e.pointerType === "mouse") hideLens(); });
+
+    // Touch: hold, then drag
+    var holdTimer = 0, holding = false, startX = 0, startY = 0;
+    img.addEventListener("touchstart", function (e) {
+      if (e.touches.length !== 1 || lensMode === "off") return;
+      var t = e.touches[0]; startX = t.clientX; startY = t.clientY;
+      clearTimeout(holdTimer);
+      holdTimer = setTimeout(function () { holding = showAt(startX, startY, true); }, 230);
+    }, { passive: true });
+    img.addEventListener("touchmove", function (e) {
+      var t = e.touches[0];
+      if (holding) { e.preventDefault(); showAt(t.clientX, t.clientY, true); return; }   // lens on: no scrolling
+      if (Math.abs(t.clientX - startX) + Math.abs(t.clientY - startY) > 10) clearTimeout(holdTimer);   // a swipe
+    }, { passive: false });
+    function endTouch() { clearTimeout(holdTimer); if (holding) { holding = false; hideLens(); } }
+    img.addEventListener("touchend", endTouch);
+    img.addEventListener("touchcancel", endTouch);
+    img.addEventListener("contextmenu", function (e) { if (holding) e.preventDefault(); });   // no "save image" menu mid-lens
   }
-  window.addEventListener("scroll", hideLens, { passive: true });
+  window.addEventListener("scroll", function () { hideLens(); }, { passive: true });
+
+  /* The lens buttons, shared by the viewer and the artwork page: zoom 200% (small +) / 300% (big +), and
+     lens normal (small magnifier) / bigger (big magnifier) / none (crossed-out circle). The chosen one in
+     each group is lit up, and the choice is remembered per visitor. */
+  var LENS_ICON = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="10" cy="10" r="6.5"/><path d="M15 15l5.5 5.5"/></svg>';
+  var PLUS_ICON = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg>';
+  var NO_LENS_ICON = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="8.5"/><path d="M8.5 8.5l7 7M15.5 8.5l-7 7"/></svg>';
+  function lensBtn(cls, attr, label, icon) {
+    return '<button type="button" class="lb-lens-btn ' + cls + '" ' + attr + ' aria-label="' + label + '" title="' + label + '">' + icon + '</button>';
+  }
+  function lensToolButtons(which) {
+    var zoom = lensBtn("lb-lens-btn--small", 'data-zoom="2"', "Zoom 200%", PLUS_ICON) + lensBtn("lb-lens-btn--big", 'data-zoom="3"', "Zoom 300%", PLUS_ICON);
+    var lens = lensBtn("lb-lens-btn--small", 'data-lens="small"', "Normal lens", LENS_ICON) + lensBtn("lb-lens-btn--big", 'data-lens="big"', "Bigger lens", LENS_ICON) +
+      lensBtn("lb-lens-btn--small lb-lens-btn--off", 'data-lens="off"', "No lens", NO_LENS_ICON);
+    return which === "zoom" ? zoom : which === "lens" ? lens : '<span class="lens-tools-group">' + zoom + '</span><span class="lens-tools-group">' + lens + '</span>';
+  }
+  function showLensMode() {
+    $$(".lb-lens-btn").forEach(function (b) {
+      var on = b.dataset.lens ? b.dataset.lens === lensMode : +b.dataset.zoom === lensZoom;
+      b.classList.toggle("on", on); b.setAttribute("aria-pressed", on ? "true" : "false");
+      if (b.dataset.zoom) b.disabled = lensMode === "off";   // zoom means nothing with no lens
+    });
+  }
+  document.addEventListener("click", function (e) {
+    var b = e.target.closest && e.target.closest(".lb-lens-btn"); if (!b) return;
+    if (b.dataset.lens) { lensMode = b.dataset.lens; try { localStorage.setItem("bi-lens", lensMode); } catch (err) {} if (lensMode === "off") hideLens(); }
+    else if (b.dataset.zoom) { lensZoom = +b.dataset.zoom; try { localStorage.setItem("bi-zoom", String(lensZoom)); } catch (err) {} }
+    showLensMode();
+  });
 
   document.addEventListener("error", function (e) {
     var img = e.target;
@@ -530,6 +590,7 @@ function siteMain() {
   var lbCat = $("#lightboxCat");
   var lbTitle = $("#lightboxTitle");
   var lbLink = $("#lightboxLink");
+  var lbQuote = $("#lightboxQuote");
   var lbThumbs = $("#lightboxThumbs");
   var lbPos = 0; // position within visibleList
   var lbFigure = $(".lightbox-figure", lb);
@@ -643,6 +704,7 @@ function siteMain() {
       lbCat.href = URLS.categoryPath(URLS.catSlug(p.c));
       lbTitle.textContent = p.t;
       lbLink.href = pieceUrl(p.id);
+      if (lbQuote) lbQuote.href = "/contact?ref=" + encodeURIComponent(p.id);   // the contact form opens with this piece filled in
       lbLink.textContent = "Asset details & breakdown \u2192";
       setAddress(pieceUrl(p.id));
       lbVariants = [p.i].concat(p.imgs || []);
@@ -706,7 +768,7 @@ function siteMain() {
       boxH = Math.min(750, fig.clientHeight - parseFloat(cs.paddingTop) - (cap ? cap.offsetHeight : 0) - strip - gap * (strip ? 2 : 1));
     } else {
       boxW = Math.min(window.innerWidth * 0.9, 1500);
-      boxH = Math.min(window.innerHeight * 0.66, 1000);
+      boxH = Math.min(window.innerHeight * 0.52, 1000);   // leaves room for the buttons and views below on a phone
     }
     var ratio = lbImg.naturalWidth / lbImg.naturalHeight, w = boxW, h = w / ratio;
     if (h > boxH) { h = boxH; w = h * ratio; }
@@ -729,34 +791,16 @@ function siteMain() {
     return bt;
   }
   var lbCharNext = lbCharButton("lb-char--next", "Next piece"), lbCharPrev = lbCharButton("lb-char--prev", "Previous piece");
-  /* Lens buttons (mouse screens only). Right of the picture: lens size normal (small magnifier) and big
-     (big magnifier). Left of it: zoom 200% (small +) and 300% (big +). The chosen one in each pair is lit up. */
-  var lensIcon = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="10" cy="10" r="6.5"/><path d="M15 15l5.5 5.5"/></svg>';
-  var plusIcon = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg>';
+  // Lens buttons beside the picture on wide screens: zoom pair left, lens sizes + "no lens" right
+  // (on small screens they move into a row under the picture, see renderLbThumbs)
   var lbLensPick = document.createElement("div");
   lbLensPick.className = "lb-lens-pick";
-  lbLensPick.innerHTML =
-    '<button type="button" class="lb-lens-btn lb-lens-btn--small" data-lens="small" aria-label="Normal lens" title="Normal lens">' + lensIcon + '</button>' +
-    '<button type="button" class="lb-lens-btn lb-lens-btn--big" data-lens="big" aria-label="Bigger lens" title="Bigger lens">' + lensIcon + '</button>';
+  lbLensPick.innerHTML = lensToolButtons("lens");
   var lbZoomPick = document.createElement("div");
   lbZoomPick.className = "lb-lens-pick lb-zoom-pick";
-  lbZoomPick.innerHTML =
-    '<button type="button" class="lb-lens-btn lb-lens-btn--small" data-zoom="2" aria-label="Zoom 200%" title="Zoom 200%">' + plusIcon + '</button>' +
-    '<button type="button" class="lb-lens-btn lb-lens-btn--big" data-zoom="3" aria-label="Zoom 300%" title="Zoom 300%">' + plusIcon + '</button>';
+  lbZoomPick.innerHTML = lensToolButtons("zoom");
   lb.appendChild(lbLensPick); lb.appendChild(lbZoomPick);
-  function showLensMode() {
-    $$(".lb-lens-btn", lb).forEach(function (b) {
-      var on = b.dataset.lens ? b.dataset.lens === lensMode : +b.dataset.zoom === lensZoom;
-      b.classList.toggle("on", on); b.setAttribute("aria-pressed", on ? "true" : "false");
-    });
-  }
   showLensMode();
-  lb.addEventListener("click", function (e) {
-    var b = e.target.closest(".lb-lens-btn"); if (!b) return;
-    if (b.dataset.lens) { lensMode = b.dataset.lens; try { localStorage.setItem("bi-lens", lensMode); } catch (err) {} }
-    else if (b.dataset.zoom) { lensZoom = +b.dataset.zoom; try { localStorage.setItem("bi-zoom", String(lensZoom)); } catch (err) {} }
-    showLensMode();
-  });
   function showVariant(idx) {
     if (idx === lbActive || !lbVariants[idx]) return;
     lbActive = idx;
@@ -773,14 +817,26 @@ function siteMain() {
   /* Every view of this piece in one strip under the picture: same height, width from each image's own
      proportions, centred, the one on show outlined like the picture. Any number of views fits: the strip
      scrolls sideways if it runs out of room. */
+  /* Small screens: the four round buttons and the lens buttons move out of the corners into two rows under
+     the picture (⌄ previous piece, ‹ previous image, › next image, ⌃ next piece / then the lens buttons). */
+  var lbMobileBar = document.createElement("div"), lbMobileNav = document.createElement("div"), lbMobileTools = document.createElement("div");
+  lbMobileBar.className = "lb-mobile-bar"; lbMobileNav.className = "lb-mobile-row"; lbMobileTools.className = "lb-mobile-row lb-mobile-tools";
+  lbMobileBar.appendChild(lbMobileNav); lbMobileBar.appendChild(lbMobileTools);
+  lbFigure.insertBefore(lbMobileBar, lbThumbs);
+  function arrangeLbControls(split) {
+    var navs = [lbCharPrev, lbPrevBtn, lbNextBtn, lbCharNext];
+    if (split) navs.concat([lbLensPick, lbZoomPick]).forEach(function (el) { if (el.parentNode !== lb) lb.appendChild(el); });
+    else { navs.forEach(function (el) { lbMobileNav.appendChild(el); }); lbMobileTools.appendChild(lbZoomPick); lbMobileTools.appendChild(lbLensPick); }
+  }
   function renderLbThumbs() {
     var split = wideViewer.matches;
     lb.classList.toggle("lb-split", split);
+    arrangeLbControls(split);
     var n = lbVariants.length;
-    lbPrevBtn.disabled = split && lbActive === 0;
-    lbNextBtn.disabled = split && lbActive >= n - 1;
-    lbPrevBtn.setAttribute("aria-label", split ? "Previous image" : "Previous piece");
-    lbNextBtn.setAttribute("aria-label", split ? "Next image" : "Next piece");
+    lbPrevBtn.disabled = lbActive === 0;
+    lbNextBtn.disabled = lbActive >= n - 1;
+    lbPrevBtn.setAttribute("aria-label", "Previous image");
+    lbNextBtn.setAttribute("aria-label", "Next image");
     lbThumbs.innerHTML = n > 1 ? lbVariants.map(function (u, i) { return lbThumb(i); }).join("") : "";
     var on = $(".asset-thumb.active", lbThumbs);
     if (on && on.scrollIntoView && lbThumbs.scrollWidth > lbThumbs.clientWidth) on.scrollIntoView({ block: "nearest", inline: "center" });
@@ -818,8 +874,8 @@ function siteMain() {
   // Magnifying lens on the big picture (only once the zoom-in animation has handed over)
   attachLens(lbImg, function () { return lb.classList.contains("open") && !lbFigure.classList.contains("hidden-for-flip") && !lbImg.classList.contains("fading"); });
   $("#lightboxClose").addEventListener("click", closeLightbox);
-  lbPrevBtn.addEventListener("click", function () { if (lb.classList.contains("lb-split")) stepImage(-1); else stepLightbox(-1); });
-  lbNextBtn.addEventListener("click", function () { if (lb.classList.contains("lb-split")) stepImage(1); else stepLightbox(1); });
+  lbPrevBtn.addEventListener("click", function () { stepImage(-1); });   // ‹ › = this piece's images, on every screen size
+  lbNextBtn.addEventListener("click", function () { stepImage(1); });
   lbCharNext.addEventListener("click", function () { stepLightbox(1); });
   lbCharPrev.addEventListener("click", function () { stepLightbox(-1); });
   lb.addEventListener("click", function (e) { if (e.target === lb) closeLightbox(); });
@@ -1498,6 +1554,12 @@ function siteMain() {
     var all = [P.i].concat(P.imgs || []);
     $("#assetMain").src = all[0]; $("#assetMain").alt = P.t;
     attachLens($("#assetMain"));
+    // the same lens buttons under the artwork page's picture
+    var assetTools = document.createElement("div");
+    assetTools.className = "lens-tools lens-tools--page";
+    assetTools.innerHTML = lensToolButtons("all");
+    $(".asset-main").insertAdjacentElement("afterend", assetTools);
+    showLensMode();
     $("#assetThumbs").innerHTML = all.map(function (u, i) { return '<button class="asset-thumb' + (i ? '' : ' active') + '" data-src="' + u + '" aria-label="View ' + (i + 1) + '"><img ' + imgAttrs(u, "120px") + ' alt="' + esc(P.t) + ' view ' + (i + 1) + '" loading="lazy" /></button>'; }).join("");
     $("#assetThumbs").addEventListener("click", function (e) {
       var b = e.target.closest(".asset-thumb"); if (!b) return;
