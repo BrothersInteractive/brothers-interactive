@@ -1286,10 +1286,9 @@ body.no-scroll .work-card img, body.no-scroll .work-card::before { animation-pla
 .flip-clone { box-shadow: 0 30px 60px rgba(0,0,0,0.55); backface-visibility: hidden; }
 
 /* Artwork viewer. js (fitLbImg) sizes the picture element to the artwork itself, so the theme outline
-   hugs it. Small screens: picture, a row of views, then the buttons. Wide screens (.lb-split, every
-   piece): the picture sits above one row of buttons with clear space above and below it (room to reach
-   the buttons while using the lens), and the other views stand in the bottom corners on the picture's
-   bottom line; the one nearest the picture on each side is double size. */
+   hugs it. Small screens: picture, a row of views, then the buttons. Wide screens (.lb-split, every piece):
+   buttons row on top, the picture, then one centred strip of every view at the same height (width from
+   each image's proportions), the one on show outlined like the picture; scrolls sideways if needed. */
 .lightbox-figure { max-width: 94vw; max-height: 96vh; }
 .lightbox-figure img { width: min(90vw, 1500px); height: min(66vh, 1000px); }
 .lightbox-figure img, .lightbox-figure .flip-clone {
@@ -1301,7 +1300,6 @@ body.no-scroll .work-card img, body.no-scroll .work-card::before { animation-pla
 .lb-btn.lightbox-cat { color: var(--accent-2); }
 .lb-btn.lightbox-link, .lb-btn.lightbox-link:hover { color: var(--on-accent); }
 .lightbox-title { color: var(--text-strong); }
-.lb-side { display: none; }
 
 /* Close and arrow buttons follow the selected theme */
 .lightbox-close {
@@ -1315,19 +1313,27 @@ body.no-scroll .work-card img, body.no-scroll .work-card::before { animation-pla
 @media (min-width: 1001px) {
   .lightbox.lb-split .lightbox-figure {
     width: 68vw; height: calc(100vh - 48px); max-width: none; max-height: none;
-    padding-top: 0; gap: 6vh; justify-content: center; box-sizing: border-box;
+    padding-top: 0; gap: 3vh; justify-content: center; box-sizing: border-box;
   }
   .lightbox.lb-split .lightbox-figure img { flex: none; }
-  .lightbox.lb-split .lightbox-thumbs { display: none; }
-  .lightbox.lb-split .lightbox-figure figcaption { flex: none; min-height: 52px; justify-content: center; flex-wrap: nowrap; }
-  /* side views: placed and sized by js (placeLbSides) from the picture's box; they fill outward from the
-     picture and upward from its bottom line (the left side runs right-to-left) */
-  .lightbox.lb-split .lb-side { display: flex; position: absolute; flex-wrap: wrap-reverse; align-items: flex-start; gap: 10px; }
-  .lb-side--left { flex-direction: row-reverse; justify-content: flex-start; }
-  .lb-side--right { flex-direction: row; justify-content: flex-start; }
-  .lb-side:empty { display: none !important; }
-  .lb-side .asset-thumb { width: var(--s, 84px); height: var(--s, 84px); }
-  .lb-side .asset-thumb.lb-near { width: calc(var(--s, 84px) * 2 + 10px); height: calc(var(--s, 84px) * 2 + 10px); }
+  /* buttons row on top of the picture, the strip of views below it */
+  .lightbox.lb-split .lightbox-figure figcaption { order: -1; flex: none; min-height: 52px; justify-content: center; flex-wrap: nowrap; }
+  .lightbox.lb-split .lightbox-thumbs {
+    flex: none; width: max-content; max-width: 92vw; height: clamp(64px, 8.5vh, 96px); box-sizing: content-box; padding: 4px;
+    display: flex; flex-wrap: nowrap; justify-content: safe center; gap: 14px; overflow-x: auto; overflow-y: hidden; scrollbar-width: thin;
+  }
+  .lightbox.lb-split .lightbox-thumbs:empty { display: none; }
+  .lightbox.lb-split .lightbox-thumbs .asset-thumb {
+    flex: none; width: auto; height: 100%; border-radius: 8px; border: 2px solid transparent; opacity: 0.6; transform: none;
+    transition: opacity 0.2s, border-color 0.2s, box-shadow 0.2s;
+  }
+  .lightbox.lb-split .lightbox-thumbs .asset-thumb img { width: auto; min-width: 40px; height: 100%; object-fit: contain; display: block; }
+  .lightbox.lb-split .lightbox-thumbs .asset-thumb:hover { opacity: 1; transform: none; border-color: rgba(var(--accent-rgb), 0.35); }
+  /* the one on show wears the same outline as the picture */
+  .lightbox.lb-split .lightbox-thumbs .asset-thumb.active {
+    opacity: 1; border-color: rgba(var(--accent-rgb), 0.7);
+    box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.45), 0 0 18px rgba(var(--accent-rgb), 0.3);
+  }
   .lightbox.lb-split .lb-char { display: grid; }
 }
 /* Next / previous piece (↑ ↓): the same round button with the chevron turned; wide screens only */
@@ -1336,8 +1342,7 @@ body.no-scroll .work-card img, body.no-scroll .work-card::before { animation-pla
 .lb-char--next span { transform: rotate(90deg); }
 .lb-char--prev span { transform: rotate(-90deg); }
 .lightbox-nav:disabled { opacity: 0.28; pointer-events: none; }
-.lightbox-count { font-family: var(--font-display); font-size: 0.72rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--text-muted); }
-.lightbox-count:empty { display: none; }
+
 
 /* Magnifying lens over portfolio pictures (js: attachLens). Hides the normal cursor while it shows. */
 .zoom-lens {

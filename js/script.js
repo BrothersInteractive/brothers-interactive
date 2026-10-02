@@ -662,25 +662,21 @@ function siteMain() {
      views sit in the two bottom corners (first half left, second half right, the one on show left out),
      their bottoms in line with the picture's; on small screens they stay as a row under the picture. */
   var lbVariants = [], lbActive = 0;
-  var lbSideL = document.createElement("div"), lbSideR = document.createElement("div");
-  lbSideL.className = "lb-side lb-side--left"; lbSideR.className = "lb-side lb-side--right";
-  lb.appendChild(lbSideL); lb.appendChild(lbSideR);
   var wideViewer = window.matchMedia ? window.matchMedia("(min-width: 1001px)") : { matches: true };
-  // near = the view right next to the picture on its side, shown at double size
-  function lbThumb(i, near) {
-    return '<button class="asset-thumb' + (near ? ' lb-near' : '') + '" data-idx="' + i + '" aria-label="View image ' + (i + 1) + ' of ' + lbVariants.length + '"><img ' + imgAttrs(lbVariants[i], near ? "240px" : "120px") + ' alt="" loading="lazy" /></button>';
+  function lbThumb(i) {
+    return '<button class="asset-thumb' + (i === lbActive ? ' active' : '') + '" data-idx="' + i + '" aria-label="View image ' + (i + 1) + ' of ' + lbVariants.length + '"><img ' + imgAttrs(lbVariants[i], "240px") + ' alt="" /></button>';   // not lazy: in the strip their width comes from the loaded image
   }
   /* Size the picture element to the picture itself: the largest fit inside one fixed box (wide pictures
-     stop at its width, tall ones at its height), so the theme outline hugs the artwork and there is
-     clear space above it and before the buttons for people using the lens. */
+     stop at its width, tall ones at its height), so the theme outline hugs the artwork. On wide screens
+     the box is what the figure has left after the buttons row on top and the strip of views below. */
   function fitLbImg() {
     if (!lbImg.naturalWidth) return;
     var fig = lbFigure, cs = getComputedStyle(fig), boxW, boxH;
     if (lb.classList.contains("lb-split")) {
-      var cap = $("figcaption", fig);
+      var cap = $("figcaption", fig), strip = lbThumbs.children.length ? lbThumbs.offsetHeight : 0;
+      var gap = parseFloat(cs.rowGap || cs.gap || 0);
       boxW = fig.clientWidth;
-      // leave a band of clear space above the picture as tall as the gap below it
-      boxH = fig.clientHeight - parseFloat(cs.paddingTop) - (cap ? cap.offsetHeight : 0) - 2 * parseFloat(cs.rowGap || cs.gap || 0);
+      boxH = fig.clientHeight - parseFloat(cs.paddingTop) - (cap ? cap.offsetHeight : 0) - strip - gap * (strip ? 2 : 1);
     } else {
       boxW = Math.min(window.innerWidth * 0.9, 1500);
       boxH = Math.min(window.innerHeight * 0.66, 1000);
@@ -706,10 +702,6 @@ function siteMain() {
     return bt;
   }
   var lbCharNext = lbCharButton("lb-char--next", "Next piece"), lbCharPrev = lbCharButton("lb-char--prev", "Previous piece");
-  var lbCount = document.createElement("span");
-  lbCount.className = "lightbox-count";
-  lbTitle.parentNode.insertBefore(lbCount, lbTitle.nextSibling);
-
   function showVariant(idx) {
     if (idx === lbActive || !lbVariants[idx]) return;
     lbActive = idx;
@@ -723,41 +715,27 @@ function siteMain() {
   }
   function stepImage(d) { showVariant(lbActive + d); }
 
-  /* The other views of this piece: the ones BEFORE the image on show stand to its left, the ones AFTER
-     it to its right, each side starting right next to the picture (that one double size) and filling
-     outward and upward. So image 1 of 10 has nothing on the left and 9 on the right; image 2 has 1 and 8. */
+  /* Every view of this piece in one strip under the picture: same height, width from each image's own
+     proportions, centred, the one on show outlined like the picture. Any number of views fits: the strip
+     scrolls sideways if it runs out of room. */
   function renderLbThumbs() {
     var split = wideViewer.matches;
     lb.classList.toggle("lb-split", split);
     var n = lbVariants.length;
-    lbCount.textContent = n > 1 ? "Image " + (lbActive + 1) + " / " + n : "";
     lbPrevBtn.disabled = split && lbActive === 0;
     lbNextBtn.disabled = split && lbActive >= n - 1;
     lbPrevBtn.setAttribute("aria-label", split ? "Previous image" : "Previous piece");
     lbNextBtn.setAttribute("aria-label", split ? "Next image" : "Next piece");
-    if (!split) {
-      lbSideL.innerHTML = lbSideR.innerHTML = "";
-      lbThumbs.innerHTML = n > 1 ? lbVariants.map(function (u, i) { return lbThumb(i); }).join("") : "";
-      $$(".asset-thumb", lbThumbs).forEach(function (b) { b.classList.toggle("active", +b.dataset.idx === lbActive); });
-      fitLbImg();
-      placeLbSides();
-      return;
-    }
-    var before = [], after = [];
-    for (var i = 0; i < n; i++) { if (i < lbActive) before.push(i); else if (i > lbActive) after.push(i); }
-    before.reverse();   // nearest first; the left side is laid out right-to-left
-    lbThumbs.innerHTML = "";
-    lbSideL.innerHTML = before.map(function (i, k) { return lbThumb(i, k === 0); }).join("");
-    lbSideR.innerHTML = after.map(function (i, k) { return lbThumb(i, k === 0); }).join("");
+    lbThumbs.innerHTML = n > 1 ? lbVariants.map(function (u, i) { return lbThumb(i); }).join("") : "";
+    var on = $(".asset-thumb.active", lbThumbs);
+    if (on && on.scrollIntoView && lbThumbs.scrollWidth > lbThumbs.clientWidth) on.scrollIntoView({ block: "nearest", inline: "center" });
     fitLbImg();
     placeLbSides();
     setTimeout(placeLbSides, 420);   // again once the viewer's opening zoom (0.35s) has settled
   }
 
-  /* Everything around the picture is placed from the picture's measured box, so it hugs the artwork
-     whether it is wide or tall: the arrow buttons just outside its left and right edges (piece button
-     above, image button below the middle), and the side views on its bottom line, below the arrows.
-     Side views shrink together if there are more than fit in that space. */
+  /* The four round buttons hug the picture's left and right edges (piece button above the middle, image
+     button below it), placed from the picture's measured box so they follow wide and tall pictures. */
   function lbPlace(el, x, y) { el.style.left = Math.round(x) + "px"; el.style.top = Math.round(y) + "px"; el.style.right = "auto"; el.style.transform = "none"; }
   function placeLbSides() {
     var navs = [lbPrevBtn, lbNextBtn, lbCharPrev, lbCharNext];
@@ -767,25 +745,11 @@ function siteMain() {
     }
     var L = lb.getBoundingClientRect(), P = lbImg.getBoundingClientRect();
     if (!P.width) return;
-    var gap = 14, pad = 24, bw = lbPrevBtn.offsetWidth || 56;
+    var gap = 14, bw = lbPrevBtn.offsetWidth || 56;
     var midY = P.top - L.top + P.height / 2;
     var leftX = P.left - L.left - gap - bw, rightX = P.right - L.left + gap;
     lbPlace(lbCharPrev, leftX, midY - bw - 8); lbPlace(lbPrevBtn, leftX, midY + 8);
     lbPlace(lbCharNext, rightX, midY - bw - 8); lbPlace(lbNextBtn, rightX, midY + 8);
-    var bottom = Math.max(0, L.bottom - P.bottom);
-    var maxH = Math.max(80, P.bottom - L.top - (midY + 8 + bw + gap));
-    [[lbSideL, P.left - L.left - gap - pad, "right", L.right - P.left + gap], [lbSideR, L.right - P.right - gap - pad, "left", P.right - L.left + gap]].forEach(function (c) {
-      var side = c[0];
-      side.style.bottom = bottom + "px";
-      side.style.width = Math.max(60, c[1]) + "px";
-      side.style.left = side.style.right = "auto";
-      side.style[c[2]] = c[3] + "px";
-      if (!side.children.length) return;
-      // biggest thumbnail size (up to 84px, the nearest one double) that lets every view fit
-      var size = Math.min(84, Math.floor(window.innerWidth * 0.042));
-      side.style.setProperty("--s", size + "px");
-      while (side.offsetHeight > maxH && size > 34) { size -= 4; side.style.setProperty("--s", size + "px"); }
-    });
   }
   window.addEventListener("resize", function () { if (lb.classList.contains("open")) { fitLbImg(); placeLbSides(); } });
   if (wideViewer.addEventListener) wideViewer.addEventListener("change", function () { if (lb.classList.contains("open")) renderLbThumbs(); });
