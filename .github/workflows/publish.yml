@@ -25,6 +25,8 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: 22
+      # sharp makes the small grid copies of newly uploaded images (see tools/build.js)
+      - run: npm install --no-save --no-package-lock sharp
       - run: node tools/build.js
       - uses: actions/upload-pages-artifact@v3
         with:
