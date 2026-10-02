@@ -822,7 +822,7 @@ function siteMain() {
       lbTitle.textContent = p.t;
       lbLink.href = pieceUrl(p.id);
       if (lbQuote) lbQuote.href = "/contact?ref=" + encodeURIComponent(p.id);   // the contact form opens with this piece filled in
-      lbLink.textContent = "Asset details & breakdown \u2192";
+      lbLink.textContent = "Asset details";
       setAddress(pieceUrl(p.id));
       lbVariants = [p.i].concat(p.imgs || []);
       lbActive = 0;

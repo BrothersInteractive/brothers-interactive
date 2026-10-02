@@ -1297,7 +1297,6 @@ body.no-scroll .work-card img, body.no-scroll .work-card::before { animation-pla
 .lightbox-figure figcaption { gap: 10px 28px; }
 .lb-btn { padding: 10px 18px; font-size: 0.72rem; letter-spacing: 0.12em; }
 .lb-btn.lightbox-cat { color: var(--accent-2); }
-.lb-btn.lightbox-link, .lb-btn.lightbox-link:hover { color: var(--on-accent); }
 .lightbox-title { color: var(--text-strong); }
 
 /* Close and arrow buttons follow the selected theme */
@@ -1388,8 +1387,9 @@ body.lens-on .art-cursor, body.lens-on .art-cursor-ring, body.lens-on .cursor-gl
 .btn--blink:hover { animation-play-state: paused; opacity: 1; }
 
 /* Quote button in the viewer's top row */
-.lb-btn.lightbox-quote { color: var(--accent); border-color: rgba(var(--accent-rgb), 0.5); }
-.lb-btn.lightbox-quote:hover { border-color: var(--accent); box-shadow: var(--glow); }
+/* Asset details is outlined like Quote similar work: as a solid gold button it pulled the eye away from the artwork */
+.lb-btn.lightbox-quote, .lb-btn.lightbox-link { color: var(--accent); border-color: rgba(var(--accent-rgb), 0.5); }
+.lb-btn.lightbox-quote:hover, .lb-btn.lightbox-link:hover { border-color: var(--accent); box-shadow: var(--glow); }
 .lb-lens-btn:disabled { opacity: 0.35; pointer-events: none; }
 
 /* Lens buttons under the picture on the artwork page: zoom pair | lens sizes + no lens */
