@@ -1,19 +1,25 @@
 {
   "items": [
     {
-      "model": "/assets/models/mint_-_neverness_to_everness.glb",
-      "alt": "3D character model",
-      "modelSize": 100
+      "img": "",
+      "model": "",
+      "modelSize": 100,
+      "video": "",
+      "alt": "3D character model"
     },
     {
-      "alt": "3D creature model",
-      "model": "/assets/models/bee.glb",
-      "modelSize": 100
+      "img": "",
+      "model": "",
+      "modelSize": 100,
+      "video": "",
+      "alt": "3D creature model"
     },
     {
-      "model": "/assets/models/indo_costume_with_wings.glb",
-      "alt": "Impressiev",
-      "modelSize": 130
+      "img": "/assets/img/portfolio/monster-lizar-without-bg.png",
+      "model": "",
+      "modelSize": 130,
+      "video": "",
+      "alt": "Impressiev"
     }
   ]
 }
