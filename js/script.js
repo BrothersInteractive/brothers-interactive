@@ -63,12 +63,13 @@ function siteMain() {
   // (both never wider than the picture's shorter side). Remembered per visitor.
   var lensMode = "small";   // "small", "big" or "off" (the crossed-out lens button: no lens)
   try { var savedLens = localStorage.getItem("bi-lens"); if (savedLens === "big" || savedLens === "off") lensMode = savedLens; } catch (e) {}
-  /* Zoom inside the lens, picked with the two zoom buttons: "2" = 200% of the picture as shown (default), or
-     "native" = actual pixels: the uploaded file at its true 1:1 size, so the lens shows all the real detail
-     there is and is never stretched; at least 1.5x so it still magnifies on smaller files. */
-  var lensZoom = "2";
-  try { var savedZoom = localStorage.getItem("bi-zoom"); if (savedZoom === "native" || savedZoom === "3") lensZoom = "native"; } catch (e) {}
-  function lensFactor(img, shownW) { return lensZoom === "native" ? Math.max(1.5, img.naturalWidth / shownW) : 2; }
+  /* Zoom inside the lens, picked with the three zoom buttons (top to bottom): "native" = actual pixels, the
+     uploaded file at its true 1:1 size, so the lens shows all the real detail there is and is never stretched,
+     at least 1.5x so it still magnifies on smaller files (default); "2" = 200% and "3" = 300% of the picture
+     as shown on screen. */
+  var lensZoom = "native";
+  try { var savedZoom = localStorage.getItem("bi-zoom"); if (savedZoom === "2" || savedZoom === "3") lensZoom = savedZoom; } catch (e) {}
+  function lensFactor(img, shownW) { return lensZoom === "native" ? Math.max(1.5, img.naturalWidth / shownW) : +lensZoom; }
   /* The picture inside the lens is sharpened slightly (Arun chose "medium-low" after testing three
      levels): a 3x3 sharpen kernel, centre 1+4a and neighbours -a with a = 0.3, as an SVG filter on the
      lens picture only, never on its ring or handle. */
@@ -171,10 +172,13 @@ function siteMain() {
     return '<button type="button" class="lb-lens-btn ' + cls + '" ' + attr + ' aria-label="' + label + '" title="' + label + '">' + icon + '</button>';
   }
   function lensToolButtons(which) {
-    var zoom = lensBtn("lb-lens-btn--small", 'data-zoom="2"', "Zoom 200%", PLUS_ICON) +
-      lensBtn("lb-lens-btn--big lb-lens-btn--native", 'data-zoom="native"', "Actual pixels (1:1)", '<span class="lb-native-label" aria-hidden="true">1:1</span>');
-    var lens = lensBtn("lb-lens-btn--small", 'data-lens="small"', "Normal lens", LENS_ICON) + lensBtn("lb-lens-btn--big", 'data-lens="big"', "Bigger lens", LENS_ICON) +
-      lensBtn("lb-lens-btn--small lb-lens-btn--off", 'data-lens="off"', "No lens", NO_LENS_ICON);
+    // Order (top to bottom) as Arun set it: 1:1, 200%, 300%  /  no lens, normal lens, bigger lens
+    var zoom = lensBtn("lb-lens-btn--small lb-lens-btn--native", 'data-zoom="native"', "Actual pixels (1:1)", '<span class="lb-native-label" aria-hidden="true">1:1</span>') +
+      lensBtn("lb-lens-btn--small", 'data-zoom="2"', "Zoom 200%", PLUS_ICON) +
+      lensBtn("lb-lens-btn--big", 'data-zoom="3"', "Zoom 300%", PLUS_ICON);
+    var lens = lensBtn("lb-lens-btn--small lb-lens-btn--off", 'data-lens="off"', "No lens", NO_LENS_ICON) +
+      lensBtn("lb-lens-btn--small", 'data-lens="small"', "Normal lens (512 px)", LENS_ICON) +
+      lensBtn("lb-lens-btn--big", 'data-lens="big"', "Bigger lens (750 px)", LENS_ICON);
     return which === "zoom" ? zoom : which === "lens" ? lens : '<span class="lens-tools-group">' + zoom + '</span><span class="lens-tools-group">' + lens + '</span>';
   }
   function showLensMode() {

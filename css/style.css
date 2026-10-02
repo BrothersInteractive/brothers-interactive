@@ -1357,7 +1357,7 @@ body.no-scroll .work-card img, body.no-scroll .work-card::before { animation-pla
 .lb-lens-btn--big svg { width: 26px; height: 26px; }
 .lb-lens-btn:hover { border-color: var(--accent); box-shadow: var(--glow); }
 .lb-lens-btn.on { background: var(--accent); color: var(--on-accent); border-color: var(--accent); box-shadow: var(--glow); }
-.lb-native-label { font-family: "Rajdhani", system-ui, sans-serif; font-weight: 700; font-size: 1rem; letter-spacing: 0.04em; line-height: 1; }   /* the display font draws a tiny colon (1:1 read as 11) */
+.lb-native-label { font-family: "Rajdhani", system-ui, sans-serif; font-weight: 700; font-size: 0.9rem; letter-spacing: 0.02em; line-height: 1; }   /* the display font draws a tiny colon (1:1 read as 11) */
 /* the picture inside the lens sits within the ring, so a sharpen filter never touches the ring or handle */
 .zoom-lens-pic { position: absolute; inset: 0; border-radius: 50%; background-repeat: no-repeat; }
 
