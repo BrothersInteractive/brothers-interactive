@@ -2,6 +2,7 @@
   "items": [
     {
       "img": "/assets/img/portfolio/monster-lizar-without-bg.png",
+      "imgSize": 80,
       "model": "",
       "modelSize": 150,
       "video": "",
