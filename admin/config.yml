@@ -56,7 +56,7 @@ collections:
           - { label: "Heading — start", name: "titleStart", widget: "string", hint: "e.g. \"Quality and\"" }
           - { label: "Heading — coloured word", name: "titleAccent", widget: "string", required: false, hint: "e.g. \"timeline\"" }
           - { label: "Heading — end", name: "titleEnd", widget: "string", required: false, hint: "e.g. \", always.\" (start with a comma or a space)" }
-          - { label: "Paragraphs", name: "paragraphs", widget: "list", label_singular: "Paragraph", field: { label: "Paragraph", name: "paragraph", widget: "text" }, hint: "Each item is one paragraph. Drag to reorder." }
+          - { label: "Paragraphs", name: "paragraphs", widget: "list", collapsed: true, label_singular: "Paragraph", field: { label: "Paragraph", name: "paragraph", widget: "text" }, hint: "Each item is one paragraph. Drag to reorder." }
           - { label: "Main button label", name: "primaryBtnLabel", widget: "string", hint: "Opens an email to your business address." }
           - { label: "Second button label", name: "secondaryBtnLabel", widget: "string", hint: "Scrolls to the Team section." }
           - { label: "Founded (year)", name: "foundedYear", widget: "number", value_type: "int", hint: "Shown in the first stat. Years in production is worked out from it." }
@@ -68,6 +68,7 @@ collections:
           - label: "Tool groups"
             name: "toolGroups"
             widget: "list"
+            collapsed: true
             label_singular: "Tool group"
             summary: "{{fields.name}}"
             fields:
@@ -87,6 +88,7 @@ collections:
           - label: "Section headings"
             name: "sections"
             widget: "object"
+            collapsed: true
             fields:
               - label: "Games"
                 name: "games"
@@ -171,6 +173,7 @@ collections:
           - label: "Testimonials — number boxes"
             name: "trustStats"
             widget: "list"
+            collapsed: true
             label_singular: "Number box"
             summary: "{{fields.label}}"
             fields:
@@ -189,6 +192,7 @@ collections:
           - label: "Services cards"
             name: "services"
             widget: "list"
+            collapsed: true
             label_singular: "Service"
             summary: "{{fields.title}}"
             fields:
@@ -205,11 +209,12 @@ collections:
                   - { label: "Rigging (joints)", value: "rigging" }
               - { label: "Show the blinking 'Specialization' badge", name: "specialization", widget: "boolean", default: false }
               - { label: "Text", name: "text", widget: "text" }
-              - { label: "Bullet points", name: "points", widget: "list", required: false, hint: "One point per item." }
+              - { label: "Bullet points", name: "points", widget: "list", collapsed: true, required: false, hint: "One point per item." }
           - { label: "Why Choose Us — heading", name: "whyTitle", widget: "string" }
           - label: "Why Choose Us — items"
             name: "why"
             widget: "list"
+            collapsed: true
             label_singular: "Item"
             summary: "{{fields.title}}"
             fields:
@@ -219,6 +224,7 @@ collections:
           - label: "FAQ"
             name: "faq"
             widget: "list"
+            collapsed: true
             label_singular: "Question"
             summary: "{{fields.q}}"
             fields:
@@ -227,6 +233,7 @@ collections:
           - label: "Call-to-action band (under the FAQ)"
             name: "cta"
             widget: "object"
+            collapsed: true
             fields:
               - { label: "Heading", name: "title", widget: "string" }
               - { label: "Text", name: "text", widget: "string" }
@@ -245,6 +252,7 @@ collections:
           - label: "Showcase"
             name: "items"
             widget: "list"
+            collapsed: true
             label_singular: "Entry"
             summary: "{{fields.alt}}"
             fields:
@@ -287,6 +295,7 @@ collections:
           - label: "Pieces"
             name: "items"
             widget: "list"
+            collapsed: true
             label_singular: "Piece"
             summary: "{{fields.t}} — {{fields.c}}"
             fields:
@@ -348,6 +357,7 @@ collections:
               - label: "Additional Images"
                 name: "imgs"
                 widget: "list"
+                collapsed: true
                 required: false
                 label_singular: "Image"
                 field: { label: "Image", name: "image", widget: "image" }
@@ -361,6 +371,7 @@ collections:
               - label: "Tags"
                 name: "tags"
                 widget: "list"
+                collapsed: true
                 required: false
                 hint: "Optional keywords, one per line."
 
@@ -405,6 +416,7 @@ collections:
           - label: "Games"
             name: "items"
             widget: "list"
+            collapsed: true
             label_singular: "Game"
             summary: "{{fields.t}}"
             fields:
@@ -426,6 +438,7 @@ collections:
           - label: "Reviews"
             name: "items"
             widget: "list"
+            collapsed: true
             label_singular: "Review"
             summary: "{{fields.n}} — {{fields.r}}"
             fields:
@@ -449,6 +462,7 @@ collections:
           - label: "Team Members"
             name: "items"
             widget: "list"
+            collapsed: true
             label_singular: "Person"
             summary: "{{fields.name}} — {{fields.role}}"
             fields:
@@ -461,6 +475,7 @@ collections:
               - label: "Links"
                 name: "links"
                 widget: "list"
+                collapsed: true
                 required: false
                 label_singular: "Link"
                 summary: "{{fields.label}}"
@@ -481,6 +496,7 @@ collections:
           - label: "Comparisons"
             name: "items"
             widget: "list"
+            collapsed: true
             label_singular: "Comparison"
             summary: "{{fields.t}}"
             fields:
@@ -504,6 +520,7 @@ collections:
           - label: "Breakdowns"
             name: "items"
             widget: "list"
+            collapsed: true
             label_singular: "Breakdown"
             summary: "{{fields.t}}"
             fields:
@@ -518,11 +535,12 @@ collections:
               - { label: "Final image (after)", name: "after", widget: "image", required: false }
               - { label: "YouTube video", name: "youtube", widget: "string", required: false, hint: "Optional. Paste a YouTube link — shown as a video player on the page." }
               - { label: "GIF or video file", name: "video", widget: "file", required: false, media_folder: "/assets/videos", public_folder: "/assets/videos", pattern: ['\.(mp4|webm|gif|MP4|WEBM|GIF)$', "Only an MP4, WebM or GIF file."], hint: "Optional. A GIF or short MP4/WebM turntable that loops silently. Keep it under ~8 MB." }
-              - { label: "Gallery images", name: "gallery", widget: "list", required: false, field: { label: "Image", name: "image", widget: "image" }, hint: "Optional. Extra renders and angles, shown 3 per row." }
+              - { label: "Gallery images", name: "gallery", widget: "list", collapsed: true, required: false, field: { label: "Image", name: "image", widget: "image" }, hint: "Optional. Extra renders and angles, shown 3 per row." }
               - { label: "Asset page ID", name: "assetId", widget: "string", required: false, hint: "Optional. The Portfolio piece ID (e.g. vbNvDE) to add a \"View full asset page\" button." }
               - label: "Pipeline steps"
                 name: "steps"
                 widget: "list"
+                collapsed: true
                 required: false
                 label_singular: "Step"
                 summary: "{{fields.t}}"
@@ -544,6 +562,7 @@ collections:
           - label: "Clients"
             name: "items"
             widget: "list"
+            collapsed: true
             label_singular: "Client"
             summary: "{{fields.n}}"
             fields:
@@ -563,6 +582,7 @@ collections:
           - label: "Posts"
             name: "items"
             widget: "list"
+            collapsed: true
             label_singular: "Post"
             summary: "{{fields.t}}"
             fields:
@@ -582,6 +602,7 @@ collections:
           - label: "Roles"
             name: "items"
             widget: "list"
+            collapsed: true
             label_singular: "Role"
             summary: "{{fields.t}}"
             fields:
@@ -602,6 +623,7 @@ collections:
           - label: "Images"
             name: "items"
             widget: "list"
+            collapsed: true
             label_singular: "Image"
             summary: "{{fields.alt}}"
             fields:
