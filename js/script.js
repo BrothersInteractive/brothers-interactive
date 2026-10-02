@@ -62,6 +62,7 @@ function siteMain() {
   function hideLens() {
     if (lensEl) lensEl.classList.remove("on");
     if (lensImg) lensImg.classList.remove("lens-active");
+    document.body.classList.remove("lens-on");   // brings the paintbrush cursor back
     lensImg = null;
   }
   function attachLens(img, canShow) {
@@ -74,13 +75,16 @@ function siteMain() {
     img.addEventListener("pointermove", function (e) {
       if (e.pointerType && e.pointerType !== "mouse") return;
       if ((canShow && !canShow()) || !img.naturalWidth) { hideLens(); return; }
-      // The visible picture inside the element (object-fit: contain leaves empty bands around it)
+      // The visible picture inside the element: object-fit: contain leaves empty bands around it, placed
+      // by object-position (the viewer sits pictures on the bottom edge, so read it, don't assume centre)
       var r = img.getBoundingClientRect();
       var ratio = img.naturalWidth / img.naturalHeight, w = r.width, h = w / ratio;
       if (h > r.height) { h = r.height; w = h * ratio; }
-      var x = e.clientX - (r.left + (r.width - w) / 2), y = e.clientY - (r.top + (r.height - h) / 2);
+      var pos = (getComputedStyle(img).objectPosition || "50% 50%").split(" ").map(function (v) { return /%$/.test(v) ? parseFloat(v) / 100 : 0.5; });
+      var x = e.clientX - (r.left + (r.width - w) * pos[0]), y = e.clientY - (r.top + (r.height - h) * (pos[1] == null ? 0.5 : pos[1]));
       if (x < 0 || y < 0 || x > w || y > h) { hideLens(); return; }
       var size = Math.round(Math.max(160, Math.min(512, Math.min(w, h) * 0.5)));
+      lensEl.style.setProperty("--r", (size / 2) + "px");   // the handle starts at the rim
       var src = img.currentSrc || img.src;
       if (lensEl.dataset.src !== src) { lensEl.style.backgroundImage = 'url("' + src.replace(/"/g, "%22") + '")'; lensEl.dataset.src = src; }
       lensEl.style.width = lensEl.style.height = size + "px";
@@ -88,6 +92,7 @@ function siteMain() {
       lensEl.style.backgroundPosition = (size / 2 - x * 2) + "px " + (size / 2 - y * 2) + "px";
       lensEl.style.transform = "translate(" + (e.clientX - size / 2) + "px, " + (e.clientY - size / 2) + "px)";
       lensEl.classList.add("on");
+      document.body.classList.add("lens-on");   // hide the paintbrush cursor: nothing in the middle of the lens
       if (lensImg !== img) { if (lensImg) lensImg.classList.remove("lens-active"); lensImg = img; img.classList.add("lens-active"); }
     });
     img.addEventListener("pointerleave", hideLens);
@@ -546,7 +551,8 @@ function siteMain() {
         // proportions — so the flight is one uniform scale, never a stretch/squash.
         var ratio = from.width / from.height, w = box.width, h = w / ratio;
         if (h > box.height) { h = box.height; w = h * ratio; }
-        var to = { top: box.top + (box.height - h) / 2, left: box.left + (box.width - w) / 2, width: w, height: h };
+        // In the wide viewer the picture sits on the bottom edge of its box (lines up with the side views)
+        var to = { top: box.top + (box.height - h) * lbVAlign(), left: box.left + (box.width - w) / 2, width: w, height: h };
         var clone = makeClone(srcImg, from, to, "cover");
         clone.getBoundingClientRect(); // commit the instant starting transform before animating
         clone.style.transition = "transform 0.42s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.25s";
@@ -572,7 +578,7 @@ function siteMain() {
     // start from the picture's visible (contained) rectangle, in the card's proportions: uniform shrink, no squash
     var ratio = to.width / to.height, w = box.width, h = w / ratio;
     if (h > box.height) { h = box.height; w = h * ratio; }
-    var from = { top: box.top + (box.height - h) / 2, left: box.left + (box.width - w) / 2, width: w, height: h };
+    var from = { top: box.top + (box.height - h) * lbVAlign(), left: box.left + (box.width - w) / 2, width: w, height: h };
     var clone = makeClone(lbImg, from, to, "cover");
     lbFigure.classList.add("hidden-for-flip");
     clone.getBoundingClientRect(); // commit the instant starting transform before animating
@@ -607,7 +613,9 @@ function siteMain() {
       lbImg.alt = p.t;
       lbImg.classList.add("loaded");
       lbCat.textContent = CAT[p.c];
+      lbCat.href = URLS.categoryPath(URLS.catSlug(p.c));
       lbTitle.textContent = p.t;
+      lbTitle.href = pieceUrl(p.id);
       lbLink.href = pieceUrl(p.id);
       lbLink.textContent = "Asset details & breakdown \u2192";
       setAddress(pieceUrl(p.id));
@@ -651,9 +659,9 @@ function siteMain() {
     var card = e.target.closest(".work-card");
     if (card && (e.key === "Enter" || e.key === " ")) { e.preventDefault(); visibleList = filtered(); openLightbox(+card.dataset.index); }
   });
-  /* Extra views of the open piece. With 5+ images on a wide screen the picture gets most of the
-     screen and the other views sit in the two bottom corners (first half left, second half right,
-     the one on show left out); otherwise they stay as a row under the picture. */
+  /* Extra views of the open piece. On wide screens the picture gets most of the screen and the other
+     views sit in the two bottom corners (first half left, second half right, the one on show left out),
+     their bottoms in line with the picture's; on small screens they stay as a row under the picture. */
   var lbVariants = [], lbActive = 0;
   var lbSideL = document.createElement("div"), lbSideR = document.createElement("div");
   lbSideL.className = "lb-side lb-side--left"; lbSideR.className = "lb-side lb-side--right";
@@ -662,8 +670,9 @@ function siteMain() {
   function lbThumb(i) {
     return '<button class="asset-thumb' + (i === lbActive ? ' active' : '') + '" data-idx="' + i + '" aria-label="View ' + (i + 1) + '"><img ' + imgAttrs(lbVariants[i], "120px") + ' alt="" loading="lazy" /></button>';
   }
+  function lbVAlign() { return lb.classList.contains("lb-split") ? 1 : 0.5; }
   function renderLbThumbs() {
-    var split = lbVariants.length >= 5 && wideViewer.matches;
+    var split = wideViewer.matches;   // every piece on wide screens, however many views it has
     lb.classList.toggle("lb-split", split);
     if (!split) {
       lbSideL.innerHTML = lbSideR.innerHTML = "";
@@ -675,7 +684,16 @@ function siteMain() {
     lbThumbs.innerHTML = "";
     lbSideL.innerHTML = others.slice(0, half).map(lbThumb).join("");
     lbSideR.innerHTML = others.slice(half).map(lbThumb).join("");
+    placeLbSides();
+    setTimeout(placeLbSides, 420);   // again once the viewer's opening zoom (0.35s) has settled
   }
+  // Stand the corner views on the picture's bottom line (measured, so it holds at any screen size)
+  function placeLbSides() {
+    if (!lb.classList.contains("lb-split")) return;
+    var bottom = Math.max(0, Math.round(lb.getBoundingClientRect().bottom - lbImg.getBoundingClientRect().bottom));
+    lbSideL.style.bottom = lbSideR.style.bottom = bottom + "px";
+  }
+  window.addEventListener("resize", function () { if (lb.classList.contains("open")) placeLbSides(); });
   if (wideViewer.addEventListener) wideViewer.addEventListener("change", function () { if (lb.classList.contains("open")) renderLbThumbs(); });
   lb.addEventListener("click", function (e) {
     var btn = e.target.closest(".asset-thumb");
