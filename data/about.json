@@ -70,7 +70,8 @@
         "Teams",
         "Zoom",
         "Google Meet"
-      ]
+      ],
+      "box": "workflow"
     },
     {
       "name": "Pipeline & delivery",
@@ -79,12 +80,14 @@
         "Perforce",
         "Google Drive",
         "Custom"
-      ]
+      ],
+      "box": "workflow"
     }
   ],
   "toolsNote": "These are our main tools, and we're always open to learning and adopting new software.",
   "statFoundedLabel": "Founded",
   "statGamesLabel": "Titles shipped",
   "statProjectsLabel": "Published pieces",
-  "statYearsLabel": "Years in production"
+  "statYearsLabel": "Years in production",
+  "workflowTitle": "How we work with your team"
 }

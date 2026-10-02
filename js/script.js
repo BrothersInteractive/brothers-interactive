@@ -285,13 +285,23 @@ function siteMain() {
     setText(".pipeline-title", ABOUT.toolsTitle);
     var aTools = $("#aboutTools");
     var groups = (ABOUT.toolGroups || []).filter(function (g) { return g && g.name; });
-    if (aTools && groups.length) {
-      aTools.innerHTML = groups.map(function (g) {
+    // Groups marked "Second box" in /admin (e.g. Communication, Pipeline & delivery) get their own box under the tools
+    var groupHtml = function (list) {
+      return list.map(function (g) {
         return '<div class="tool-group"><dt>' + esc(g.name) + '</dt><dd><ul class="client-list tools-list">' +
           (g.tools || []).map(function (t) { return "<li>" + esc(t) + "</li>"; }).join("") + "</ul></dd></div>";
       }).join("");
-    }
+    };
+    var mainGroups = groups.filter(function (g) { return g.box !== "workflow"; });
+    var workGroups = groups.filter(function (g) { return g.box === "workflow"; });
+    if (aTools && groups.length) aTools.innerHTML = groupHtml(mainGroups);
     setText(".tools-note", ABOUT.toolsNote);
+    if (aTools && workGroups.length) {
+      var box2 = document.createElement("div");
+      box2.className = "pipeline pipeline--work";
+      box2.innerHTML = '<h3 class="pipeline-title">' + esc(ABOUT.workflowTitle || "How we work with your team") + '</h3><dl class="tool-groups">' + groupHtml(workGroups) + "</dl>";
+      aTools.closest(".pipeline").insertAdjacentElement("afterend", box2);
+    }
   }
 
   /* Homepage text: one file per section, data/sections/<id>.json, edited in /admin inside that section's

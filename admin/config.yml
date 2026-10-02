@@ -195,7 +195,17 @@ collections:
             fields:
               - { label: "Group name", name: "name", widget: "string", hint: "e.g. \"Sculpting\"" }
               - { label: "Tools", name: "tools", widget: "list", hint: "One tool per item, e.g. ZBrush." }
+              - label: "Box"
+                name: "box"
+                widget: "select"
+                required: false
+                default: "tools"
+                hint: "Which box this group appears in on the website."
+                options:
+                  - { label: "Tools box (software we use)", value: "tools" }
+                  - { label: "Second box (how we work with you: communication, pipeline)", value: "workflow" }
           - { label: "Note under the tools", name: "toolsNote", widget: "text", required: false }
+          - { label: "Second box heading", name: "workflowTitle", widget: "string", required: false, hint: "Heading of the box for groups set to Second box, e.g. How we work with your team." }
 
   - name: "portfolio"
     label: "Portfolio"
