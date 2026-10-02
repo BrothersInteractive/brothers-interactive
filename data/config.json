@@ -1,12 +1,6 @@
 {
-  "availability": "Taking new projects...",
-  "availabilityNote": "Next start: on request",
-  "bookingUrl": "",
-  "plausibleDomain": "",
-  "showreelYouTubeId": "",
-  "deckPdf": "/assets/brothers-interactive-capabilities.pdf",
   "email": "business@brothersinteractive.com",
-  "address": "Mansarovar, Jaipur 302017, Rajasthan, India",
+  "address": "Mansarovar, Jaipur 302020, Rajasthan, India",
   "social": [
     {
       "label": "ArtStation",
@@ -24,5 +18,11 @@
       "label": "Facebook",
       "url": "https://www.facebook.com/Brothersinteractive"
     }
-  ]
+  ],
+  "availability": "Taking new projects...",
+  "availabilityNote": "Next start: on request",
+  "bookingUrl": "",
+  "deckPdf": "/assets/brothers-interactive-capabilities.pdf",
+  "showreelYouTubeId": "",
+  "plausibleDomain": ""
 }
