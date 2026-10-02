@@ -1285,28 +1285,47 @@ body.art-cursor-on input:not([type="range"]):not([type="checkbox"]), body.art-cu
 body.no-scroll .work-card img, body.no-scroll .work-card::before { animation-play-state: paused; }
 .flip-clone { box-shadow: 0 30px 60px rgba(0,0,0,0.55); backface-visibility: hidden; }
 
-/* Artwork viewer. Small screens: picture with a row of views and the buttons underneath.
-   Wide screens (.lb-split, every piece): the picture fills the screen above one row of three buttons,
-   sits on the bottom edge of its box, and the other views stand in the two bottom corners with their
-   bottoms on that same line (24px padding + 52px button row + 14px gap). */
+/* Artwork viewer. js (fitLbImg) sizes the picture element to the artwork itself, so the theme outline
+   hugs it. Small screens: picture, a row of views, then the buttons. Wide screens (.lb-split, every
+   piece): the picture sits above one row of buttons with clear space above and below it (room to reach
+   the buttons while using the lens), and the other views stand in the bottom corners on the picture's
+   bottom line; the one nearest the picture on each side is double size. */
 .lightbox-figure { max-width: 94vw; max-height: 96vh; }
-.lightbox-figure img { width: min(90vw, 1500px); height: min(70vh, 1000px); }
+.lightbox-figure img { width: min(90vw, 1500px); height: min(66vh, 1000px); }
+.lightbox-figure img, .lightbox-figure .flip-clone {
+  border: 2px solid rgba(var(--accent-rgb), 0.7);
+  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.45), 0 0 26px rgba(var(--accent-rgb), 0.22);
+}
+.lightbox-figure figcaption { gap: 10px 28px; }
 .lb-btn { padding: 10px 18px; font-size: 0.72rem; letter-spacing: 0.12em; }
 .lb-btn.lightbox-cat { color: var(--accent-2); }
 .lb-btn.lightbox-link, .lb-btn.lightbox-link:hover { color: var(--on-accent); }
-.lb-btn.lightbox-title { font-size: 0.95rem; font-weight: 700; color: var(--text-strong); border-color: rgba(var(--accent-rgb), 0.55); }
-.lb-btn.lightbox-title:hover { border-color: var(--accent); box-shadow: var(--glow); }
+.lightbox-title { color: var(--text-strong); }
 .lb-side { display: none; }
+
+/* Close and arrow buttons follow the selected theme */
+.lightbox-close {
+  top: 16px; right: 18px; width: 60px; height: 60px; font-size: 2.9rem; z-index: 2;
+  color: var(--accent); background: rgba(var(--bg-rgb), 0.7); border: 1px solid rgba(var(--accent-rgb), 0.45);
+}
+.lightbox-close:hover { color: var(--on-accent); background: var(--accent); border-color: var(--accent); box-shadow: var(--glow); }
+.lightbox-nav { background: rgba(var(--bg-rgb), 0.75); border-color: rgba(var(--accent-rgb), 0.45); color: var(--accent); z-index: 2; }
+.lightbox-nav:hover { background: var(--accent); color: var(--on-accent); border-color: var(--accent); box-shadow: var(--glow); }
+
 @media (min-width: 1001px) {
-  .lightbox.lb-split .lightbox-figure { width: 76vw; height: calc(100vh - 48px); max-width: none; max-height: none; justify-content: flex-end; gap: 14px; }
-  .lightbox.lb-split .lightbox-figure img { flex: 1 1 0; min-height: 0; width: 100%; height: auto; object-position: 50% 100%; }
+  .lightbox.lb-split .lightbox-figure {
+    width: 68vw; height: calc(100vh - 48px); max-width: none; max-height: none;
+    padding-top: 0; gap: 6vh; justify-content: center; box-sizing: border-box;
+  }
+  .lightbox.lb-split .lightbox-figure img { flex: none; }
   .lightbox.lb-split .lightbox-thumbs { display: none; }
-  .lightbox.lb-split .lightbox-figure figcaption { flex: none; width: 100%; min-height: 52px; justify-content: space-between; flex-wrap: nowrap; }
-  .lightbox.lb-split .lb-side { display: flex; position: absolute; bottom: calc(24px + 52px + 14px); width: calc(12vw - 30px); flex-wrap: wrap-reverse; gap: 10px; }
+  .lightbox.lb-split .lightbox-figure figcaption { flex: none; min-height: 52px; justify-content: center; flex-wrap: nowrap; }
+  .lightbox.lb-split .lb-side { display: flex; position: absolute; bottom: 120px; width: calc(16vw - 44px); flex-wrap: wrap-reverse; align-items: flex-start; gap: 10px; }
   .lb-side--left { left: 24px; justify-content: flex-start; }
   .lb-side--right { right: 24px; justify-content: flex-end; }
   .lb-side:empty { display: none !important; }
-  .lb-side .asset-thumb { width: 84px; height: 84px; }
+  .lb-side .asset-thumb { width: min(84px, 4.2vw); height: min(84px, 4.2vw); }
+  .lb-side .asset-thumb.lb-near { width: min(168px, 8.4vw); height: min(168px, 8.4vw); }
 }
 
 /* Magnifying lens over portfolio pictures (js: attachLens). Hides the normal cursor while it shows. */
@@ -1319,7 +1338,7 @@ body.no-scroll .work-card img, body.no-scroll .work-card::before { animation-pla
 }
 .zoom-lens.on { opacity: 1; }
 .zoom-lens::after {
-  content: ""; position: absolute; left: 50%; top: 50%; width: max(14px, calc(var(--r, 150px) * 0.13)); height: calc(var(--r, 150px) * 0.62);
+  content: ""; position: absolute; left: 50%; top: 50%; width: max(14px, calc(var(--r, 150px) * 0.13)); height: calc(var(--r, 150px) * 0.3);
   border-radius: 0 0 999px 999px; transform-origin: 50% 0;
   transform: translateX(-50%) rotate(-32deg) translateY(calc(var(--r, 150px) + 1px));
   background: linear-gradient(90deg, rgba(var(--accent-rgb), 0.55), var(--accent) 45%, rgba(var(--accent-rgb), 0.75));

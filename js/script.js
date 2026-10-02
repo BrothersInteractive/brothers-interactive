@@ -615,7 +615,6 @@ function siteMain() {
       lbCat.textContent = CAT[p.c];
       lbCat.href = URLS.categoryPath(URLS.catSlug(p.c));
       lbTitle.textContent = p.t;
-      lbTitle.href = pieceUrl(p.id);
       lbLink.href = pieceUrl(p.id);
       lbLink.textContent = "Asset details & breakdown \u2192";
       setAddress(pieceUrl(p.id));
@@ -667,9 +666,30 @@ function siteMain() {
   lbSideL.className = "lb-side lb-side--left"; lbSideR.className = "lb-side lb-side--right";
   lb.appendChild(lbSideL); lb.appendChild(lbSideR);
   var wideViewer = window.matchMedia ? window.matchMedia("(min-width: 1001px)") : { matches: true };
-  function lbThumb(i) {
-    return '<button class="asset-thumb' + (i === lbActive ? ' active' : '') + '" data-idx="' + i + '" aria-label="View ' + (i + 1) + '"><img ' + imgAttrs(lbVariants[i], "120px") + ' alt="" loading="lazy" /></button>';
+  // near = the view right next to the picture on its side, shown at double size
+  function lbThumb(i, near) {
+    return '<button class="asset-thumb' + (i === lbActive ? ' active' : '') + (near ? ' lb-near' : '') + '" data-idx="' + i + '" aria-label="View ' + (i + 1) + '"><img ' + imgAttrs(lbVariants[i], near ? "240px" : "120px") + ' alt="" loading="lazy" /></button>';
   }
+  /* Size the picture element to the picture itself (largest fit inside the space the layout leaves it),
+     so the theme-coloured outline hugs the artwork and there is clear space above it and around the
+     buttons below, for people using the lens. */
+  function fitLbImg() {
+    if (!lbImg.naturalWidth) return;
+    var fig = lbFigure, cs = getComputedStyle(fig), boxW, boxH;
+    if (lb.classList.contains("lb-split")) {
+      var cap = $("figcaption", fig);
+      boxW = fig.clientWidth;
+      // leave a band of clear space above the picture as tall as the gap below it
+      boxH = fig.clientHeight - parseFloat(cs.paddingTop) - (cap ? cap.offsetHeight : 0) - 2 * parseFloat(cs.rowGap || cs.gap || 0);
+    } else {
+      boxW = Math.min(window.innerWidth * 0.9, 1500);
+      boxH = Math.min(window.innerHeight * 0.66, 1000);
+    }
+    var ratio = lbImg.naturalWidth / lbImg.naturalHeight, w = boxW, h = w / ratio;
+    if (h > boxH) { h = boxH; w = h * ratio; }
+    lbImg.style.width = Math.floor(w) + "px"; lbImg.style.height = Math.floor(h) + "px";
+  }
+  lbImg.addEventListener("load", function () { fitLbImg(); placeLbSides(); });
   function lbVAlign() { return lb.classList.contains("lb-split") ? 1 : 0.5; }
   function renderLbThumbs() {
     var split = wideViewer.matches;   // every piece on wide screens, however many views it has
@@ -677,13 +697,16 @@ function siteMain() {
     if (!split) {
       lbSideL.innerHTML = lbSideR.innerHTML = "";
       lbThumbs.innerHTML = lbVariants.length > 1 ? lbVariants.map(function (u, i) { return lbThumb(i); }).join("") : "";
+      fitLbImg();
       return;
     }
     var others = lbVariants.map(function (u, i) { return i; }).filter(function (i) { return i !== lbActive; });
-    var half = Math.ceil(others.length / 2);
+    var half = Math.ceil(others.length / 2), left = others.slice(0, half), right = others.slice(half);
     lbThumbs.innerHTML = "";
-    lbSideL.innerHTML = others.slice(0, half).map(lbThumb).join("");
-    lbSideR.innerHTML = others.slice(half).map(lbThumb).join("");
+    // The view nearest the picture is the last one on the left and the first one on the right
+    lbSideL.innerHTML = left.map(function (i, k) { return lbThumb(i, k === left.length - 1); }).join("");
+    lbSideR.innerHTML = right.map(function (i, k) { return lbThumb(i, k === 0); }).join("");
+    fitLbImg();
     placeLbSides();
     setTimeout(placeLbSides, 420);   // again once the viewer's opening zoom (0.35s) has settled
   }
@@ -693,7 +716,7 @@ function siteMain() {
     var bottom = Math.max(0, Math.round(lb.getBoundingClientRect().bottom - lbImg.getBoundingClientRect().bottom));
     lbSideL.style.bottom = lbSideR.style.bottom = bottom + "px";
   }
-  window.addEventListener("resize", function () { if (lb.classList.contains("open")) placeLbSides(); });
+  window.addEventListener("resize", function () { if (lb.classList.contains("open")) { fitLbImg(); placeLbSides(); } });
   if (wideViewer.addEventListener) wideViewer.addEventListener("change", function () { if (lb.classList.contains("open")) renderLbThumbs(); });
   lb.addEventListener("click", function (e) {
     var btn = e.target.closest(".asset-thumb");
