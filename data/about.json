@@ -1,0 +1,26 @@
+{
+  "eyebrow": "// About",
+  "titleStart": "Quality and",
+  "titleAccent": "timeline",
+  "titleEnd": ", always.",
+  "paragraphs": [
+    "Brothers Interactive is a team of 3D artists passionate about bringing game characters to life. Since 2019 we've worked as an extension of studios' own art teams, from small indie projects to large AAA productions.",
+    "We know outsourcing art should make production easier, not riskier. So we take characters, creatures and props from the first sculpt to a polished, engine-ready asset, matching your art direction so closely that our work sits naturally beside your in-house art.",
+    "Realistic or stylized, hero character or background prop, every piece gets the same attention to detail, clear communication at every stage and delivery on the date we agree, because we believe quality and timeline should always go together."
+  ],
+  "primaryBtnLabel": "Business Inquiry",
+  "secondaryBtnLabel": "Meet the team",
+  "foundedYear": 2019,
+  "statFoundedLabel": "Founded",
+  "statGamesLabel": "Titles shipped",
+  "statProjectsLabel": "Published pieces",
+  "statYearsLabel": "Years in production",
+  "toolsTitle": "Tools we work in",
+  "toolGroups": [
+    { "name": "Modeling", "tools": ["Blender", "Maya", "3ds Max"] },
+    { "name": "Sculpting", "tools": ["ZBrush", "Blender"] },
+    { "name": "Texturing", "tools": ["Substance 3D Painter", "Photoshop"] },
+    { "name": "Game Engine", "tools": ["Unreal Engine", "Unity"] }
+  ],
+  "toolsNote": "These are our main tools, and we're always open to learning and adopting new software."
+}

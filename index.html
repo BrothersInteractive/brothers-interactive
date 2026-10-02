@@ -50,7 +50,7 @@
   <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin />
   <link rel="preconnect" href="https://www.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;900&family=Rajdhani:wght@400;500;600;700&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="css/style.css?v=20261001cu1" />
+  <link rel="stylesheet" href="css/style.css?v=20261002lz1" />
   <script>try { var q = (location.search.match(/[?&]theme=([a-z]+)/) || [])[1]; var t = q || localStorage.getItem("bi-theme"); if (t && t !== "midnight" && "arctic ocean steel aurora desert".split(" ").indexOf(t) !== -1) document.documentElement.setAttribute("data-theme", t); } catch (e) {}</script>
 </head>
 <body>
@@ -190,8 +190,9 @@
       <div class="container about-grid">
         <div class="about-copy reveal">
           <p class="eyebrow">// About</p>
-          <h2 class="section-title">Quality and <span class="accent">timeline</span>, always.</h2>
-          <p>
+          <h2 class="section-title" id="aboutTitle">Quality and <span class="accent">timeline</span>, always.</h2>
+          <div class="about-text" id="aboutText">
+            <p>
             Brothers Interactive is a team of 3D artists passionate about bringing game characters to life. Since 2019
             we've worked as an extension of studios' own art teams, from small indie projects to large AAA productions.
           </p>
@@ -205,22 +206,23 @@
             clear communication at every stage and delivery on the date we agree, because we believe quality and
             timeline should always go together.
           </p>
+          </div>
           <div class="hero-actions">
-            <a href="mailto:business@brothersinteractive.com" class="btn btn--primary">Business Inquiry</a>
-            <a href="#team" class="btn btn--ghost">Meet the team</a>
+            <a href="mailto:business@brothersinteractive.com" class="btn btn--primary" id="aboutPrimaryBtn">Business Inquiry</a>
+            <a href="#team" class="btn btn--ghost" id="aboutSecondaryBtn">Meet the team</a>
           </div>
         </div>
 
         <div class="about-panel reveal">
           <ul class="about-stats">
-            <li><span class="stat-num" data-count="2019">0</span><span class="stat-label">Founded</span></li>
-            <li><span class="stat-num" data-stat="games" data-suffix="+">0</span><span class="stat-label">Titles shipped</span></li>
-            <li><span class="stat-num" data-stat="projects" data-suffix="+">0</span><span class="stat-label">Published pieces</span></li>
-            <li><span class="stat-num" data-stat="years" data-suffix="+">0</span><span class="stat-label">Years in production</span></li>
+            <li><span class="stat-num" id="aboutFounded" data-count="2019">0</span><span class="stat-label" id="aboutStatFounded">Founded</span></li>
+            <li><span class="stat-num" data-stat="games" data-suffix="+">0</span><span class="stat-label" id="aboutStatGames">Titles shipped</span></li>
+            <li><span class="stat-num" data-stat="projects" data-suffix="+">0</span><span class="stat-label" id="aboutStatProjects">Published pieces</span></li>
+            <li><span class="stat-num" data-stat="years" data-suffix="+">0</span><span class="stat-label" id="aboutStatYears">Years in production</span></li>
           </ul>
           <div class="pipeline">
             <h3 class="pipeline-title">Tools we work in</h3>
-            <dl class="tool-groups">
+            <dl class="tool-groups" id="aboutTools">
               <div class="tool-group"><dt>Modeling</dt><dd><ul class="client-list tools-list"><li>Blender</li><li>Maya</li><li>3ds Max</li></ul></dd></div>
               <div class="tool-group"><dt>Sculpting</dt><dd><ul class="client-list tools-list"><li>ZBrush</li><li>Blender</li></ul></dd></div>
               <div class="tool-group"><dt>Texturing</dt><dd><ul class="client-list tools-list"><li>Substance 3D Painter</li><li>Photoshop</li></ul></dd></div>
@@ -506,7 +508,7 @@
             this is the place.
           </p>
           <div class="hero-actions">
-            <a href="#" class="btn btn--primary apply-form-btn" id="applyFormBtn" target="_blank" rel="noopener">Apply now</a>
+            <a href="#" class="btn btn--primary apply-form-btn btn--blink" id="applyFormBtn" target="_blank" rel="noopener">Join Us</a>
             <span class="apply-soon" id="applyFormSoon" hidden>Applications opening soon</span>
           </div>
         </div>
@@ -607,9 +609,9 @@
     </div>
   </div>
 
-  <script src="js/urls.js?v=20261001cu1"></script>
-  <script src="js/data.js?v=20261001cu1"></script>
-  <script src="js/script.js?v=20261001cu1"></script>
+  <script src="js/urls.js?v=20261002lz1"></script>
+  <script src="js/data.js?v=20261002lz1"></script>
+  <script src="js/script.js?v=20261002lz1"></script>
   <!--/FOOTER-->
 </body>
 </html>

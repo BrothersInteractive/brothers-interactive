@@ -55,6 +55,45 @@ function siteMain() {
     var t = u.replace(THUMB_RE, "assets/img/thumbs/$1/$2.webp");
     return 'src="' + t + '" srcset="' + t + ' 640w, ' + u + ' 1280w" sizes="' + (sizes || "33vw") + '" data-full="' + u + '"';
   }
+  /* Magnifying lens: over a portfolio picture (mouse only, not touch) the cursor becomes a round
+     lens showing that spot at 200%, taken from the full-size image. Up to 512px across, smaller on
+     smaller pictures. One lens element is shared by every picture that has attachLens(). */
+  var lensEl = null, lensImg = null;
+  function hideLens() {
+    if (lensEl) lensEl.classList.remove("on");
+    if (lensImg) lensImg.classList.remove("lens-active");
+    lensImg = null;
+  }
+  function attachLens(img, canShow) {
+    if (!img || !(window.matchMedia && window.matchMedia("(hover: hover) and (pointer: fine)").matches)) return;
+    if (!lensEl) {
+      lensEl = document.createElement("div");
+      lensEl.className = "zoom-lens"; lensEl.setAttribute("aria-hidden", "true");
+      document.body.appendChild(lensEl);
+    }
+    img.addEventListener("pointermove", function (e) {
+      if (e.pointerType && e.pointerType !== "mouse") return;
+      if ((canShow && !canShow()) || !img.naturalWidth) { hideLens(); return; }
+      // The visible picture inside the element (object-fit: contain leaves empty bands around it)
+      var r = img.getBoundingClientRect();
+      var ratio = img.naturalWidth / img.naturalHeight, w = r.width, h = w / ratio;
+      if (h > r.height) { h = r.height; w = h * ratio; }
+      var x = e.clientX - (r.left + (r.width - w) / 2), y = e.clientY - (r.top + (r.height - h) / 2);
+      if (x < 0 || y < 0 || x > w || y > h) { hideLens(); return; }
+      var size = Math.round(Math.max(160, Math.min(512, Math.min(w, h) * 0.5)));
+      var src = img.currentSrc || img.src;
+      if (lensEl.dataset.src !== src) { lensEl.style.backgroundImage = 'url("' + src.replace(/"/g, "%22") + '")'; lensEl.dataset.src = src; }
+      lensEl.style.width = lensEl.style.height = size + "px";
+      lensEl.style.backgroundSize = (w * 2) + "px " + (h * 2) + "px";
+      lensEl.style.backgroundPosition = (size / 2 - x * 2) + "px " + (size / 2 - y * 2) + "px";
+      lensEl.style.transform = "translate(" + (e.clientX - size / 2) + "px, " + (e.clientY - size / 2) + "px)";
+      lensEl.classList.add("on");
+      if (lensImg !== img) { if (lensImg) lensImg.classList.remove("lens-active"); lensImg = img; img.classList.add("lens-active"); }
+    });
+    img.addEventListener("pointerleave", hideLens);
+  }
+  window.addEventListener("scroll", hideLens, { passive: true });
+
   document.addEventListener("error", function (e) {
     var img = e.target;
     if (img && img.tagName === "IMG" && img.dataset.full && !img.dataset.fellBack) {
@@ -103,6 +142,40 @@ function siteMain() {
   var TEAM = loadList("team", []);
   var HERO_SHOWCASE = loadList("hero-showcase", BI.HERO_SHOWCASE);
 
+  /* About section (homepage #about) — text, stat labels and tools from data/about.json
+     (/admin > About). The words already in index.html stay as the fallback if the file is missing. */
+  var ABOUT = loadJSON("about");
+  var FOUNDED = 2019;
+  var aboutEl = $("#about");
+  if (aboutEl && ABOUT && typeof ABOUT === "object") {
+    var setText = function (sel, v) { var el = $(sel, aboutEl); if (el && v) el.textContent = v; };
+    setText(".eyebrow", ABOUT.eyebrow);
+    var aTitle = $("#aboutTitle");
+    if (aTitle && (ABOUT.titleStart || ABOUT.titleAccent)) {
+      aTitle.innerHTML = esc(ABOUT.titleStart || "") + (ABOUT.titleAccent ? ' <span class="accent">' + esc(ABOUT.titleAccent) + '</span>' : "") + esc(ABOUT.titleEnd || "");
+    }
+    var aText = $("#aboutText");
+    var paras = (ABOUT.paragraphs || []).filter(function (t) { return String(t || "").trim(); });
+    if (aText && paras.length) aText.innerHTML = paras.map(function (t) { return "<p>" + esc(String(t).trim()) + "</p>"; }).join("");
+    setText("#aboutPrimaryBtn", ABOUT.primaryBtnLabel);
+    setText("#aboutSecondaryBtn", ABOUT.secondaryBtnLabel);
+    if (+ABOUT.foundedYear > 1900) { FOUNDED = +ABOUT.foundedYear; var fy = $("#aboutFounded"); if (fy) fy.setAttribute("data-count", FOUNDED); }
+    setText("#aboutStatFounded", ABOUT.statFoundedLabel);
+    setText("#aboutStatGames", ABOUT.statGamesLabel);
+    setText("#aboutStatProjects", ABOUT.statProjectsLabel);
+    setText("#aboutStatYears", ABOUT.statYearsLabel);
+    setText(".pipeline-title", ABOUT.toolsTitle);
+    var aTools = $("#aboutTools");
+    var groups = (ABOUT.toolGroups || []).filter(function (g) { return g && g.name; });
+    if (aTools && groups.length) {
+      aTools.innerHTML = groups.map(function (g) {
+        return '<div class="tool-group"><dt>' + esc(g.name) + '</dt><dd><ul class="client-list tools-list">' +
+          (g.tools || []).map(function (t) { return "<li>" + esc(t) + "</li>"; }).join("") + "</ul></dd></div>";
+      }).join("");
+    }
+    setText(".tools-note", ABOUT.toolsNote);
+  }
+
   /* Stat counters that must track real data instead of a hand-typed number
      (data-stat="projects"/"games"/"clients"/"years" on any .stat-num, any page).
      Runs before the reveal/counter-animation wiring below picks up data-count. */
@@ -111,7 +184,7 @@ function siteMain() {
     var val = kind === "projects" ? PROJECTS.length
       : kind === "games" ? GAMES.length
       : kind === "clients" ? CLIENTS.length
-      : kind === "years" ? (new Date().getFullYear() - 2019)
+      : kind === "years" ? (new Date().getFullYear() - FOUNDED)
       : null;
     if (val != null) el.setAttribute("data-count", val);
   });
@@ -538,11 +611,11 @@ function siteMain() {
       lbLink.href = pieceUrl(p.id);
       lbLink.textContent = "Asset details & breakdown \u2192";
       setAddress(pieceUrl(p.id));
-      var variants = [p.i].concat(p.imgs || []);
-      lbThumbs.innerHTML = variants.length > 1 ? variants.map(function (u, i) {
-        return '<button class="asset-thumb' + (i === 0 ? ' active' : '') + '" data-src="' + u + '" aria-label="View ' + (i + 1) + '"><img ' + imgAttrs(u, "120px") + ' alt="" loading="lazy" /></button>';
-      }).join("") : "";
+      lbVariants = [p.i].concat(p.imgs || []);
+      lbActive = 0;
+      renderLbThumbs();
     };
+    hideLens();
     if (!dir || reduceMotion) { swap(); return; }
     lbImg.className = "loaded " + (dir > 0 ? "slide-out-left" : "slide-out-right");
     setTimeout(function () {
@@ -554,6 +627,7 @@ function siteMain() {
   function closeLightbox() {
     if (!lb.classList.contains("open")) return;
     if (addressBeforeLb !== null) { setAddress(addressBeforeLb); addressBeforeLb = null; }
+    hideLens();
     var origin = lbOrigin; lbOrigin = null;
     flipBack(origin, function () {
       lb.classList.remove("open");
@@ -577,16 +651,48 @@ function siteMain() {
     var card = e.target.closest(".work-card");
     if (card && (e.key === "Enter" || e.key === " ")) { e.preventDefault(); visibleList = filtered(); openLightbox(+card.dataset.index); }
   });
-  lbThumbs.addEventListener("click", function (e) {
+  /* Extra views of the open piece. With 5+ images on a wide screen the picture gets most of the
+     screen and the other views sit in the two bottom corners (first half left, second half right,
+     the one on show left out); otherwise they stay as a row under the picture. */
+  var lbVariants = [], lbActive = 0;
+  var lbSideL = document.createElement("div"), lbSideR = document.createElement("div");
+  lbSideL.className = "lb-side lb-side--left"; lbSideR.className = "lb-side lb-side--right";
+  lb.appendChild(lbSideL); lb.appendChild(lbSideR);
+  var wideViewer = window.matchMedia ? window.matchMedia("(min-width: 1001px)") : { matches: true };
+  function lbThumb(i) {
+    return '<button class="asset-thumb' + (i === lbActive ? ' active' : '') + '" data-idx="' + i + '" aria-label="View ' + (i + 1) + '"><img ' + imgAttrs(lbVariants[i], "120px") + ' alt="" loading="lazy" /></button>';
+  }
+  function renderLbThumbs() {
+    var split = lbVariants.length >= 5 && wideViewer.matches;
+    lb.classList.toggle("lb-split", split);
+    if (!split) {
+      lbSideL.innerHTML = lbSideR.innerHTML = "";
+      lbThumbs.innerHTML = lbVariants.length > 1 ? lbVariants.map(function (u, i) { return lbThumb(i); }).join("") : "";
+      return;
+    }
+    var others = lbVariants.map(function (u, i) { return i; }).filter(function (i) { return i !== lbActive; });
+    var half = Math.ceil(others.length / 2);
+    lbThumbs.innerHTML = "";
+    lbSideL.innerHTML = others.slice(0, half).map(lbThumb).join("");
+    lbSideR.innerHTML = others.slice(half).map(lbThumb).join("");
+  }
+  if (wideViewer.addEventListener) wideViewer.addEventListener("change", function () { if (lb.classList.contains("open")) renderLbThumbs(); });
+  lb.addEventListener("click", function (e) {
     var btn = e.target.closest(".asset-thumb");
-    if (!btn || btn.classList.contains("active")) return;
-    $$(".asset-thumb", lbThumbs).forEach(function (b) { b.classList.toggle("active", b === btn); });
+    if (!btn) return;
+    var idx = +btn.dataset.idx;
+    if (idx === lbActive || !lbVariants[idx]) return;
+    lbActive = idx;
+    hideLens();
     lbImg.classList.add("fading");
     setTimeout(function () {
-      lbImg.src = btn.dataset.src;
+      lbImg.src = lbVariants[idx];
       lbImg.classList.remove("fading");
+      renderLbThumbs();
     }, 160);
   });
+  // Magnifying lens on the big picture (only once the zoom-in animation has handed over)
+  attachLens(lbImg, function () { return lb.classList.contains("open") && !lbFigure.classList.contains("hidden-for-flip") && !lbImg.classList.contains("fading"); });
   $("#lightboxClose").addEventListener("click", closeLightbox);
   $("#lightboxPrev").addEventListener("click", function () { stepLightbox(-1); });
   $("#lightboxNext").addEventListener("click", function () { stepLightbox(1); });
@@ -1262,6 +1368,7 @@ function siteMain() {
     $("#assetDesc").innerHTML = paras.length ? paras.map(function (t) { return '<p>' + esc(t).replace(/\n/g, '<br>') + '</p>'; }).join("") : '<p>Breakdown and technical details available on request.</p>';
     var all = [P.i].concat(P.imgs || []);
     $("#assetMain").src = all[0]; $("#assetMain").alt = P.t;
+    attachLens($("#assetMain"));
     $("#assetThumbs").innerHTML = all.map(function (u, i) { return '<button class="asset-thumb' + (i ? '' : ' active') + '" data-src="' + u + '" aria-label="View ' + (i + 1) + '"><img ' + imgAttrs(u, "120px") + ' alt="' + esc(P.t) + ' view ' + (i + 1) + '" loading="lazy" /></button>'; }).join("");
     $("#assetThumbs").addEventListener("click", function (e) {
       var b = e.target.closest(".asset-thumb"); if (!b) return;
@@ -1711,6 +1818,7 @@ function siteMain() {
    ------------------------------------------------------------------ */
 (function () {
   var names = ["portfolio", "games", "cases", "posts", "testimonials", "roles", "pairs", "clients", "press", "team", "hero-showcase", "config", "hero", "breakdowns", "careers-hero"];
+  if (document.getElementById("about")) names.push("about");
   if (document.getElementById("categoryGrid")) names.push("category-tiles");
   var store = window.__BI_JSON = {};
   if (!window.fetch || !window.Promise) { siteMain(); return; }

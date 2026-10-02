@@ -43,6 +43,38 @@ collections:
           - { label: "Stat 3 — suffix", name: "stat3Suffix", widget: "string", required: false, hint: "Number is automatic (counts the Games collection)." }
           - { label: "Stat 3 — label", name: "stat3Label", widget: "string" }
 
+  - name: "about"
+    label: "About"
+    files:
+      - name: "about"
+        label: "About Section"
+        file: "data/about.json"
+        format: "json"
+        description: "The homepage About section: heading, text, the two buttons, the four stat labels and the tools list. The Titles shipped and Published pieces numbers count your Games and Portfolio automatically."
+        fields:
+          - { label: "Small line above the heading", name: "eyebrow", widget: "string", required: false, hint: "e.g. \"// About\"" }
+          - { label: "Heading — start", name: "titleStart", widget: "string", hint: "e.g. \"Quality and\"" }
+          - { label: "Heading — coloured word", name: "titleAccent", widget: "string", required: false, hint: "e.g. \"timeline\"" }
+          - { label: "Heading — end", name: "titleEnd", widget: "string", required: false, hint: "e.g. \", always.\" (start with a comma or a space)" }
+          - { label: "Paragraphs", name: "paragraphs", widget: "list", label_singular: "Paragraph", field: { label: "Paragraph", name: "paragraph", widget: "text" }, hint: "Each item is one paragraph. Drag to reorder." }
+          - { label: "Main button label", name: "primaryBtnLabel", widget: "string", hint: "Opens an email to your business address." }
+          - { label: "Second button label", name: "secondaryBtnLabel", widget: "string", hint: "Scrolls to the Team section." }
+          - { label: "Founded (year)", name: "foundedYear", widget: "number", value_type: "int", hint: "Shown in the first stat. Years in production is worked out from it." }
+          - { label: "Stat label — Founded", name: "statFoundedLabel", widget: "string" }
+          - { label: "Stat label — titles shipped", name: "statGamesLabel", widget: "string", hint: "The number counts the Games collection." }
+          - { label: "Stat label — published pieces", name: "statProjectsLabel", widget: "string", hint: "The number counts the Portfolio collection." }
+          - { label: "Stat label — years in production", name: "statYearsLabel", widget: "string" }
+          - { label: "Tools heading", name: "toolsTitle", widget: "string" }
+          - label: "Tool groups"
+            name: "toolGroups"
+            widget: "list"
+            label_singular: "Tool group"
+            summary: "{{fields.name}}"
+            fields:
+              - { label: "Group name", name: "name", widget: "string", hint: "e.g. \"Sculpting\"" }
+              - { label: "Tools", name: "tools", widget: "list", hint: "One tool per item, e.g. ZBrush." }
+          - { label: "Note under the tools", name: "toolsNote", widget: "text", required: false }
+
   - name: "hero-showcase"
     label: "Hero Showcase Images"
     label_singular: "Showcase Image"
@@ -430,4 +462,4 @@ collections:
           - { label: "Capabilities deck (PDF)", name: "deckPdf", widget: "file", required: false, media_folder: "/assets", public_folder: "/assets" }
           - { label: "Contact email", name: "email", widget: "string", hint: "Where the contact and job-application forms actually deliver to (via formsubmit.co, no signup needed) and the mailto fallback." }
           - { label: "Address", name: "address", widget: "string" }
-          - { label: "Careers application form (Google Form link)", name: "careersFormUrl", widget: "string", required: false, hint: "Paste the Google Form share link (starts with https://forms.gle/ or https://docs.google.com/forms/). The Apply now button in the homepage Careers section opens it in a new tab. Leave empty to show Applications opening soon." }
+          - { label: "Careers application form (Google Form link)", name: "careersFormUrl", widget: "string", required: false, hint: "Paste the Google Form share link (starts with https://forms.gle/ or https://docs.google.com/forms/). The blinking Join Us button in the homepage Careers section opens it in a new tab. Leave empty to show Applications opening soon." }
