@@ -36,29 +36,38 @@ for (const name of fs.readdirSync(ROOT)) {
 }
 
 // ---- 1b. grid thumbnails -----------------------------------------------------------------
-// Grids show small 640px WebP copies (assets/img/thumbs/<folder>/<name>.webp, see imgAttrs() in
-// js/script.js). Images uploaded through /admin have none, so make the missing ones here; the originals
-// (used by the viewer and the lens) are never touched. Needs the "sharp" package (installed by the
-// GitHub workflow); without it the build still works and grids fall back to the full image.
+// Grids show WebP copies 960px wide (assets/img/thumbs/<folder>/<name>.webp, see imgAttrs() in
+// js/script.js): sharp in the 3-column grid even on screens scaled up to ~167%. Images uploaded through
+// /admin have none, and the older copies in the repo are only 640px, so make or remake them here; the
+// originals (used by the viewer and the lens) are never touched. Needs the "sharp" package (installed by
+// the GitHub workflow); without it the build still works and grids use the copies already in the repo.
+const THUMB_W = 960;
 async function makeThumbs() {
   let sharp;
-  try { sharp = require("sharp"); } catch (e) { console.log("Thumbnails: sharp not installed, skipped (grids use full images for new uploads)."); return; }
-  let made = 0;
+  try { sharp = require("sharp"); } catch (e) { console.log("Thumbnails: sharp not installed, skipped (grids use the copies in the repo, or the full image for new uploads)."); return; }
+  sharp.cache(false);   // sharp keeps files open in its cache, which on Windows blocks overwriting them
+  let made = 0, remade = 0;
   for (const folder of ["portfolio", "games", "categories"]) {
     const src = path.join(OUT, "assets/img", folder), dst = path.join(OUT, "assets/img/thumbs", folder);
     if (!fs.existsSync(src)) continue;
     fs.mkdirSync(dst, { recursive: true });
     for (const f of fs.readdirSync(src)) {
       if (!/\.(webp|jpe?g|png)$/i.test(f)) continue;
-      const out = path.join(dst, f.replace(/\.(webp|jpe?g|png)$/i, ".webp"));
-      if (fs.existsSync(out)) continue;
+      const from = path.join(src, f), out = path.join(dst, f.replace(/\.(webp|jpe?g|png)$/i, ".webp"));
       try {
-        await sharp(path.join(src, f)).resize({ width: 640, withoutEnlargement: true }).webp({ quality: 80 }).toFile(out);
-        made++;
+        const exists = fs.existsSync(out), source = fs.readFileSync(from);   // read into memory: no open file handles
+        if (exists) {
+          // keep a copy that is already as wide as it can usefully be (960px, or the whole original)
+          const [have, orig] = await Promise.all([sharp(fs.readFileSync(out)).metadata(), sharp(source).metadata()]);
+          if (have.width >= Math.min(THUMB_W, orig.width)) continue;
+        }
+        const buf = await sharp(source).resize({ width: THUMB_W, withoutEnlargement: true }).webp({ quality: 82 }).toBuffer();
+        fs.writeFileSync(out, buf);
+        exists ? remade++ : made++;
       } catch (e) { console.log("Thumbnail failed for " + folder + "/" + f + ": " + e.message); }
     }
   }
-  console.log("Thumbnails: made " + made + " new.");
+  console.log("Thumbnails (" + THUMB_W + "px): made " + made + " new, remade " + remade + " narrower ones.");
 }
 
 // ---- 2. page writer ------------------------------------------------------------------

@@ -52,7 +52,9 @@ function siteMain() {
     u = u || "";
     if (!THUMB_RE.test(u)) return 'src="' + u + '"';
     var t = u.replace(THUMB_RE, "assets/img/thumbs/$1/$2.webp");
-    return 'src="' + t + '" srcset="' + t + ' 640w, ' + u + ' 1280w" sizes="' + (sizes || "33vw") + '" data-full="' + u + '"';
+    // Grid copies are 960px (tools/build.js), sharp in a 3-column grid up to about 167% screen scaling;
+    // only bigger needs fall through to the full upload
+    return 'src="' + t + '" srcset="' + t + ' 960w, ' + u + ' 2400w" sizes="' + (sizes || "33vw") + '" data-full="' + u + '"';
   }
   /* Magnifying lens: over a portfolio picture (mouse only, not touch) the cursor becomes a round
      lens showing that spot at 200%, taken from the full-size image. Up to 512px across, smaller on
@@ -594,7 +596,7 @@ function siteMain() {
         var ar = p.w && p.h ? 'aspect-ratio:' + p.w + '/' + p.h + ';' : '';
         return (
           '<article class="work-card ripple-host" data-index="' + PROJECTS.indexOf(p) + '" style="' + ar + '--i:' + idx + ';animation-delay:' + (idx % PAGE) * 40 + 'ms" tabindex="0" role="button" aria-label="Open ' + esc(p.t) + '">' +
-            '<img ' + imgAttrs(p.i, "(max-width: 600px) 50vw, (max-width: 1100px) 33vw, 25vw") + ' alt="' + esc(p.t) + '" loading="lazy"' + (p.w ? ' width="' + p.w + '" height="' + p.h + '"' : '') + ' />' +
+            '<img ' + imgAttrs(p.i, "(max-width: 600px) 100vw, (max-width: 1100px) 50vw, 33vw") + ' alt="' + esc(p.t) + '" loading="lazy"' + (p.w ? ' width="' + p.w + '" height="' + p.h + '"' : '') + ' />' +
             '<span class="work-zoom" aria-hidden="true">&#x2922;</span>' +
             // On a category page, a piece shown via "Also show in" is labelled with that page's category
             '<div class="work-info"><span class="work-cat">' + esc(activeBrowseCat && activeBrowseCat.match.indexOf(p.c) === -1 ? activeBrowseCat.label : CAT[p.c]) + '</span><span class="work-title">' + esc(p.t) + '</span></div>' +
