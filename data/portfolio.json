@@ -2,7 +2,6 @@
   "items": [
     {
       "t": "The Adventures",
-      "slug": "",
       "c": "stylized-human",
       "cats": [],
       "id": "mOZqAe",
@@ -13,13 +12,12 @@
       ],
       "desc": "The Adventures \nStylized 3D Character created by our team Brothers Interactive.\nWith this character, we are exploring, testing and pushing high-end stylized- clean art style, and game-ready appeal..",
       "tags": [],
-      "src": "",
       "w": 1000,
-      "h": 750
+      "h": 750,
+      "project": "Studio work"
     },
     {
       "t": "Monster Lizard",
-      "slug": "",
       "c": "realistic-creatures",
       "cats": [],
       "id": "JwalrD",
@@ -32,13 +30,12 @@
       ],
       "desc": "Monster Lizard \nRealistic Enemy Character, created by our team Brothers Interactive.\nWith, we are exploring, testing and pushing  Realistic AA and AAA games art style, and game-ready appeal..",
       "tags": [],
-      "src": "https://brothersinteractive.com/projects/JwalrD",
       "w": 1000,
-      "h": 563
+      "h": 563,
+      "project": "Studio work"
     },
     {
       "t": "Cute Monster",
-      "slug": "",
       "c": "stylized-creature",
       "cats": [],
       "id": "xdAzDY",
@@ -49,13 +46,12 @@
       ],
       "desc": "Cute Monster,\nDeveloped internally at Brothers Interactive, \"Cute Monster\" represents our team's expertise in high-quality stylized creature and character art. This production-ready asset was built from the ground up to showcase Clean hand-painted art style approach, readability, expressive anatomical proportions, and vibrant material definition required for modern stylized fantasy and strategy titles.\n\nTechnical Breakdown:\n- Level 1 Triangle Budget: 7,090 Tris\n- Level 2 Triangle Budget: 7,582 Tris\n- Level 3 Triangle Budget: 9,548 Tris\n- Level 4 Triangle Budget: 12,548 Tris\n\n- Texturing: single 1K Diffuse map (For Each Level)\n- Target Platforms: Mobile, Nintendo Switch, and PC\n- Pipeline: Fully optimized with clean, deformation-ready topology, ready for seamless integration into modern low-spec and cross-platform game-play engines.",
       "tags": [],
-      "src": "https://brothersinteractive.com/projects/xdAzDY",
       "w": 1000,
-      "h": 924
+      "h": 924,
+      "project": "Studio work"
     },
     {
       "t": "Nitro CR7",
-      "slug": "",
       "c": "stylized-human",
       "cats": [],
       "id": "ndwQ0O",
@@ -66,13 +62,12 @@
       ],
       "desc": "Nitro CR7 - WIP\nStylized 3D Character created by our team Brothers Interactive.\nWith this character, we are exploring, testing and pushing mobile games and similar art style, and game-ready appeal..\n\nNitro CR7,\nDeveloped internally at Brothers Interactive, \"Nitro CR7\" represents our team's expertise in high-quality character art. This production-ready asset was built from the ground up to showcase bold silhouette, readability, expressive anatomical proportions, and vibrant material definition required for modern stylized fantasy and strategy titles.\n\nTechnical Breakdown:\n- Budget: 12,028 Tris\n- Texturing: PBR workflow, single 2K texture set\n- Target Platforms: Mobile, Nintendo Switch, and PC\n- Pipeline: Fully optimized with clean, deformation-ready topology, ready for seamless integration into modern low-spec and cross-platform gameplay engines.",
       "tags": [],
-      "src": "https://brothersinteractive.com/projects/ndwQ0O",
       "w": 1000,
-      "h": 750
+      "h": 750,
+      "project": "Studio work"
     },
     {
       "t": "Mion",
-      "slug": "",
       "c": "stylized-human",
       "cats": [],
       "id": "vzA1JO",
@@ -82,13 +77,12 @@
       ],
       "desc": "Mion,\n\nDeveloped internally at Brothers Interactive, \"Mion\" represents our team's expertise in high-quality stylized creature and character art. This production-ready asset was built from the ground up to showcase bold Cell Shading silhouette readability, expressive anatomical proportions, and vibrant material definition required for modern stylized fantasy and strategy titles.\n\nTechnical Breakdown:\n- Budget: 20,000 Tris\n- Texturing: PBR workflow, single 2K texture set\n- Target Platforms: Mobile, Nintendo Switch, and PC\n- Pipeline: Fully optimized with clean, deformation-ready topology, ready for seamless integration into modern low-spec and cross-platform gameplay engines.",
       "tags": [],
-      "src": "https://brothersinteractive.com/projects/vzA1JO",
       "w": 1000,
-      "h": 833
+      "h": 833,
+      "project": "Studio work"
     },
     {
       "t": "Orc Fanart",
-      "slug": "",
       "c": "stylized-creature",
       "cats": [],
       "id": "vbNvDE",
@@ -98,13 +92,12 @@
       ],
       "desc": "Stylized creature sculpt created by our team Brothers Interactive.\nexploring, testing and pushing shape language, facial storytelling, and game-ready appeal. \nInspired by Wenmo Zhang's artwork.",
       "tags": [],
-      "src": "https://brothersinteractive.com/projects/vbNvDE",
       "w": 1000,
-      "h": 1000
+      "h": 1000,
+      "project": "Fan art / studio piece"
     },
     {
       "t": "Lee Body",
-      "slug": "",
       "c": "realistic-humans",
       "cats": [
         "realistic-hairs"
@@ -117,13 +110,12 @@
       ],
       "desc": "AAA Real-Time Character Study: \"Lee\"\nDeveloped internally at Brothers Interactive, \"Lee\" represents our team's latest push into current-gen character art quality. This production-ready asset was built from the ground up to demonstrate high-end visual fidelity optimized for AAA platforms like PS5, Xbox Series X, and PC.\n\nTechnical Breakdown:\n- Budget: 160K Tris\n- Texturing:PBR workflow Five 4K and Four 2K sets\n- Pipeline: Ready for integration into modern AAA cinematic and gameplay pipelines.\n- Target Platforms - AAA platforms like PS5, Xbox Series X, and PC.",
       "tags": [],
-      "src": "https://brothersinteractive.com/projects/yDeg2x",
       "w": 1000,
-      "h": 833
+      "h": 833,
+      "project": "Studio work"
     },
     {
       "t": "Red House",
-      "slug": "",
       "c": "mid-night-walk",
       "cats": [],
       "id": "XaBYJ0",
@@ -131,13 +123,12 @@
       "imgs": [],
       "desc": "The Midnight Walk- Red House\n\nAt Brothers Interactive, we contributed character cleanup, Sculpt &amp; Texture Improvements, game res version and rigging services for multiple characters featured in The Midnight Walk, helping prepare scanned character assets for integration and use within the game pipeline.\n\nOur work focused on optimizing character assets, technical cleanup, and rigging support to ensure the characters were production-ready for gameplay implementation.",
       "tags": [],
-      "src": "https://brothersinteractive.com/projects/XaBYJ0",
       "w": 1000,
-      "h": 672
+      "h": 672,
+      "project": "The Midnight Walk"
     },
     {
       "t": "T-Rex - Crash Bandicoot 4 Fanart",
-      "slug": "",
       "c": "stylized-creature",
       "cats": [],
       "id": "mAnNrv",
@@ -148,13 +139,12 @@
       ],
       "desc": "Stylized Character Study: \"T-Rex\" (Crash Bandicoot 4 Fan Art)\nDeveloped internally at Brothers Interactive, this asset represents our team's capability in high-quality stylized character art. Built from the ground up as a tribute to the distinct aesthetic of Crash Bandicoot 4, this production-ready asset demonstrates high-end visual appeal while maintaining an ultra-lean optimization profile perfect for Mobile, Nintendo Switch, or stylized PC/Console titles.\n\nTechnical Breakdown:\n- Budget: 10K Tris\n- Texturing: 2K PBR texture workflow\n- Pipeline:  Modern mobile, cross-platform, or lightweight gameplay pipelines.\n- Target Platforms - Mobile, Nintendo Switch, or stylized PC/Console titles",
       "tags": [],
-      "src": "https://brothersinteractive.com/projects/mAnNrv",
       "w": 1000,
-      "h": 891
+      "h": 891,
+      "project": "Fan art / studio piece"
     },
     {
       "t": "SWAT V2",
-      "slug": "",
       "c": "realistic-humans",
       "cats": [],
       "id": "dyKqQQ",
@@ -165,13 +155,12 @@
       ],
       "desc": "Realistic Tactical Character Study: \"SWAT V2\"\nDeveloped internally at Brothers Interactive, \"SWAT V2\" represents our team's expertise in high-fidelity military realism and complex hard-surface character art. This production-ready asset was built from the ground up to showcase advanced material layering, intricate tactical gear details, and precise textile definition required for modern action and shooter titles.\n\nTechnical Breakdown:\n- Budget: 60K Tris \n- Texturing: PBR workflow, 4K texture sets\n- Target Platforms: PC, PlayStation 5, and Xbox Series X|S\n- Pipeline: Fully rigged and tested with production motion data, ready for seamless integration into modern AAA gameplay and cinematic engines.",
       "tags": [],
-      "src": "https://brothersinteractive.com/projects/dyKqQQ",
       "w": 1000,
-      "h": 821
+      "h": 821,
+      "project": "Studio work"
     },
     {
       "t": "Twin Witch",
-      "slug": "",
       "c": "mid-night-walk",
       "cats": [],
       "id": "lEVXGY",
@@ -179,13 +168,12 @@
       "imgs": [],
       "desc": "The Midnight Walk- Twin Witch\n\nAt Brothers Interactive, we contributed character cleanup, Sculpt &amp; Texture Improvements, game res version and rigging services for multiple characters featured in The Midnight Walk, helping prepare scanned character assets for integration and use within the game pipeline.\n\nOur work focused on optimizing character assets, technical cleanup, and rigging support to ensure the characters were production-ready for gameplay implementation.",
       "tags": [],
-      "src": "https://brothersinteractive.com/projects/lEVXGY",
       "w": 1000,
-      "h": 889
+      "h": 889,
+      "project": "The Midnight Walk"
     },
     {
       "t": "SWAT V3",
-      "slug": "",
       "c": "realistic-humans",
       "cats": [
         "realistic-hairs"
@@ -198,13 +186,12 @@
       ],
       "desc": "Realistic Tactical Character Study: \"Female SWAT 3\"\nDeveloped internally at Brothers Interactive, \"Female SWAT 3\" represents our team's elite proficiency in high-fidelity military realism and complex, current-gen character art. This production-ready asset was built from the ground up to showcase premier material layering, intricate multi-part tactical gear, and the precise textile definition required for modern AAA action, shooter, and cinematic titles.\n\nTechnical Breakdown:\n- Budget: 142K Tris\n- Texturing: PBR workflow, five 4K and two 2K texture sets\n- Target Platforms: PC, PlayStation 5, and Xbox Series X|S\n- Pipeline: Fully rigged and tested with production motion data, ready for seamless integration into modern AAA gameplay and cinematic engines.\n\nThanks",
       "tags": [],
-      "src": "https://brothersinteractive.com/projects/RKX2Ly",
       "w": 1000,
-      "h": 855
+      "h": 855,
+      "project": "Studio work"
     },
     {
       "t": "Tiger (TLR-1)",
-      "slug": "",
       "c": "realistic-creatures",
       "cats": [],
       "id": "LRG1Lk",
@@ -215,13 +202,12 @@
       ],
       "desc": "Stylized Creature Study: \"Tiger\"\nDeveloped internally at Brothers Interactive, \"Tiger\" represents our team's advanced capabilities in high-fidelity creature art and real-time shader pipelines. This production-ready asset was built from the ground up to showcase complex organic forms, stylized emissive accents, and a highly customizable material setup optimized for current-gen cinematic and gameplay engines.\n\nTechnical Breakdown:\n- Budget: 55K Tris\n- Texturing: Channel-packed mask map workflow, utilizing six 4K and two 2K texture sets to drive real-time engine shaders.\n- Target Platforms: PC, PlayStation 5, and Xbox Series X|S\n- Pipeline: Built specifically for an Unreal Engine pipeline; all primary material properties, color variations, and emissive elements are controlled dynamically via master shaders using our optimized mask maps",
       "tags": [],
-      "src": "https://brothersinteractive.com/projects/LRG1Lk",
       "w": 1000,
-      "h": 703
+      "h": 703,
+      "project": "Studio work"
     },
     {
       "t": "Craftsman",
-      "slug": "",
       "c": "mid-night-walk",
       "cats": [],
       "id": "lEVXDY",
@@ -229,13 +215,12 @@
       "imgs": [],
       "desc": "The Midnight Walk- Craftman\n\nAt Brothers Interactive, we contributed character cleanup, Sculpt &amp; Texture Improvements, game res version and rigging services for multiple characters featured in The Midnight Walk, helping prepare scanned character assets for integration and use within the game pipeline.\n\nOur work focused on optimizing character assets, technical cleanup, and rigging support to ensure the characters were production-ready for gameplay implementation.",
       "tags": [],
-      "src": "https://brothersinteractive.com/projects/lEVXDY",
       "w": 1000,
-      "h": 825
+      "h": 825,
+      "project": "The Midnight Walk"
     },
     {
       "t": "Princess",
-      "slug": "",
       "c": "mid-night-walk",
       "cats": [],
       "id": "xdzK3r",
@@ -243,13 +228,12 @@
       "imgs": [],
       "desc": "The Midnight Walk- Princess\nAt Brothers Interactive, we contributed character cleanup, Sculpt &amp; Texture Improvements, game res version and rigging services for multiple characters featured in The Midnight Walk, helping prepare scanned character assets for integration and use within the game pipeline.\n\nOur work focused on optimizing character assets, technical cleanup, and rigging support to ensure the characters were production-ready for gameplay implementation.",
       "tags": [],
-      "src": "https://brothersinteractive.com/projects/xdzK3r",
       "w": 1000,
-      "h": 981
+      "h": 981,
+      "project": "The Midnight Walk"
     },
     {
       "t": "Big Bad Wolf",
-      "slug": "",
       "c": "stylized-creature",
       "cats": [],
       "id": "rl0Xea",
@@ -260,13 +244,12 @@
       ],
       "desc": "Stylized Creature Study: \"Big Bad Wolf\"\nDeveloped internally at Brothers Interactive, \"Big Bad Wolf\" represents our team's talent for expressive, animated creature design and stylized character art. This production-ready asset was built from the ground up to showcase a strong silhouette, dynamic personality, and clean shape language perfect for modern fantasy, adventure, or strategy titles.\nBad Wolf Fanart from nicola saviori -https://www.artstation.com/nicolasaviori\n\nTechnical Breakdown:\nBudget: 13K Tris\nTexturing: PBR workflow, single 2K texture set\nTarget Platforms: Mobile, Nintendo Switch, and PC\nPipeline: Fully optimized with clean, deformation-ready topology, ready for seamless integration into modern low-spec and cross-platform gameplay engines.",
       "tags": [],
-      "src": "https://brothersinteractive.com/projects/rl0Xea",
       "w": 1000,
-      "h": 682
+      "h": 682,
+      "project": "Studio work"
     },
     {
       "t": "Crow Mother",
-      "slug": "",
       "c": "mid-night-walk",
       "cats": [],
       "id": "wO850X",
@@ -274,13 +257,12 @@
       "imgs": [],
       "desc": "The Midnight Walk- Crow Mother\n\nAt Brothers Interactive, we contributed character cleanup, Sculpt &amp; Texture Improvements, game res version and rigging services for multiple characters featured in The Midnight Walk, helping prepare scanned character assets for integration and use within the game pipeline.\n\nOur work focused on optimizing character assets, technical cleanup, and rigging support to ensure the characters were production-ready for gameplay implementation.",
       "tags": [],
-      "src": "https://brothersinteractive.com/projects/wO850X",
       "w": 1000,
-      "h": 557
+      "h": 557,
+      "project": "The Midnight Walk"
     },
     {
       "t": "Zombie-2",
-      "slug": "",
       "c": "realistic-creatures",
       "cats": [],
       "id": "rJVn4e",
@@ -291,13 +273,12 @@
       ],
       "desc": "Cinematic Character Study: \"Zombie - 2\"\nDeveloped internally at Brothers Interactive, \"Zombie - 2\" represents our team's proficiency in organic horror sculpting, advanced tissue deformation, and high-end texture weathering. This production-ready asset was built from the ground up to showcase hyper-detailed organic trauma, realistic anatomical decay, and complex fabric distressing required for current-gen horror, survival, and action titles.\n\nTechnical Breakdown:\n- Budget: 120K Tris\n- Texturing: PBR workflow, four 4K, two 2K, and one 1K texture sets\n- Target Platforms: PC, PlayStation 5, and Xbox Series X|S\n- Pipeline: Fully optimized for current-gen cinematic and gameplay engines, utilizing an advanced high-to-low poly baking pipeline to capture fine micro-surface tissue details (Optimized for enemy/boss gameplay assets, survival-horror mechanics, and real-time cinematic cutscenes).\n\nThanks",
       "tags": [],
-      "src": "https://brothersinteractive.com/projects/rJVn4e",
       "w": 1000,
-      "h": 864
+      "h": 864,
+      "project": "Studio work"
     },
     {
       "t": "Orc",
-      "slug": "",
       "c": "stylized-creature",
       "cats": [],
       "id": "qJY3qa",
@@ -308,13 +289,12 @@
       ],
       "desc": "Stylized Fantasy Character Study: \"Orc\"\nDeveloped internally at Brothers Interactive, \"Orc\" represents our team's expertise in high-quality stylized creature and character art. This production-ready asset was built from the ground up to showcase bold silhouette readability, expressive anatomical proportions, and vibrant material definition required for modern stylized fantasy and strategy titles.\n\nTechnical Breakdown:\n- Budget: 11,900 Tris\n- Texturing: PBR workflow, single 2K texture set\n- Target Platforms: Mobile, Nintendo Switch, and PC\n- Pipeline: Fully optimized with clean, deformation-ready topology, ready for seamless integration into modern low-spec and cross-platform gameplay engines.",
       "tags": [],
-      "src": "https://brothersinteractive.com/projects/qJY3qa",
       "w": 1000,
-      "h": 900
+      "h": 900,
+      "project": "Studio work"
     },
     {
       "t": "Father Murkle",
-      "slug": "",
       "c": "mid-night-walk",
       "cats": [],
       "id": "KRaBex",
@@ -322,13 +302,12 @@
       "imgs": [],
       "desc": "Father Murkle by Brothers Interactive.",
       "tags": [],
-      "src": "https://brothersinteractive.com/projects/KRaBex",
       "w": 1000,
-      "h": 576
+      "h": 576,
+      "project": "The Midnight Walk"
     },
     {
       "t": "MTG Krishna",
-      "slug": "",
       "c": "realistic-humans",
       "cats": [
         "realistic-hairs"
@@ -341,13 +320,12 @@
       ],
       "desc": "Cinematic Character Study: \"MTG - Krishna\"\nDeveloped internally at Brothers Interactive, \"Krishna\" represents our team's peak proficiency in hyper-realistic digital human creation and high-end cinematic art. This production-ready asset was built from the ground up to showcase intricate hard-surface jewelry, complex multi-layered textile garments, and advanced strand-based grooming workflows required for premier current-gen titles and cinematic narratives.\n\nTechnical Breakdown:\n- Budget: 513K Tris\n- Texturing: PBR workflow, five 4K, three 2K, and one 1K texture sets\n- Target Platforms: PC, PlayStation 5, and Xbox Series X|S\n- Pipeline: Fully optimized for current-gen cinematic engines, utilizing an advanced Alembic strand-based hair workflow for realistic, dynamic hair physics simulations (Optimized for hero gameplay assets, next-gen cutscenes, and high-end cinematics)..",
       "tags": [],
-      "src": "https://brothersinteractive.com/projects/yD5Ll3",
       "w": 1000,
-      "h": 788
+      "h": 788,
+      "project": "Studio work"
     },
     {
       "t": "Zombie-1",
-      "slug": "",
       "c": "realistic-creatures",
       "cats": [],
       "id": "qezJmN",
@@ -358,13 +336,12 @@
       ],
       "desc": "Cinematic Character Study: \"Zombie - 1\"\nDeveloped internally at Brothers Interactive, \"Zombie - 1\" represents our team's proficiency in organic horror sculpting, advanced tissue deformation, and high-end texture weathering. This production-ready asset was built from the ground up to showcase hyper-detailed organic trauma, realistic anatomical decay, and complex fabric distressing required for current-gen horror, survival, and action titles.\n\nTechnical Breakdown:\n- Budget: 80K Tris\n- Texturing: PBR workflow, four 4K, two 2K, and one 1K texture sets\n- Target Platforms: PC, PlayStation 5, and Xbox Series X|S\n- Pipeline: Fully optimized for current-gen cinematic and gameplay engines, utilizing an advanced high-to-low poly baking pipeline to capture fine micro-surface tissue details (Optimized for enemy/boss gameplay assets, survival-horror mechanics, and real-time cinematic cutscenes).\n\nThanks",
       "tags": [],
-      "src": "https://brothersinteractive.com/projects/qezJmN",
       "w": 1000,
-      "h": 720
+      "h": 720,
+      "project": "Studio work"
     },
     {
       "t": "Grandma Dark",
-      "slug": "",
       "c": "mid-night-walk",
       "cats": [],
       "id": "0aXrlE",
@@ -372,13 +349,12 @@
       "imgs": [],
       "desc": "The Midnight Walk- Grandma Dark\n\nAt Brothers Interactive, we contributed character cleanup, Sculpt &amp; Texture Improvements, game res version and rigging services for multiple characters featured in The Midnight Walk, helping prepare scanned character assets for integration and use within the game pipeline.\n\nOur work focused on optimizing character assets, technical cleanup, and rigging support to ensure the characters were production-ready for gameplay implementation.",
       "tags": [],
-      "src": "https://brothersinteractive.com/projects/0aXrlE",
       "w": 1000,
-      "h": 567
+      "h": 567,
+      "project": "The Midnight Walk"
     },
     {
       "t": "Crow",
-      "slug": "",
       "c": "mid-night-walk",
       "cats": [],
       "id": "dLORKw",
@@ -386,13 +362,12 @@
       "imgs": [],
       "desc": "The Midnight Walk- Crow\n\nAt Brothers Interactive, we contributed character cleanup, Sculpt &amp; Texture Improvements, game res version and rigging services for multiple characters featured in The Midnight Walk, helping prepare scanned character assets for integration and use within the game pipeline.\n\nOur work focused on optimizing character assets, technical cleanup, and rigging support to ensure the characters were production-ready for gameplay implementation.",
       "tags": [],
-      "src": "https://brothersinteractive.com/projects/dLORKw",
       "w": 1000,
-      "h": 767
+      "h": 767,
+      "project": "The Midnight Walk"
     },
     {
       "t": "SWAT V1",
-      "slug": "",
       "c": "realistic-humans",
       "cats": [],
       "id": "YGBQbY",
@@ -403,13 +378,12 @@
       ],
       "desc": "Realistic Tactical Character Study: \"SWAT V2\"\nDeveloped internally at Brothers Interactive, \"SWAT V2\" represents our team's expertise in high-fidelity military realism and complex hard-surface character art. This production-ready asset was built from the ground up to showcase advanced material layering, intricate tactical gear details, and precise textile definition required for modern action and shooter titles.\n\nTechnical Breakdown:\n- Budget: 65K Tris\n- Texturing: PBR workflow, 4K texture sets\n- Target Platforms: PC, PlayStation 5, and Xbox Series X|S\n- Pipeline: Fully rigged and tested with production motion data, ready for seamless integration into modern AAA gameplay and cinematic engines.",
       "tags": [],
-      "src": "https://brothersinteractive.com/projects/YGBQbY",
       "w": 1000,
-      "h": 761
+      "h": 761,
+      "project": "Studio work"
     },
     {
       "t": "Pot Boy",
-      "slug": "",
       "c": "mid-night-walk",
       "cats": [],
       "id": "ayRb09",
@@ -417,13 +391,12 @@
       "imgs": [],
       "desc": "The Midnight Walk- Pot Boy\n\nAt Brothers Interactive, we contributed character cleanup, Sculpt &amp; Texture Improvements, game res version and rigging services for multiple characters featured in The Midnight Walk, helping prepare scanned character assets for integration and use within the game pipeline.\n\nOur work focused on optimizing character assets, technical cleanup, and rigging support to ensure the characters were production-ready for gameplay implementation.",
       "tags": [],
-      "src": "https://brothersinteractive.com/projects/ayRb09",
       "w": 1000,
-      "h": 750
+      "h": 750,
+      "project": "The Midnight Walk"
     },
     {
       "t": "Four Witch",
-      "slug": "",
       "c": "mid-night-walk",
       "cats": [],
       "id": "G1XVva",
@@ -431,13 +404,12 @@
       "imgs": [],
       "desc": "The Midnight Walk- Four Witch\n\nAt Brothers Interactive, we contributed character cleanup, Sculpt &amp; Texture Improvements, game res version and rigging services for multiple characters featured in The Midnight Walk, helping prepare scanned character assets for integration and use within the game pipeline.\n\nOur work focused on optimizing character assets, technical cleanup, and rigging support to ensure the characters were production-ready for gameplay implementation.",
       "tags": [],
-      "src": "https://brothersinteractive.com/projects/G1XVva",
       "w": 1000,
-      "h": 652
+      "h": 652,
+      "project": "The Midnight Walk"
     },
     {
       "t": "Shark (TLR-1)",
-      "slug": "",
       "c": "realistic-creatures",
       "cats": [],
       "id": "QX2OBd",
@@ -448,13 +420,12 @@
       ],
       "desc": "Stylized Creature Study: \"Shark\"\nDeveloped internally at Brothers Interactive, \"Shark\" represents our team's advanced capabilities in high-fidelity creature art and real-time shader pipelines. This production-ready asset was built from the ground up to showcase powerful organic forms, dynamic emissive accents, and a highly customizable material setup optimized for current-gen cinematic and gameplay engines.\n\nTechnical Breakdown:\n- Budget: 60K Tris\n- Texturing: Channel-packed mask map workflow, utilizing six 4K and two 2K texture sets to drive real-time engine shaders.\n- Target Platforms: PC, PlayStation 5, and Xbox Series X|S\n- Pipeline: Built specifically for an Unreal Engine pipeline; all primary material properties, color variations, and emissive elements are controlled dynamically via master shaders using our optimized mask maps.\n\nThanks",
       "tags": [],
-      "src": "https://brothersinteractive.com/projects/QX2OBd",
       "w": 1000,
-      "h": 1034
+      "h": 1034,
+      "project": "Studio work"
     },
     {
       "t": "Panda (TLR-1)",
-      "slug": "",
       "c": "realistic-creatures",
       "cats": [],
       "id": "PXvoWo",
@@ -465,13 +436,12 @@
       ],
       "desc": "Stylized Creature Study: \"Panda\"\nDeveloped internally at Brothers Interactive, \"Panda\" represents our team's advanced capabilities in high-fidelity creature art and real-time shader pipelines. This production-ready asset was built from the ground up to showcase powerful organic forms, dynamic structural design, and a highly customizable material setup optimized for current-gen cinematic and gameplay engines.\n\nTechnical Breakdown:\n- Budget: 55K Tris\n- Texturing: Channel-packed mask map workflow, utilizing six 4K and two 2K texture sets to drive real-time engine shaders.\n- Target Platforms: PC, PlayStation 5, and Xbox Series X|S\n- Pipeline: Built specifically for an Unreal Engine pipeline; all primary material properties, color variations, and emissive elements are controlled dynamically via master shaders using our optimized mask maps.",
       "tags": [],
-      "src": "https://brothersinteractive.com/projects/PXvoWo",
       "w": 1000,
-      "h": 638
+      "h": 638,
+      "project": "Studio work"
     },
     {
       "t": "Turtle (TLR-1)",
-      "slug": "",
       "c": "realistic-creatures",
       "cats": [],
       "id": "ZavKOG",
@@ -482,13 +452,12 @@
       ],
       "desc": "Stylized Creature Study: \"Turtle\"\nDeveloped internally at Brothers Interactive, \"Turtle\" represents our team's advanced capabilities in high-fidelity creature art and real-time shader pipelines. This production-ready asset was built from the ground up to showcase dense organic forms, rugged shell structures, and a highly customizable material setup optimized for current-gen cinematic and gameplay engines.\n\nTechnical Breakdown:\n- Budget: 55K Tris\n- Texturing: Channel-packed mask map workflow, utilizing six 4K and two 2K texture sets to drive real-time engine shaders.\n- Target Platforms: PC, PlayStation 5, and Xbox Series X|S\n- Pipeline: Built specifically for an Unreal Engine pipeline; all primary material properties, color variations, and surface elements are controlled dynamically via master shaders using our optimized mask maps.",
       "tags": [],
-      "src": "https://brothersinteractive.com/projects/ZavKOG",
       "w": 1000,
-      "h": 990
+      "h": 990,
+      "project": "Studio work"
     },
     {
       "t": "MTG Murkaz Tex",
-      "slug": "",
       "c": "realistic-creatures",
       "cats": [],
       "id": "lDNWka",
@@ -499,13 +468,12 @@
       ],
       "desc": "Cinematic Character Study: \"Murkaz\"\nDeveloped internally at Brothers Interactive, \"Murkaz\" represents our team's peak proficiency in hyper-realistic dark fantasy creature creation and high-end cinematic art. This production-ready asset was built from the ground up to showcase complex organic anatomy, heavily weathered hard-surface armor, and advanced real-time grooming workflows required for premier current-gen titles and cinematic narratives.\n\nTechnical Breakdown:\n- Budget: 320K Tris\n- Texturing: PBR workflow, eight 4K and three 2K texture sets\n- Target Platforms: PC, PlayStation 5, and Xbox Series X|S\n- Pipeline: Fully optimized for current-gen engines, utilizing an advanced real-time alpha card hair and fur method for dense, high-fidelity shading and physics integration (Optimized for boss gameplay assets, next-gen cutscenes, and high-end cinematics).",
       "tags": [],
-      "src": "https://brothersinteractive.com/projects/lDNWka",
       "w": 1000,
-      "h": 1000
+      "h": 1000,
+      "project": "Studio work"
     },
     {
       "t": "Beatle - Crash Bandicoot 4 Fanart",
-      "slug": "",
       "c": "stylized-creature",
       "cats": [],
       "id": "zxBExq",
@@ -516,13 +484,12 @@
       ],
       "desc": "Stylized Creature Study: \"Beetle\"\nDeveloped internally at Brothers Interactive, \"Beetle\" represents our team's capability in stylized insect and creature design. This production-ready asset was built from the ground up to showcase bold shell silhouettes, distinct carapace segmentation, and vibrant material definition required for modern fantasy, adventure, or RPG titles.\n\nTechnical Breakdown:\n- Budget: 10K Tris\n- Texturing: PBR workflow, single 2K texture set\n- Target Platforms: Mobile, Nintendo Switch, and PC\n- Pipeline: Fully optimized with clean, deformation-ready topology, ready for seamless integration into modern low-spec and cross-platform gameplay engines.",
       "tags": [],
-      "src": "https://brothersinteractive.com/projects/zxBExq",
       "w": 1000,
-      "h": 882
+      "h": 882,
+      "project": "Fan art / studio piece"
     },
     {
       "t": "Lehri",
-      "slug": "",
       "c": "realistic-humans",
       "cats": [],
       "id": "dKWXLA",
@@ -533,13 +500,12 @@
       ],
       "desc": "Cinematic Character Study: \"Lehri\"\nDeveloped internally at Brothers Interactive, \"Lehri\" represents our team's proficiency in realistic human character creation, expressive facial sculpting, and authentic textile definition. This production-ready asset was built from the ground up to showcase high-fidelity skin micro-structures, detailed multi-layered cultural garments, and precise material aging required for premier current-gen titles and narrative-driven experiences.\n\nTechnical Breakdown:\n- Budget: 107K Tris\n- Texturing: PBR workflow, five 4K and two 2K texture sets\n- Target Platforms: PC, PlayStation 5, and Xbox Series X|S\n- Pipeline: Fully optimized for current-gen cinematic and gameplay engines, ensuring clean topology for facial deformation and complex cloth simulation workflows (Optimized for main/supporting character gameplay assets, next-gen cutscenes, and high-end cinematics).",
       "tags": [],
-      "src": "https://brothersinteractive.com/projects/dKWXLA",
       "w": 1000,
-      "h": 1000
+      "h": 1000,
+      "project": "Studio work"
     },
     {
       "t": "CHR Skins",
-      "slug": "",
       "c": "realistic-humans",
       "cats": [
         "modular-chr-skins"
@@ -553,13 +519,12 @@
       ],
       "desc": "Character Customization Study: \"CHR Skins\"\nDeveloped internally at Brothers Interactive, \"CHR Skins\" represents our team's proficiency in creating modular character cosmetic variations, modern apparel design, and highly efficient production pipelines. This asset package was built from the ground up to showcase distinct textile definition, trendy streetwear aesthetics, and optimized multi-layered clothing assets required for modern live-service and multiplayer titles.\n\nTechnical Breakdown:\n- Budget: 35K Tris (Average per full character outfit skin)\n- Texturing: PBR workflow, two 4K sets for apparel and one 2K set specifically for footwear\n- Target Platforms: PC, PlayStation 5, Xbox Series X|S, and Cross-Platform Multiplayer\n- Pipeline: Fully optimized for modular character customization systems, featuring clean topology ready for skin-weighting, dynamic cloth simulations, and high-volume live-service asset integration (Optimized for multiplayer cosmetic skins, battle pass rewards, and player customization systems).\n\nThanks",
       "tags": [],
-      "src": "https://brothersinteractive.com/projects/GeVBoB",
       "w": 1000,
-      "h": 605
+      "h": 605,
+      "project": "Studio work"
     },
     {
       "t": "Female Hair",
-      "slug": "",
       "c": "realistic-hairs",
       "cats": [],
       "id": "XJgvnn",
@@ -570,13 +535,12 @@
       ],
       "desc": "Real-Time Grooming Study: \"Female Hair\"\nDeveloped internally at Brothers Interactive, \"Hair Variations\" represents our team's specialized proficiency in advanced real-time hair creation, intricate grooming layouts, and high-fidelity shader integration. This asset package was built from the ground up to showcase clean strand flow, complex layering, and exceptional silhouette definition required for modern current-gen characters and digital humans.\n\nTechnical Breakdown:\n- Budget: 60K Tris\n- Texturing: PBR workflow, single 4K texture set optimized for hair shaders\n- Target Platforms: PC, PlayStation 5, and Xbox Series X|S\n- Pipeline: Fully optimized for modern real-time hair pipelines, utilizing a clean, high-performance alpha card layout to ensure realistic depth, light scattering, and dynamic physics/wind simulation integration (Optimized for main hero characters, customizable customization systems, and current-gen gameplay).",
       "tags": [],
-      "src": "https://brothersinteractive.com/projects/XJgvnn",
       "w": 1000,
-      "h": 1000
+      "h": 1000,
+      "project": "Studio work"
     },
     {
       "t": "Male Hairs Variations",
-      "slug": "",
       "c": "realistic-hairs",
       "cats": [],
       "id": "L4EZxw",
@@ -587,13 +551,12 @@
       ],
       "desc": "Real-Time Grooming Study: \"Male Hair Variations\"\nDeveloped internally at Brothers Interactive, \"Male Hair Variations\" represents our team's specialized proficiency in advanced real-time hair creation, scalable grooming layouts, and highly optimized asset budgets. This asset package was built from the ground up to showcase a multi-stage production pipeline, featuring varying structural densities and clean strand flow required for modern character customization or progressive visual styling.\n\nTechnical Breakdown:\n- Budget: Progressive multi-stage optimization layout:\n                 Stage 1: 45K Tris \n                 Stage 2: 38K Tris\n                 Stage 3: 35K Tris\n                 Stage 4: 30K Tris\n                 Stage 5: 25K Tris \n- Texturing: PBR workflow, single 4K texture set\n- Target Platforms: PC, PlayStation 5, and Xbox Series X|S\n- Pipeline: Fully optimized for flexible character customization systems, utilizing a high-performance alpha card layout designed to scale fluidly across different gameplay performance targets while retaining realistic depth and dynamic physics integration.",
       "tags": [],
-      "src": "https://brothersinteractive.com/projects/L4EZxw",
       "w": 1000,
-      "h": 850
+      "h": 850,
+      "project": "Studio work"
     },
     {
       "t": "Kart",
-      "slug": "",
       "c": "props",
       "cats": [],
       "id": "lGYlmV",
@@ -604,13 +567,12 @@
       ],
       "desc": "Stylized Vehicle Study: \"Kart\"\nDeveloped internally at Brothers Interactive, \"Kart\" represents our team's proficiency in stylized hard-surface vehicle design, mechanical silhouette composition, and optimized prop modeling. This production-ready asset was built from the ground up to showcase bold geometric forms, clean material separation, and high-impact arcade aesthetics required for modern racing, action, and multiplayer titles.\n\nTechnical Breakdown:\n- Budget: 29K Tris\n- Texturing: PBR workflow, single 4K texture set\n- Target Platforms: PC, PlayStation 5, Xbox Series X|S, and Nintendo Switch\n- Pipeline: Fully optimized with clean mechanical topology, featuring distinct material IDs and proper pivot orientation.",
       "tags": [],
-      "src": "https://brothersinteractive.com/projects/lGYlmV",
       "w": 1000,
-      "h": 807
+      "h": 807,
+      "project": "Studio work"
     },
     {
       "t": "Toothbug",
-      "slug": "",
       "c": "stylized-creature",
       "cats": [],
       "id": "LR56mr",
@@ -621,13 +583,12 @@
       ],
       "desc": "Stylized Creature Study: \"Tooth Bug\"\nDeveloped internally at Brothers Interactive, \"Tooth Bug\" represents our team's talent for expressive creature design, unique character concepts, and clean shape language. This production-ready asset was built from the ground up to showcase bold anatomical silhouettes, vibrant material definitions, and high-impact personality required for modern fantasy, adventure, or strategy titles.\nConcept art by Tooth Wu!",
       "tags": [],
-      "src": "https://brothersinteractive.com/projects/LR56mr",
       "w": 1000,
-      "h": 720
+      "h": 720,
+      "project": "Studio work"
     },
     {
       "t": "Death",
-      "slug": "",
       "c": "lost-in-random",
       "cats": [],
       "id": "5BW8y8",
@@ -635,13 +596,12 @@
       "imgs": [],
       "desc": "Death\n\nAnother character work from LOST IN RANDOM.\nAnd our team members, who contributed.\n- Arun Nagar\n- Rajat Sharma\n- Sohail Khan\n- Krishna Paswan\nThanks!\n\nWebsite -http://brothersinteractive.com/\nLinkedin - https://www.linkedin.com/company/brothers-interactive\nArtstation - https://www.artstation.com/brothersinteractive\nFacebook - https://www.facebook.com/Brothersinteractive\nInstagram - https://www.instagram.com/brothersinteractive/",
       "tags": [],
-      "src": "https://brothersinteractive.com/projects/5BW8y8",
       "w": 512,
-      "h": 512
+      "h": 512,
+      "project": "Lost in Random"
     },
     {
       "t": "Rug Reader",
-      "slug": "",
       "c": "lost-in-random",
       "cats": [],
       "id": "4Xb69l",
@@ -651,13 +611,12 @@
       ],
       "desc": "We are proud to share the first game project our studio ever contributed, \"LOST IN RANDOM\".\nThanks Zoink games for trusting us.",
       "tags": [],
-      "src": "https://brothersinteractive.com/projects/4Xb69l",
       "w": 512,
-      "h": 512
+      "h": 512,
+      "project": "Lost in Random"
     },
     {
       "t": "Lost in Random - Gunner",
-      "slug": "",
       "c": "lost-in-random",
       "cats": [],
       "id": "0n1wgV",
@@ -667,13 +626,12 @@
       ],
       "desc": "We are proud to share the first game project our studio ever contributed, \"LOST IN RANDOM\".\nThanks Zoink games for trusting us.",
       "tags": [],
-      "src": "https://brothersinteractive.com/projects/0n1wgV",
       "w": 400,
-      "h": 400
+      "h": 400,
+      "project": "Lost in Random"
     },
     {
       "t": "Baroness",
-      "slug": "",
       "c": "lost-in-random",
       "cats": [],
       "id": "EaLNv2",
@@ -683,13 +641,12 @@
       ],
       "desc": "We are proud to share the first game project our studio ever contributed, \"LOST IN RANDOM\".\nThanks Zoink games for trusting us.",
       "tags": [],
-      "src": "https://brothersinteractive.com/projects/EaLNv2",
       "w": 512,
-      "h": 512
+      "h": 512,
+      "project": "Lost in Random"
     },
     {
       "t": "Neeshka",
-      "slug": "",
       "c": "lost-in-random",
       "cats": [],
       "id": "6bv986",
@@ -697,13 +654,12 @@
       "imgs": [],
       "desc": "We are proud to share the first game project our studio ever contributed, \"LOST IN RANDOM\".\nThanks Zoink games for trusting us.",
       "tags": [],
-      "src": "https://brothersinteractive.com/projects/6bv986",
       "w": 400,
-      "h": 400
+      "h": 400,
+      "project": "Lost in Random"
     },
     {
       "t": "Bag Monster",
-      "slug": "",
       "c": "lost-in-random",
       "cats": [],
       "id": "144Kve",
@@ -711,13 +667,12 @@
       "imgs": [],
       "desc": "We are proud to share the first game project our studio ever contributed, \"LOST IN RANDOM\".\nThanks Zoink games for trusting us.",
       "tags": [],
-      "src": "https://brothersinteractive.com/projects/144Kve",
       "w": 512,
-      "h": 512
+      "h": 512,
+      "project": "Lost in Random"
     },
     {
       "t": "McBiggo",
-      "slug": "",
       "c": "lost-in-random",
       "cats": [],
       "id": "4X1Eq4",
@@ -727,13 +682,12 @@
       ],
       "desc": "We are proud to share the first game project our studio ever contributed, \"LOST IN RANDOM\".\nThanks Zoink games for trusting us.",
       "tags": [],
-      "src": "https://brothersinteractive.com/projects/4X1Eq4",
       "w": 512,
-      "h": 512
+      "h": 512,
+      "project": "Lost in Random"
     },
     {
       "t": "Janitor",
-      "slug": "",
       "c": "lost-in-random",
       "cats": [],
       "id": "KOeZEW",
@@ -741,13 +695,12 @@
       "imgs": [],
       "desc": "We are proud to share the first game project our studio ever contributed, \"LOST IN RANDOM\".\nThanks Zoink games for trusting us.",
       "tags": [],
-      "src": "https://brothersinteractive.com/projects/KOeZEW",
       "w": 512,
-      "h": 512
+      "h": 512,
+      "project": "Lost in Random"
     },
     {
       "t": "RobotDuke",
-      "slug": "",
       "c": "lost-in-random",
       "cats": [],
       "id": "8w1KXn",
@@ -757,13 +710,12 @@
       ],
       "desc": "We are proud to share the first game project our studio ever contributed, \"LOST IN RANDOM\".\nThanks Zoink games for trusting us.",
       "tags": [],
-      "src": "https://brothersinteractive.com/projects/8w1KXn",
       "w": 512,
-      "h": 512
+      "h": 512,
+      "project": "Lost in Random"
     },
     {
       "t": "Potion Maker 01",
-      "slug": "",
       "c": "lost-in-random",
       "cats": [],
       "id": "b5gv3v",
@@ -771,13 +723,12 @@
       "imgs": [],
       "desc": "We are proud to share the first game project our studio ever contributed, \"LOST IN RANDOM\".\nThanks Zoink games for trusting us.",
       "tags": [],
-      "src": "https://brothersinteractive.com/projects/b5gv3v",
       "w": 512,
-      "h": 512
+      "h": 512,
+      "project": "Lost in Random"
     },
     {
       "t": "Bag Brother",
-      "slug": "",
       "c": "lost-in-random",
       "cats": [],
       "id": "Peowg3",
@@ -787,13 +738,12 @@
       ],
       "desc": "Bag Brother\n\nAnother character work from LOST IN RANDOM.\nAnd our team members, who contributed.\n- Arun Nagar\n- Rajat Sharma\n- Sohail Khan\n- Krishna Paswan\nThanks!\n\nWebsite -http://brothersinteractive.com/\nLinkedin - https://www.linkedin.com/company/brothers-interactive\nArtstation - https://www.artstation.com/brothersinteractive\nFacebook - https://www.facebook.com/Brothersinteractive\nInstagram - https://www.instagram.com/brothersinteractive/",
       "tags": [],
-      "src": "https://brothersinteractive.com/projects/Peowg3",
       "w": 512,
-      "h": 512
+      "h": 512,
+      "project": "Lost in Random"
     },
     {
       "t": "Russell Del's Girl CHR",
-      "slug": "",
       "c": "stylized-human",
       "cats": [],
       "id": "L3A48w",
@@ -804,13 +754,12 @@
       ],
       "desc": "Stylized Character Study: \"Russell Del's Girl\"\nDeveloped internally at Brothers Interactive, \"Russell Del's Girl\" represents our team's talent for expressive stylized character modeling, clean shape translation, and high-efficiency production pipelines. This production-ready asset was built from the ground up to showcase elegant silhouettes, charming facial proportions, and vibrant material definition required for modern animated adventure, RPG, or stylized action titles.\n\nTechnical Breakdown:\n- Budget: 25K Tris\n- Texturing: PBR workflow, two 2K texture sets\n- Target Platforms: Mobile, Nintendo Switch, and PC\n- Pipeline: Fully optimized with clean, deformation-ready topology and structured facial loops, ready for seamless rigging, performance animation, and integration into modern cross-platform gameplay engines.",
       "tags": [],
-      "src": "https://brothersinteractive.com/projects/L3A48w",
       "w": 1000,
-      "h": 938
+      "h": 938,
+      "project": "Studio work"
     },
     {
       "t": "Russell Del's Boy CHR",
-      "slug": "",
       "c": "stylized-human",
       "cats": [],
       "id": "zOaxkD",
@@ -821,13 +770,12 @@
       ],
       "desc": "Stylized Character Study: \"Russell Del's Girl\"\nDeveloped internally at Brothers Interactive, \"Russell Del's Girl\" represents our team's talent for expressive stylized character modeling, clean shape translation, and high-efficiency production pipelines. This production-ready asset was built from the ground up to showcase elegant silhouettes, charming facial proportions, and vibrant material definition required for modern animated adventure, RPG, or stylized action titles.\n\nTechnical Breakdown:\n- Budget: 21K Tris\n- Texturing: PBR workflow, two 2K texture sets\n- Target Platforms: Mobile, Nintendo Switch, and PC\n- Pipeline: Fully optimized with clean, deformation-ready topology and structured facial loops, ready for seamless rigging, performance animation, and integration into modern cross-platform gameplay engines.",
       "tags": [],
-      "src": "https://brothersinteractive.com/projects/zOaxkD",
       "w": 1000,
-      "h": 774
+      "h": 774,
+      "project": "Studio work"
     },
     {
       "t": "Sir Galahad : The Order 1886 Fanart",
-      "slug": "",
       "c": "realistic-humans",
       "cats": [],
       "id": "B1nbk8",
@@ -838,13 +786,12 @@
       ],
       "desc": "Cinematic Character Study: \"Sir Galahad\" (The Order 1886 Fanart)\nDeveloped internally at Brothers Interactive, \"Sir Galahad\" represents our team's proficiency in replicating complex AAA cinematic character designs, advanced hard-surface armor integration, and realistic fabric weathering. This production-ready asset was built from the ground up to showcase multi-layered historical tailoring, intricate metallic ornaments, and dense material realism required for premier current-gen action and narrative titles.\n\nTechnical Breakdown:\n- Budget: 160K Tris\n- Texturing: PBR workflow, two 4K and eight 2K texture sets\n- Target Platforms: PC, PlayStation 5, and Xbox Series X|S\n- Pipeline: Fully optimized for current-gen cinematic and gameplay engines, ensuring clean topology for heavy cloth simulation and rigid hard-surface deformation workflows (Optimized for hero gameplay assets, next-gen cutscenes, and high-end cinematics).",
       "tags": [],
-      "src": "https://brothersinteractive.com/projects/B1nbk8",
       "w": 1000,
-      "h": 562
+      "h": 562,
+      "project": "Fan art / studio piece"
     },
     {
       "t": "Adam - Game Res Model",
-      "slug": "",
       "c": "stylized-human",
       "cats": [],
       "id": "B1e5nm",
@@ -855,13 +802,12 @@
       ],
       "desc": "Progressive Character Study: \"Adam\"\nDeveloped internally at Brothers Interactive, \"Adam\" represents our team's proficiency in creating modular character progression systems, progressive armor tiering, and highly efficient production workflows. This game-ready asset showcases a 5-stage evolutionary pipeline, built from the ground up to demonstrate how a character can seamlessly scale from a base level to an advanced endgame warrior while maintaining strict optimization for low-end performance brackets.\n\nCharacter Progression Pipeline:\n- 1st Level: Base schoolboy archetype.\n- 2nd Level: Rebel tier with light guerrilla combat gear additions.\n- 3rd Level: Ranged combat specialization featuring specialized bow and arrow equipment.\n- 4th Level: Melee combat tier integrating lightweight sword-fighting gear and armor pieces.\n- 5th Level: Elite warrior tier fully equipped for one-on-one boss encounters.\n\nTechnical Breakdown:\n- Budget: Highly optimized low-end triangle budget across all modular tiers\n- Texturing: PBR workflow, single 2K base texture map with scalable supporting map slots added per equipment tier requirement\n- Target Platforms: Mobile, Nintendo Switch, PC, and Cross-Platform Multiplayer\n- Pipeline: Fully optimized with a unified base skeleton and clean deformation topology, engineered for seamless modular attachment swapping, progressive visual upgrades, and fluid integration into real-time gameplay engines.",
       "tags": [],
-      "src": "https://brothersinteractive.com/projects/B1e5nm",
       "w": 1000,
-      "h": 521
+      "h": 521,
+      "project": "Studio work"
     },
     {
       "t": "Proposal Book",
-      "slug": "",
       "c": "props",
       "cats": [],
       "id": "KaQZrr",
@@ -871,13 +817,12 @@
       ],
       "desc": "Ornate Prop Study: \"Proposal Book\"\nDeveloped internally at Brothers Interactive, we finished 12 week long masterclass in 2019 about gaming pipeline for props. \n\nProduction Concept:\nAn ancient, masterfully crafted heavy tome featuring prominent, hand-forged metallic scrollwork and defensive metal plates layered across a weathered leather binding, anchored by a central embedded magical gemstone.\n\nTechnical Breakdown:\n- Budget: Fully optimized current-gen prop triangle budget\n- Texturing: High-fidelity PBR workflow, utilizing high-resolution texture sets to maximize micro-surface metallic scratch details, leather aging, and crystal refractivity\n- Target Platforms: PC, PlayStation 5, and Xbox Series X|S\n- Pipeline: Fully optimized with clean hard-surface topology and precise material IDs, ready for seamless integration into close-up first-person viewports, narrative puzzle interactions, and current-gen gameplay engines.",
       "tags": [],
-      "src": "https://brothersinteractive.com/projects/KaQZrr",
       "w": 1000,
-      "h": 1000
+      "h": 1000,
+      "project": "Studio work"
     },
     {
       "t": "Fire Drum",
-      "slug": "",
       "c": "props",
       "cats": [],
       "id": "XB3ExY",
@@ -888,13 +833,12 @@
       ],
       "desc": "Realistic Environment Prop Study: \"Fire Drum\"\nDeveloped internally at Brothers Interactive, \"Fire Drum\" represents our team's proficiency in high-fidelity prop modeling, advanced material degradation, and realistic surface weathering. This production-ready asset was built from the ground up to showcase intricate structural damage, complex oxidation patterns, and detailed ash/carbon texturing required for immersive current-gen survival, post-apocalyptic, and horror environments.\n\nTechnical Breakdown:\n- Budget: 14K Tris\n- Texturing: PBR workflow, three 2K texture sets separating the metal barrel, internal embers, and detailed wooden fuel elements\n- Target Platforms: PC, PlayStation 5, and Xbox Series X|S\n- Pipeline: Fully optimized with clean hard-surface topology and optimized material IDs, ready for seamless integration into real-time particle/emissive setups and current-gen gameplay engines.",
       "tags": [],
-      "src": "https://brothersinteractive.com/projects/XB3ExY",
       "w": 1000,
-      "h": 800
+      "h": 800,
+      "project": "Studio work"
     },
     {
       "t": "Pip-Boy 2000 - Game Res Asset",
-      "slug": "",
       "c": "props",
       "cats": [],
       "id": "ybZDb8",
@@ -905,13 +849,12 @@
       ],
       "desc": "Realistic Prop Study: \"Pip-Boy\" (Fallout Fanart)\nDeveloped internally at Brothers Interactive, \"Pip-Boy\" represents our team's proficiency in retro-futuristic hard-surface modeling, industrial prop design, and complex surface weathering. This game-ready asset was built from the ground up to showcase mechanical complexity, analog component detailing, and realistic metallic wear required for premier sci-fi, RPG, and survival titles.\n\nTechnical Breakdown:\n- Budget: 8K Tris\n- Texturing: PBR workflow, single 2K texture set\n- Target Platforms: PC, PlayStation 5, Xbox Series X|S, and Nintendo Switch\n- Pipeline: Fully optimized with clean hard-surface topology and precise pivot setups for interactive components, ready for seamless integration into first-person viewport layouts, UI screen casting, and real-time gameplay engines.",
       "tags": [],
-      "src": "https://brothersinteractive.com/projects/ybZDb8",
       "w": 1000,
-      "h": 750
+      "h": 750,
+      "project": "Studio work"
     },
     {
       "t": "Dhakad",
-      "slug": "",
       "c": "realistic-humans",
       "cats": [],
       "id": "JXN6n",
@@ -922,13 +865,12 @@
       ],
       "desc": "Cinematic Portrait Study: \"Dhakad\"\nDeveloped internally at Brothers Interactive, \"Dhakad\" represents our team's proficiency in hyper-realistic digital human creation, expressive facial sculpting, and clean real-time hair card placement. This production-ready asset was built from the ground up to showcase subtle skin micro-structures, sharp anatomical proportions, and realistic light scattering required for modern narrative-driven and cinematic current-gen titles.\n\nTechnical Breakdown:\n- Budget: 42K Triangles Total (Optimized Split):\n                Head Mesh: 25K Tris\n                Hair Groom: 17K Tris\n- Texturing: PBR workflow, single 4K map for the head and single 2K map for the hair layout\n- Target Platforms: PC, PlayStation 5, and Xbox Series X|S\n- Pipeline: Fully optimized with clean, deformation-ready facial topology, engineered for seamless integration into advanced rigging, facial blendshape pipelines, real-time dialogue cameras, and current-gen gameplay engines.",
       "tags": [],
-      "src": "https://brothersinteractive.com/projects/JXN6n",
       "w": 1000,
-      "h": 1000
+      "h": 1000,
+      "project": "Studio work"
     },
     {
       "t": "Head Study",
-      "slug": "",
       "c": "realistic-humans",
       "cats": [],
       "id": "0QOke",
@@ -939,13 +881,12 @@
       ],
       "desc": "Head Study - Benedict wong\n\nDeveloped internally at Brothers Interactive, \"Head Study\" represents our team's foundational strength in hyper-realistic organic sculpting and secondary form definition. This high-poly asset was developed to showcase an advanced understanding of facial fat distribution, complex skin micro-detailing, and natural tissue weight distribution required for high-fidelity AAA character generation.",
       "tags": [],
-      "src": "https://brothersinteractive.com/projects/0QOke",
       "w": 1000,
-      "h": 735
+      "h": 735,
+      "project": "Studio work"
     },
     {
       "t": "Rasch : Crysis 3 Fanart",
-      "slug": "",
       "c": "realistic-humans",
       "cats": [],
       "id": "r3z0m",
@@ -956,9 +897,9 @@
       ],
       "desc": "Realistic Sci-Fi Character Study: \"Rasch\" (Crysis 3 Fanart)\nDeveloped internally at Brothers Interactive, \"Rasch\" represents our team's proficiency in complex mechanical hard-surface modeling, industrial cybernetic design, and advanced surface weathering. This production-ready asset was built from the ground up to showcase intricate robotic anatomy, layered plating, and realistic metallic wear required for premier current-gen sci-fi, action, and shooter titles.\n\nTechnical Breakdown:\n- Budget: 55K Tris\n- Texturing: PBR workflow, three 2K and one 1K texture sets\n- Target Platforms: PC, PlayStation 5, and Xbox Series X|S\n- Pipeline: Fully optimized with clean mechanical topology and precise articulation pivots, ready for seamless integration into advanced rigging, robotic animation networks, and current-gen gameplay engines.",
       "tags": [],
-      "src": "https://brothersinteractive.com/projects/r3z0m",
       "w": 1000,
-      "h": 1000
+      "h": 1000,
+      "project": "Fan art / studio piece"
     }
   ]
 }

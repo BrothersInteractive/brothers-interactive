@@ -42,7 +42,6 @@ function siteMain() {
      category pages. p.c alone still drives the piece's label elsewhere. */
   function inCat(p, key) { return p.c === key || (Array.isArray(p.cats) && p.cats.indexOf(key) !== -1); }
   function inAnyCat(p, keys) { for (var k = 0; k < keys.length; k++) { if (inCat(p, keys[k])) return true; } return false; }
-  var BASE = "https://brothersinteractive.com/projects/";
 
   /* Grid images: a 640px WebP thumbnail (assets/img/thumbs/<folder>/<name>.webp) with the
      full image offered for high-res screens via srcset, so grids don't download 1000px+
@@ -1324,6 +1323,22 @@ function siteMain() {
   function isGif(u) { return /\.gif(\?|#|$)/i.test(u || ""); }
   function ytThumb(v) { return "https://img.youtube.com/vi/" + ytId(v) + "/hqdefault.jpg"; }
   function sketchfabId(v) { var m = String(v || "").match(/([0-9a-f]{32})/i); return m ? m[1] : ""; }
+  /* Marmoset Viewer: shows an .mview file (uploaded in /admin) in box with Marmoset's official player,
+     loaded from viewer.marmoset.co only when a page actually has one. */
+  function mountMarmoset(box, url) {
+    box.innerHTML = '<p class="bd-embed-note">Loading Marmoset viewer&hellip;</p>';
+    var start = function () {
+      if (!window.marmoset) { box.innerHTML = '<p class="bd-embed-note">The Marmoset viewer could not load.</p>'; return; }
+      var viewer = new window.marmoset.WebViewer(box.clientWidth, box.clientHeight, url);
+      box.innerHTML = ""; box.appendChild(viewer.domRoot); viewer.loadScene();
+      window.addEventListener("resize", function () { viewer.resize(box.clientWidth, box.clientHeight); });
+    };
+    if (window.marmoset) { start(); return; }
+    var ms = document.createElement("script");
+    ms.src = "https://viewer.marmoset.co/main/marmoset.js";
+    ms.onload = start; ms.onerror = start;
+    document.head.appendChild(ms);
+  }
   function loopMedia(u, alt, cls) {
     return isVideoFile(u)
       ? '<video class="' + cls + '" src="' + esc(u) + '" autoplay muted loop playsinline preload="metadata" aria-label="' + esc(alt) + '"></video>'
@@ -1629,8 +1644,21 @@ function siteMain() {
     var paras = (P.desc || "").split(/\n\n+/).filter(Boolean);
     $("#assetDesc").innerHTML = paras.length ? paras.map(function (t) { return '<p>' + esc(t).replace(/\n/g, '<br>') + '</p>'; }).join("") : '<p>Breakdown and technical details available on request.</p>';
     var all = [P.i].concat(P.imgs || []);
-    $("#assetMain").src = all[0]; $("#assetMain").alt = P.t;
-    attachLens($("#assetMain"));
+    var aMain = $("#assetMain");
+    aMain.src = all[0]; aMain.alt = P.t;
+    // Same size rule as the viewer: the largest fit inside 1500 x 750 (and the page width), so the lens and
+    // its zoom levels behave the same on this page as in the viewer
+    var fitAssetImg = function () {
+      if (!aMain.naturalWidth) return;
+      var boxW = Math.min(1500, $(".asset-media").clientWidth), boxH = Math.min(750, window.innerHeight * 0.8);
+      var ratio = aMain.naturalWidth / aMain.naturalHeight, w = boxW, h = w / ratio;
+      if (h > boxH) { h = boxH; w = h * ratio; }
+      aMain.style.width = Math.floor(w) + "px"; aMain.style.height = Math.floor(h) + "px";
+    };
+    aMain.addEventListener("load", fitAssetImg);
+    window.addEventListener("resize", fitAssetImg);
+    if (aMain.complete) fitAssetImg();
+    attachLens(aMain);
     // the same lens buttons under the artwork page's picture
     var assetTools = document.createElement("div");
     assetTools.className = "lens-tools lens-tools--page";
@@ -1642,24 +1670,26 @@ function siteMain() {
       var b = e.target.closest(".asset-thumb"); if (!b) return;
       $("#assetMain").src = b.dataset.src; $$(".asset-thumb").forEach(function (x) { x.classList.toggle("active", x === b); });
     });
-    $("#assetTags").innerHTML = (P.tags || []).map(function (t) { return '<li>' + esc(t) + '</li>'; }).join("");
+    // Tags are for the studio's own reference in /admin and are not shown to visitors
     var commissionBtn = $("#assetCommission");
     if (commissionBtn) commissionBtn.href = "/contact?ref=" + encodeURIComponent(P.id);
-    var srcUrl = normalizeUrl(P.src);
-    /* Seed data filled every piece's "src" with a https://brothersinteractive.com/projects/<id>
-       placeholder (no such route exists on this site) — treat that as "not set yet" and send
-       visitors to the real ArtStation profile instead of a dead link, until the CMS's optional
-       "Original page link" field is filled in with that piece's actual page. */
-    $("#assetSrc").href = (srcUrl && srcUrl.indexOf(BASE) !== 0) ? srcUrl : "https://www.artstation.com/brothersinteractive";
+    // Marmoset viewer: a .mview file uploaded in /admin (Portfolio > 3D viewer: Marmoset file)
+    var mview = $("#assetMview");
+    if (mview && P.marmoset) { mview.hidden = false; mountMarmoset(mview, P.marmoset); }
     var view3d = $("#asset3d");
     if (view3d) {
       var sfAsset = sketchfabId(P.sketchfab);   // the /admin field takes a full Sketchfab link or just the ID
       if (sfAsset) { view3d.hidden = false; $("iframe", view3d).src = "https://sketchfab.com/models/" + sfAsset + "/embed?autostart=0&ui_theme=dark&dnt=1"; }
       else view3d.hidden = true;
     }
+    /* Info boxes: Category (from the piece's category) and Project (picked in /admin) always; Software,
+       Poly count, Textures and any extra boxes from /admin only when something is typed in them. */
     var projName = P.project || (P.c === "lost-in-random" ? "Lost in Random" : P.c === "mid-night-walk" ? "The Midnight Walk" : /fanart/i.test(P.t) ? "Fan art / studio piece" : "Studio work");
-    var specs = [["Category", CAT[P.c] || ""], ["Project", projName], ["Software", P.software && P.software.length ? P.software.join(", ") : "On request"], ["Poly count", P.polys || "On request"], ["Textures", P.textures || "On request"]];
-    $("#assetSpecs").innerHTML = specs.map(function (s) { return '<li><span>' + esc(s[0]) + '</span><strong>' + esc(s[1]) + '</strong></li>'; }).join("");
+    var txt = function (v) { return String(Array.isArray(v) ? v.join(", ") : v == null ? "" : v).trim(); };
+    var specs = [["Category", CAT[P.c] || ""], ["Project", projName], ["Software", txt(P.software)], ["Poly count", txt(P.polys)], ["Textures", txt(P.textures)]];
+    (P.specs || []).forEach(function (s) { if (s) specs.push([txt(s.label), txt(s.value)]); });
+    $("#assetSpecs").innerHTML = specs.filter(function (s) { return s[1]; })
+      .map(function (s) { return '<li>' + (s[0] ? '<span>' + esc(s[0]) + '</span>' : '') + '<strong>' + esc(s[1]) + '</strong></li>'; }).join("");
     var prevP = PROJECTS[(aidx - 1 + PROJECTS.length) % PROJECTS.length], nextP = PROJECTS[(aidx + 1) % PROJECTS.length];
     $("#assetPrev").href = pieceUrl(prevP.id); $("#assetPrev").textContent = "← " + prevP.t;
     $("#assetNext").href = pieceUrl(nextP.id); $("#assetNext").textContent = nextP.t + " →";

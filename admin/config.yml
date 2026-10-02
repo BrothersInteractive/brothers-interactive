@@ -304,12 +304,6 @@ collections:
                 widget: "string"
                 hint: "The name shown under the artwork, e.g. \"Nitro CR7\""
 
-              - label: "Link name (optional)"
-                name: "slug"
-                widget: "string"
-                required: false
-                hint: "The last part of this piece's web address, e.g. \"lehri\" gives brothersinteractive.in/portfolio/realistic-character/lehri/. Leave empty to use the title. Fill it in if you might rename the title later, so links already sent to clients keep working."
-
               - label: "Category"
                 name: "c"
                 widget: "select"
@@ -344,15 +338,68 @@ collections:
                   - { label: "Game - Midnight Walk", value: "mid-night-walk" }
                   - { label: "Game - Lost in Random", value: "lost-in-random" }
 
+              - label: "Project"
+                name: "project"
+                widget: "select"
+                default: "Studio work"
+                hint: "Shown in the Project box on the piece's details page. Pick the game it was made for, or Studio work / Fan art. A new game can be added to this list on request."
+                options:
+                  - "Studio work"
+                  - "Fan art / studio piece"
+                  - "Echoes of Aincrad"
+                  - "Shift At Midnight"
+                  - "FIFA Heroes"
+                  - "Tormentor"
+                  - "The Midnight Walk"
+                  - "Warhammer 40,000: Space Marine 2"
+                  - "Ready or Not"
+                  - "Supermoves"
+                  - "Warhammer 40,000: Speed Freeks"
+                  - "Lost in Random"
+                  - "Dark Envoy"
+                  - "Wavetale"
+                  - "The Gunk"
+                  - "Scavengers"
+
+              - label: "Software (optional)"
+                name: "software"
+                widget: "string"
+                required: false
+                hint: "e.g. ZBrush, Maya, Substance 3D Painter. Leave empty to hide this box on the website."
+
+              - label: "Poly count (optional)"
+                name: "polys"
+                widget: "string"
+                required: false
+                hint: "Numbers and text, e.g. 55K tris (LOD0). Leave empty to hide this box on the website."
+
+              - label: "Textures (optional)"
+                name: "textures"
+                widget: "string"
+                required: false
+                hint: "e.g. 3 x 2K + 1 x 1K, PBR metal/rough. Leave empty to hide this box on the website."
+
+              - label: "Extra info boxes (optional)"
+                name: "specs"
+                widget: "list"
+                collapsed: true
+                required: false
+                label_singular: "Info box"
+                summary: "{{fields.label}}: {{fields.value}}"
+                hint: "Add your own boxes next to Category / Project, e.g. Heading \"Engine\" and Content \"Unreal Engine 5\". Click Add for another box. A box with nothing typed in is not shown."
+                fields:
+                  - { label: "Heading", name: "label", widget: "string", required: false }
+                  - { label: "Content", name: "value", widget: "string", required: false }
+
               - label: "ID"
                 name: "id"
                 widget: "string"
-                hint: "Any short unique code, letters and numbers, no spaces (e.g. AB12cd). Used in the piece's direct link — must not match any existing piece's ID."
+                hint: "Any short unique code, letters and numbers, no spaces (e.g. AB12cd). Used to link a breakdown or a sculpt-to-final pair to this piece. Must not match any other piece's ID."
 
               - label: "Main Image"
                 name: "i"
                 widget: "image"
-                hint: "The image shown in the portfolio grid and as the first photo when opened."
+                hint: "The first picture. JPG or WebP, 1500-2500 px wide; the site shows it at most 1500 x 750 and the lens uses the full file. Grid thumbnails are made automatically."
 
               - label: "Additional Images"
                 name: "imgs"
@@ -361,47 +408,34 @@ collections:
                 required: false
                 label_singular: "Image"
                 field: { label: "Image", name: "image", widget: "image" }
-                hint: "Optional — other angles or close-ups of the same piece, shown as thumbnails when it's opened."
+                hint: "Other angles or close-ups, in the order they should appear. Same size advice as the Main Image."
 
               - label: "Description"
                 name: "desc"
                 widget: "text"
                 hint: "Shown on the piece's detail page. A short paragraph is enough."
 
-              - label: "Tags"
+              - label: "Tags (not shown to visitors)"
                 name: "tags"
                 widget: "list"
                 collapsed: true
                 required: false
-                hint: "Optional keywords, one per line."
+                hint: "Optional keywords for your own reference, one per line. They are not shown on the website."
 
-              - label: "Original page link"
-                name: "src"
-                widget: "string"
-                required: false
-                hint: "Optional — a URL for the \"View on...\" link, if this piece has its own page elsewhere."
-
-              - label: "3D viewer (Sketchfab link)"
+              - label: "3D viewer: Sketchfab link (optional)"
                 name: "sketchfab"
                 widget: "string"
                 required: false
-                hint: "Optional. Paste the Sketchfab link of this model (or just its ID). Visitors can then spin the real model on the piece's details page. The model must be public or unlisted, with embedding allowed."
+                hint: "Paste the Sketchfab link of this model (or just its ID). Visitors can then spin the model on the piece's details page. The model must be public or unlisted, with embedding allowed."
 
-              - label: "Image width (px)"
-                name: "w"
-                widget: "number"
-                value_type: "int"
+              - label: "3D viewer: Marmoset file (optional)"
+                name: "marmoset"
+                widget: "file"
                 required: false
-                default: 0
-                hint: "Optional — leave as 0 if unsure. Helps the page lay out smoothly while the image loads."
-
-              - label: "Image height (px)"
-                name: "h"
-                widget: "number"
-                value_type: "int"
-                required: false
-                default: 0
-                hint: "Optional — leave as 0 if unsure."
+                media_folder: "/assets/mview"
+                public_folder: "/assets/mview"
+                pattern: ['\.(mview|MVIEW)$', "Only a Marmoset .mview file."]
+                hint: "Export from Marmoset Toolbag (File > Export > Marmoset Viewer) and upload the .mview file here. Visitors can then spin the model on the piece's details page. Keep it small (ideally under 20 MB): it downloads when the page opens."
 
   - name: "games"
     label: "Games"

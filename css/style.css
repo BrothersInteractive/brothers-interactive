@@ -1426,3 +1426,13 @@ body.lens-on .art-cursor, body.lens-on .art-cursor-ring, body.lens-on .cursor-gl
   #lightboxImg { -webkit-touch-callout: none; user-select: none; }
 }
 #assetMain { -webkit-touch-callout: none; }
+/* Artwork details page: the picture full width on top, sized like the viewer (js: fitAssetImg, at most
+   1500 x 750) with the same theme outline; lens buttons and views under it; text and info boxes below. */
+.asset-media { display: flex; flex-direction: column; align-items: center; gap: 14px; margin-bottom: 48px; }
+.asset-media .asset-main { overflow: visible; border-radius: 0; max-width: 100%; }
+.asset-media #assetMain { display: block; max-width: 100%; object-fit: contain; border-radius: var(--radius); border: 2px solid rgba(var(--accent-rgb), 0.7); box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.45), 0 0 26px rgba(var(--accent-rgb), 0.22); -webkit-touch-callout: none; }
+.asset-media .asset-thumbs { justify-content: center; margin-top: 0; }
+.asset-media .lens-tools { margin-top: 0; }
+.asset-media .asset-3d { width: min(1200px, 100%); margin-top: 12px; position: relative; }
+.asset-mview .bd-embed-note { position: absolute; inset: 0; display: grid; place-items: center; margin: 0; color: var(--text-muted); }
+.asset-specs li strong:only-child { padding-top: 2px; }
