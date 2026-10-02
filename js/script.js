@@ -507,24 +507,76 @@ function siteMain() {
     var previewSize = (location.search.match(/[?&]heroSize=(\d+)/) || [])[1];
     if (isLocal && previewModel) entries = [{ model: decodeURIComponent(previewModel), alt: "Preview model", modelSize: previewSize && +previewSize }];
     else if (isLocal && previewVideo) entries = [{ video: decodeURIComponent(previewVideo), alt: "Preview video" }];
+    var ANIMS = ["float", "breathe", "sway", "drift", "glow", "none"];
+    var SHOWCASE_MODE = ((loadJSON("hero-showcase") || {}).mode) || "together";
+    // Normal size first (as the CSS draws it), then that width x "Picture size" as the real layout width: the
+    // browser draws the picture once at that size, sharper than stretching it afterwards with a CSS scale
+    function fitShowcase(el) {
+      if (!el.complete || !el.naturalWidth) return;
+      var k = el._picK || 1;
+      el.style.width = ""; el.style.maxWidth = ""; el.style.setProperty("--pic-k", 1);
+      var w0 = el.offsetWidth;
+      el.style.setProperty("--pic-k", k);
+      if (k !== 1) { el.style.maxWidth = "none"; el.style.width = Math.round(w0 * k) + "px"; }
+    }
+    // Size, animation and position from /admin, for one entry on one element (picture, video or 3D model).
+    // Move: X + = right, - = left; Y + = up, - = down, in pixels (halved on tablets and phones).
+    function styleShowcase(el, e, isPicture) {
+      if (isPicture) {
+        el._picK = Math.max(50, Math.min(150, +e.imgSize || 100)) / 100;
+        el.setAttribute("data-anim", ANIMS.indexOf(e.animation) !== -1 ? e.animation : "float");
+        if (!el._fitBound) { el._fitBound = true; el.addEventListener("load", function () { fitShowcase(el); }); }
+        fitShowcase(el);
+      }
+      var ox = Math.max(-400, Math.min(400, +e.offsetX || 0)), oy = Math.max(-400, Math.min(400, +e.offsetY || 0));
+      el.style.setProperty("--ox", ox); el.style.setProperty("--oy", -oy);
+      el.classList.toggle("hero-moved", !!(ox || oy));
+    }
+    window.addEventListener("resize", function () { $$(".hero-showcase-img").forEach(fitShowcase); });
+
     if (showImg && entries.length) {
-      var pick = entries[Math.floor(Math.random() * entries.length)];
-      if (pick.img) showImg.src = pick.img;
-      // "Picture size (%)" in /admin: 100 = normal; grows from the podium upward (CSS scale, so the float animation still works)
-      var picSize = Math.max(50, Math.min(150, +pick.imgSize || 100));
-      if (picSize !== 100) showImg.style.scale = String(picSize / 100);
-      showImg.alt = pick.alt || "";
-      if (pick.model) mountHeroModel(pick.model, showImg, pick.alt, pick.modelSize);
-      else if (pick.video) mountHeroVideo(pick.video, showImg, pick.alt);
-      // Animation and position from /admin, on whatever is showing (picture, video or 3D model).
-      // Move: X + = right, - = left; Y + = up, - = down, in pixels (halved on tablets and phones, see .hero-stage)
-      var shown = showImg.hidden ? showImg.parentNode.querySelector(".hero-model, .hero-video") : showImg;
-      var ANIMS = ["float", "breathe", "sway", "drift", "glow", "none"];
-      if (shown) {
-        var anim = ANIMS.indexOf(pick.animation) !== -1 ? pick.animation : "float";
-        if (shown === showImg) shown.setAttribute("data-anim", anim);   // the 3D model spins on its own, so no extra motion
-        var ox = Math.max(-400, Math.min(400, +pick.offsetX || 0)), oy = Math.max(-400, Math.min(400, +pick.offsetY || 0));
-        if (ox || oy) { shown.style.setProperty("--ox", ox); shown.style.setProperty("--oy", -oy); shown.classList.add("hero-moved"); }
+      var pictures = entries.filter(function (x) { return x.img && !x.model && !x.video; });
+      var showPicture = function (el, e) { el.src = e.img; el.alt = e.alt || ""; styleShowcase(el, e, true); };
+      if (SHOWCASE_MODE === "together" && pictures.length > 1) {
+        // All picture entries stand on the podium side by side, in list order, each with its own settings.
+        // (3D model and video entries are left out of this mode: they need the whole stage.)
+        showImg.parentNode.classList.add("hero-stage--group");
+        showImg.style.setProperty("--share", 1 / pictures.length);
+        pictures.forEach(function (e, i) {
+          var el = i ? showImg.cloneNode(false) : showImg;
+          if (i) { el.removeAttribute("id"); showImg.parentNode.insertBefore(el, null); }
+          el.style.setProperty("--share", 1 / pictures.length);
+          el.style.animationDelay = (-i * 1.7) + "s";   // so they don't all bob in step
+          showPicture(el, e);
+        });
+      } else {
+        // One at a time. "random": one entry per visit. "turns": picture entries change every 8 s (cross-fade).
+        // An entry with a 3D model or video stays on its own when the visit lands on it.
+        var pick = entries[Math.floor(Math.random() * entries.length)];
+        if (pick.model || pick.video) {
+          if (pick.img) showImg.src = pick.img;
+          showImg.alt = pick.alt || "";
+          if (pick.model) mountHeroModel(pick.model, showImg, pick.alt, pick.modelSize);
+          else mountHeroVideo(pick.video, showImg, pick.alt);
+          var shown = showImg.hidden ? showImg.parentNode.querySelector(".hero-model, .hero-video") : showImg;
+          if (shown) styleShowcase(shown, pick, shown === showImg);
+        } else {
+          var at = pictures.indexOf(pick);
+          showPicture(showImg, pictures[at]);
+          if (SHOWCASE_MODE === "turns" && pictures.length > 1) {
+            pictures.forEach(function (e) { var pre = new Image(); pre.src = e.img; });   // ready before their turn
+            setInterval(function () {
+              if (document.hidden) return;
+              at = (at + 1) % pictures.length;
+              showImg.classList.add("hero-swap");                        // fade out...
+              setTimeout(function () {
+                showPicture(showImg, pictures[at]);
+                var back = function () { showImg.classList.remove("hero-swap"); };   // ...and in once drawn
+                if (showImg.complete) requestAnimationFrame(back); else showImg.addEventListener("load", back, { once: true });
+              }, 600);
+            }, 8000);
+          }
+        }
       }
     }
   }

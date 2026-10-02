@@ -261,6 +261,10 @@ button { font: inherit; color: inherit; cursor: pointer; background: none; borde
 .hero-showcase-img[data-anim="glow"] { animation: glowPulse 4s ease-in-out infinite; }
 .hero-showcase-img[data-anim="none"] { animation: none; }
 /* Move left/right/up/down from /admin: `translate` is separate from the animations' `transform`, so both apply */
+.hero-showcase-img.hero-swap { opacity: 0; }
+/* Several pictures side by side on the podium (/admin: How to show several pictures = side by side) */
+.hero-stage--group { gap: 8px; }
+.hero-stage--group .hero-showcase-img { flex: 0 1 auto; min-width: 0; }   /* pictures taking turns cross-fade */
 .hero-moved { translate: calc(var(--ox, 0) * var(--move-k, 1) * 1px) calc(var(--oy, 0) * var(--move-k, 1) * 1px); }
 @media (max-width: 1000px) { .hero-moved { --move-k: 0.5; } }
 
@@ -273,12 +277,14 @@ button { font: inherit; color: inherit; cursor: pointer; background: none; borde
 .hero-podium-svg { width: 100%; height: auto; display: block; overflow: visible; }
 .hero-showcase-img {
   position: relative; z-index: 2; display: block;
-  max-height: min(540px, 62vh); max-width: 94%; width: auto; height: auto; /* scales with window height so it never reaches the menu */
+  /* scales with window height so it never reaches the menu; --pic-k = "Picture size" from /admin (layout size, so it stays sharp) */
+  max-height: calc(min(540px, 62vh) * var(--pic-k, 1)); max-width: calc(94% * var(--pic-k, 1) * var(--share, 1)); width: auto; height: auto;
+  transition: opacity 0.6s ease;
   object-fit: contain;
   margin-bottom: 48px;
   filter: drop-shadow(0 24px 28px rgba(0,0,0,0.55)) drop-shadow(0 0 36px rgba(var(--accent-rgb), 0.25));
   animation: float 6s ease-in-out infinite;
-  transform-origin: 50% 100%;   /* "Picture size" in /admin scales it up from the podium */
+  transform-origin: 50% 100%;   /* the animations grow and turn from the feet */
 }
 /* Real 3D model in the hero (set in /admin > Homepage Hero > 3D model): drag-to-rotate turntable */
 .hero-model {
@@ -1139,7 +1145,7 @@ body.art-cursor-on input:not([type="range"]):not([type="checkbox"]), body.art-cu
 @media (max-width: 1400px) {
   .container { width: min(100% - 48px, var(--container)); }
   .hero-visual { min-height: 600px; }
-  .hero-showcase-img { max-height: 520px; }
+  .hero-showcase-img { max-height: calc(520px * var(--pic-k, 1)); }
 }
 @media (max-width: 1600px) {
   .nav-link { padding: 10px 12px; font-size: 0.78rem; letter-spacing: 0.1em; }
@@ -1205,7 +1211,7 @@ body.art-cursor-on input:not([type="range"]):not([type="checkbox"]), body.art-cu
   .hero { padding-top: calc(var(--header-h) + 32px); min-height: auto; }
   .hero-inner { grid-template-columns: 1fr; gap: 40px; }
   .hero-visual { min-height: 460px; max-width: 520px; margin-inline: auto; width: 100%; }
-  .hero-showcase-img { max-height: 420px; max-width: 82%; margin-bottom: 28px; }
+  .hero-showcase-img { max-height: calc(420px * var(--pic-k, 1)); max-width: calc(82% * var(--pic-k, 1) * var(--share, 1)); margin-bottom: 28px; }
   .scroll-hint { display: none; }
 
   .games-grid, .blog-grid { grid-template-columns: repeat(2, 1fr); }

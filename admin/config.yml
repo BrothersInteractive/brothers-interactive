@@ -47,8 +47,18 @@ collections:
         label: "3D model / picture on the podium"
         file: "data/hero-showcase.json"
         format: "json"
-        description: "What stands on the podium at the top of the homepage. If you add several entries, one is picked at random on each visit. TO SHOW A SPINNING 3D MODEL: (1) In Blender: File > Export > glTF 2.0, Format = glTF Binary (.glb), and under Data > Compression tick Compression. Aim for under 2 MB (textures 2K at most); a bigger file makes the homepage slower. (2) Here: open Showcase > Add Entry (or open an existing entry). (3) 3D model (.glb): click and upload the file. (4) Image: also add a transparent PNG of the same character; it shows while the model loads and on browsers without 3D. (5) Description: a few words, e.g. Stylized orc warrior. (6) 3D model size: leave empty (= 100) first; if the model looks small, try 110 to 120. (7) Save, wait 2 minutes, open the homepage and press Ctrl + F5. TO SHOW A PICTURE ONLY: fill Image and Description, leave 3D model and Video empty. Pictures must be PNGs with the background removed, or they show as a hard rectangle. To stop showing an entry, delete it from the list (keep at least one)."
+        description: "What stands on the podium at the top of the homepage. SEVERAL PICTURES: choose under 'How to show several pictures': side by side (all together), take turns (every 8 seconds) or one at random per visit. Each keeps its own size, animation and position; use Move left/right to space them out. (3D model and video entries always show on their own.) TO SHOW A SPINNING 3D MODEL: (1) In Blender: File > Export > glTF 2.0, Format = glTF Binary (.glb), and under Data > Compression tick Compression. Aim for under 2 MB (textures 2K at most); a bigger file makes the homepage slower. (2) Here: open Showcase > Add Entry (or open an existing entry). (3) 3D model (.glb): click and upload the file. (4) Image: also add a transparent PNG of the same character; it shows while the model loads and on browsers without 3D. (5) Description: a few words, e.g. Stylized orc warrior. (6) 3D model size: leave empty (= 100) first; if the model looks small, try 110 to 120. (7) Save, wait 2 minutes, open the homepage and press Ctrl + F5. TO SHOW A PICTURE ONLY: fill Image and Description, leave 3D model and Video empty. Pictures must be PNGs with the background removed, or they show as a hard rectangle. To stop showing an entry, delete it from the list (keep at least one)."
         fields:
+          - label: "How to show several pictures"
+            name: "mode"
+            widget: "select"
+            required: false
+            default: "together"
+            hint: "Only matters when the list below has 2 or more picture entries."
+            options:
+              - { label: "Side by side: all pictures on the podium together", value: "together" }
+              - { label: "Take turns: one at a time, changing every 8 seconds", value: "turns" }
+              - { label: "One at random: a different one on each visit", value: "random" }
           - label: "Showcase"
             name: "items"
             widget: "list"
@@ -56,8 +66,8 @@ collections:
             label_singular: "Entry"
             summary: "{{fields.alt}}"
             fields:
-              - { label: "Image (transparent PNG)", name: "img", widget: "image", required: false, hint: "Shown on its own if the entry has no 3D model or video; otherwise it's the picture shown while those load. Background must be removed/transparent." }
-              - { label: "Picture size (%)", name: "imgSize", widget: "number", value_type: "int", min: 50, max: 150, step: 5, required: false, hint: "How big the picture stands on the podium (for a picture without a 3D model). 100 = normal; try 110-130 to make it bigger, 80-90 smaller. It grows upward from the podium. Leave empty for 100." }
+              - { label: "Image (transparent PNG)", name: "img", widget: "image", required: false, hint: "Use at least 1600 px wide (2000 px is best), or it looks soft on big screens, especially with Picture size above 100. Shown on its own if the entry has no 3D model or video; otherwise it's the picture shown while those load. Background must be removed/transparent." }
+              - { label: "Picture size (%)", name: "imgSize", widget: "number", value_type: "int", min: 50, max: 150, step: 5, required: false, hint: "How big the picture stands on the podium (for a picture without a 3D model). 100 = normal; try 110-130 to make it bigger, 80-90 smaller. It grows upward from the podium. Above 100 the picture file must be big enough (see Image) to stay sharp. Leave empty for 100." }
               - label: "Animation"
                 name: "animation"
                 widget: "select"
