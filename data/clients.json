@@ -1,28 +1,52 @@
 {
   "items": [
     {
-      "n": "Saber Interactive"
+      "n": "Saber Interactive",
+      "logo": ""
     },
     {
-      "n": "Thunderful"
+      "n": "Thunderful",
+      "logo": ""
     },
     {
-      "n": "Midwinter Entertainment"
+      "n": "Midwinter Entertainment",
+      "logo": ""
     },
     {
-      "n": "Slipgate Ironworks"
+      "n": "Slipgate Ironworks",
+      "logo": ""
     },
     {
-      "n": "MoonHood Studios"
+      "n": "MoonHood Studios",
+      "logo": ""
     },
     {
-      "n": "VOID Interactive"
+      "n": "VOID Interactive",
+      "logo": ""
     },
     {
-      "n": "Zoink Games"
+      "n": "Zoink Games",
+      "logo": ""
     },
     {
-      "n": "Event Horizon"
+      "n": "Event Horizon",
+      "logo": ""
+    },
+    {
+      "n": "Shapefarm",
+      "logo": ""
+    },
+    {
+      "n": "Enver",
+      "logo": ""
+    },
+    {
+      "n": "Madmind",
+      "logo": ""
+    },
+    {
+      "n": "Makea Games",
+      "logo": ""
     }
   ]
 }
