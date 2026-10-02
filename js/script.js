@@ -510,6 +510,9 @@ function siteMain() {
     if (showImg && entries.length) {
       var pick = entries[Math.floor(Math.random() * entries.length)];
       if (pick.img) showImg.src = pick.img;
+      // "Picture size (%)" in /admin: 100 = normal; grows from the podium upward (CSS scale, so the float animation still works)
+      var picSize = Math.max(50, Math.min(150, +pick.imgSize || 100));
+      if (picSize !== 100) showImg.style.scale = String(picSize / 100);
       showImg.alt = pick.alt || "";
       if (pick.model) mountHeroModel(pick.model, showImg, pick.alt, pick.modelSize);
       else if (pick.video) mountHeroVideo(pick.video, showImg, pick.alt);
@@ -1860,13 +1863,6 @@ function siteMain() {
         c.style.transform = "translate(" + (px * depth).toFixed(1) + "px," + (py * depth).toFixed(1) + "px)";
       });
     });
-  }
-
-  // soft cursor glow
-  if (motionOK && finePointer) {
-    var glow = document.createElement("div"); glow.className = "cursor-glow"; document.body.appendChild(glow);
-    document.addEventListener("pointermove", function (e) { glow.style.left = e.clientX + "px"; glow.style.top = e.clientY + "px"; glow.classList.add("on"); });
-    document.addEventListener("pointerleave", function () { glow.classList.remove("on"); });
   }
 
   // artist cursor: a paintbrush that follows the pointer, with a lagging ring and hover states

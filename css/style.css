@@ -262,6 +262,7 @@ button { font: inherit; color: inherit; cursor: pointer; background: none; borde
   margin-bottom: 48px;
   filter: drop-shadow(0 24px 28px rgba(0,0,0,0.55)) drop-shadow(0 0 36px rgba(var(--accent-rgb), 0.25));
   animation: float 6s ease-in-out infinite;
+  transform-origin: 50% 100%;   /* "Picture size" in /admin scales it up from the podium */
 }
 /* Real 3D model in the hero (set in /admin > Homepage Hero > 3D model): drag-to-rotate turntable */
 .hero-model {
@@ -1077,14 +1078,6 @@ body.art-cursor-on input:not([type="range"]):not([type="checkbox"]), body.art-cu
 .art-cursor-ring.zoom { width: 58px; height: 58px; border-style: dashed; border-color: var(--accent); }
 [data-theme="arctic"] .art-cursor .c-handle { fill: #1b2233; }
 
-/* cursor glow */
-.cursor-glow {
-  position: fixed; left: 0; top: 0; width: 360px; height: 360px; border-radius: 50%; pointer-events: none; z-index: 0;
-  background: radial-gradient(circle, rgba(var(--accent-rgb), 0.16), transparent 60%); transform: translate(-50%, -50%);
-  opacity: 0; transition: opacity 0.4s; mix-blend-mode: screen;
-}
-.cursor-glow.on { opacity: 1; }
-[data-theme="arctic"] .cursor-glow { mix-blend-mode: multiply; background: radial-gradient(circle, rgba(var(--accent-rgb), 0.08), transparent 60%); }
 
 /* ---------- Theme switcher ---------- */
 /* position:relative + a footprint that matches only the visible toggle button:

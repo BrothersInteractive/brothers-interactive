@@ -28,9 +28,9 @@
   ];
 
   // Homepage sections that get their own address (/games/, /team/ …). "home" is the bare "/".
-  var SECTIONS = ["home", "games", "testimonials", "about", "portfolio", "breakdown", "compare", "services", "faq", "team", "careers", "blog"];
+  var SECTIONS = ["home", "games", "testimonials", "about", "portfolio", "breakdown", "services", "faq", "team", "careers", "blog"];
   // Sections whose heading and text come from data/sections/<id>.json (About has its own data/about.json)
-  var TEXT_SECTIONS = ["games", "testimonials", "portfolio", "breakdown", "compare", "services", "faq", "team", "careers", "blog"];
+  var TEXT_SECTIONS = ["games", "testimonials", "portfolio", "breakdown", "services", "faq", "team", "careers", "blog"];
 
   function slugify(s) {
     return String(s || "").toLowerCase()

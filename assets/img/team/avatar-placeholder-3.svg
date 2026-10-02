@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 400" role="img" aria-label="Portrait coming soon">
+  <defs>
+    <radialGradient id="bg" cx="38%" cy="28%" r="85%"><stop offset="0" stop-color="#2a3349"/><stop offset=".5" stop-color="#151a27"/><stop offset="1" stop-color="#090c14"/></radialGradient>
+    <linearGradient id="body" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#3a4357"/><stop offset=".45" stop-color="#262d3d"/><stop offset="1" stop-color="#121621"/></linearGradient>
+    <linearGradient id="head" x1="0" y1="0" x2="1" y2=".3"><stop offset="0" stop-color="#4a5368"/><stop offset=".5" stop-color="#2d3445"/><stop offset="1" stop-color="#151a25"/></linearGradient>
+    <linearGradient id="rim" x1="0" y1="0" x2="1" y2="0"><stop offset=".7" stop-color="#d4af37" stop-opacity="0"/><stop offset="1" stop-color="#e8c868" stop-opacity=".75"/></linearGradient>
+    <radialGradient id="floor" cx="50%" cy="100%" r="55%"><stop offset="0" stop-color="#d4af37" stop-opacity=".18"/><stop offset="1" stop-color="#d4af37" stop-opacity="0"/></radialGradient>
+    <filter id="soft"><feGaussianBlur stdDeviation="1.2"/></filter>
+  </defs>
+  <rect width="320" height="400" fill="url(#bg)"/>
+  <rect width="320" height="400" fill="url(#floor)"/>
+  <g filter="url(#soft)">
+    <!-- shoulders and chest, with a collar line -->
+    <path d="M22 400c4-62 30-98 78-112 18-5 34-10 42-20h36c8 10 24 15 42 20 48 14 74 50 78 112z" fill="url(#body)"/>
+    <path d="M142 268c4 20 10 34 18 42 8-8 14-22 18-42" fill="none" stroke="#0d1018" stroke-width="5" opacity=".7"/>
+    <!-- neck -->
+    <path d="M136 224c2 22 2 36 6 46 6 8 12 12 18 12s12-4 18-12c4-10 4-24 6-46z" fill="#20263400"/>
+    <path d="M136 220c2 24 2 38 6 48 6 8 12 12 18 12s12-4 18-12c4-10 4-24 6-48z" fill="url(#head)"/>
+    <!-- head: skull, temple and a real jaw line -->
+    <path d="M104 150c0-50 26-84 58-84s58 34 58 84c0 22-4 40-10 54-8 18-20 32-34 38-8 4-20 4-28 0-14-6-26-20-34-38-6-14-10-32-10-54z" fill="url(#head)"/>
+    <path d="M102 158c-6 0-9 8-8 18 2 12 8 20 14 20M218 158c6 0 9 8 8 18-2 12-8 20-14 20" fill="url(#head)"/>
+    <path d="M108 146c-2-46 20-80 54-82s58 26 58 70c0 8-1 14-3 20-4-22-14-36-30-42-20 4-46 4-64-2-10 8-14 20-15 36z" fill="#10131b"/>
+  </g>
+  <!-- warm rim light on the right edge -->
+  <path d="M104 150c0-50 26-84 58-84s58 34 58 84c0 22-4 40-10 54-8 18-20 32-34 38-8 4-20 4-28 0-14-6-26-20-34-38-6-14-10-32-10-54zM22 400c4-62 30-98 78-112 18-5 34-10 42-20h36c8 10 24 15 42 20 48 14 74 50 78 112z" fill="url(#rim)" opacity=".55"/>
+</svg>

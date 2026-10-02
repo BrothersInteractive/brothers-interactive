@@ -9,10 +9,11 @@
       "specialization": true,
       "text": "Realistic and stylized characters taken from concept or reference to game-ready. High-poly sculpt, clean retopology, UVs, bakes and final textures, matched to your art direction and performance budget.",
       "points": [
-        "Heroes, NPCs, enemies and creatures",
-        "Realistic, stylized and hand-painted styles",
-        "Outfit variants, skins and customisation sets",
-        "Facial and body blendshape support"
+        "Heroes & NPCs",
+        "Creatures",
+        "Realistic & stylized",
+        "Outfit variants",
+        "Blendshapes"
       ]
     },
     {
@@ -45,10 +46,10 @@
       "specialization": false,
       "text": "LOD chains, collision, material setup and import into Unreal Engine or Unity, so assets arrive working rather than as loose files.",
       "points": [
-        "LOD generation and poly budgets",
-        "Material instances and shader hookup",
-        "Unreal and Unity import and validation",
-        "Naming, folder and export conventions"
+        "LODs & poly budgets",
+        "Shader hookup",
+        "Unreal & Unity import",
+        "Export conventions"
       ]
     },
     {
@@ -57,10 +58,10 @@
       "specialization": false,
       "text": "PBR texturing, hand-painted stylisation and material authoring. We match your existing library so new assets sit seamlessly next to in-house work.",
       "points": [
-        "Metal/rough and spec/gloss PBR workflows",
-        "Hand-painted and stylised textures",
-        "Skin, hair and cloth materials",
-        "Texture atlases and channel packing"
+        "PBR workflows",
+        "Hand-painted",
+        "Skin, hair & cloth",
+        "Atlases & packing"
       ]
     },
     {
@@ -73,29 +74,6 @@
         "Skin weighting and deformation passes",
         "Engine-ready skeleton conventions"
       ]
-    }
-  ],
-  "whyTitle": "Why Choose Us?",
-  "why": [
-    {
-      "icon": "⚡",
-      "title": "Experienced Team",
-      "text": "Years of production on shipped indie and AAA titles."
-    },
-    {
-      "icon": "⚙",
-      "title": "Optimized for Performance",
-      "text": "Assets built to budget, with LODs and clean UVs."
-    },
-    {
-      "icon": "✎",
-      "title": "Customized Solutions",
-      "text": "We adapt to your pipeline, style guide and tools."
-    },
-    {
-      "icon": "⏱",
-      "title": "Timely Delivery",
-      "text": "Clear milestones and dependable turnaround."
     }
   ]
 }

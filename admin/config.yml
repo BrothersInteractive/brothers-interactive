@@ -57,6 +57,7 @@ collections:
             summary: "{{fields.alt}}"
             fields:
               - { label: "Image (transparent PNG)", name: "img", widget: "image", required: false, hint: "Shown on its own if the entry has no 3D model or video; otherwise it's the picture shown while those load. Background must be removed/transparent." }
+              - { label: "Picture size (%)", name: "imgSize", widget: "number", value_type: "int", min: 50, max: 150, step: 5, required: false, hint: "How big the picture stands on the podium (for a picture without a 3D model). 100 = normal; try 110-130 to make it bigger, 80-90 smaller. It grows upward from the podium. Leave empty for 100." }
               - { label: "3D model (.glb)", name: "model", widget: "file", required: false, media_folder: "/assets/models", public_folder: "/assets/models", pattern: ['\.(glb|GLB)$', "This field only takes a .glb 3D model file."], hint: "Optional. A .glb file (Blender: File > Export > glTF 2.0 > glTF Binary, with Compression ticked). Visitors see it spin and can drag to rotate it. Aim for under 2 MB, textures 2K max. Leave empty to show the image only." }
               - { label: "3D model size (%)", name: "modelSize", widget: "number", value_type: "int", min: 50, max: 150, step: 5, required: false, hint: "How big this 3D model appears. 100 = normal (whole model always fits). Higher = bigger, lower = smaller. Above ~120 the top or sides of tall or wide characters may get cut off. Leave empty for 100." }
               - { label: "Video or GIF", name: "video", widget: "file", required: false, media_folder: "/assets/videos", public_folder: "/assets/videos", pattern: ['\.(mp4|webm|gif|MP4|WEBM|GIF)$', "This field only takes an MP4, WebM or GIF. For a 3D model (.glb) use the 3D model field above."], hint: "Optional. Plays silently on a loop in place of the image (a 3D model on the same entry takes priority). For a floating character use a WebM with a transparent background (Safari shows the image instead) or a GIF — a normal MP4 always shows as a rectangle. Keep it short and under ~8 MB." }
@@ -374,7 +375,7 @@ collections:
 
   - name: "breakdown"
     label: "Breakdown"
-    description: "The Breakdown section and the Sculpt to Final section under it."
+    description: "The Breakdown section: its heading and the breakdown pages."
     files:
       - name: "text-breakdown"
         label: "Breakdown: heading and text"
@@ -422,44 +423,16 @@ collections:
                 fields:
                   - { label: "Step title", name: "t", widget: "string" }
                   - { label: "Description", name: "d", widget: "string" }
-      - name: "text-compare"
-        label: "Sculpt to Final: heading and text"
-        file: "data/sections/compare.json"
-        format: "json"
-        description: "The heading and subtitle above the Sculpt to Final cards."
-        fields:
-          - { label: "Small line above the heading", name: "eyebrow", widget: "string", required: false }
-          - { label: "Heading", name: "title", widget: "string", hint: "Put *stars* around the words that should be gold, e.g. Production *breakdowns*" }
-          - { label: "Subtitle", name: "sub", widget: "text", required: false, hint: "A link can be written as [words](/contact)." }
-      - name: "comparisons"
-        label: "Sculpt to Final: cards"
-        file: "data/pairs.json"
-        format: "json"
-        description: "Cards shown in the homepage Sculpt to Final section. Only the first 3 in this list are shown — drag entries up or down to choose which. Each card shows, in this order of priority: a YouTube video, a GIF/video file, or the before/after drag slider."
-        fields:
-          - label: "Comparisons"
-            name: "items"
-            widget: "list"
-            collapsed: true
-            label_singular: "Comparison"
-            summary: "{{fields.t}}"
-            fields:
-              - { label: "Title", name: "t", widget: "string" }
-              - { label: "Piece ID", name: "id", widget: "string", required: false, hint: "Matches this piece's ID in the Portfolio collection, if it's also a portfolio piece (adds a Details link). Leave empty if not." }
-              - { label: "Before Image (sculpt)", name: "before", widget: "image", required: false, hint: "For the drag slider. Needs the After image too, and both should be the same size and framing." }
-              - { label: "After Image (final)", name: "after", widget: "image", required: false }
-              - { label: "YouTube video", name: "youtube", widget: "string", required: false, hint: "Optional. Paste a YouTube link — the card then shows the video's thumbnail and plays it in the pop-up player instead of the slider." }
-              - { label: "GIF or video file", name: "video", widget: "file", required: false, media_folder: "/assets/videos", public_folder: "/assets/videos", pattern: ['\.(mp4|webm|gif|MP4|WEBM|GIF)$', "Only an MP4, WebM or GIF file."], hint: "Optional. A GIF or short MP4/WebM that loops silently in the card instead of the slider. Keep it under ~8 MB." }
 
   - name: "services"
     label: "Services"
-    description: "The Services section (cards and Why Choose Us), the FAQ under it, and the \"Let's create your game together\" band."
+    description: "The Services section, the FAQ under it, and the \"Let's create your game together\" band."
     files:
       - name: "text-services"
-        label: "Services and Why Choose Us"
+        label: "Services"
         file: "data/sections/services.json"
         format: "json"
-        description: "The heading and subtitle, the service cards, and the Why Choose Us list."
+        description: "The heading and subtitle, and the service cards. Keep each card to about 4 short tags (2-3 words each) so they sit in two rows."
         fields:
           - { label: "Small line above the heading", name: "eyebrow", widget: "string", required: false }
           - { label: "Heading", name: "title", widget: "string", hint: "Put *stars* around the words that should be gold, e.g. Production *breakdowns*" }
@@ -485,17 +458,6 @@ collections:
               - { label: "Show the blinking 'Specialization' badge", name: "specialization", widget: "boolean", default: false }
               - { label: "Text", name: "text", widget: "text" }
               - { label: "Bullet points", name: "points", widget: "list", collapsed: true, required: false, hint: "One point per item." }
-          - { label: "Why Choose Us — heading", name: "whyTitle", widget: "string" }
-          - label: "Why Choose Us — items"
-            name: "why"
-            widget: "list"
-            collapsed: true
-            label_singular: "Item"
-            summary: "{{fields.title}}"
-            fields:
-              - { label: "Icon (a symbol or emoji)", name: "icon", widget: "string", hint: "e.g. ⚡ ⚙ ✎ ⏱" }
-              - { label: "Title", name: "title", widget: "string" }
-              - { label: "Text", name: "text", widget: "string" }
       - name: "text-faq"
         label: "FAQ and the band under it"
         file: "data/sections/faq.json"
