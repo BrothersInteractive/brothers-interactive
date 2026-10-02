@@ -1865,6 +1865,13 @@ function siteMain() {
     });
   }
 
+  // soft cursor glow
+  if (motionOK && finePointer) {
+    var glow = document.createElement("div"); glow.className = "cursor-glow"; document.body.appendChild(glow);
+    document.addEventListener("pointermove", function (e) { glow.style.left = e.clientX + "px"; glow.style.top = e.clientY + "px"; glow.classList.add("on"); });
+    document.addEventListener("pointerleave", function () { glow.classList.remove("on"); });
+  }
+
   // artist cursor: a paintbrush that follows the pointer, with a lagging ring and hover states
   if (motionOK && finePointer) {
     var cur = document.createElement("div");

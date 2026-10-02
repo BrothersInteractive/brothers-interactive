@@ -335,7 +335,7 @@ button { font: inherit; color: inherit; cursor: pointer; background: none; borde
   text-transform: uppercase; color: #fff;
 }
 .style-tile:hover { transform: translateY(-4px); border-color: var(--accent); box-shadow: 0 20px 40px rgba(0,0,0,0.5), 0 0 24px rgba(var(--accent-rgb),0.3); }
-.style-tile:hover img { transform: scale(1.08); filter: brightness(1.5); }
+.style-tile:hover img { transform: scale(1.08); filter: brightness(1.15); }   /* was 1.5, which burned out light images */
 
 /* Browse-by-style tile with no tagged work yet */
 .style-tile--soon {
@@ -1077,6 +1077,15 @@ body.art-cursor-on input:not([type="range"]):not([type="checkbox"]), body.art-cu
 .art-cursor-ring.hover { width: 42px; height: 42px; border-color: var(--accent-2); }
 .art-cursor-ring.zoom { width: 58px; height: 58px; border-style: dashed; border-color: var(--accent); }
 [data-theme="arctic"] .art-cursor .c-handle { fill: #1b2233; }
+
+/* cursor glow */
+.cursor-glow {
+  position: fixed; left: 0; top: 0; width: 360px; height: 360px; border-radius: 50%; pointer-events: none; z-index: 0;
+  background: radial-gradient(circle, rgba(var(--accent-rgb), 0.16), transparent 60%); transform: translate(-50%, -50%);
+  opacity: 0; transition: opacity 0.4s; mix-blend-mode: screen;
+}
+.cursor-glow.on { opacity: 1; }
+[data-theme="arctic"] .cursor-glow { mix-blend-mode: multiply; background: radial-gradient(circle, rgba(var(--accent-rgb), 0.08), transparent 60%); }
 
 
 /* ---------- Theme switcher ---------- */
