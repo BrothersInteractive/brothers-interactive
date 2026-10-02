@@ -11,7 +11,7 @@
   "primaryBtnLabel": "Business Inquiry",
   "secondaryBtnLabel": "Meet the team",
   "foundedYear": 2019,
-  "toolsTitle": "Tools we have expereince with",
+  "toolsTitle": "Tools we have experience with",
   "toolGroups": [
     {
       "name": "Modeling",
@@ -19,7 +19,7 @@
         "Blender",
         "Maya",
         "3ds Max",
-        "Zbrush"
+        "ZBrush"
       ]
     },
     {
@@ -33,7 +33,7 @@
       "name": "Cloth",
       "tools": [
         "Marvelous Designer",
-        "Zbrush",
+        "ZBrush",
         "Modeling tools (for Anime)"
       ]
     },
@@ -46,12 +46,12 @@
       ]
     },
     {
-      "name": "Hairs",
+      "name": "Hair",
       "tools": [
         "XGen",
         "Blender",
-        "Zbrush",
-        "fibershop"
+        "ZBrush",
+        "FiberShop"
       ]
     },
     {

@@ -15,7 +15,7 @@ window.BI = {
     showreelYouTubeId: "",                          // e.g. "dQw4w9WgXcQ" — empty = image reel from the portfolio
     deckPdf: "/assets/brothers-interactive-capabilities.pdf",
     email: "business@brothersinteractive.com",
-    address: "79/5 Shipra Path, Mansarovar, Jaipur 302017, Rajasthan, India"
+    address: "79/5 Shipra Path, Mansarovar, Jaipur 302020, Rajasthan, India"
   },
 
   /* ---- Homepage hero (headline + stats only — the showcase image is HERO_SHOWCASE below) ---- */

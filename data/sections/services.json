@@ -25,7 +25,7 @@
         "Male and female hairstyle sets",
         "Beards, brows and lashes",
         "Hair card and strand-based workflows",
-        "Variation packs for customisation"
+        "Variation packs for customization"
       ]
     },
     {
@@ -42,7 +42,7 @@
     },
     {
       "icon": "engine",
-      "title": "Optimisation & Engine Integration",
+      "title": "Optimization & Engine Integration",
       "specialization": false,
       "text": "LOD chains, collision, material setup and import into Unreal Engine or Unity, so assets arrive working rather than as loose files.",
       "points": [
@@ -56,7 +56,7 @@
       "icon": "texture",
       "title": "Texturing & Material Creation",
       "specialization": false,
-      "text": "PBR texturing, hand-painted stylisation and material authoring. We match your existing library so new assets sit seamlessly next to in-house work.",
+      "text": "PBR texturing, hand-painted stylization and material authoring. We match your existing library so new assets sit seamlessly next to in-house work.",
       "points": [
         "PBR workflows",
         "Hand-painted",
