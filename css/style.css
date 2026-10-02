@@ -1357,12 +1357,6 @@ body.no-scroll .work-card img, body.no-scroll .work-card::before { animation-pla
 .lb-lens-btn--big svg { width: 26px; height: 26px; }
 .lb-lens-btn:hover { border-color: var(--accent); box-shadow: var(--glow); }
 .lb-lens-btn.on { background: var(--accent); color: var(--on-accent); border-color: var(--accent); box-shadow: var(--glow); }
-.lb-lens-sep { width: 24px; height: 1px; margin: 4px 0; background: rgba(var(--accent-rgb), 0.35); }
-/* TEST: sharpen options under the zoom buttons (left of the picture) */
-.lb-sharp-label { font-family: var(--font-display); font-size: 0.55rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--text-muted); }
-.lb-sharp-grid { display: grid; grid-template-columns: repeat(2, 34px); gap: 8px; }
-.lb-sharp-btn { width: 34px; height: 34px; font-family: var(--font-display); font-size: 0.7rem; font-weight: 700; }
-.lb-sharp-btn[data-sharp="0"] { font-size: 0.55rem; letter-spacing: 0.04em; }
 /* the picture inside the lens sits within the ring, so a sharpen filter never touches the ring or handle */
 .zoom-lens-pic { position: absolute; inset: 0; border-radius: 50%; background-repeat: no-repeat; }
 

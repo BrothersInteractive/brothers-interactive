@@ -66,25 +66,20 @@ function siteMain() {
   // Zoom inside the lens, picked with the two + buttons: 2 = 200% (default) or 3 = 300%
   var lensZoom = 2;
   try { if (localStorage.getItem("bi-zoom") === "3") lensZoom = 3; } catch (e) {}
-  /* TEST (Arun is choosing one): sharpen the picture inside the lens a little. 0 = off, 1 = low,
-     2 = medium-low, 3 = medium. A 3x3 sharpen kernel (centre 1+4a, neighbours -a) as an SVG filter,
-     applied to the lens picture only, never to its ring or handle. */
-  var lensSharp = 0;
-  try { lensSharp = Math.max(0, Math.min(3, +localStorage.getItem("bi-sharp") || 0)); } catch (e) {}
-  var SHARP_AMOUNT = [0, 0.15, 0.3, 0.45];
+  /* The picture inside the lens is sharpened slightly (Arun chose "medium-low" after testing three
+     levels): a 3x3 sharpen kernel, centre 1+4a and neighbours -a with a = 0.3, as an SVG filter on the
+     lens picture only, never on its ring or handle. */
+  var LENS_SHARPEN = 0.3;
   function sharpenDefs() {
     if (document.getElementById("biSharpDefs")) return;
-    var defs = SHARP_AMOUNT.slice(1).map(function (a, i) {
-      var c = (1 + 4 * a).toFixed(2), n = (-a).toFixed(2);
-      return '<filter id="biSharp' + (i + 1) + '" color-interpolation-filters="sRGB"><feConvolveMatrix order="3" preserveAlpha="true" divisor="1" kernelMatrix="0 ' + n + ' 0 ' + n + ' ' + c + ' ' + n + ' 0 ' + n + ' 0"/></filter>';
-    }).join("");
+    var c = (1 + 4 * LENS_SHARPEN).toFixed(2), n = (-LENS_SHARPEN).toFixed(2);
     var svg = document.createElement("div");
     svg.id = "biSharpDefs"; svg.setAttribute("aria-hidden", "true");
     svg.style.cssText = "position:absolute;width:0;height:0;overflow:hidden";
-    svg.innerHTML = '<svg width="0" height="0"><defs>' + defs + '</defs></svg>';
+    svg.innerHTML = '<svg width="0" height="0"><defs><filter id="biSharp" color-interpolation-filters="sRGB">' +
+      '<feConvolveMatrix order="3" preserveAlpha="true" divisor="1" kernelMatrix="0 ' + n + ' 0 ' + n + ' ' + c + ' ' + n + ' 0 ' + n + ' 0"/></filter></defs></svg>';
     document.body.appendChild(svg);
   }
-  function applySharp() { if (lensPic) lensPic.style.filter = lensSharp ? "url(#biSharp" + lensSharp + ")" : "none"; }
   var lensPic = null;   // the picture inside the lens (the ring and handle stay on lensEl)
   function hideLens() {
     if (lensEl) lensEl.classList.remove("on");
@@ -101,7 +96,8 @@ function siteMain() {
       lensPic.className = "zoom-lens-pic";
       lensEl.appendChild(lensPic);
       document.body.appendChild(lensEl);
-      sharpenDefs(); applySharp();
+      sharpenDefs();
+      lensPic.style.filter = "url(#biSharp)";
     }
     img.addEventListener("pointermove", function (e) {
       if (e.pointerType && e.pointerType !== "mouse") return;
@@ -734,8 +730,7 @@ function siteMain() {
   }
   var lbCharNext = lbCharButton("lb-char--next", "Next piece"), lbCharPrev = lbCharButton("lb-char--prev", "Previous piece");
   /* Lens buttons (mouse screens only). Right of the picture: lens size normal (small magnifier) and big
-     (big magnifier). Left of it: zoom 200% (small +) and 300% (big +), then the TEST sharpen options
-     (off, 1, 2, 3). The chosen one in each group is lit up. */
+     (big magnifier). Left of it: zoom 200% (small +) and 300% (big +). The chosen one in each pair is lit up. */
   var lensIcon = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="10" cy="10" r="6.5"/><path d="M15 15l5.5 5.5"/></svg>';
   var plusIcon = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg>';
   var lbLensPick = document.createElement("div");
@@ -747,16 +742,11 @@ function siteMain() {
   lbZoomPick.className = "lb-lens-pick lb-zoom-pick";
   lbZoomPick.innerHTML =
     '<button type="button" class="lb-lens-btn lb-lens-btn--small" data-zoom="2" aria-label="Zoom 200%" title="Zoom 200%">' + plusIcon + '</button>' +
-    '<button type="button" class="lb-lens-btn lb-lens-btn--big" data-zoom="3" aria-label="Zoom 300%" title="Zoom 300%">' + plusIcon + '</button>' +
-    '<span class="lb-lens-sep" aria-hidden="true"></span>' +
-    '<span class="lb-sharp-label">Sharpen</span>' +
-    '<div class="lb-sharp-grid">' + [0, 1, 2, 3].map(function (v) {
-      return '<button type="button" class="lb-lens-btn lb-sharp-btn" data-sharp="' + v + '" aria-label="' + (v ? "Sharpen " + ["", "low", "medium-low", "medium"][v] : "No sharpening") + '" title="' + (v ? "Sharpen " + ["", "low", "medium-low", "medium"][v] : "No sharpening") + '">' + (v || "Off") + '</button>';
-    }).join("") + '</div>';
+    '<button type="button" class="lb-lens-btn lb-lens-btn--big" data-zoom="3" aria-label="Zoom 300%" title="Zoom 300%">' + plusIcon + '</button>';
   lb.appendChild(lbLensPick); lb.appendChild(lbZoomPick);
   function showLensMode() {
     $$(".lb-lens-btn", lb).forEach(function (b) {
-      var on = b.dataset.lens ? b.dataset.lens === lensMode : b.dataset.zoom ? +b.dataset.zoom === lensZoom : +b.dataset.sharp === lensSharp;
+      var on = b.dataset.lens ? b.dataset.lens === lensMode : +b.dataset.zoom === lensZoom;
       b.classList.toggle("on", on); b.setAttribute("aria-pressed", on ? "true" : "false");
     });
   }
@@ -765,7 +755,6 @@ function siteMain() {
     var b = e.target.closest(".lb-lens-btn"); if (!b) return;
     if (b.dataset.lens) { lensMode = b.dataset.lens; try { localStorage.setItem("bi-lens", lensMode); } catch (err) {} }
     else if (b.dataset.zoom) { lensZoom = +b.dataset.zoom; try { localStorage.setItem("bi-zoom", String(lensZoom)); } catch (err) {} }
-    else { lensSharp = +b.dataset.sharp; try { localStorage.setItem("bi-sharp", String(lensSharp)); } catch (err) {} applySharp(); }
     showLensMode();
   });
   function showVariant(idx) {
