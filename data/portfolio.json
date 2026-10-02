@@ -42,12 +42,16 @@
       "i": "/assets/img/portfolio/cute-monster-xdazdy.webp",
       "imgs": [
         "/assets/img/portfolio/cute-monster-xdazdy-3.webp",
-        "/assets/img/portfolio/cute-monster-xdazdy-4.webp"
+        "/assets/img/portfolio/cute-monster-xdazdy-4.webp",
+        "/assets/img/portfolio/cute-monster-xdazdy-2.webp",
+        "/assets/img/portfolio/cute-monster-xdazdy-5.webp",
+        "/assets/img/portfolio/cute-monster-xdazdy-6.webp",
+        "/assets/img/portfolio/cute-monster-xdazdy-7.webp"
       ],
       "desc": "Cute Monster,\nDeveloped internally at Brothers Interactive, \"Cute Monster\" represents our team's expertise in high-quality stylized creature and character art. This production-ready asset was built from the ground up to showcase Clean hand-painted art style approach, readability, expressive anatomical proportions, and vibrant material definition required for modern stylized fantasy and strategy titles.\n\nTechnical Breakdown:\n- Level 1 Triangle Budget: 7,090 Tris\n- Level 2 Triangle Budget: 7,582 Tris\n- Level 3 Triangle Budget: 9,548 Tris\n- Level 4 Triangle Budget: 12,548 Tris\n\n- Texturing: single 1K Diffuse map (For Each Level)\n- Target Platforms: Mobile, Nintendo Switch, and PC\n- Pipeline: Fully optimized with clean, deformation-ready topology, ready for seamless integration into modern low-spec and cross-platform gameplay engines.",
       "tags": [],
-      "w": 1000,
-      "h": 924,
+      "w": 2500,
+      "h": 2310,
       "project": "Studio work"
     },
     {
