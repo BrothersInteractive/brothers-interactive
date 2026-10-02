@@ -1,0 +1,31 @@
+{
+  "eyebrow": "// Testimonials",
+  "title": "What studios say about *working with us*",
+  "sub": "Art directors and producers on the assets we delivered, the communication along the way, and whether they came back.",
+  "trustStats": [
+    {
+      "source": "games",
+      "number": 0,
+      "suffix": "+",
+      "label": "Titles shipped"
+    },
+    {
+      "source": "years",
+      "number": 0,
+      "suffix": "+",
+      "label": "Years in production"
+    },
+    {
+      "source": "fixed",
+      "number": 4,
+      "suffix": "+",
+      "label": "Returning studios"
+    },
+    {
+      "source": "fixed",
+      "number": 100,
+      "suffix": "%",
+      "label": "NDA-covered work"
+    }
+  ]
+}

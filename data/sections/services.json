@@ -1,0 +1,101 @@
+{
+  "eyebrow": "// Services",
+  "title": "Eye-catching assets *for your game*",
+  "sub": "At Brothers Interactive, we specialize in creating high-quality 3D game art, for the eye-catching assets for your game. Our talented team of artists is comfortable with various quality of game art, ensuring it aligns perfectly with your project requirements.",
+  "services": [
+    {
+      "icon": "character",
+      "title": "3D Character Design",
+      "specialization": true,
+      "text": "Realistic and stylized characters taken from concept or reference to game-ready. High-poly sculpt, clean retopology, UVs, bakes and final textures, matched to your art direction and performance budget.",
+      "points": [
+        "Heroes, NPCs, enemies and creatures",
+        "Realistic, stylized and hand-painted styles",
+        "Outfit variants, skins and customisation sets",
+        "Facial and body blendshape support"
+      ]
+    },
+    {
+      "icon": "hair",
+      "title": "Hair & Grooming",
+      "specialization": true,
+      "text": "Hair cards and groom variations for realistic characters, with LOD-friendly card layouts and clean alpha and flow maps.",
+      "points": [
+        "Male and female hairstyle sets",
+        "Beards, brows and lashes",
+        "Hair card and strand-based workflows",
+        "Variation packs for customisation"
+      ]
+    },
+    {
+      "icon": "props",
+      "title": "3D Props & Weapons",
+      "specialization": true,
+      "text": "Organic hero props, weapons and set dressing that hold up in close-up and stay lean in engine. Built modular where it helps your level team.",
+      "points": [
+        "Firearms, melee and sci-fi weapons",
+        "Hero props and interactive objects",
+        "Organic and sculpted props",
+        "Modular kits and trim sheets"
+      ]
+    },
+    {
+      "icon": "engine",
+      "title": "Optimisation & Engine Integration",
+      "specialization": false,
+      "text": "LOD chains, collision, material setup and import into Unreal Engine or Unity, so assets arrive working rather than as loose files.",
+      "points": [
+        "LOD generation and poly budgets",
+        "Material instances and shader hookup",
+        "Unreal and Unity import and validation",
+        "Naming, folder and export conventions"
+      ]
+    },
+    {
+      "icon": "texture",
+      "title": "Texturing & Material Creation",
+      "specialization": false,
+      "text": "PBR texturing, hand-painted stylisation and material authoring. We match your existing library so new assets sit seamlessly next to in-house work.",
+      "points": [
+        "Metal/rough and spec/gloss PBR workflows",
+        "Hand-painted and stylised textures",
+        "Skin, hair and cloth materials",
+        "Texture atlases and channel packing"
+      ]
+    },
+    {
+      "icon": "rigging",
+      "title": "Skinning & Rigging",
+      "specialization": false,
+      "text": "Reliable skin weights and production rigs tested against your animation set, delivered ready for Unreal or Unity.",
+      "points": [
+        "Biped, quadruped and creature rigs",
+        "Skin weighting and deformation passes",
+        "Engine-ready skeleton conventions"
+      ]
+    }
+  ],
+  "whyTitle": "Why Choose Us?",
+  "why": [
+    {
+      "icon": "⚡",
+      "title": "Experienced Team",
+      "text": "Years of production on shipped indie and AAA titles."
+    },
+    {
+      "icon": "⚙",
+      "title": "Optimized for Performance",
+      "text": "Assets built to budget, with LODs and clean UVs."
+    },
+    {
+      "icon": "✎",
+      "title": "Customized Solutions",
+      "text": "We adapt to your pipeline, style guide and tools."
+    },
+    {
+      "icon": "⏱",
+      "title": "Timely Delivery",
+      "text": "Clear milestones and dependable turnaround."
+    }
+  ]
+}

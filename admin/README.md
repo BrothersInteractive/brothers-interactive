@@ -1,10 +1,11 @@
 # Content editor (/admin)
 
 `/admin` is a private page for editing the site's content without touching code:
-Homepage Hero, About, Homepage Text, Hero Showcase (3D models / images / videos), Categories
-(add / rename / reorder, tile pictures), Projects (choices for the Project dropdown), Portfolio, Games,
-Reviews, Team, Sculpt to Final, Breakdowns, Clients, Blog Posts, Careers Images and Settings (email,
-availability text, Google Form link for applications, social links in the footer).
+The left menu follows the homepage from top to bottom: Home (headline, 3D model on the podium,
+client logos), Games, Testimonials, About, Portfolio (section text, categories, pieces, projects),
+Breakdown (breakdowns and Sculpt to Final), Services (cards, Why Choose Us, FAQ), Team, Careers (text,
+Join Us form link, images), Blog, and under a line, Settings (email, address, social links, header pill).
+Each section starts with its "Section heading and text" (data/sections/<section>.json).
 
 A new category or project appears in the Portfolio form's dropdowns about two minutes after saving
 (the build fills them in); reload /admin to see it.

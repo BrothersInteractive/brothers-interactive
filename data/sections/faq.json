@@ -1,0 +1,44 @@
+{
+  "eyebrow": "// FAQ",
+  "title": "Questions producers *ask us*",
+  "sub": "Everything a studio usually wants to know before the first call. Anything missing? [Ask us directly](/contact).",
+  "faq": [
+    {
+      "q": "How do you price work?",
+      "a": "Three models. Per-asset pricing for defined scopes such as a set of characters or weapons. A dedicated artist or team on a monthly basis for longer productions. And hourly pricing for undefined scopes, where the work is still being explored. We quote after seeing your concepts and technical spec."
+    },
+    {
+      "q": "What is the minimum engagement?",
+      "a": "There is no minimum. We take on a single hero character as readily as a multi-month production. Many new clients start with one small test asset to see our quality and communication before committing to more."
+    },
+    {
+      "q": "Can you match our existing art style?",
+      "a": "Yes. We have shipped work across realistic, stylised and hand-painted styles. Send your style guide and a few in-house reference assets and we match them, usually with a paid test asset first."
+    },
+    {
+      "q": "How do revisions work?",
+      "a": "On fixed-scope work, revisions within the agreed brief are included, with feedback checkpoints after blockout, sculpt and texture. On monthly engagements or open-ended pipelines where R&D is involved, we are open to as many changes and improvements as the project needs. [Contact us](/contact) for details."
+    },
+    {
+      "q": "Do you sign NDAs and who owns the work?",
+      "a": "We sign your NDA before any brief is shared. All delivered work is the client's intellectual property. We only show production assets publicly with written approval, so some project details are shared on request rather than on this site."
+    },
+    {
+      "q": "Which engines and file formats do you deliver?",
+      "a": "Unreal Engine and Unity packages, or your own in-house engine. We are always open to learning new tools and pipelines. We also deliver FBX and OBJ exports, texture sets in your preferred packing, and source files from ZBrush, Maya, Blender and Substance."
+    },
+    {
+      "q": "What are your working hours and time zone?",
+      "a": "The studio works Indian Standard Time and keeps a daily overlap window with clients in Europe and North America. We respond to feedback within one working day."
+    },
+    {
+      "q": "How do we start?",
+      "a": "Send a short brief with references, asset count, style and deadline through our [contact form](/contact). We reply with questions, a quote and a proposed schedule, usually within two working days."
+    }
+  ],
+  "cta": {
+    "title": "Let's Create Your Game Together!",
+    "text": "Looking for top-tier 3D game art? Get in touch with us to discuss your project!",
+    "button": "Get in touch"
+  }
+}

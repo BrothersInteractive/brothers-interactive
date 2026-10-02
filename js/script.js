@@ -284,11 +284,21 @@ function siteMain() {
     setText(".tools-note", ABOUT.toolsNote);
   }
 
-  /* Homepage text (/admin > Homepage Text -> data/home.json): every section's small line, heading and
-     subtitle, the Testimonials stat boxes, the Services cards, Why Choose Us, the FAQ and the call-to-action
-     band. In headings, *words in stars* become the gold accent; in longer text, [label](/link) becomes a
-     link. The words already in index.html stay as the fallback if the file is missing. */
-  var HOME = loadJSON("home");
+  /* Homepage text: one file per section, data/sections/<id>.json, edited in /admin inside that section's
+     panel ("Section heading and text"). Each holds the section's small line, heading and subtitle, plus its
+     extras: Testimonials the stat boxes, Services the cards and Why Choose Us, FAQ the questions and the
+     call-to-action band, Careers the Google Form link. Put back together here as HOME. In headings, *words in
+     stars* become the gold accent; in longer text, [label](/link) becomes a link. The words already in
+     index.html stay as the fallback if a file is missing. */
+  var SECTION_TEXT = {}, HOME = null;
+  if (document.getElementById("services")) URLS.TEXT_SECTIONS.forEach(function (id) {
+    var d = loadJSON("sections/" + id);
+    if (!d || typeof d !== "object") return;
+    SECTION_TEXT[id] = d;
+    HOME = HOME || { sections: {} };
+    HOME.sections[id] = { eyebrow: d.eyebrow, title: d.title, sub: d.sub };
+    ["trustStats", "services", "whyTitle", "why", "faq", "cta"].forEach(function (k) { if (d[k] !== undefined) HOME[k] = d[k]; });
+  });
   var SERVICE_ICONS = {
     character: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 3.6-7 8-7s8 3 8 7"/></svg>',
     hair: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 20c2-6 4-9 8-9s6 3 8 9"/><path d="M8 11c0-4 1-7 4-7s4 3 4 7"/><path d="M6 14c-1-2-1-4 0-6M18 14c1-2 1-4 0-6"/></svg>',
@@ -1928,12 +1938,12 @@ function siteMain() {
 
   /* ------------------------------------------------------------------
      Job applications (homepage #careers section) — handled by a Google Form.
-     The form link is set in /admin > Settings > "Careers application form (Google Form link)".
+     The form link is set in /admin > Careers > "Section heading and text" > "Google Form link".
      Until it's set, the button is hidden and an "opening soon" note shows instead.
      ------------------------------------------------------------------ */
   var applyBtn = $("#applyFormBtn");
   if (applyBtn) {
-    var formUrl = String(CFG.careersFormUrl || "").trim();
+    var formUrl = String((SECTION_TEXT.careers && SECTION_TEXT.careers.formUrl) || CFG.careersFormUrl || "").trim();
     if (/^https?:\/\//i.test(formUrl)) {
       applyBtn.href = formUrl;
       applyBtn.addEventListener("click", function () { track("application_form_opened"); });
@@ -2138,7 +2148,7 @@ function siteMain() {
 (function () {
   var names = ["portfolio", "games", "cases", "posts", "testimonials", "roles", "pairs", "clients", "press", "team", "hero-showcase", "config", "hero", "breakdowns", "careers-hero"];
   if (document.getElementById("about")) names.push("about");
-  if (document.getElementById("services")) names.push("home");
+  if (document.getElementById("services") && window.BIURL) window.BIURL.TEXT_SECTIONS.forEach(function (id) { names.push("sections/" + id); });
   names.push("categories");
   var store = window.__BI_JSON = {};
   if (!window.fetch || !window.Promise) { siteMain(); return; }

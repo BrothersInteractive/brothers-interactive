@@ -29,6 +29,8 @@
 
   // Homepage sections that get their own address (/games/, /team/ …). "home" is the bare "/".
   var SECTIONS = ["home", "games", "testimonials", "about", "portfolio", "breakdown", "compare", "services", "faq", "team", "careers", "blog"];
+  // Sections whose heading and text come from data/sections/<id>.json (About has its own data/about.json)
+  var TEXT_SECTIONS = ["games", "testimonials", "portfolio", "breakdown", "compare", "services", "faq", "team", "careers", "blog"];
 
   function slugify(s) {
     return String(s || "").toLowerCase()
@@ -76,7 +78,7 @@
   function breakdownPath(id) { return id ? "/breakdowns/" + slugify(id) + "/" : "/breakdowns/"; }
 
   var api = {
-    BROWSE_CATS: BROWSE_CATS, setCategories: setCategories, SECTIONS: SECTIONS, slugify: slugify, catSlug: catSlug, piecePaths: piecePaths,
+    BROWSE_CATS: BROWSE_CATS, setCategories: setCategories, SECTIONS: SECTIONS, TEXT_SECTIONS: TEXT_SECTIONS, slugify: slugify, catSlug: catSlug, piecePaths: piecePaths,
     categoryPath: categoryPath, sectionPath: sectionPath, breakdownPath: breakdownPath
   };
   if (typeof module === "object" && module.exports) module.exports = api; else root.BIURL = api;
