@@ -1291,7 +1291,8 @@ body.no-scroll .work-card img, body.no-scroll .work-card::before { animation-pla
    each image's proportions), the one on show outlined like the picture; scrolls sideways if needed. */
 .lightbox-figure { max-width: 94vw; max-height: 96vh; }
 .lightbox-figure img { width: min(90vw, 1500px); height: min(66vh, 1000px); }
-.lightbox-figure img, .lightbox-figure .flip-clone {
+/* the outline is for the main picture only (thumbnails in the strip have their own border) */
+#lightboxImg {
   border: 2px solid rgba(var(--accent-rgb), 0.7);
   box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.45), 0 0 26px rgba(var(--accent-rgb), 0.22);
 }
@@ -1324,7 +1325,7 @@ body.no-scroll .work-card img, body.no-scroll .work-card::before { animation-pla
   }
   .lightbox.lb-split .lightbox-thumbs:empty { display: none; }
   .lightbox.lb-split .lightbox-thumbs .asset-thumb {
-    flex: none; width: auto; height: 100%; border-radius: 8px; border: 2px solid transparent; opacity: 0.6; transform: none;
+    flex: none; width: auto; height: 100%; border-radius: 8px; border: 2px solid var(--border-strong); opacity: 0.6; transform: none;
     transition: opacity 0.2s, border-color 0.2s, box-shadow 0.2s;
   }
   .lightbox.lb-split .lightbox-thumbs .asset-thumb img { width: auto; min-width: 40px; height: 100%; object-fit: contain; display: block; }
