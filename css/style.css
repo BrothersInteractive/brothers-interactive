@@ -1357,6 +1357,7 @@ body.no-scroll .work-card img, body.no-scroll .work-card::before { animation-pla
 .lb-lens-btn--big svg { width: 26px; height: 26px; }
 .lb-lens-btn:hover { border-color: var(--accent); box-shadow: var(--glow); }
 .lb-lens-btn.on { background: var(--accent); color: var(--on-accent); border-color: var(--accent); box-shadow: var(--glow); }
+.lb-lens-sep { width: 24px; height: 1px; margin: 4px 0; background: rgba(var(--accent-rgb), 0.35); }
 
 
 /* Magnifying lens over portfolio pictures (js: attachLens). Hides the normal cursor while it shows. */

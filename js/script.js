@@ -63,6 +63,9 @@ function siteMain() {
   // (both never wider than the picture's shorter side). Remembered per visitor.
   var lensMode = "small";
   try { if (localStorage.getItem("bi-lens") === "big") lensMode = "big"; } catch (e) {}
+  // Zoom inside the lens, picked with the two + buttons: 2 = 200% (default) or 3 = 300%
+  var lensZoom = 2;
+  try { if (localStorage.getItem("bi-zoom") === "3") lensZoom = 3; } catch (e) {}
   function hideLens() {
     if (lensEl) lensEl.classList.remove("on");
     if (lensImg) lensImg.classList.remove("lens-active");
@@ -92,8 +95,8 @@ function siteMain() {
       var src = img.currentSrc || img.src;
       if (lensEl.dataset.src !== src) { lensEl.style.backgroundImage = 'url("' + src.replace(/"/g, "%22") + '")'; lensEl.dataset.src = src; }
       lensEl.style.width = lensEl.style.height = size + "px";
-      lensEl.style.backgroundSize = (w * 2) + "px " + (h * 2) + "px";
-      lensEl.style.backgroundPosition = (size / 2 - x * 2) + "px " + (size / 2 - y * 2) + "px";
+      lensEl.style.backgroundSize = (w * lensZoom) + "px " + (h * lensZoom) + "px";
+      lensEl.style.backgroundPosition = (size / 2 - x * lensZoom) + "px " + (size / 2 - y * lensZoom) + "px";
       lensEl.style.transform = "translate(" + (e.clientX - size / 2) + "px, " + (e.clientY - size / 2) + "px)";
       lensEl.classList.add("on");
       document.body.classList.add("lens-on");   // hide the paintbrush cursor: nothing in the middle of the lens
@@ -706,19 +709,30 @@ function siteMain() {
     return bt;
   }
   var lbCharNext = lbCharButton("lb-char--next", "Next piece"), lbCharPrev = lbCharButton("lb-char--prev", "Previous piece");
-  // Lens size buttons (mouse screens only): a small and a big magnifier, the chosen one lit up
+  /* Lens buttons (mouse screens only), top to bottom: zoom 200% (small +) and 300% (big +), then lens
+     size normal (small magnifier) and big (big magnifier). The chosen one in each pair is lit up. */
   var lensIcon = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="10" cy="10" r="6.5"/><path d="M15 15l5.5 5.5"/></svg>';
+  var plusIcon = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg>';
   var lbLensPick = document.createElement("div");
   lbLensPick.className = "lb-lens-pick";
-  lbLensPick.innerHTML = '<button type="button" class="lb-lens-btn lb-lens-btn--small" data-lens="small" aria-label="Normal lens">' + lensIcon + '</button>' +
-    '<button type="button" class="lb-lens-btn lb-lens-btn--big" data-lens="big" aria-label="Bigger lens">' + lensIcon + '</button>';
+  lbLensPick.innerHTML =
+    '<button type="button" class="lb-lens-btn lb-lens-btn--small" data-zoom="2" aria-label="Zoom 200%" title="Zoom 200%">' + plusIcon + '</button>' +
+    '<button type="button" class="lb-lens-btn lb-lens-btn--big" data-zoom="3" aria-label="Zoom 300%" title="Zoom 300%">' + plusIcon + '</button>' +
+    '<span class="lb-lens-sep" aria-hidden="true"></span>' +
+    '<button type="button" class="lb-lens-btn lb-lens-btn--small" data-lens="small" aria-label="Normal lens" title="Normal lens">' + lensIcon + '</button>' +
+    '<button type="button" class="lb-lens-btn lb-lens-btn--big" data-lens="big" aria-label="Bigger lens" title="Bigger lens">' + lensIcon + '</button>';
   lb.appendChild(lbLensPick);
-  function showLensMode() { $$(".lb-lens-btn", lbLensPick).forEach(function (b) { var on = b.dataset.lens === lensMode; b.classList.toggle("on", on); b.setAttribute("aria-pressed", on ? "true" : "false"); }); }
+  function showLensMode() {
+    $$(".lb-lens-btn", lbLensPick).forEach(function (b) {
+      var on = b.dataset.lens ? b.dataset.lens === lensMode : +b.dataset.zoom === lensZoom;
+      b.classList.toggle("on", on); b.setAttribute("aria-pressed", on ? "true" : "false");
+    });
+  }
   showLensMode();
   lbLensPick.addEventListener("click", function (e) {
     var b = e.target.closest(".lb-lens-btn"); if (!b) return;
-    lensMode = b.dataset.lens;
-    try { localStorage.setItem("bi-lens", lensMode); } catch (err) {}
+    if (b.dataset.lens) { lensMode = b.dataset.lens; try { localStorage.setItem("bi-lens", lensMode); } catch (err) {} }
+    else { lensZoom = +b.dataset.zoom; try { localStorage.setItem("bi-zoom", String(lensZoom)); } catch (err) {} }
     showLensMode();
   });
   function showVariant(idx) {
