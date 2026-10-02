@@ -28,14 +28,18 @@ mistake can be rolled back from the GitHub history.
 
 ## Adding a new portfolio piece
 
-Portfolio → Portfolio Pieces → **Add Piece** at the bottom of the list. Fill in Title, optional
-Link name, Category, optional "Also show in", a unique **ID** (no spaces, e.g. `orc-warrior-01`),
-Main Image, optional Additional Images, Description and Tags. Leave width and height at 0. Drag the
-piece to the top of the list to show it first, then **Save**.
+Portfolio → Portfolio Pieces → **Add Piece** at the bottom of the list. Fill in Title, Category,
+optional "Also show in", Project, optional Software / Poly count / Textures / Extra info boxes (empty
+ones are hidden on the site), a unique **ID** (no spaces, e.g. `orc-warrior-01`), Main Image (1500-2500 px,
+JPG or WebP), optional Additional Images, Description, and optional Tags (for reference only, not shown).
+Drag the piece to the top of the list to show it first, then **Save**.
 
 About two minutes later the piece has its own shareable address, e.g.
-`https://brothersinteractive.in/portfolio/realistic-character/lehri/` (category + Link name, or the
-title when Link name is empty). Opening the piece on the site shows that address in the address bar.
+`https://brothersinteractive.in/portfolio/realistic-character/lehri/` (category + title). Opening the
+piece on the site shows that address in the address bar.
+
+**3D views (optional):** paste a Sketchfab link, or upload a Marmoset `.mview` file (Toolbag: File >
+Export > Marmoset Viewer, ideally under 20 MB). Either appears under the picture on the details page.
 
 ## Good to know
 
