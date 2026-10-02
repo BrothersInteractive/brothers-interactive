@@ -203,6 +203,20 @@ function siteMain() {
     }
   }, true);
 
+  /* Closed pop-ups (image viewer, trailer, showreel) stay in the page, so their buttons could still be reached
+     with Tab. Every pop-up marks itself aria-hidden="true" when closed; mirror that into `inert`, which takes it
+     out of keyboard and screen-reader reach, whichever code opens or closes it. */
+  function syncInert(el) { if (el.getAttribute("aria-hidden") === "true") el.setAttribute("inert", ""); else el.removeAttribute("inert"); }
+  $$('[role="dialog"]').forEach(syncInert);
+  if (window.MutationObserver) {
+    new MutationObserver(function (list) {
+      list.forEach(function (m) {
+        if (m.type === "attributes" && m.target.getAttribute("role") === "dialog") syncInert(m.target);
+        else if (m.type === "childList") m.addedNodes.forEach(function (n) { if (n.nodeType === 1 && n.getAttribute("role") === "dialog") syncInert(n); });
+      });
+    }).observe(document.body, { subtree: true, childList: true, attributes: true, attributeFilter: ["aria-hidden"] });
+  }
+
   /* All editable content lives in data/*.json (not data.js) so the /admin
      CMS can change it without touching any code. Loaded synchronously here
      so the rest of this file can keep assuming the data is ready. A file
@@ -535,7 +549,11 @@ function siteMain() {
     if (!document.querySelector("script[data-model-viewer]")) {
       var mvs = document.createElement("script");
       mvs.type = "module"; mvs.setAttribute("data-model-viewer", "");
-      mvs.src = "https://cdn.jsdelivr.net/npm/@google/model-viewer@3.5.0/dist/model-viewer.min.js";
+      // model-viewer 3.5.0 and its Draco decoder are kept on this site (js/vendor): from jsDelivr / gstatic they
+      // sometimes stalled for 10 s, holding the hero model back
+      self.ModelViewerElement = self.ModelViewerElement || {};
+      self.ModelViewerElement.dracoDecoderLocation = "/js/vendor/draco/";
+      mvs.src = "/js/vendor/model-viewer.min.js";
       document.head.appendChild(mvs);
     }
     var mv = document.createElement("model-viewer");
@@ -1354,7 +1372,8 @@ function siteMain() {
   function ytThumb(v) { return "https://img.youtube.com/vi/" + ytId(v) + "/hqdefault.jpg"; }
   function sketchfabId(v) { var m = String(v || "").match(/([0-9a-f]{32})/i); return m ? m[1] : ""; }
   /* Marmoset Viewer: shows an .mview file (uploaded in /admin) in box with Marmoset's official player,
-     loaded from viewer.marmoset.co only when a page actually has one. */
+     loaded only when a page actually has one. The player is kept on this site (js/vendor/marmoset.js, Marmoset allows
+     redistribution unmodified) so it never waits on viewer.marmoset.co. */
   function mountMarmoset(box, url) {
     box.innerHTML = '<p class="bd-embed-note">Loading Marmoset viewer&hellip;</p>';
     var start = function () {
@@ -1365,7 +1384,7 @@ function siteMain() {
     };
     if (window.marmoset) { start(); return; }
     var ms = document.createElement("script");
-    ms.src = "https://viewer.marmoset.co/main/marmoset.js";
+    ms.src = "/js/vendor/marmoset.js";
     ms.onload = start; ms.onerror = start;
     document.head.appendChild(ms);
   }
@@ -1577,7 +1596,7 @@ function siteMain() {
           window.addEventListener("resize", function () { viewer.resize(mBox.clientWidth, mBox.clientHeight); });
         };
         var ms = document.createElement("script");
-        ms.src = "https://viewer.marmoset.co/main/marmoset.js";
+        ms.src = "/js/vendor/marmoset.js";
         ms.onload = startMarmoset; ms.onerror = startMarmoset;
         document.head.appendChild(ms);
       }
@@ -1662,11 +1681,21 @@ function siteMain() {
   /* ------------------------------------------------------------------
      Asset detail page: /portfolio/<category>/<name>/ (built by tools/build.js), or the old asset.html?id=XXXX
      ------------------------------------------------------------------ */
-  var ap = $("#assetPage");
+  var ap = $("#assetPage"), aidx = -1;
   if (ap && PROJECTS.length) {
     var aid = PAGE_INFO.asset || decodeURIComponent((location.search.match(/[?&]id=([^&#]+)/) || [])[1] || "");
-    var aidx = -1; PROJECTS.forEach(function (x, i) { if (x.id === aid) aidx = i; });
-    if (aidx === -1) aidx = 0;
+    PROJECTS.forEach(function (x, i) { if (x.id === aid) aidx = i; });
+    // An old link to a piece that has since been removed: say so, instead of showing some other piece
+    if (aidx === -1) {
+      document.title = "Artwork not found | Brothers Interactive";
+      var noIndex = document.createElement("meta"); noIndex.name = "robots"; noIndex.content = "noindex"; document.head.appendChild(noIndex);
+      ap.innerHTML = '<div class="container asset-missing"><h1 class="asset-title">Artwork not found</h1>' +
+        '<p>This piece may have been moved or removed from the portfolio.</p>' +
+        '<div class="hero-actions"><a class="btn btn--primary" href="/portfolio/">Browse the portfolio</a></div></div>';
+      var relBox = $("#assetRelated"); if (relBox && relBox.closest("section")) relBox.closest("section").hidden = true;
+    }
+  }
+  if (ap && aidx !== -1) {
     var P = PROJECTS[aidx];
     setAddress(pieceUrl(P.id));
     document.title = P.t + " | Brothers Interactive";
@@ -1684,10 +1713,13 @@ function siteMain() {
       var ratio = aMain.naturalWidth / aMain.naturalHeight, w = boxW, h = w / ratio;
       if (h > boxH) { h = boxH; w = h * ratio; }
       aMain.style.width = Math.floor(w) + "px"; aMain.style.height = Math.floor(h) + "px";
+      $(".asset-main").classList.add("is-sized");   // drops the space held for the picture while it loaded
     };
     aMain.addEventListener("load", fitAssetImg);
     window.addEventListener("resize", fitAssetImg);
-    if (aMain.complete) fitAssetImg();
+    // The size is known from the file's first bytes, long before it has finished downloading: fit right then, so
+    // the page doesn't jump when the picture arrives
+    (function waitForSize() { if (aMain.naturalWidth) fitAssetImg(); else if (!aMain.complete) requestAnimationFrame(waitForSize); })();
     attachLens(aMain);
     // the same lens buttons under the artwork page's picture
     var assetTools = document.createElement("div");

@@ -3,13 +3,17 @@
 <head>
   <!-- Every link and file below is resolved from the site root, so this page also works at deeper addresses (/portfolio/…/). -->
   <base href="/" />
-  <!-- Google tag (gtag.js) -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-3TZV0J0289"></script>
+  <!-- Google tag (gtag.js), fetched only after the page has finished loading so a slow Google server never holds it up -->
   <script>
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
     gtag('config', 'G-3TZV0J0289');
+    window.addEventListener("load", function () {
+      var s = document.createElement("script"); s.async = true;
+      s.src = "https://www.googletagmanager.com/gtag/js?id=G-3TZV0J0289";
+      document.head.appendChild(s);
+    });
   </script>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -20,10 +24,10 @@
   <meta property="og:description" content="Sculpt to final, in detail: production breakdowns of game characters from Brothers Interactive." />
   <meta property="og:image" content="https://brothersinteractive.in/assets/img/portfolio/orc-fanart-vbnvde.webp" />
   <link rel="icon" href="assets/img/brand/favicon.png" />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;900&family=Rajdhani:wght@400;500;600;700&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="css/style.css?v=20261003t98" />
+  <link rel="preload" href="assets/fonts/orbitron-var-latin.woff2" as="font" type="font/woff2" crossorigin />
+  <link rel="preload" href="assets/fonts/rajdhani-400-latin.woff2" as="font" type="font/woff2" crossorigin />
+  <link rel="stylesheet" href="css/fonts.css?v=20261003t99" />
+  <link rel="stylesheet" href="css/style.css?v=20261003t99" />
   <script>try { var q = (location.search.match(/[?&]theme=([a-z]+)/) || [])[1]; var t = q || localStorage.getItem("bi-theme"); if (t && t !== "midnight" && "arctic ocean steel aurora desert".split(" ").indexOf(t) !== -1) document.documentElement.setAttribute("data-theme", t); } catch (e) {}</script>
 </head>
 <body class="subpage">
@@ -109,9 +113,9 @@
     </div>
   </div>
 
-  <script src="js/urls.js?v=20261003t98"></script>
-  <script src="js/data.js?v=20261003t98"></script>
-  <script src="js/script.js?v=20261003t98"></script>
+  <script src="js/urls.js?v=20261003t99"></script>
+  <script src="js/data.js?v=20261003t99"></script>
+  <script src="js/script.js?v=20261003t99"></script>
   <!--/FOOTER-->
 </body>
 </html>

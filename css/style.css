@@ -16,7 +16,7 @@
   --text: #e8ecf5;
   --text-strong: #ffffff;
   --text-muted: #9aa3b8;
-  --text-dim: #6b7389;
+  --text-dim: #8a92a6;   /* readable on every dark surface (4.8:1 or better; was #6b7389, under 4.5:1) */
 
   --accent: #d4af37;
   --accent-rgb: 212, 175, 55;
@@ -50,7 +50,7 @@
 [data-theme="arctic"] {
   --bg: #f4f7fb; --bg-rgb: 244, 247, 251; --bg-2: #ffffff; --surface: #ffffff; --surface-2: #eef2f8;
   --tint: rgba(10, 20, 40, 0.04); --border: rgba(10, 20, 40, 0.09); --border-strong: rgba(10, 20, 40, 0.18);
-  --text: #101828; --text-strong: #0b1220; --text-muted: #475467; --text-dim: #667085;
+  --text: #101828; --text-strong: #0b1220; --text-muted: #475467; --text-dim: #5d6678;
   --accent: #0a84d6; --accent-rgb: 10, 132, 214; --accent-bright: #2ea0ee; --accent-light: #0a84d6; --on-accent: #ffffff;
   --accent-2: #e0257f; --accent-2-rgb: 224, 37, 127;
   --success: #12b76a; --glow-opacity: 0.16; --grid-opacity: 0.08;
@@ -78,7 +78,7 @@
 [data-theme="desert"] {
   --bg: #faf3e8; --bg-rgb: 250, 243, 232; --bg-2: #ffffff; --surface: #ffffff; --surface-2: #f3e8d6;
   --tint: rgba(120, 70, 30, 0.05); --border: rgba(120, 70, 30, 0.12); --border-strong: rgba(120, 70, 30, 0.22);
-  --text: #3a2a1a; --text-strong: #241a10; --text-muted: #6e5b47; --text-dim: #8c7a63;
+  --text: #3a2a1a; --text-strong: #241a10; --text-muted: #6e5b47; --text-dim: #705f4a;
   --accent: #c1622d; --accent-rgb: 193, 98, 45; --accent-bright: #d97e46; --accent-light: #c1622d; --on-accent: #ffffff;
   --accent-2: #2f6f62; --accent-2-rgb: 47, 111, 98;
   --success: #2f8f5a; --glow-opacity: 0.14; --grid-opacity: 0.06;
@@ -470,7 +470,7 @@ button { font: inherit; color: inherit; cursor: pointer; background: none; borde
 }
 @keyframes badgeBlink {
   0%, 100% { opacity: 1; box-shadow: 0 0 14px rgba(var(--accent-rgb), 0.65); }
-  50% { opacity: 0.35; box-shadow: 0 0 0 rgba(var(--accent-rgb), 0); }
+  50% { opacity: 0.8; box-shadow: 0 0 0 rgba(var(--accent-rgb), 0); }   /* the glow does the blinking; the text stays readable */
 }
 .service-card h3 { font-size: 1.25rem; margin-bottom: 14px; text-transform: uppercase; }
 .service-card p { color: var(--text-muted); font-size: 1.15rem; margin: 0; }
@@ -589,6 +589,9 @@ button { font: inherit; color: inherit; cursor: pointer; background: none; borde
 .video-frame { width: min(92vw, 1100px); aspect-ratio: 16 / 9; border-radius: var(--radius); overflow: hidden; border: 1px solid var(--border-strong); box-shadow: 0 40px 80px rgba(0,0,0,0.7), var(--glow-2); background: #000; }
 .video-frame iframe { width: 100%; height: 100%; border: 0; }
 body.no-scroll { overflow: hidden; }
+/* Pages that fill in from data (category, artwork, breakdown) start nearly empty: this keeps the footer below the
+   screen until their content arrives instead of flashing up and then being pushed down */
+main#main { min-height: 100vh; }
 
 /* ---------- Reveal on scroll ---------- */
 .reveal { opacity: 0; transform: translateY(28px); transition: opacity 0.8s var(--ease), transform 0.8s var(--ease); }
@@ -643,7 +646,7 @@ body.no-scroll { overflow: hidden; }
 .process-step p { margin: 0; color: var(--text-muted); font-size: 1.02rem; }
 .process-notes { display: grid; grid-template-columns: repeat(4, 1fr); gap: 22px; }
 .note-card { display: flex; flex-direction: column; gap: 6px; padding: 24px 26px; border-radius: var(--radius); border: 1px solid var(--border); background: var(--tint); }
-.note-card strong { font-family: var(--font-display); font-size: 0.85rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--accent-2); }
+.note-card strong { font-family: var(--font-display); font-size: 0.85rem; letter-spacing: 0.1em; text-transform: uppercase; color: color-mix(in srgb, var(--accent-2), var(--text-strong) 35%); }   /* lifted toward the text colour: plain accent-2 was too faint (3.8:1) */
 .note-card span { color: var(--text-muted); font-size: 1rem; }
 
 /* ---------- About extras ---------- */
@@ -1428,6 +1431,12 @@ body.lens-on .art-cursor, body.lens-on .art-cursor-ring, body.lens-on .cursor-gl
    with the theme outline, lens buttons and views under it; title, text and info boxes on the right. */
 .asset-media { display: flex; flex-direction: column; align-items: center; gap: 14px; min-width: 0; }
 .asset-media .asset-main { overflow: visible; border-radius: 0; max-width: 100%; }
+/* Until the picture's size is known, hold a box of about its final size and keep the picture out of the layout,
+   so nothing below it jumps (fitAssetImg() adds .is-sized) */
+.asset-media .asset-main:not(.is-sized) { position: relative; width: 100%; min-height: min(750px, 80vh, calc(100vw - 32px)); }
+.asset-media .asset-main:not(.is-sized) #assetMain { position: absolute; opacity: 0; }
+.asset-missing { text-align: center; padding: 40px 0 80px; }
+.asset-missing .hero-actions { justify-content: center; }
 .asset-media #assetMain { display: block; max-width: 100%; object-fit: contain; border-radius: var(--radius); border: 2px solid rgba(var(--accent-rgb), 0.7); box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.45), 0 0 26px rgba(var(--accent-rgb), 0.22); -webkit-touch-callout: none; }
 .asset-media .asset-thumbs { justify-content: center; margin-top: 0; }
 .asset-media .lens-tools { margin-top: 0; }
