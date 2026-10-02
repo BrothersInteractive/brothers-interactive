@@ -1352,6 +1352,7 @@ body.no-scroll .work-card img, body.no-scroll .work-card::before { animation-pla
   .lightbox.lb-split .lightbox-thumbs {
     flex: none; width: max-content; max-width: 92vw; height: clamp(64px, 8.5vh, 96px); box-sizing: content-box; padding: 4px;
     display: flex; flex-wrap: nowrap; justify-content: safe center; gap: 14px; overflow-x: auto; overflow-y: hidden; scrollbar-width: thin;
+    scrollbar-color: var(--border-strong) transparent;
   }
   .lightbox.lb-split .lightbox-thumbs:empty { display: none; }
   .lightbox.lb-split .lightbox-thumbs .asset-thumb {
