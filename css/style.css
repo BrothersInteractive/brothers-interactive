@@ -1309,7 +1309,7 @@ body.no-scroll .work-card img, body.no-scroll .work-card::before { animation-pla
   color: var(--accent); background: rgba(var(--bg-rgb), 0.7); border: 1px solid rgba(var(--accent-rgb), 0.45);
 }
 .lightbox-close:hover { color: var(--on-accent); background: var(--accent); border-color: var(--accent); box-shadow: var(--glow); }
-.lightbox-nav { background: rgba(var(--bg-rgb), 0.75); border-color: rgba(var(--accent-rgb), 0.45); color: var(--accent); z-index: 2; }
+.lightbox-nav { background: rgba(var(--bg-rgb), 0.75); border-color: rgba(var(--accent-rgb), 0.45); color: var(--accent); z-index: 2; transition: background 0.3s, color 0.3s, border-color 0.3s, box-shadow 0.3s, opacity 0.3s; }
 .lightbox-nav:hover { background: var(--accent); color: var(--on-accent); border-color: var(--accent); box-shadow: var(--glow); }
 
 @media (min-width: 1001px) {
@@ -1320,13 +1320,24 @@ body.no-scroll .work-card img, body.no-scroll .work-card::before { animation-pla
   .lightbox.lb-split .lightbox-figure img { flex: none; }
   .lightbox.lb-split .lightbox-thumbs { display: none; }
   .lightbox.lb-split .lightbox-figure figcaption { flex: none; min-height: 52px; justify-content: center; flex-wrap: nowrap; }
-  .lightbox.lb-split .lb-side { display: flex; position: absolute; bottom: 120px; width: calc(16vw - 44px); flex-wrap: wrap-reverse; align-items: flex-start; gap: 10px; }
-  .lb-side--left { left: 24px; justify-content: flex-start; }
-  .lb-side--right { right: 24px; justify-content: flex-end; }
+  /* side views: placed and sized by js (placeLbSides) from the picture's box; they fill outward from the
+     picture and upward from its bottom line (the left side runs right-to-left) */
+  .lightbox.lb-split .lb-side { display: flex; position: absolute; flex-wrap: wrap-reverse; align-items: flex-start; gap: 10px; }
+  .lb-side--left { flex-direction: row-reverse; justify-content: flex-start; }
+  .lb-side--right { flex-direction: row; justify-content: flex-start; }
   .lb-side:empty { display: none !important; }
-  .lb-side .asset-thumb { width: min(84px, 4.2vw); height: min(84px, 4.2vw); }
-  .lb-side .asset-thumb.lb-near { width: min(168px, 8.4vw); height: min(168px, 8.4vw); }
+  .lb-side .asset-thumb { width: var(--s, 84px); height: var(--s, 84px); }
+  .lb-side .asset-thumb.lb-near { width: calc(var(--s, 84px) * 2 + 10px); height: calc(var(--s, 84px) * 2 + 10px); }
+  .lightbox.lb-split .lb-char { display: grid; }
 }
+/* Next / previous piece (↑ ↓): the same round button with the chevron turned; wide screens only */
+.lb-char { display: none; place-items: center; }
+.lb-char span { display: block; line-height: 1; }
+.lb-char--next span { transform: rotate(90deg); }
+.lb-char--prev span { transform: rotate(-90deg); }
+.lightbox-nav:disabled { opacity: 0.28; pointer-events: none; }
+.lightbox-count { font-family: var(--font-display); font-size: 0.72rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--text-muted); }
+.lightbox-count:empty { display: none; }
 
 /* Magnifying lens over portfolio pictures (js: attachLens). Hides the normal cursor while it shows. */
 .zoom-lens {

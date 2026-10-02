@@ -668,11 +668,11 @@ function siteMain() {
   var wideViewer = window.matchMedia ? window.matchMedia("(min-width: 1001px)") : { matches: true };
   // near = the view right next to the picture on its side, shown at double size
   function lbThumb(i, near) {
-    return '<button class="asset-thumb' + (i === lbActive ? ' active' : '') + (near ? ' lb-near' : '') + '" data-idx="' + i + '" aria-label="View ' + (i + 1) + '"><img ' + imgAttrs(lbVariants[i], near ? "240px" : "120px") + ' alt="" loading="lazy" /></button>';
+    return '<button class="asset-thumb' + (near ? ' lb-near' : '') + '" data-idx="' + i + '" aria-label="View image ' + (i + 1) + ' of ' + lbVariants.length + '"><img ' + imgAttrs(lbVariants[i], near ? "240px" : "120px") + ' alt="" loading="lazy" /></button>';
   }
-  /* Size the picture element to the picture itself (largest fit inside the space the layout leaves it),
-     so the theme-coloured outline hugs the artwork and there is clear space above it and around the
-     buttons below, for people using the lens. */
+  /* Size the picture element to the picture itself: the largest fit inside one fixed box (wide pictures
+     stop at its width, tall ones at its height), so the theme outline hugs the artwork and there is
+     clear space above it and before the buttons for people using the lens. */
   function fitLbImg() {
     if (!lbImg.naturalWidth) return;
     var fig = lbFigure, cs = getComputedStyle(fig), boxW, boxH;
@@ -690,38 +690,27 @@ function siteMain() {
     lbImg.style.width = Math.floor(w) + "px"; lbImg.style.height = Math.floor(h) + "px";
   }
   lbImg.addEventListener("load", function () { fitLbImg(); placeLbSides(); });
+  // and once the viewer's opening zoom has finished (its size is final only then)
+  lbFigure.addEventListener("transitionend", function (e) { if (e.target === lbFigure && e.propertyName === "transform") placeLbSides(); });
   function lbVAlign() { return lb.classList.contains("lb-split") ? 1 : 0.5; }
-  function renderLbThumbs() {
-    var split = wideViewer.matches;   // every piece on wide screens, however many views it has
-    lb.classList.toggle("lb-split", split);
-    if (!split) {
-      lbSideL.innerHTML = lbSideR.innerHTML = "";
-      lbThumbs.innerHTML = lbVariants.length > 1 ? lbVariants.map(function (u, i) { return lbThumb(i); }).join("") : "";
-      fitLbImg();
-      return;
-    }
-    var others = lbVariants.map(function (u, i) { return i; }).filter(function (i) { return i !== lbActive; });
-    var half = Math.ceil(others.length / 2), left = others.slice(0, half), right = others.slice(half);
-    lbThumbs.innerHTML = "";
-    // The view nearest the picture is the last one on the left and the first one on the right
-    lbSideL.innerHTML = left.map(function (i, k) { return lbThumb(i, k === left.length - 1); }).join("");
-    lbSideR.innerHTML = right.map(function (i, k) { return lbThumb(i, k === 0); }).join("");
-    fitLbImg();
-    placeLbSides();
-    setTimeout(placeLbSides, 420);   // again once the viewer's opening zoom (0.35s) has settled
+
+  /* Navigation. Wide screens: ‹ › = previous / next image of this piece, the two extra round buttons
+     (and the Up / Down keys) = next / previous piece. All four hug the picture's sides. Small screens
+     keep ‹ › for the previous / next piece and a row of views under the picture. */
+  var lbPrevBtn = $("#lightboxPrev"), lbNextBtn = $("#lightboxNext");
+  function lbCharButton(cls, label) {
+    var bt = document.createElement("button");
+    bt.className = "lightbox-nav lb-char " + cls; bt.setAttribute("aria-label", label);
+    bt.innerHTML = '<span aria-hidden="true">&lsaquo;</span>';
+    lb.appendChild(bt);
+    return bt;
   }
-  // Stand the corner views on the picture's bottom line (measured, so it holds at any screen size)
-  function placeLbSides() {
-    if (!lb.classList.contains("lb-split")) return;
-    var bottom = Math.max(0, Math.round(lb.getBoundingClientRect().bottom - lbImg.getBoundingClientRect().bottom));
-    lbSideL.style.bottom = lbSideR.style.bottom = bottom + "px";
-  }
-  window.addEventListener("resize", function () { if (lb.classList.contains("open")) { fitLbImg(); placeLbSides(); } });
-  if (wideViewer.addEventListener) wideViewer.addEventListener("change", function () { if (lb.classList.contains("open")) renderLbThumbs(); });
-  lb.addEventListener("click", function (e) {
-    var btn = e.target.closest(".asset-thumb");
-    if (!btn) return;
-    var idx = +btn.dataset.idx;
+  var lbCharNext = lbCharButton("lb-char--next", "Next piece"), lbCharPrev = lbCharButton("lb-char--prev", "Previous piece");
+  var lbCount = document.createElement("span");
+  lbCount.className = "lightbox-count";
+  lbTitle.parentNode.insertBefore(lbCount, lbTitle.nextSibling);
+
+  function showVariant(idx) {
     if (idx === lbActive || !lbVariants[idx]) return;
     lbActive = idx;
     hideLens();
@@ -731,12 +720,86 @@ function siteMain() {
       lbImg.classList.remove("fading");
       renderLbThumbs();
     }, 160);
+  }
+  function stepImage(d) { showVariant(lbActive + d); }
+
+  /* The other views of this piece: the ones BEFORE the image on show stand to its left, the ones AFTER
+     it to its right, each side starting right next to the picture (that one double size) and filling
+     outward and upward. So image 1 of 10 has nothing on the left and 9 on the right; image 2 has 1 and 8. */
+  function renderLbThumbs() {
+    var split = wideViewer.matches;
+    lb.classList.toggle("lb-split", split);
+    var n = lbVariants.length;
+    lbCount.textContent = n > 1 ? "Image " + (lbActive + 1) + " / " + n : "";
+    lbPrevBtn.disabled = split && lbActive === 0;
+    lbNextBtn.disabled = split && lbActive >= n - 1;
+    lbPrevBtn.setAttribute("aria-label", split ? "Previous image" : "Previous piece");
+    lbNextBtn.setAttribute("aria-label", split ? "Next image" : "Next piece");
+    if (!split) {
+      lbSideL.innerHTML = lbSideR.innerHTML = "";
+      lbThumbs.innerHTML = n > 1 ? lbVariants.map(function (u, i) { return lbThumb(i); }).join("") : "";
+      $$(".asset-thumb", lbThumbs).forEach(function (b) { b.classList.toggle("active", +b.dataset.idx === lbActive); });
+      fitLbImg();
+      placeLbSides();
+      return;
+    }
+    var before = [], after = [];
+    for (var i = 0; i < n; i++) { if (i < lbActive) before.push(i); else if (i > lbActive) after.push(i); }
+    before.reverse();   // nearest first; the left side is laid out right-to-left
+    lbThumbs.innerHTML = "";
+    lbSideL.innerHTML = before.map(function (i, k) { return lbThumb(i, k === 0); }).join("");
+    lbSideR.innerHTML = after.map(function (i, k) { return lbThumb(i, k === 0); }).join("");
+    fitLbImg();
+    placeLbSides();
+    setTimeout(placeLbSides, 420);   // again once the viewer's opening zoom (0.35s) has settled
+  }
+
+  /* Everything around the picture is placed from the picture's measured box, so it hugs the artwork
+     whether it is wide or tall: the arrow buttons just outside its left and right edges (piece button
+     above, image button below the middle), and the side views on its bottom line, below the arrows.
+     Side views shrink together if there are more than fit in that space. */
+  function lbPlace(el, x, y) { el.style.left = Math.round(x) + "px"; el.style.top = Math.round(y) + "px"; el.style.right = "auto"; el.style.transform = "none"; }
+  function placeLbSides() {
+    var navs = [lbPrevBtn, lbNextBtn, lbCharPrev, lbCharNext];
+    if (!lb.classList.contains("lb-split")) {
+      navs.forEach(function (el) { el.style.left = el.style.top = el.style.right = el.style.transform = ""; });
+      return;
+    }
+    var L = lb.getBoundingClientRect(), P = lbImg.getBoundingClientRect();
+    if (!P.width) return;
+    var gap = 14, pad = 24, bw = lbPrevBtn.offsetWidth || 56;
+    var midY = P.top - L.top + P.height / 2;
+    var leftX = P.left - L.left - gap - bw, rightX = P.right - L.left + gap;
+    lbPlace(lbCharPrev, leftX, midY - bw - 8); lbPlace(lbPrevBtn, leftX, midY + 8);
+    lbPlace(lbCharNext, rightX, midY - bw - 8); lbPlace(lbNextBtn, rightX, midY + 8);
+    var bottom = Math.max(0, L.bottom - P.bottom);
+    var maxH = Math.max(80, P.bottom - L.top - (midY + 8 + bw + gap));
+    [[lbSideL, P.left - L.left - gap - pad, "right", L.right - P.left + gap], [lbSideR, L.right - P.right - gap - pad, "left", P.right - L.left + gap]].forEach(function (c) {
+      var side = c[0];
+      side.style.bottom = bottom + "px";
+      side.style.width = Math.max(60, c[1]) + "px";
+      side.style.left = side.style.right = "auto";
+      side.style[c[2]] = c[3] + "px";
+      if (!side.children.length) return;
+      // biggest thumbnail size (up to 84px, the nearest one double) that lets every view fit
+      var size = Math.min(84, Math.floor(window.innerWidth * 0.042));
+      side.style.setProperty("--s", size + "px");
+      while (side.offsetHeight > maxH && size > 34) { size -= 4; side.style.setProperty("--s", size + "px"); }
+    });
+  }
+  window.addEventListener("resize", function () { if (lb.classList.contains("open")) { fitLbImg(); placeLbSides(); } });
+  if (wideViewer.addEventListener) wideViewer.addEventListener("change", function () { if (lb.classList.contains("open")) renderLbThumbs(); });
+  lb.addEventListener("click", function (e) {
+    var btn = e.target.closest(".asset-thumb");
+    if (btn) showVariant(+btn.dataset.idx);
   });
   // Magnifying lens on the big picture (only once the zoom-in animation has handed over)
   attachLens(lbImg, function () { return lb.classList.contains("open") && !lbFigure.classList.contains("hidden-for-flip") && !lbImg.classList.contains("fading"); });
   $("#lightboxClose").addEventListener("click", closeLightbox);
-  $("#lightboxPrev").addEventListener("click", function () { stepLightbox(-1); });
-  $("#lightboxNext").addEventListener("click", function () { stepLightbox(1); });
+  lbPrevBtn.addEventListener("click", function () { if (lb.classList.contains("lb-split")) stepImage(-1); else stepLightbox(-1); });
+  lbNextBtn.addEventListener("click", function () { if (lb.classList.contains("lb-split")) stepImage(1); else stepLightbox(1); });
+  lbCharNext.addEventListener("click", function () { stepLightbox(1); });
+  lbCharPrev.addEventListener("click", function () { stepLightbox(-1); });
   lb.addEventListener("click", function (e) { if (e.target === lb) closeLightbox(); });
 
   /* ------------------------------------------------------------------
@@ -789,8 +852,11 @@ function siteMain() {
   document.addEventListener("keydown", function (e) {
     if (e.key === "Escape") { closeLightbox(); closeVideo(); closeNav(); }
     if (lb.classList.contains("open")) {
-      if (e.key === "ArrowLeft") stepLightbox(-1);
-      if (e.key === "ArrowRight") stepLightbox(1);
+      // ← → this piece's previous / next image, ↑ ↓ next / previous piece
+      if (e.key === "ArrowLeft") { e.preventDefault(); stepImage(-1); }
+      if (e.key === "ArrowRight") { e.preventDefault(); stepImage(1); }
+      if (e.key === "ArrowUp") { e.preventDefault(); stepLightbox(1); }
+      if (e.key === "ArrowDown") { e.preventDefault(); stepLightbox(-1); }
     }
   });
 
