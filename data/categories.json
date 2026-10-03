@@ -1,82 +1,82 @@
 {
   "items": [
     {
-      "label": "Modular CHR Skins",
-      "slug": "modular-chr-skins",
-      "key": "",
-      "tile": ""
-    },
-    {
       "label": "Realistic CHR",
       "slug": "realistic-character",
-      "key": "realistic-humans",
-      "tile": ""
+      "tile": "",
+      "key": "realistic-humans"
     },
     {
       "label": "Realistic Creature",
       "slug": "realistic-creature",
-      "key": "realistic-creatures",
-      "tile": ""
+      "tile": "",
+      "key": "realistic-creatures"
     },
     {
       "label": "Realistic Hair Card",
       "slug": "realistic-hair",
-      "key": "realistic-hairs",
-      "tile": ""
+      "tile": "",
+      "key": "realistic-hairs"
     },
     {
       "label": "Stylized CHR",
       "slug": "stylized-character",
-      "key": "stylized-human",
-      "tile": ""
+      "tile": "",
+      "key": "stylized-human"
     },
     {
       "label": "Stylized Creature",
       "slug": "stylized-creature",
-      "key": "",
-      "tile": "/assets/img/portfolio/big-bad-wolf-rl0xea.webp"
-    },
-    {
-      "label": "Props",
-      "slug": "props",
-      "key": "",
-      "tile": "/assets/img/portfolio/proposal-book-kaqzrr.webp"
-    },
-    {
-      "label": "Realistic Weapons",
-      "slug": "weapons",
-      "key": "",
-      "tile": ""
-    },
-    {
-      "label": "Game - Midnight Walk",
-      "slug": "midnight-walk",
-      "key": "mid-night-walk",
-      "tile": ""
-    },
-    {
-      "label": "Game - Lost in Random",
-      "slug": "lost-in-random",
-      "key": "",
-      "tile": ""
+      "tile": "/assets/img/portfolio/big-bad-wolf-rl0xea.webp",
+      "key": ""
     },
     {
       "label": "Original - The Last Rebel",
       "slug": "the-last-rebel",
-      "key": "",
-      "tile": ""
+      "tile": "",
+      "key": ""
     },
     {
       "label": "Original - Man to God",
       "slug": "man-to-god",
-      "key": "",
-      "tile": ""
+      "tile": "",
+      "key": ""
     },
     {
       "label": "Original - SWAT Squad",
       "slug": "swat-squad",
-      "key": "",
-      "tile": ""
+      "tile": "",
+      "key": ""
+    },
+    {
+      "label": "Props",
+      "slug": "props",
+      "tile": "/assets/img/portfolio/proposal-book-kaqzrr.webp",
+      "key": ""
+    },
+    {
+      "label": "Modular CHR Skins",
+      "slug": "modular-chr-skins",
+      "tile": "",
+      "key": ""
+    },
+    {
+      "label": "Realistic Weapons",
+      "slug": "weapons",
+      "tile": "",
+      "key": ""
+    },
+    {
+      "label": "Game - Lost in Random",
+      "slug": "lost-in-random",
+      "tile": "",
+      "key": ""
+    },
+    {
+      "label": "Game - Midnight Walk",
+      "slug": "midnight-walk",
+      "tile": "",
+      "key": "mid-night-walk"
     }
   ]
 }
