@@ -661,17 +661,33 @@
         "/assets/img/portfolio/lehri-dkwxla-10.webp",
         "/assets/img/portfolio/lehri-dkwxla-11.webp",
         "/assets/img/portfolio/lehri-dkwxla-12.webp",
-        "/assets/img/portfolio/lehri-dkwxla-13.webp",
         "/assets/img/portfolio/lehri-dkwxla-14.webp",
         "/assets/img/portfolio/lehri-dkwxla-15.webp",
         "/assets/img/portfolio/lehri-dkwxla-16.webp",
         "/assets/img/portfolio/lehri-dkwxla-17.webp"
       ],
-      "desc": "Cinematic Character Study: \"Lehri\"\nDeveloped internally at Brothers Interactive, \"Lehri\" represents our team's proficiency in realistic human character creation, expressive facial sculpting, and authentic textile definition. This production-ready asset was built from the ground up to showcase high-fidelity skin micro-structures, detailed multi-layered cultural garments, and precise material aging required for premier current-gen titles and narrative-driven experiences.\n\nTechnical Breakdown:\n- Budget: 107K Tris\n- Texturing: PBR workflow, five 4K and two 2K texture sets\n- Target Platforms: PC, PlayStation 5, and Xbox Series X|S\n- Pipeline: Fully optimized for current-gen cinematic and gameplay engines, ensuring clean topology for facial deformation and complex cloth simulation workflows (Optimized for main/supporting character gameplay assets, next-gen cutscenes, and high-end cinematics).",
+      "desc": "We built Lehri to hold up in a close-up cutscene and still work in gameplay. Most of the hours went into her face: a sculpt-driven likeness with real skin breakup that reads well under cinematic lighting.\n\nHer outfit is built in real layers, with the blouse, corset, holster, skirt and ruffled underskirt as separate pieces, so it's ready for cloth sim. Hair is cards, kept light enough for gameplay. Topology is clean quads with deformation loops where animators need them, so your riggers can pick her up and go.\n\nMaking a western or period game? This is the level of realistic lead we deliver.",
       "tags": [],
       "w": 2160,
       "h": 2160,
-      "project": "Studio work"
+      "project": "Studio work",
+      "polys": "107K tris",
+      "textures": "PBR, five 4K and two 2K texture sets",
+      "software": "ZBrush, Maya, Substance Painter, Marmoset Toolbag",
+      "specs": [
+        {
+          "label": "Hair",
+          "value": "Hair cards"
+        },
+        {
+          "label": "Target platforms",
+          "value": "PC, PlayStation 5, Xbox Series X|S"
+        },
+        {
+          "label": "Use",
+          "value": "Main or supporting character, cutscenes and cinematics"
+        }
+      ]
     },
     {
       "t": "CHR Skins",
