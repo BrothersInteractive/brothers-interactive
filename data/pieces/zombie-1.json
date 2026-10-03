@@ -1,0 +1,43 @@
+{
+  "order": 220,
+  "t": "Zombie-1",
+  "c": "realistic-creatures",
+  "cats": [],
+  "id": "qezJmN",
+  "i": "/assets/img/portfolio/zombie-1-qezjmn.webp",
+  "imgs": [
+    "/assets/img/portfolio/zombie-1-qezjmn-3.webp",
+    "/assets/img/portfolio/zombie-1-qezjmn-4.webp",
+    "/assets/img/portfolio/zombie-1-qezjmn-2.webp",
+    "/assets/img/portfolio/zombie-1-qezjmn-5.webp",
+    "/assets/img/portfolio/zombie-1-qezjmn-6.webp",
+    "/assets/img/portfolio/zombie-1-qezjmn-7.webp",
+    "/assets/img/portfolio/zombie-1-qezjmn-8.webp",
+    "/assets/img/portfolio/zombie-1-qezjmn-9.webp",
+    "/assets/img/portfolio/zombie-1-qezjmn-10.webp"
+  ],
+  "desc": "Zombie-1 is a freshly turned walker: a torn shirt, rotting skin, a jaw pulled back over broken teeth, and thinning hair still hanging on. He's built to be the face of a horde, readable from across a street and still nasty in a close-up.\n\nThe sculpt layers the decay in passes, from the overall body to wounds, peeling skin and swollen tissue, then bakes it all down to an 80K-tri game mesh. Four 4K, two 2K and one 1K texture sets handle the blood, grime and wet tissue, and the jeans and boots get their own wear, so the clothes never look cleaner than the man. He's shown in Unreal Engine, ready for gameplay and cutscenes.\n\nBuilding a horror or survival game that needs enemies people remember? We'll build yours to your style, budget and platform.",
+  "tags": [],
+  "w": 2500,
+  "h": 1800,
+  "project": "Studio work",
+  "polys": "80K tris",
+  "textures": "PBR, four 4K, two 2K and one 1K texture sets",
+  "software": "ZBrush, Maya, Substance Painter, Unreal Engine",
+  "specs": [
+    {
+      "label": "Hair",
+      "value": "Hair cards"
+    },
+    {
+      "label": "Target platforms",
+      "value": "PC, PlayStation 5, Xbox Series X|S"
+    },
+    {
+      "label": "Use",
+      "value": "Enemy or boss for horror and survival games, gameplay and cutscenes"
+    }
+  ],
+  "big": true,
+  "wide": true
+}

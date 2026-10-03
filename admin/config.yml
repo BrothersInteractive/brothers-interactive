@@ -211,7 +211,7 @@ collections:
 
   - name: "portfolio"
     label: "Portfolio"
-    description: "Everything in the Portfolio section: its heading, the category tiles, the pieces, and the Project choices."
+    description: "The Portfolio section's heading, the categories (the filter buttons) and the Project choices. The pieces themselves are in Portfolio pieces, just below."
     files:
       - name: "text-portfolio"
         label: "Section heading and text"
@@ -240,236 +240,6 @@ collections:
               - { label: "Web address name", name: "slug", widget: "string", pattern: ['^[a-z0-9-]+$', "Lowercase letters, numbers and dashes only, e.g. realistic-vehicles"], hint: "Used in the link: brothersinteractive.in/category/<this>/. Lowercase, no spaces. Don't change it once the category is live, or links already shared stop working." }
               - { label: "Tile picture (optional)", name: "tile", widget: "image", required: false, media_folder: "/assets/img/categories", public_folder: "/assets/img/categories", hint: "The picture on the homepage tile (landscape about 4:3 fills best). Empty = the first piece in this category. The tile says Coming soon until the category has a piece." }
               - { label: "Internal code (leave as it is)", name: "key", widget: "string", required: false, hint: "Only the original categories have one; it links them to the pieces already uploaded. Leave empty for a new category." }
-      - name: "pieces"
-        label: "Portfolio pieces"
-        file: "data/portfolio.json"
-        format: "json"
-        description: "Add, edit or remove the work shown in the Portfolio section of the homepage. Changes go live automatically within a minute or two of saving."
-        fields:
-          - label: "Pieces"
-            name: "items"
-            widget: "list"
-            collapsed: true
-            label_singular: "Piece"
-            summary: "{{fields.t}} — {{fields.c}}{{fields.hidden | ternary(' · HIDDEN', '')}}"
-            fields:
-              - label: "Hide from the website"
-                name: "hidden"
-                widget: "boolean"
-                default: false
-                required: false
-                hint: "Tick to keep this piece off the site (grids, viewer, its own page, the sitemap) while it is unfinished. Untick and save to publish it."
-
-              - label: "Collage: can be 2x2 (big square)"
-                name: "big"
-                widget: "boolean"
-                default: false
-                required: false
-                hint: "The homepage collage picks a few ticked pieces at random on every visit for each shape. Tick the shapes this piece's main picture suits."
-
-              - label: "Collage: can be 2x1 (wide)"
-                name: "wide"
-                widget: "boolean"
-                default: false
-                required: false
-                hint: "Good for landscape pictures, such as front and back turnarounds."
-
-              - label: "Collage: can be 1x2 (tall)"
-                name: "tall"
-                widget: "boolean"
-                default: false
-                required: false
-                hint: "Shows the middle of the picture as a tall strip. Good for a single standing figure."
-
-              - label: "Collage picture (optional)"
-                name: "thumb"
-                widget: "image"
-                required: false
-                hint: "The picture used for this piece's tile in the homepage collage. Leave empty to use the Main Image. Pick one of this piece's pictures (a close-up often looks best in a small square), or upload a crop made for it."
-
-              - label: "Collage focus"
-                name: "focus"
-                widget: "select"
-                required: false
-                default: "center"
-                options:
-                  - { label: "Center", value: "center" }
-                  - { label: "Left (e.g. the front figure of a front/back pair)", value: "left" }
-                  - { label: "Right", value: "right" }
-                  - { label: "Top (e.g. keep the face)", value: "top" }
-                  - { label: "Bottom", value: "bottom" }
-                hint: "Which part of the picture stays in view when the tile crops it to a square, wide or tall shape. For any other spot, use Focus X and Y below."
-
-              - label: "Collage focus X (%)"
-                name: "fx"
-                widget: "number"
-                value_type: "int"
-                min: 0
-                max: 100
-                required: false
-                hint: "0 = left edge, 100 = right edge. With Focus Y it places the focus anywhere (and replaces the choice above). Easiest: open /admin/focus.html, click on the picture and copy the numbers."
-
-              - label: "Collage focus Y (%)"
-                name: "fy"
-                widget: "number"
-                value_type: "int"
-                min: 0
-                max: 100
-                required: false
-                hint: "0 = top edge, 100 = bottom edge."
-
-              - label: "Collage zoom (%)"
-                name: "zoom"
-                widget: "number"
-                value_type: "int"
-                min: 100
-                max: 300
-                required: false
-                hint: "100 = no zoom. 150 shows the focus area 1.5 times bigger in the tile."
-
-              - label: "Title"
-                name: "t"
-                widget: "string"
-                hint: "The name shown under the artwork, e.g. \"Nitro CR7\""
-
-              - label: "Category"
-                name: "c"
-                widget: "select"
-                hint: "The piece's main category. It decides the label shown on the piece."
-                options:
-                  # @categories (filled in from data/categories.json by tools/build.js)
-                  - { label: "Modular CHR Skins", value: "modular-chr-skins" }
-                  - { label: "Realistic CHR", value: "realistic-humans" }
-                  - { label: "Realistic Creature", value: "realistic-creatures" }
-                  - { label: "Realistic Hair Card", value: "realistic-hairs" }
-                  - { label: "Stylized CHR", value: "stylized-human" }
-                  - { label: "Stylized Creature", value: "stylized-creature" }
-                  - { label: "Props", value: "props" }
-                  - { label: "Realistic Weapons", value: "weapons" }
-                  - { label: "Game - Midnight Walk", value: "mid-night-walk" }
-                  - { label: "Game - Lost in Random", value: "lost-in-random" }
-                  # @end
-
-              - label: "Also show in (optional)"
-                name: "cats"
-                widget: "select"
-                multiple: true
-                required: false
-                hint: "Pick any other categories this same piece should also appear in. No need to upload it again."
-                options:
-                  # @categories (filled in from data/categories.json by tools/build.js)
-                  - { label: "Modular CHR Skins", value: "modular-chr-skins" }
-                  - { label: "Realistic CHR", value: "realistic-humans" }
-                  - { label: "Realistic Creature", value: "realistic-creatures" }
-                  - { label: "Realistic Hair Card", value: "realistic-hairs" }
-                  - { label: "Stylized CHR", value: "stylized-human" }
-                  - { label: "Stylized Creature", value: "stylized-creature" }
-                  - { label: "Props", value: "props" }
-                  - { label: "Realistic Weapons", value: "weapons" }
-                  - { label: "Game - Midnight Walk", value: "mid-night-walk" }
-                  - { label: "Game - Lost in Random", value: "lost-in-random" }
-                  # @end
-
-              - label: "Project"
-                name: "project"
-                widget: "select"
-                default: "Studio work"
-                hint: "Shown in the Project box on the piece's details page. Pick the game it was made for, or Studio work / Fan art. A new game can be added to this list on request."
-                options:
-                  # @projects (filled in from data/projects.json + the Games list by tools/build.js)
-                  - "Studio work"
-                  - "Fan art / studio piece"
-                  - "Echoes of Aincrad"
-                  - "Shift At Midnight"
-                  - "FIFA Heroes"
-                  - "Tormentor"
-                  - "The Midnight Walk"
-                  - "Warhammer 40,000: Space Marine 2"
-                  - "Ready or Not"
-                  - "Supermoves"
-                  - "Warhammer 40,000: Speed Freeks"
-                  - "Lost in Random"
-                  - "Dark Envoy"
-                  - "Wavetale"
-                  - "The Gunk"
-                  - "Scavengers"
-                  # @end
-
-              - label: "Software (optional)"
-                name: "software"
-                widget: "string"
-                required: false
-                hint: "e.g. ZBrush, Maya, Substance 3D Painter. Leave empty to hide this box on the website."
-
-              - label: "Poly count (optional)"
-                name: "polys"
-                widget: "string"
-                required: false
-                hint: "Numbers and text, e.g. 55K tris (LOD0). Leave empty to hide this box on the website."
-
-              - label: "Textures (optional)"
-                name: "textures"
-                widget: "string"
-                required: false
-                hint: "e.g. 3 x 2K + 1 x 1K, PBR metal/rough. Leave empty to hide this box on the website."
-
-              - label: "Extra info boxes (optional)"
-                name: "specs"
-                widget: "list"
-                collapsed: true
-                required: false
-                label_singular: "Info box"
-                summary: "{{fields.label}}: {{fields.value}}"
-                hint: "Add your own boxes next to Category / Project, e.g. Heading \"Engine\" and Content \"Unreal Engine 5\". Click Add for another box. A box with nothing typed in is not shown."
-                fields:
-                  - { label: "Heading", name: "label", widget: "string", required: false }
-                  - { label: "Content", name: "value", widget: "string", required: false }
-
-              - label: "ID"
-                name: "id"
-                widget: "string"
-                hint: "Any short unique code, letters and numbers, no spaces (e.g. AB12cd). Used to link a breakdown or a sculpt-to-final pair to this piece. Must not match any other piece's ID."
-
-              - label: "Main Image"
-                name: "i"
-                widget: "image"
-                hint: "The first picture. JPG or WebP, 1500-2500 px wide; the site shows it at most 1500 x 750 and the lens uses the full file. Grid thumbnails are made automatically."
-
-              - label: "Additional Images"
-                name: "imgs"
-                widget: "list"
-                collapsed: true
-                required: false
-                label_singular: "Image"
-                field: { label: "Image", name: "image", widget: "image" }
-                hint: "Other angles or close-ups, in the order they should appear. Same size advice as the Main Image."
-
-              - label: "Description"
-                name: "desc"
-                widget: "text"
-                hint: "Shown on the piece's detail page. A short paragraph is enough."
-
-              - label: "Tags (not shown to visitors)"
-                name: "tags"
-                widget: "list"
-                collapsed: true
-                required: false
-                hint: "Optional keywords for your own reference, one per line. They are not shown on the website."
-
-              - label: "3D viewer: Sketchfab link (optional)"
-                name: "sketchfab"
-                widget: "string"
-                required: false
-                hint: "Paste the Sketchfab link of this model (or just its ID). Visitors can then spin the model on the piece's details page. The model must be public or unlisted, with embedding allowed."
-
-              - label: "3D viewer: Marmoset file (optional)"
-                name: "marmoset"
-                widget: "file"
-                required: false
-                media_folder: "/assets/mview"
-                public_folder: "/assets/mview"
-                pattern: ['\.(mview|MVIEW)$', "Only a Marmoset .mview file."]
-                hint: "Export from Marmoset Toolbag (File > Export > Marmoset Viewer) and upload the .mview file here. Visitors can then spin the model on the piece's details page. Keep it small (ideally under 20 MB): it downloads when the page opens."
       - name: "projects"
         label: "Projects (dropdown choices)"
         file: "data/projects.json"
@@ -484,6 +254,249 @@ collections:
             summary: "{{fields.name}}"
             fields:
               - { label: "Name", name: "name", widget: "string" }
+
+  - name: "pieces"
+    label: "Portfolio pieces"
+    label_singular: "Piece"
+    description: "Every piece in the portfolio, one entry each. Search for a piece by name and open it: the form and the preview then show only that piece. Changes go live about two minutes after saving."
+    folder: "data/pieces"
+    format: "json"
+    extension: "json"
+    create: true
+    delete: true
+    identifier_field: "t"
+    slug: "{{slug}}"
+    summary: "{{fields.t}}{{fields.hidden | ternary(' · HIDDEN', '')}}"
+    sortable_fields: ["order", "t"]
+    view_filters:
+      - { label: "Hidden pieces", field: "hidden", pattern: true }
+      - { label: "Shown on the site", field: "hidden", pattern: false }
+    fields:
+      - label: "Order"
+        name: "order"
+        widget: "number"
+        value_type: "int"
+        required: false
+        default: 1000
+        hint: "Where this piece sits in lists (smaller comes first). The homepage collage shuffles anyway; this sets the order in a category's filter. Gaps of 10 leave room to slot a piece in between."
+
+      - label: "Hide from the website"
+        name: "hidden"
+        widget: "boolean"
+        default: false
+        required: false
+        hint: "Tick to keep this piece off the site (grids, viewer, its own page, the sitemap) while it is unfinished. Untick and save to publish it."
+
+      - label: "Collage: can be 2x2 (big square)"
+        name: "big"
+        widget: "boolean"
+        default: false
+        required: false
+        hint: "The homepage collage picks a few ticked pieces at random on every visit for each shape. Tick the shapes this piece's main picture suits."
+
+      - label: "Collage: can be 2x1 (wide)"
+        name: "wide"
+        widget: "boolean"
+        default: false
+        required: false
+        hint: "Good for landscape pictures, such as front and back turnarounds."
+
+      - label: "Collage: can be 1x2 (tall)"
+        name: "tall"
+        widget: "boolean"
+        default: false
+        required: false
+        hint: "Shows the middle of the picture as a tall strip. Good for a single standing figure."
+
+      - label: "Collage picture (optional)"
+        name: "thumb"
+        widget: "image"
+        required: false
+        hint: "The picture used for this piece's tile in the homepage collage. Leave empty to use the Main Image. Pick one of this piece's pictures (a close-up often looks best in a small square), or upload a crop made for it."
+
+      - label: "Collage focus"
+        name: "focus"
+        widget: "select"
+        required: false
+        default: "center"
+        options:
+          - { label: "Center", value: "center" }
+          - { label: "Left (e.g. the front figure of a front/back pair)", value: "left" }
+          - { label: "Right", value: "right" }
+          - { label: "Top (e.g. keep the face)", value: "top" }
+          - { label: "Bottom", value: "bottom" }
+        hint: "Which part of the picture stays in view when the tile crops it to a square, wide or tall shape. For any other spot, use Focus X and Y below."
+
+      - label: "Collage focus X (%)"
+        name: "fx"
+        widget: "number"
+        value_type: "int"
+        min: 0
+        max: 100
+        required: false
+        hint: "0 = left edge, 100 = right edge. With Focus Y it places the focus anywhere (and replaces the choice above). Easiest: open /admin/focus.html, click on the picture and copy the numbers."
+
+      - label: "Collage focus Y (%)"
+        name: "fy"
+        widget: "number"
+        value_type: "int"
+        min: 0
+        max: 100
+        required: false
+        hint: "0 = top edge, 100 = bottom edge."
+
+      - label: "Collage zoom (%)"
+        name: "zoom"
+        widget: "number"
+        value_type: "int"
+        min: 100
+        max: 300
+        required: false
+        hint: "100 = no zoom. 150 shows the focus area 1.5 times bigger in the tile."
+
+      - label: "Title"
+        name: "t"
+        widget: "string"
+        hint: "The name shown under the artwork, e.g. \"Nitro CR7\""
+
+      - label: "Category"
+        name: "c"
+        widget: "select"
+        hint: "The piece's main category. It decides the label shown on the piece."
+        options:
+          # @categories (filled in from data/categories.json by tools/build.js)
+          - { label: "Modular CHR Skins", value: "modular-chr-skins" }
+          - { label: "Realistic CHR", value: "realistic-humans" }
+          - { label: "Realistic Creature", value: "realistic-creatures" }
+          - { label: "Realistic Hair Card", value: "realistic-hairs" }
+          - { label: "Stylized CHR", value: "stylized-human" }
+          - { label: "Stylized Creature", value: "stylized-creature" }
+          - { label: "Props", value: "props" }
+          - { label: "Realistic Weapons", value: "weapons" }
+          - { label: "Game - Midnight Walk", value: "mid-night-walk" }
+          - { label: "Game - Lost in Random", value: "lost-in-random" }
+          # @end
+
+      - label: "Also show in (optional)"
+        name: "cats"
+        widget: "select"
+        multiple: true
+        required: false
+        hint: "Pick any other categories this same piece should also appear in. No need to upload it again."
+        options:
+          # @categories (filled in from data/categories.json by tools/build.js)
+          - { label: "Modular CHR Skins", value: "modular-chr-skins" }
+          - { label: "Realistic CHR", value: "realistic-humans" }
+          - { label: "Realistic Creature", value: "realistic-creatures" }
+          - { label: "Realistic Hair Card", value: "realistic-hairs" }
+          - { label: "Stylized CHR", value: "stylized-human" }
+          - { label: "Stylized Creature", value: "stylized-creature" }
+          - { label: "Props", value: "props" }
+          - { label: "Realistic Weapons", value: "weapons" }
+          - { label: "Game - Midnight Walk", value: "mid-night-walk" }
+          - { label: "Game - Lost in Random", value: "lost-in-random" }
+          # @end
+
+      - label: "Project"
+        name: "project"
+        widget: "select"
+        default: "Studio work"
+        hint: "Shown in the Project box on the piece's details page. Pick the game it was made for, or Studio work / Fan art. A new game can be added to this list on request."
+        options:
+          # @projects (filled in from data/projects.json + the Games list by tools/build.js)
+          - "Studio work"
+          - "Fan art / studio piece"
+          - "Echoes of Aincrad"
+          - "Shift At Midnight"
+          - "FIFA Heroes"
+          - "Tormentor"
+          - "The Midnight Walk"
+          - "Warhammer 40,000: Space Marine 2"
+          - "Ready or Not"
+          - "Supermoves"
+          - "Warhammer 40,000: Speed Freeks"
+          - "Lost in Random"
+          - "Dark Envoy"
+          - "Wavetale"
+          - "The Gunk"
+          - "Scavengers"
+          # @end
+
+      - label: "Software (optional)"
+        name: "software"
+        widget: "string"
+        required: false
+        hint: "e.g. ZBrush, Maya, Substance 3D Painter. Leave empty to hide this box on the website."
+
+      - label: "Poly count (optional)"
+        name: "polys"
+        widget: "string"
+        required: false
+        hint: "Numbers and text, e.g. 55K tris (LOD0). Leave empty to hide this box on the website."
+
+      - label: "Textures (optional)"
+        name: "textures"
+        widget: "string"
+        required: false
+        hint: "e.g. 3 x 2K + 1 x 1K, PBR metal/rough. Leave empty to hide this box on the website."
+
+      - label: "Extra info boxes (optional)"
+        name: "specs"
+        widget: "list"
+        collapsed: true
+        required: false
+        label_singular: "Info box"
+        summary: "{{fields.label}}: {{fields.value}}"
+        hint: "Add your own boxes next to Category / Project, e.g. Heading \"Engine\" and Content \"Unreal Engine 5\". Click Add for another box. A box with nothing typed in is not shown."
+        fields:
+          - { label: "Heading", name: "label", widget: "string", required: false }
+          - { label: "Content", name: "value", widget: "string", required: false }
+
+      - label: "ID"
+        name: "id"
+        widget: "string"
+        hint: "Any short unique code, letters and numbers, no spaces (e.g. AB12cd). Used to link a breakdown or a sculpt-to-final pair to this piece. Must not match any other piece's ID."
+
+      - label: "Main Image"
+        name: "i"
+        widget: "image"
+        hint: "The first picture. JPG or WebP, 1500-2500 px wide; the site shows it at most 1500 x 750 and the lens uses the full file. Grid thumbnails are made automatically."
+
+      - label: "Additional Images"
+        name: "imgs"
+        widget: "list"
+        collapsed: true
+        required: false
+        label_singular: "Image"
+        field: { label: "Image", name: "image", widget: "image" }
+        hint: "Other angles or close-ups, in the order they should appear. Same size advice as the Main Image."
+
+      - label: "Description"
+        name: "desc"
+        widget: "text"
+        hint: "Shown on the piece's detail page. A short paragraph is enough."
+
+      - label: "Tags (not shown to visitors)"
+        name: "tags"
+        widget: "list"
+        collapsed: true
+        required: false
+        hint: "Optional keywords for your own reference, one per line. They are not shown on the website."
+
+      - label: "3D viewer: Sketchfab link (optional)"
+        name: "sketchfab"
+        widget: "string"
+        required: false
+        hint: "Paste the Sketchfab link of this model (or just its ID). Visitors can then spin the model on the piece's details page. The model must be public or unlisted, with embedding allowed."
+
+      - label: "3D viewer: Marmoset file (optional)"
+        name: "marmoset"
+        widget: "file"
+        required: false
+        media_folder: "/assets/mview"
+        public_folder: "/assets/mview"
+        pattern: ['\.(mview|MVIEW)$', "Only a Marmoset .mview file."]
+        hint: "Export from Marmoset Toolbag (File > Export > Marmoset Viewer) and upload the .mview file here. Visitors can then spin the model on the piece's details page. Keep it small (ideally under 20 MB): it downloads when the page opens."
 
   - name: "breakdown"
     label: "Breakdown"

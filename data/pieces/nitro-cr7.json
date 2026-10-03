@@ -1,0 +1,34 @@
+{
+  "order": 40,
+  "t": "Nitro CR7",
+  "c": "stylized-human",
+  "cats": [],
+  "id": "ndwQ0O",
+  "i": "/assets/img/portfolio/nitro-cr7-ndwq0o.webp",
+  "imgs": [
+    "/assets/img/portfolio/nitro-cr7-ndwq0o-3.webp",
+    "/assets/img/portfolio/nitro-cr7-ndwq0o-4.webp",
+    "/assets/img/portfolio/nitro-cr7-ndwq0o-2.webp",
+    "/assets/img/portfolio/nitro-cr7-ndwq0o-5.webp"
+  ],
+  "desc": "Nitro CR7 is a stylized football star: an athletic hero build, a red kit with gold trim and the number 7, and boots ready for the pitch. We built him to explore how a sports or arena character looks in a punchier, mobile-friendly style.\n\nThe kit's panels and trims are modeled into the shapes, so the silhouette stays readable at a distance, and the face is simplified just enough to read on a phone. He fits in just over 12K tris and a single 2K texture set, shown in Unreal Engine, with clean topology for rigging and fast animation.\n\nBuilding a stylized sports or arena game? We can match this look, or take it wherever your project needs to go.",
+  "tags": [],
+  "w": 2000,
+  "h": 1500,
+  "project": "Studio work",
+  "polys": "12,028 tris",
+  "textures": "PBR, single 2K texture set",
+  "software": "ZBrush, Maya, Substance Painter, Unreal Engine",
+  "specs": [
+    {
+      "label": "Target platforms",
+      "value": "Mobile, Nintendo Switch, PC"
+    },
+    {
+      "label": "Use",
+      "value": "Playable character for sports and arena games"
+    }
+  ],
+  "wide": true,
+  "focus": "left"
+}

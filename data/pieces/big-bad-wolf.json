@@ -1,0 +1,43 @@
+{
+  "order": 160,
+  "t": "Big Bad Wolf",
+  "c": "stylized-creature",
+  "cats": [],
+  "id": "rl0Xea",
+  "i": "/assets/img/portfolio/big-bad-wolf-rl0xea.webp",
+  "imgs": [
+    "/assets/img/portfolio/big-bad-wolf-rl0xea-3.webp",
+    "/assets/img/portfolio/big-bad-wolf-rl0xea-4.webp",
+    "/assets/img/portfolio/big-bad-wolf-rl0xea-2.webp",
+    "/assets/img/portfolio/big-bad-wolf-rl0xea-5.webp",
+    "/assets/img/portfolio/big-bad-wolf-rl0xea-6.webp",
+    "/assets/img/portfolio/big-bad-wolf-rl0xea-7.webp",
+    "/assets/img/portfolio/big-bad-wolf-rl0xea-8.webp",
+    "/assets/img/portfolio/big-bad-wolf-rl0xea-9.webp",
+    "/assets/img/portfolio/big-bad-wolf-rl0xea-10.webp"
+  ],
+  "desc": "Big Bad Wolf is our 3D take on Nicola Saviori's concept: a hunched, hooded wolf with glowing red eyes, a drooling grin, a huge bushy tail and a pair of curved blades. The job was to keep everything that makes the 2D design fun while making it work from every angle.\n\nThe shapes stay bold, with a big head and hands, a skinny body under the cloak and an oversized tail, so he reads instantly even on a phone screen. All of it fits in 13K tris and a single 2K texture set, with painted-style colors that hold the concept's look under real-time lighting. Topology is clean and deformation-ready, so he can go straight to rigging and animation.\n\nNeed stylized enemies or heroes for mobile, Switch or PC? We can match this look, or take it wherever your project needs to go.",
+  "tags": [],
+  "w": 2200,
+  "h": 1500,
+  "project": "Fan art / studio piece",
+  "polys": "13K tris",
+  "textures": "PBR, single 2K texture set",
+  "software": "ZBrush, Maya, Substance Painter, Marmoset Toolbag",
+  "specs": [
+    {
+      "label": "Concept",
+      "value": "Nicola Saviori (artstation.com/nicolasaviori)"
+    },
+    {
+      "label": "Target platforms",
+      "value": "Mobile, Nintendo Switch, PC"
+    },
+    {
+      "label": "Use",
+      "value": "Stylized enemy or boss character"
+    }
+  ],
+  "big": true,
+  "wide": true
+}

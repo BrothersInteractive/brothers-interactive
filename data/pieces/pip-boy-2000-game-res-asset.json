@@ -1,0 +1,40 @@
+{
+  "order": 560,
+  "t": "Pip-Boy 2000 - Game Res Asset",
+  "c": "props",
+  "cats": [],
+  "id": "ybZDb8",
+  "i": "/assets/img/portfolio/pip-boy-2000-game-res-asset-ybzdb8.webp",
+  "imgs": [
+    "/assets/img/portfolio/pip-boy-2000-game-res-asset-ybzdb8-3.webp",
+    "/assets/img/portfolio/pip-boy-2000-game-res-asset-ybzdb8-4.webp",
+    "/assets/img/portfolio/pip-boy-2000-game-res-asset-ybzdb8-2.webp",
+    "/assets/img/portfolio/pip-boy-2000-game-res-asset-ybzdb8-5.webp",
+    "/assets/img/portfolio/pip-boy-2000-game-res-asset-ybzdb8-6.webp",
+    "/assets/img/portfolio/pip-boy-2000-game-res-asset-ybzdb8-7.webp",
+    "/assets/img/portfolio/pip-boy-2000-game-res-asset-ybzdb8-8.webp",
+    "/assets/img/portfolio/pip-boy-2000-game-res-asset-ybzdb8-9.webp",
+    "/assets/img/portfolio/pip-boy-2000-game-res-asset-ybzdb8-10.webp",
+    "/assets/img/portfolio/pip-boy-2000-game-res-asset-ybzdb8-11.webp",
+    "/assets/img/portfolio/pip-boy-2000-game-res-asset-ybzdb8-12.webp"
+  ],
+  "desc": "Our fan-art take on the Pip-Boy 2000 from the Fallout series: the chunky wrist computer with a green CRT screen, dials, a speaker grille and a padded red cuff. A prop like this sits right in front of the first-person camera, so every surface gets looked at.\n\nWe kept the retro-industrial feel, with olive paint chipped down to the metal, hazard stripes, warning stickers, worn leather straps and a scratched glass screen. Even with all that detail it's only 8K tris on a single 2K texture set, with clean topology and pivots on the moving parts, so the screen and controls can be animated and the display can show live UI in engine.\n\nNeed hero props for a first-person game? Talk to us about your project.",
+  "tags": [],
+  "w": 1500,
+  "h": 1125,
+  "project": "Fan art / studio piece",
+  "polys": "8K tris",
+  "textures": "PBR, single 2K texture set",
+  "software": "ZBrush, Maya, Substance Painter, Marmoset Toolbag",
+  "specs": [
+    {
+      "label": "Target platforms",
+      "value": "PC, PlayStation 4, Xbox One, Nintendo Switch"
+    },
+    {
+      "label": "Use",
+      "value": "First-person hero prop with animated parts"
+    }
+  ],
+  "wide": true
+}

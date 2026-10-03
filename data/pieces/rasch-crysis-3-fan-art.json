@@ -1,0 +1,39 @@
+{
+  "order": 590,
+  "t": "Rasch: Crysis 3 Fan Art",
+  "c": "realistic-humans",
+  "cats": [],
+  "id": "r3z0m",
+  "i": "/assets/img/portfolio/rasch-crysis-3-fanart-r3z0m.webp",
+  "imgs": [
+    "/assets/img/portfolio/rasch-crysis-3-fanart-r3z0m-3.webp",
+    "/assets/img/portfolio/rasch-crysis-3-fanart-r3z0m-4.webp",
+    "/assets/img/portfolio/rasch-crysis-3-fanart-r3z0m-2.webp",
+    "/assets/img/portfolio/rasch-crysis-3-fanart-r3z0m-5.webp",
+    "/assets/img/portfolio/rasch-crysis-3-fanart-r3z0m-6.webp",
+    "/assets/img/portfolio/rasch-crysis-3-fanart-r3z0m-7.webp",
+    "/assets/img/portfolio/rasch-crysis-3-fanart-r3z0m-8.webp",
+    "/assets/img/portfolio/rasch-crysis-3-fanart-r3z0m-9.webp",
+    "/assets/img/portfolio/rasch-crysis-3-fanart-r3z0m-10.webp"
+  ],
+  "desc": "Rasch is our fan-art take on Karl Ernst Rasch from Crysis 3, the veteran who helps the resistance from behind the scenes. Instead of armor and weapons, the challenge here was an ordinary older man who still had to feel at home in a AAA shooter.\n\nThe likeness carries it: gray hair, glasses, and wrinkles and skin that sag naturally with age. His field gear is worn but practical, with a canvas shirt, a padded vest carrying a radio and devices, and cargo pants with reinforced knees, each with its own wear and fabric detail. The wireframes show tidy, game-ready topology with extra loops around the face for expression.\n\nWorking on a story-heavy game with supporting characters who need to feel real? Talk to us about your cast.",
+  "tags": [],
+  "w": 1500,
+  "h": 1500,
+  "project": "Fan art / studio piece",
+  "polys": "55K tris",
+  "textures": "PBR, three 2K and one 1K texture sets",
+  "software": "ZBrush, Maya, Substance Painter, Marmoset Toolbag",
+  "specs": [
+    {
+      "label": "Target platforms",
+      "value": "PC, PlayStation 4, Xbox One"
+    },
+    {
+      "label": "Use",
+      "value": "Supporting character, gameplay and cutscenes"
+    }
+  ],
+  "thumb": "/assets/img/portfolio/rasch-crysis-3-fanart-r3z0m-4.webp",
+  "focus": "top"
+}

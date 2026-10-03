@@ -1,0 +1,33 @@
+{
+  "order": 320,
+  "t": "Beetle - Crash Bandicoot 4 Fan Art",
+  "c": "stylized-creature",
+  "cats": [],
+  "id": "zxBExq",
+  "i": "/assets/img/portfolio/beatle-crash-bandicoot-4-fanart-zxbexq.webp",
+  "imgs": [
+    "/assets/img/portfolio/beatle-crash-bandicoot-4-fanart-zxbexq-2.webp",
+    "/assets/img/portfolio/beatle-crash-bandicoot-4-fanart-zxbexq-3.webp",
+    "/assets/img/portfolio/beatle-crash-bandicoot-4-fanart-zxbexq-4.webp",
+    "/assets/img/portfolio/beatle-crash-bandicoot-4-fanart-zxbexq-5.webp",
+    "/assets/img/portfolio/beatle-crash-bandicoot-4-fanart-zxbexq-6.webp"
+  ],
+  "desc": "Beetle is the T-Rex's small companion in our Crash Bandicoot 4 fan art: a round red bug with a spiked blue shell, papery wings and oversized pincers. It's a small enemy, so the shape has to read in a split second.\n\nThe shell plates, wings and legs are modeled as clear, separate pieces, and the split between the red body and the blue shell keeps the silhouette clean. Like the T-Rex, it's 10K tris on a single 2K texture set, with clean, deformation-ready topology for rigging and animation on mobile, Switch or PC.\n\nBuilding a cast of small stylized enemies? We can match this look, or take it wherever your project needs to go.",
+  "tags": [],
+  "w": 2448,
+  "h": 2160,
+  "project": "Fan art / studio piece",
+  "polys": "10K tris",
+  "textures": "PBR, single 2K texture set",
+  "software": "ZBrush, Maya, Substance Painter, Marmoset Toolbag",
+  "specs": [
+    {
+      "label": "Target platforms",
+      "value": "Mobile, Nintendo Switch, PC"
+    },
+    {
+      "label": "Use",
+      "value": "Small stylized enemy"
+    }
+  ]
+}

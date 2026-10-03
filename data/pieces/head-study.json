@@ -1,0 +1,31 @@
+{
+  "order": 580,
+  "t": "Head Study",
+  "c": "realistic-humans",
+  "cats": [],
+  "id": "0QOke",
+  "i": "/assets/img/portfolio/head-study-0qoke.webp",
+  "imgs": [
+    "/assets/img/portfolio/head-study-0qoke-3.webp",
+    "/assets/img/portfolio/head-study-0qoke-4.webp"
+  ],
+  "desc": "Head Study is a likeness sculpt of actor Benedict Wong, done in ZBrush as a pure anatomy and likeness exercise. Likeness work leaves nowhere to hide: if the proportions, or the fat and muscle under the skin, are off even slightly, the face stops looking like the person.\n\nThe focus is on the forms under the skin: the fullness of the cheeks and jowls, the weight around the eyes and mouth, the folds of the neck, and the pores and fine wrinkles on top. It's the kind of high-poly head a game team bakes from for a hero character or a digital double.\n\nNeed a likeness or a realistic head for your game? Talk to us about your characters.",
+  "tags": [],
+  "w": 1500,
+  "h": 1103,
+  "project": "Studio work",
+  "software": "ZBrush",
+  "polys": "",
+  "textures": "",
+  "specs": [
+    {
+      "label": "Stage",
+      "value": "High-poly likeness sculpt"
+    },
+    {
+      "label": "Use",
+      "value": "Hero head or digital double, baking source"
+    }
+  ],
+  "wide": true
+}

@@ -1,0 +1,48 @@
+{
+  "order": 530,
+  "t": "Adam - Game Res Model",
+  "c": "stylized-human",
+  "cats": [],
+  "id": "B1e5nm",
+  "i": "/assets/img/portfolio/adam-game-res-model-b1e5nm.webp",
+  "imgs": [
+    "/assets/img/portfolio/adam-game-res-model-b1e5nm-3.webp",
+    "/assets/img/portfolio/adam-game-res-model-b1e5nm-4.webp",
+    "/assets/img/portfolio/adam-game-res-model-b1e5nm-2.webp",
+    "/assets/img/portfolio/adam-game-res-model-b1e5nm-5.webp",
+    "/assets/img/portfolio/adam-game-res-model-b1e5nm-6.webp",
+    "/assets/img/portfolio/adam-game-res-model-b1e5nm-7.webp",
+    "/assets/img/portfolio/adam-game-res-model-b1e5nm-8.webp",
+    "/assets/img/portfolio/adam-game-res-model-b1e5nm-9.webp",
+    "/assets/img/portfolio/adam-game-res-model-b1e5nm-10.webp",
+    "/assets/img/portfolio/adam-game-res-model-b1e5nm-11.webp",
+    "/assets/img/portfolio/adam-game-res-model-b1e5nm-12.webp",
+    "/assets/img/portfolio/adam-game-res-model-b1e5nm-13.webp",
+    "/assets/img/portfolio/adam-game-res-model-b1e5nm-14.webp",
+    "/assets/img/portfolio/adam-game-res-model-b1e5nm-15.webp",
+    "/assets/img/portfolio/adam-game-res-model-b1e5nm-16.webp"
+  ],
+  "desc": "Adam is a five-stage progression character: one stylized boy who grows from a schoolkid into a fully armored warrior. Each stage adds gear on top of the last, so the player sees the journey on the model itself.\n\nStage 1 is the base schoolboy, stage 2 adds a rebel's mask, vest and pouches, stage 3 a bow and quiver, stage 4 a sword and light armor, and stage 5 the full knight set with crested helmet, cape and shield. Everything sits on one base body and skeleton, so gear attaches and swaps cleanly. The budget stays low and texturing starts from a single 2K map, so the full set runs on mobile and Switch as well as PC.\n\nPlanning an RPG or progression game with visible character upgrades? Talk to us about your hero.",
+  "tags": [],
+  "w": 2044,
+  "h": 1065,
+  "project": "Studio work",
+  "polys": "About 8K tris (stage 1) to 15K tris (stage 5)",
+  "textures": "PBR, one 2K base map plus extra maps per gear stage",
+  "software": "ZBrush, Maya, Substance Painter, Marmoset Toolbag",
+  "specs": [
+    {
+      "label": "Stages",
+      "value": "5, from schoolboy to elite warrior"
+    },
+    {
+      "label": "Target platforms",
+      "value": "Mobile, Nintendo Switch, PC"
+    },
+    {
+      "label": "Use",
+      "value": "Playable hero with visible progression"
+    }
+  ],
+  "wide": true
+}

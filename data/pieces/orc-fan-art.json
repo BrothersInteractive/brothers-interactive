@@ -1,0 +1,36 @@
+{
+  "order": 60,
+  "t": "Orc Fan Art",
+  "c": "stylized-creature",
+  "cats": [],
+  "id": "vbNvDE",
+  "i": "/assets/img/portfolio/orc-fanart-vbnvde.webp",
+  "imgs": [
+    "/assets/img/portfolio/orc-fanart-vbnvde-3.webp",
+    "/assets/img/portfolio/orc-fanart-vbnvde-2.webp",
+    "/assets/img/portfolio/orc-fanart-vbnvde-4.webp"
+  ],
+  "desc": "Orc Fan Art is a stylized bust inspired by Wenmo Zhang's artwork: a bald, heavy-jawed orc with a single horn, crooked tusks, a deep scowl and a spiked chain wrapped around his neck. It's a focused study in shape language and facial storytelling.\n\nEverything is pushed for character: drooping jowls, a wrinkled brow, small angry eyes and an underbite full of uneven teeth, all kept clean and readable in the stylized look. The sculpt is finished with painted color and soft, warm skin tones, the kind of finish that suits stylized games and collectible-style renders.\n\nNeed stylized characters with real personality? We can match this look, or take it wherever your project needs to go.",
+  "tags": [],
+  "w": 1500,
+  "h": 1500,
+  "project": "Fan art / studio piece",
+  "software": "ZBrush, Substance Painter, Marmoset Toolbag",
+  "polys": "",
+  "textures": "",
+  "specs": [
+    {
+      "label": "Inspired by",
+      "value": "Wenmo Zhang"
+    },
+    {
+      "label": "Stage",
+      "value": "Stylized bust, sculpted and textured"
+    },
+    {
+      "label": "Use",
+      "value": "Stylized character or enemy head, portrait renders"
+    }
+  ],
+  "tall": true
+}

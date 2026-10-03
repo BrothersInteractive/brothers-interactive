@@ -1,0 +1,36 @@
+{
+  "order": 510,
+  "t": "Russell Del's Boy CHR",
+  "c": "stylized-human",
+  "cats": [],
+  "id": "zOaxkD",
+  "i": "/assets/img/portfolio/russell-del-s-boy-chr-zoaxkd.webp",
+  "imgs": [
+    "/assets/img/portfolio/russell-del-s-boy-chr-zoaxkd-3.webp",
+    "/assets/img/portfolio/russell-del-s-boy-chr-zoaxkd-4.webp"
+  ],
+  "desc": "Russell Del's Boy is the companion to our Russell Del's Girl, also built from Russell Del's concept: spiky white hair with red streaks, an orange hoodie, a crossbody bag, shorts and chunky sneakers. Like her, he needed to keep the drawing's energy in a game-ready model.\n\nHis hair is sculpted as bold, stylized clumps, and the hoodie, bag and shoes keep the clean, graphic look of the concept. He's 21K tris on two 2K texture sets, with clean topology and facial loops ready for rigging and expressions on mobile, Switch or PC.\n\nMaking a stylized game with a young, colorful cast? Talk to us about your characters.",
+  "tags": [],
+  "w": 2500,
+  "h": 1935,
+  "project": "Fan art / studio piece",
+  "polys": "21K tris",
+  "textures": "PBR, two 2K texture sets",
+  "software": "ZBrush, Maya, Substance Painter, Marmoset Toolbag",
+  "specs": [
+    {
+      "label": "Concept",
+      "value": "Russell Del"
+    },
+    {
+      "label": "Target platforms",
+      "value": "Mobile, Nintendo Switch, PC"
+    },
+    {
+      "label": "Use",
+      "value": "Playable or NPC character, stylized games"
+    }
+  ],
+  "thumb": "/assets/img/portfolio/russell-del-s-boy-chr-zoaxkd-4.webp",
+  "focus": "top"
+}

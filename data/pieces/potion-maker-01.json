@@ -1,0 +1,31 @@
+{
+  "order": 480,
+  "t": "Potion Maker 01",
+  "c": "lost-in-random",
+  "cats": [],
+  "id": "b5gv3v",
+  "i": "/assets/img/portfolio/potion-maker-01-b5gv3v.webp",
+  "imgs": [],
+  "desc": "Potion Maker is a small, masked alchemist from Lost in Random, surrounded by a lightbulb-shaped flask, tubes and copper horns.\n\nLost in Random was the first game our studio contributed to. We built its characters from scratch through the full standard pipeline (high-poly sculpt, retopology, UVs, baking and texturing), at around 10K to 15K tris on 2K maps, keeping the game's dark storybook look of thin limbs, oversized heads and worn, handmade materials.\n\nNeed characters built to match your game's art direction? We'll build yours to your style, budget and platform.",
+  "tags": [],
+  "w": 2000,
+  "h": 2000,
+  "project": "Lost in Random",
+  "software": "ZBrush, Maya, Substance Painter",
+  "polys": "About 10K to 15K tris",
+  "textures": "2K texture maps",
+  "specs": [
+    {
+      "label": "Our role",
+      "value": "Full character pipeline: sculpt, retopology, UVs, baking, texturing"
+    },
+    {
+      "label": "Target platforms",
+      "value": "PC, PlayStation 4 and 5, Xbox One and Series X|S, Nintendo Switch"
+    },
+    {
+      "label": "Use",
+      "value": "In-game character in a released title"
+    }
+  ]
+}

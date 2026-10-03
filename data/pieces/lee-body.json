@@ -1,0 +1,51 @@
+{
+  "order": 70,
+  "t": "Lee Body",
+  "c": "realistic-humans",
+  "cats": [],
+  "id": "yDeg2x",
+  "i": "/assets/img/portfolio/lee-body-ydeg2x.webp",
+  "imgs": [
+    "/assets/img/portfolio/lee-body-ydeg2x-3.webp",
+    "/assets/img/portfolio/lee-body-ydeg2x-4.webp",
+    "/assets/img/portfolio/lee-body-ydeg2x-2.webp",
+    "/assets/img/portfolio/lee-body-ydeg2x-5.webp",
+    "/assets/img/portfolio/lee-body-ydeg2x-6.webp",
+    "/assets/img/portfolio/lee-body-ydeg2x-7.webp",
+    "/assets/img/portfolio/lee-body-ydeg2x-8.webp",
+    "/assets/img/portfolio/lee-body-ydeg2x-9.webp",
+    "/assets/img/portfolio/lee-body-ydeg2x-10.webp",
+    "/assets/img/portfolio/lee-body-ydeg2x-11.webp",
+    "/assets/img/portfolio/lee-body-ydeg2x-12.webp",
+    "/assets/img/portfolio/lee-body-ydeg2x-13.webp",
+    "/assets/img/portfolio/lee-body-ydeg2x-14.webp",
+    "/assets/img/portfolio/lee-body-ydeg2x-15.webp",
+    "/assets/img/portfolio/lee-body-ydeg2x-16.webp",
+    "/assets/img/portfolio/lee-body-ydeg2x-17.webp"
+  ],
+  "desc": "Lee is a field operator kitted out for a long mission: a headset and bandana, a camo plate carrier loaded with pouches, a big rucksack with rope lashed to it, knee pads and worn boots. We built him to show how far we can push a realistic soldier for current-gen games.\n\nEvery piece of gear is its own believable object, with stitched webbing, scuffed buckles, dusty fabric and creased cargo pants that follow the body underneath. At 160K tris with five 4K and four 2K texture sets, the detail holds up in close-ups, and the beard and hair are an Alembic strand groom, so they move and catch light naturally. He's ready for gameplay or cinematic pipelines.\n\nMaking a military or survival game that needs a lead to carry it? We'll build yours to your style, budget and platform.",
+  "tags": [],
+  "w": 2400,
+  "h": 2000,
+  "project": "Studio work",
+  "polys": "160K tris",
+  "textures": "PBR, five 4K and four 2K texture sets",
+  "software": "ZBrush, Maya, Substance Painter, Marmoset Toolbag",
+  "specs": [
+    {
+      "label": "Hair",
+      "value": "Strand groom (Alembic)"
+    },
+    {
+      "label": "Target platforms",
+      "value": "PC, PlayStation 5, Xbox Series X|S"
+    },
+    {
+      "label": "Use",
+      "value": "Hero or squad character, gameplay and cinematics"
+    }
+  ],
+  "big": true,
+  "thumb": "/assets/img/portfolio/lee-body-ydeg2x-5.webp",
+  "focus": "left"
+}

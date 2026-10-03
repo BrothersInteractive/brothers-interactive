@@ -1,0 +1,37 @@
+{
+  "order": 380,
+  "t": "Toothbug",
+  "c": "stylized-creature",
+  "cats": [],
+  "id": "LR56mr",
+  "i": "/assets/img/portfolio/toothbug-lr56mr.webp",
+  "imgs": [
+    "/assets/img/portfolio/toothbug-lr56mr-3.webp",
+    "/assets/img/portfolio/toothbug-lr56mr-4.webp",
+    "/assets/img/portfolio/toothbug-lr56mr-2.webp",
+    "/assets/img/portfolio/toothbug-lr56mr-5.webp"
+  ],
+  "desc": "Toothbug is a sculpt of Tooth Wu's creature concept: a many-legged beast with a gaping, tusked jaw, a back of curved spines and plated, segmented armor down its body. It's a pure sculpting piece, about turning a 2D design into convincing 3D form.\n\nThe work is all in the forms. The jaw and tusks read from any angle, the spines flow along the body instead of sitting on it, and the legs and claws carry the weight of a heavy creature. It's the kind of high-poly master a game team bakes from, ready to be retopologized and textured for any budget.\n\nNeed creature sculpts that stay true to your concept art? We can match this look, or take it wherever your project needs to go.",
+  "tags": [],
+  "w": 1500,
+  "h": 1080,
+  "project": "Fan art / studio piece",
+  "software": "ZBrush",
+  "polys": "",
+  "textures": "",
+  "specs": [
+    {
+      "label": "Concept",
+      "value": "Tooth Wu"
+    },
+    {
+      "label": "Stage",
+      "value": "High-poly sculpt, ready for retopology and baking"
+    },
+    {
+      "label": "Use",
+      "value": "Creature sculpt for enemies and bosses"
+    }
+  ],
+  "hidden": true
+}

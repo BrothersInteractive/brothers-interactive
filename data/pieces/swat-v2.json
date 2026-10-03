@@ -1,0 +1,56 @@
+{
+  "order": 100,
+  "t": "SWAT V2",
+  "c": "swat-squad",
+  "cats": [],
+  "id": "dyKqQQ",
+  "i": "/assets/img/portfolio/swat-v2-dykqqq.webp",
+  "imgs": [
+    "/assets/img/portfolio/swat-v2-dykqqq-3.webp",
+    "/assets/img/portfolio/swat-v2-dykqqq-4.webp",
+    "/assets/img/portfolio/swat-v2-dykqqq-2.webp",
+    "/assets/img/portfolio/swat-v2-dykqqq-5.webp",
+    "/assets/img/portfolio/swat-v2-dykqqq-6.webp",
+    "/assets/img/portfolio/swat-v2-dykqqq-7.webp",
+    "/assets/img/portfolio/swat-v2-dykqqq-8.webp",
+    "/assets/img/portfolio/swat-v2-dykqqq-9.webp",
+    "/assets/img/portfolio/swat-v2-dykqqq-10.webp",
+    "/assets/img/portfolio/swat-v2-dykqqq-11.webp",
+    "/assets/img/portfolio/swat-v2-dykqqq-12.webp",
+    "/assets/img/portfolio/swat-v2-dykqqq-13.webp",
+    "/assets/img/portfolio/swat-v2-dykqqq-14.webp",
+    "/assets/img/portfolio/swat-v2-dykqqq-15.webp",
+    "/assets/img/portfolio/swat-v2-dykqqq-16.webp",
+    "/assets/img/portfolio/swat-v2-dykqqq-17.webp",
+    "/assets/img/portfolio/swat-v2-dykqqq-18.webp",
+    "/assets/img/portfolio/swat-v2-dykqqq-19.webp"
+  ],
+  "desc": "SWAT V2 is the heavy unit of SWAT Squad, our own original set of tactical characters: a gas-mask helmet with round goggles, a full plate carrier, a backpack rig with cables and an antenna, and magazine and grenade pouches packed around the waist. He's the one you send through the door first.\n\nAll that gear has to stay readable, so the plate carrier, pouches, straps and webbing are built as separate layered pieces with real thickness, and yellow trim lines guide the eye across the silhouette. Up close you get worn fabric, scuffed boots and stitched straps at 4K texture density. He's fully rigged and tested with production motion data, and the red version shows his texture variants.\n\nNeed tactical or military characters for a shooter? We'll build yours to your style, budget and platform.",
+  "tags": [],
+  "w": 2500,
+  "h": 2052,
+  "project": "SWAT Squad, original characters",
+  "polys": "60K tris",
+  "textures": "PBR, 4K texture sets",
+  "software": "ZBrush, Maya, Substance Painter, Marmoset Toolbag",
+  "specs": [
+    {
+      "label": "Rig",
+      "value": "Fully rigged, tested with production motion data"
+    },
+    {
+      "label": "Variants",
+      "value": "Black and red color versions"
+    },
+    {
+      "label": "Target platforms",
+      "value": "PC, PlayStation 5, Xbox Series X|S"
+    },
+    {
+      "label": "Use",
+      "value": "Playable or enemy soldier"
+    }
+  ],
+  "big": true,
+  "thumb": "/assets/img/portfolio/swat-v2-dykqqq-9.webp"
+}

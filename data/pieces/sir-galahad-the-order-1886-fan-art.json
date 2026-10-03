@@ -1,0 +1,50 @@
+{
+  "order": 520,
+  "t": "Sir Galahad: The Order 1886 Fan Art",
+  "c": "realistic-humans",
+  "cats": [],
+  "id": "B1nbk8",
+  "i": "/assets/img/portfolio/sir-galahad-the-order-1886-fanart-b1nbk8.webp",
+  "imgs": [
+    "/assets/img/portfolio/sir-galahad-the-order-1886-fanart-b1nbk8-3.webp",
+    "/assets/img/portfolio/sir-galahad-the-order-1886-fanart-b1nbk8-4.webp",
+    "/assets/img/portfolio/sir-galahad-the-order-1886-fanart-b1nbk8-2.webp",
+    "/assets/img/portfolio/sir-galahad-the-order-1886-fanart-b1nbk8-5.webp",
+    "/assets/img/portfolio/sir-galahad-the-order-1886-fanart-b1nbk8-6.webp",
+    "/assets/img/portfolio/sir-galahad-the-order-1886-fanart-b1nbk8-7.webp",
+    "/assets/img/portfolio/sir-galahad-the-order-1886-fanart-b1nbk8-8.webp",
+    "/assets/img/portfolio/sir-galahad-the-order-1886-fanart-b1nbk8-9.webp",
+    "/assets/img/portfolio/sir-galahad-the-order-1886-fanart-b1nbk8-10.webp",
+    "/assets/img/portfolio/sir-galahad-the-order-1886-fanart-b1nbk8-11.webp",
+    "/assets/img/portfolio/sir-galahad-the-order-1886-fanart-b1nbk8-12.webp",
+    "/assets/img/portfolio/sir-galahad-the-order-1886-fanart-b1nbk8-13.webp",
+    "/assets/img/portfolio/sir-galahad-the-order-1886-fanart-b1nbk8-14.webp",
+    "/assets/img/portfolio/sir-galahad-the-order-1886-fanart-b1nbk8-15.webp",
+    "/assets/img/portfolio/sir-galahad-the-order-1886-fanart-b1nbk8-16.webp"
+  ],
+  "desc": "Sir Galahad is our take on the lead knight from The Order: 1886, built from scratch to match a AAA cinematic look. The goal was simple: could our version hold up in the same kind of close-up shots as the original?\n\nThe uniform does most of the talking: a wool coat with gold braiding, a leather belt rig with holster and dagger, an embroidered cape emblem, and engraved steel bracers and greaves, each with its own wear and edge breakup. The face and beard are sculpted for close-ups, and the coat and cape are built as clean quad meshes, ready for rigging and cloth sim.\n\nPlanning a story-driven action game with period costume? Talk to us about your hero.",
+  "tags": [],
+  "w": 2500,
+  "h": 1407,
+  "project": "Fan art / studio piece",
+  "polys": "160K tris",
+  "textures": "PBR, two 4K and eight 2K texture sets",
+  "software": "ZBrush, Maya, Substance Painter, Marmoset Toolbag",
+  "specs": [
+    {
+      "label": "Hair",
+      "value": "Hair cards"
+    },
+    {
+      "label": "Target platforms",
+      "value": "PC, PlayStation 4, Xbox One"
+    },
+    {
+      "label": "Use",
+      "value": "Hero character, cutscenes and cinematics"
+    }
+  ],
+  "big": true,
+  "wide": true,
+  "thumb": "/assets/img/portfolio/sir-galahad-the-order-1886-fanart-b1nbk8-11.webp"
+}

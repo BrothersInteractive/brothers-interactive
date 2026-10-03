@@ -1,0 +1,39 @@
+{
+  "order": 360,
+  "t": "Male Hair Variations",
+  "c": "realistic-hairs",
+  "cats": [],
+  "id": "L4EZxw",
+  "i": "/assets/img/portfolio/male-hairs-variations-l4ezxw.webp",
+  "imgs": [
+    "/assets/img/portfolio/male-hairs-variations-l4ezxw-3.webp",
+    "/assets/img/portfolio/male-hairs-variations-l4ezxw-4.webp",
+    "/assets/img/portfolio/male-hairs-variations-l4ezxw-2.webp"
+  ],
+  "desc": "Male Hair Variations is one short men's haircut built as a full hair-loss progression: a full head of hair at the first stage, thinning step by step through a receding hairline and crown to a balding pattern. It's made for character customization and aging systems, where one style has to work at every age.\n\nEach stage is its own alpha-card groom on a shared 4K texture set, and the tri count drops as the hair thins, from 45K at the first stage to 25K at the last, so the lighter versions cost less in game. The hairline and crown stay natural at every stage, without the hard edges you get when cards are simply deleted.\n\nBuilding a character creator or an aging system? We'll build yours to your style, budget and platform.",
+  "tags": [],
+  "w": 2500,
+  "h": 2125,
+  "project": "Studio work",
+  "polys": "45K / 38K / 30K / 25K tris (stages 1 to 4)",
+  "textures": "Single 4K texture set, shared by all stages",
+  "software": "ZBrush, Maya, XGen, Photoshop, Marmoset Toolbag",
+  "specs": [
+    {
+      "label": "Hair",
+      "value": "Alpha cards"
+    },
+    {
+      "label": "Stages",
+      "value": "4, from full hair to balding"
+    },
+    {
+      "label": "Target platforms",
+      "value": "PC, PlayStation 5, Xbox Series X|S"
+    },
+    {
+      "label": "Use",
+      "value": "Character customization and aging systems"
+    }
+  ]
+}

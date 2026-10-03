@@ -165,7 +165,14 @@ for (const id of URLS.SECTIONS) if (id !== "home" && HIDDEN.indexOf(id) === -1) 
 // ---- 4. categories: /category/<slug>/ opens the homepage at the Portfolio collage with that filter on ---------
 // Categories as edited in /admin (data/categories.json) replace the built-in list
 URLS.setCategories(json("data/categories.json", {}).items);
-const PROJECTS = (json("data/portfolio.json", {}).items || []).filter((p) => p && p.id && !p.hidden); // "Hide from the website" in /admin
+// Portfolio pieces live one file each in data/pieces/ (one entry each in /admin); they are joined here, by
+// Order then title, into the data/portfolio.json the site reads
+const ALL_PIECES = fs.readdirSync(path.join(ROOT, "data/pieces")).filter((f) => f.endsWith(".json"))
+  .map((f) => json("data/pieces/" + f, null)).filter((p) => p && p.t)
+  .sort((a, b) => ((+a.order || 1000) - (+b.order || 1000)) || String(a.t).localeCompare(String(b.t)));
+fs.writeFileSync(path.join(OUT, "data/portfolio.json"), JSON.stringify({ items: ALL_PIECES }, null, 2) + "\n");
+console.log("Portfolio: " + ALL_PIECES.length + " pieces joined from data/pieces/");
+const PROJECTS = ALL_PIECES.filter((p) => p && p.id && !p.hidden); // "Hide from the website" in /admin
 const inCat = (p, key) => p.c === key || (Array.isArray(p.cats) && p.cats.indexOf(key) !== -1);
 for (const b of URLS.BROWSE_CATS) {
   const pieces = PROJECTS.filter((p) => b.match.some((k) => inCat(p, k)));

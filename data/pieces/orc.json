@@ -1,0 +1,39 @@
+{
+  "order": 190,
+  "t": "Orc",
+  "c": "stylized-creature",
+  "cats": [],
+  "id": "qJY3qa",
+  "i": "/assets/img/portfolio/orc-qjy3qa.webp",
+  "imgs": [
+    "/assets/img/portfolio/orc-qjy3qa-3.webp",
+    "/assets/img/portfolio/orc-qjy3qa-4.webp",
+    "/assets/img/portfolio/orc-qjy3qa-2.webp",
+    "/assets/img/portfolio/orc-qjy3qa-5.webp",
+    "/assets/img/portfolio/orc-qjy3qa-6.webp",
+    "/assets/img/portfolio/orc-qjy3qa-7.webp"
+  ],
+  "desc": "Orc is a heavy, stylized brute: a round green belly, short legs, a hood and tattered skirt, and huge bone spikes growing off his shoulders and arms. The proportions do the talking, so he reads as a tough, slightly comic enemy from any distance.\n\nHe's built for low-spec and cross-platform games, at just under 12K tris on a single 2K texture set, with the color, normal and material maps packed into one layout. He comes with a full control rig too, so animators can start on him straight away.\n\nNeed stylized enemies that look good and run on anything from phones to PC? We can match this look, or take it wherever your project needs to go.",
+  "tags": [],
+  "w": 2400,
+  "h": 2160,
+  "project": "Studio work",
+  "polys": "11.9K tris",
+  "textures": "PBR, single 2K texture set",
+  "software": "ZBrush, Maya, Substance Painter, Marmoset Toolbag",
+  "specs": [
+    {
+      "label": "Rig",
+      "value": "Full control rig"
+    },
+    {
+      "label": "Target platforms",
+      "value": "Mobile, Nintendo Switch, PC"
+    },
+    {
+      "label": "Use",
+      "value": "Stylized enemy or NPC"
+    }
+  ],
+  "big": true
+}

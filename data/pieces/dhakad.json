@@ -1,0 +1,40 @@
+{
+  "order": 570,
+  "t": "Dhakad",
+  "c": "realistic-humans",
+  "cats": [],
+  "id": "JXN6n",
+  "i": "/assets/img/portfolio/dhakad-jxn6n.webp",
+  "imgs": [
+    "/assets/img/portfolio/dhakad-jxn6n-3.webp",
+    "/assets/img/portfolio/dhakad-jxn6n-4.webp",
+    "/assets/img/portfolio/dhakad-jxn6n-2.webp",
+    "/assets/img/portfolio/dhakad-jxn6n-5.webp",
+    "/assets/img/portfolio/dhakad-jxn6n-6.webp",
+    "/assets/img/portfolio/dhakad-jxn6n-7.webp",
+    "/assets/img/portfolio/dhakad-jxn6n-8.webp"
+  ],
+  "desc": "Dhakad is a portrait study of a hardened old warrior-sage: a bald head, deep wrinkles, a scar across the cheek, sacred ash and tilak marks on the forehead, and a long gray beard. The goal was a face that tells his whole story before he says a word.\n\nThe sculpt sets the big forms first, then the wrinkles, pores and scar tissue that sell his age. The beard starts as a sculpted shape for planning, then becomes hair cards for the final: 17K tris of hair on a 25K-tri head, with a 4K map for the head and a 2K map for the hair. The facial topology is laid out for blendshapes and dialogue close-ups.\n\nNeed a memorable face for a story-driven game? Talk to us about your characters.",
+  "tags": [],
+  "w": 1800,
+  "h": 1800,
+  "project": "Studio work",
+  "polys": "42K tris (head 25K, hair 17K)",
+  "textures": "PBR, one 4K map for the head, one 2K map for the hair",
+  "software": "ZBrush, Maya, Substance Painter, Marmoset Toolbag",
+  "specs": [
+    {
+      "label": "Hair",
+      "value": "Hair cards"
+    },
+    {
+      "label": "Target platforms",
+      "value": "PC, PlayStation 4, Xbox One"
+    },
+    {
+      "label": "Use",
+      "value": "Head for NPCs, dialogue scenes and cutscenes"
+    }
+  ],
+  "tall": true
+}

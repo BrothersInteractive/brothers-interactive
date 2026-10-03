@@ -1,0 +1,52 @@
+{
+  "order": 280,
+  "t": "Shark (TLR-1)",
+  "c": "the-last-rebel",
+  "cats": [],
+  "id": "QX2OBd",
+  "i": "/assets/img/portfolio/shark-tlr-1-qx2obd.webp",
+  "imgs": [
+    "/assets/img/portfolio/shark-tlr-1-qx2obd-3.webp",
+    "/assets/img/portfolio/shark-tlr-1-qx2obd-4.webp",
+    "/assets/img/portfolio/shark-tlr-1-qx2obd-2.webp",
+    "/assets/img/portfolio/shark-tlr-1-qx2obd-5.webp",
+    "/assets/img/portfolio/shark-tlr-1-qx2obd-6.webp",
+    "/assets/img/portfolio/shark-tlr-1-qx2obd-7.webp",
+    "/assets/img/portfolio/shark-tlr-1-qx2obd-8.webp",
+    "/assets/img/portfolio/shark-tlr-1-qx2obd-9.webp",
+    "/assets/img/portfolio/shark-tlr-1-qx2obd-10.webp",
+    "/assets/img/portfolio/shark-tlr-1-qx2obd-11.webp",
+    "/assets/img/portfolio/shark-tlr-1-qx2obd-12.webp",
+    "/assets/img/portfolio/shark-tlr-1-qx2obd-13.webp",
+    "/assets/img/portfolio/shark-tlr-1-qx2obd-14.webp",
+    "/assets/img/portfolio/shark-tlr-1-qx2obd-15.webp",
+    "/assets/img/portfolio/shark-tlr-1-qx2obd-16.webp",
+    "/assets/img/portfolio/shark-tlr-1-qx2obd-17.webp",
+    "/assets/img/portfolio/shark-tlr-1-qx2obd-18.webp",
+    "/assets/img/portfolio/shark-tlr-1-qx2obd-19.webp"
+  ],
+  "desc": "Shark comes from The Last Rebel (TLR), our own original universe, where Tiger leads the cast. He's the heavy brawler of the group: a shark-headed bruiser in spiked plate, wrapped in chains and dragging an anchor, with a silhouette the player can read at a glance.\n\nThe sculpt pushes big, readable forms: a thick neck and traps, plate armor with dents and scratches, and chains that sit naturally on the arms and legs. Like the rest of the TLR cast, he's built for Unreal Engine: channel-packed mask maps drive a master shader, so colors, wear and emissive accents can be changed in engine without re-texturing. One model, many variants.\n\nBuilding a roster of creature heroes, enemies or bosses? We'll build yours to your style, budget and platform.",
+  "tags": [],
+  "w": 2088,
+  "h": 2160,
+  "project": "The Last Rebel, original characters",
+  "polys": "60K tris",
+  "textures": "Channel-packed mask maps, six 4K and two 2K texture sets",
+  "software": "ZBrush, Maya, Substance Painter, Unreal Engine",
+  "specs": [
+    {
+      "label": "Engine setup",
+      "value": "Unreal Engine master shader, color and emissive variants in engine"
+    },
+    {
+      "label": "Target platforms",
+      "value": "PC, PlayStation 5, Xbox Series X|S"
+    },
+    {
+      "label": "Use",
+      "value": "Playable or enemy character with color variants"
+    }
+  ],
+  "big": true,
+  "tall": true
+}

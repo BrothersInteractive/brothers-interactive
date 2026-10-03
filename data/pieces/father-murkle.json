@@ -1,0 +1,32 @@
+{
+  "order": 200,
+  "t": "Father Murkle",
+  "c": "mid-night-walk",
+  "cats": [],
+  "id": "KRaBex",
+  "i": "/assets/img/portfolio/father-murkle-krabex.webp",
+  "imgs": [],
+  "desc": "Father Murkle is a round little gentleman from The Midnight Walk, with a top hat, goggle-like eyes, a stained yellow coat and a gramophone horn in hand.\n\nThe game's characters began as handmade clay sculpts that were scanned for production. Our job was to turn those scans into game assets: cleaning up the scan data, improving the sculpt and textures, building the game-res version, then rigging and skinning it so it could go straight into the game, all without losing the handmade, pressed-clay look the game is known for.\n\nNeed scanned or handmade characters made game-ready? We'll build yours to your style, budget and platform.",
+  "tags": [],
+  "w": 1500,
+  "h": 864,
+  "project": "The Midnight Walk",
+  "software": "ZBrush, Maya, Substance Painter",
+  "polys": "About 10K to 15K tris",
+  "textures": "2K texture maps",
+  "specs": [
+    {
+      "label": "Our role",
+      "value": "Scan cleanup, sculpt and texture improvements, game-res version, rigging and skinning"
+    },
+    {
+      "label": "Target platforms",
+      "value": "PC, PlayStation 5, PlayStation VR2"
+    },
+    {
+      "label": "Use",
+      "value": "In-game character in a released title"
+    }
+  ],
+  "focus": "left"
+}

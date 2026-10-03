@@ -1,0 +1,51 @@
+{
+  "order": 250,
+  "t": "SWAT V1",
+  "c": "swat-squad",
+  "cats": [],
+  "id": "YGBQbY",
+  "i": "/assets/img/portfolio/swat-v1-ygbqby.webp",
+  "imgs": [
+    "/assets/img/portfolio/swat-v1-ygbqby-3.webp",
+    "/assets/img/portfolio/swat-v1-ygbqby-4.webp",
+    "/assets/img/portfolio/swat-v1-ygbqby-2.webp",
+    "/assets/img/portfolio/swat-v1-ygbqby-5.webp",
+    "/assets/img/portfolio/swat-v1-ygbqby-6.webp",
+    "/assets/img/portfolio/swat-v1-ygbqby-7.webp",
+    "/assets/img/portfolio/swat-v1-ygbqby-8.webp",
+    "/assets/img/portfolio/swat-v1-ygbqby-9.webp",
+    "/assets/img/portfolio/swat-v1-ygbqby-10.webp",
+    "/assets/img/portfolio/swat-v1-ygbqby-11.webp",
+    "/assets/img/portfolio/swat-v1-ygbqby-12.webp",
+    "/assets/img/portfolio/swat-v1-ygbqby-13.webp"
+  ],
+  "desc": "SWAT V1 comes from SWAT Squad, our own original set of tactical characters. He's a sci-fi trooper built for shooters: a full-face visor helmet, hard armor plates over a fabric undersuit, and a belt rig of pouches and holsters. The design leans near-future, so it fits a grounded military game as well as a sci-fi one.\n\nThe hard-surface plates get clean bevels and edge wear, while the suit underneath keeps its seams, stitching and fabric folds. Hazard stripes and yellow piping help him read at range, and the red version shows how quickly the look changes through texture variants. He's fully rigged and tested with production motion data, ready to drop into gameplay.\n\nBuilding a shooter that needs a squad of soldiers? We'll build yours to your style, budget and platform.",
+  "tags": [],
+  "w": 2500,
+  "h": 1903,
+  "project": "SWAT Squad, original characters",
+  "polys": "65K tris",
+  "textures": "PBR, 4K texture sets",
+  "software": "ZBrush, Maya, Substance Painter, Marmoset Toolbag",
+  "specs": [
+    {
+      "label": "Rig",
+      "value": "Fully rigged, tested with production motion data"
+    },
+    {
+      "label": "Variants",
+      "value": "Black and red color versions"
+    },
+    {
+      "label": "Target platforms",
+      "value": "PC, PlayStation 5, Xbox Series X|S"
+    },
+    {
+      "label": "Use",
+      "value": "Playable or enemy soldier"
+    }
+  ],
+  "big": true,
+  "wide": true,
+  "thumb": "/assets/img/portfolio/swat-v1-ygbqby-9.webp"
+}

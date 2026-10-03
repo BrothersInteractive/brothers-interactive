@@ -1,0 +1,34 @@
+{
+  "order": 90,
+  "t": "T-Rex - Crash Bandicoot 4 Fan Art",
+  "c": "stylized-creature",
+  "cats": [],
+  "id": "mAnNrv",
+  "i": "/assets/img/portfolio/t-rex-crash-bandicoot-4-fanart-mannrv.webp",
+  "imgs": [
+    "/assets/img/portfolio/t-rex-crash-bandicoot-4-fanart-mannrv-3.webp",
+    "/assets/img/portfolio/t-rex-crash-bandicoot-4-fanart-mannrv-4.webp",
+    "/assets/img/portfolio/t-rex-crash-bandicoot-4-fanart-mannrv-2.webp",
+    "/assets/img/portfolio/t-rex-crash-bandicoot-4-fanart-mannrv-5.webp",
+    "/assets/img/portfolio/t-rex-crash-bandicoot-4-fanart-mannrv-6.webp"
+  ],
+  "desc": "T-Rex is our fan-art take on the Crash Bandicoot 4 look: a cartoon dinosaur with a huge grinning head, tiny arms, a spiky purple back and a long swinging tail. Crash 4 has one of the most recognizable stylized looks in games, so matching it was the whole point.\n\nThe sculpt pushes the shapes the way the game does, with chunky teeth, a squashed snout and simple, bold forms, and the textures carry all of it in a single 2K set with hand-tuned color. At 10K tris he's light enough for mobile and Switch while still holding up on PC and console. He shares a scene with our Beetle, and both were built to the same budget.\n\nNeed stylized creatures that match an established art style? We can match this look, or take it wherever your project needs to go.",
+  "tags": [],
+  "w": 1611,
+  "h": 1435,
+  "project": "Fan art / studio piece",
+  "polys": "10K tris",
+  "textures": "PBR, single 2K texture set",
+  "software": "ZBrush, Maya, Substance Painter, Marmoset Toolbag",
+  "specs": [
+    {
+      "label": "Target platforms",
+      "value": "Mobile, Nintendo Switch, PC"
+    },
+    {
+      "label": "Use",
+      "value": "Stylized enemy or boss"
+    }
+  ],
+  "big": true
+}

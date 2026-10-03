@@ -1,0 +1,36 @@
+{
+  "order": 550,
+  "t": "Fire Drum",
+  "c": "props",
+  "cats": [],
+  "id": "XB3ExY",
+  "i": "/assets/img/portfolio/fire-drum-xb3exy.webp",
+  "imgs": [
+    "/assets/img/portfolio/fire-drum-xb3exy-3.webp",
+    "/assets/img/portfolio/fire-drum-xb3exy-4.webp",
+    "/assets/img/portfolio/fire-drum-xb3exy-2.webp",
+    "/assets/img/portfolio/fire-drum-xb3exy-5.webp",
+    "/assets/img/portfolio/fire-drum-xb3exy-6.webp",
+    "/assets/img/portfolio/fire-drum-xb3exy-7.webp",
+    "/assets/img/portfolio/fire-drum-xb3exy-8.webp",
+    "/assets/img/portfolio/fire-drum-xb3exy-9.webp"
+  ],
+  "desc": "Fire Drum is a hand-pumped coal furnace: a dented red drum stove full of glowing coals, a wooden bellows feeding air through a wrapped cloth hose, and a pan of coal beside a stack of metal plates. It's the sort of working prop that makes a blacksmith's corner, a street vendor or a survival camp feel lived in.\n\nEvery surface shows how it's been used: chipped paint and rust on the drum, scorch marks around the air holes, soot on the plates, and frayed, dusty fabric on the hose. It sits at 14K tris with three 2K texture sets (drum, coals and bellows), and the coals are set up for emissive glow and particles in engine.\n\nNeed props that make a scene feel used and believable? Talk to us about your environment.",
+  "tags": [],
+  "w": 1500,
+  "h": 1200,
+  "project": "Studio work",
+  "polys": "14K tris",
+  "textures": "PBR, three 2K texture sets (drum, coals, bellows)",
+  "software": "ZBrush, Maya, Substance Painter, Marmoset Toolbag",
+  "specs": [
+    {
+      "label": "Target platforms",
+      "value": "PC, PlayStation 4, Xbox One"
+    },
+    {
+      "label": "Use",
+      "value": "Environment prop for workshops, camps and street scenes"
+    }
+  ]
+}

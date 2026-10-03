@@ -1,0 +1,36 @@
+{
+  "order": 500,
+  "t": "Russell Del's Girl CHR",
+  "c": "stylized-human",
+  "cats": [],
+  "id": "L3A48w",
+  "i": "/assets/img/portfolio/russell-del-s-girl-chr-l3a48w.webp",
+  "imgs": [
+    "/assets/img/portfolio/russell-del-s-girl-chr-l3a48w-3.webp",
+    "/assets/img/portfolio/russell-del-s-girl-chr-l3a48w-4.webp"
+  ],
+  "desc": "Russell Del's Girl is our 3D version of a character concept by Russell Del: a girl with a green beanie, pink braids, a denim jacket trimmed with leaves, and pink shorts and sneakers. The job was to keep the charm of the drawing, especially the face, while making her work as a game-ready model.\n\nThe face carries it, with big eyes, a confident little smirk and simple, readable shapes, and the clothes stay graphic, with clean folds instead of noisy detail. She's 25K tris on two 2K texture sets, with clean topology and facial loops ready for rigging and expressions on mobile, Switch or PC.\n\nMaking a stylized game with a young, colorful cast? Talk to us about your characters.",
+  "tags": [],
+  "w": 2304,
+  "h": 2160,
+  "project": "Fan art / studio piece",
+  "polys": "25K tris",
+  "textures": "PBR, two 2K texture sets",
+  "software": "ZBrush, Maya, Substance Painter, Marmoset Toolbag",
+  "specs": [
+    {
+      "label": "Concept",
+      "value": "Russell Del"
+    },
+    {
+      "label": "Target platforms",
+      "value": "Mobile, Nintendo Switch, PC"
+    },
+    {
+      "label": "Use",
+      "value": "Playable or NPC character, stylized games"
+    }
+  ],
+  "thumb": "/assets/img/portfolio/russell-del-s-girl-chr-l3a48w-4.webp",
+  "focus": "top"
+}

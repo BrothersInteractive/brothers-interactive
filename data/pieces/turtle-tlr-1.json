@@ -1,0 +1,38 @@
+{
+  "order": 300,
+  "t": "Turtle (TLR-1)",
+  "c": "the-last-rebel",
+  "cats": [],
+  "id": "ZavKOG",
+  "i": "/assets/img/portfolio/turtle-tlr-1-zavkog.webp",
+  "imgs": [
+    "/assets/img/portfolio/turtle-tlr-1-zavkog-3.webp",
+    "/assets/img/portfolio/turtle-tlr-1-zavkog-4.webp",
+    "/assets/img/portfolio/turtle-tlr-1-zavkog-2.webp",
+    "/assets/img/portfolio/turtle-tlr-1-zavkog-5.webp",
+    "/assets/img/portfolio/turtle-tlr-1-zavkog-6.webp"
+  ],
+  "desc": "Turtle is the tank of The Last Rebel (TLR), our own original universe, where Tiger leads the cast. A spiked shell, a steel chest plate and heavy gauntlets make him the wall of the team, and from behind, the shell alone tells you who he is.\n\nThe sculpt keeps the shell, scales and armor clearly separate, with the shell's spikes and plates readable from a distance and close-up wear on the steel and leather. Like the rest of the TLR cast, he's built for Unreal Engine: channel-packed mask maps drive a master shader, so colors, wear and emissive accents can be changed in engine without re-texturing.\n\nNeed a heavy defender or brute for a creature roster? We'll build yours to your style, budget and platform.",
+  "tags": [],
+  "w": 1854,
+  "h": 1836,
+  "project": "The Last Rebel, original characters",
+  "polys": "55K tris",
+  "textures": "Channel-packed mask maps, six 4K and two 2K texture sets",
+  "software": "ZBrush, Maya, Substance Painter, Unreal Engine",
+  "specs": [
+    {
+      "label": "Engine setup",
+      "value": "Unreal Engine master shader, color and emissive variants in engine"
+    },
+    {
+      "label": "Target platforms",
+      "value": "PC, PlayStation 5, Xbox Series X|S"
+    },
+    {
+      "label": "Use",
+      "value": "Playable or enemy character with color variants"
+    }
+  ],
+  "big": true
+}

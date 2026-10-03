@@ -1,0 +1,51 @@
+{
+  "order": 310,
+  "t": "MTG Murkaz Tex",
+  "c": "man-to-god",
+  "cats": [],
+  "id": "lDNWka",
+  "i": "/assets/img/portfolio/mtg-murkaz-tex-ldnwka.webp",
+  "imgs": [
+    "/assets/img/portfolio/mtg-murkaz-tex-ldnwka-3.webp",
+    "/assets/img/portfolio/mtg-murkaz-tex-ldnwka-4.webp",
+    "/assets/img/portfolio/mtg-murkaz-tex-ldnwka-2.webp",
+    "/assets/img/portfolio/mtg-murkaz-tex-ldnwka-5.webp",
+    "/assets/img/portfolio/mtg-murkaz-tex-ldnwka-6.webp",
+    "/assets/img/portfolio/mtg-murkaz-tex-ldnwka-7.webp",
+    "/assets/img/portfolio/mtg-murkaz-tex-ldnwka-8.webp",
+    "/assets/img/portfolio/mtg-murkaz-tex-ldnwka-9.webp",
+    "/assets/img/portfolio/mtg-murkaz-tex-ldnwka-10.webp",
+    "/assets/img/portfolio/mtg-murkaz-tex-ldnwka-11.webp",
+    "/assets/img/portfolio/mtg-murkaz-tex-ldnwka-12.webp",
+    "/assets/img/portfolio/mtg-murkaz-tex-ldnwka-13.webp",
+    "/assets/img/portfolio/mtg-murkaz-tex-ldnwka-14.webp",
+    "/assets/img/portfolio/mtg-murkaz-tex-ldnwka-15.webp",
+    "/assets/img/portfolio/mtg-murkaz-tex-ldnwka-16.webp",
+    "/assets/img/portfolio/mtg-murkaz-tex-ldnwka-17.webp",
+    "/assets/img/portfolio/mtg-murkaz-tex-ldnwka-18.webp",
+    "/assets/img/portfolio/mtg-murkaz-tex-ldnwka-19.webp"
+  ],
+  "desc": "Murkaz comes from Man to God (MTG), our own original universe drawn from Indian mythology. We built him as a boss-sized brute: heavy frame, braided beard, fur everywhere, and a mace big enough to sell every hit, made to carry a boss fight in gameplay and still hold the camera in a cutscene.\n\nThe sculpt does the heavy lifting, with real weight in the belly, shoulders and calves, and leather, cloth and metal that each read differently. Fur trims, beard and hair are alpha cards, so they stay dense and soft without the cost of strand grooms. The lion-head pauldron, carved mace, face paint and embroidered cloth carry most of the surface detail.\n\nNeed a mythic boss or a heavy hitter for a dark fantasy game? We'll build yours to your style, budget and platform.",
+  "tags": [],
+  "w": 2000,
+  "h": 2000,
+  "project": "Man to God, original characters",
+  "polys": "320K tris",
+  "textures": "PBR, eight 4K and three 2K texture sets",
+  "software": "ZBrush, Maya, Substance Painter, Marmoset Toolbag",
+  "specs": [
+    {
+      "label": "Hair and fur",
+      "value": "Alpha cards"
+    },
+    {
+      "label": "Target platforms",
+      "value": "PC, PlayStation 5, Xbox Series X|S"
+    },
+    {
+      "label": "Use",
+      "value": "Boss character, cutscenes and cinematics"
+    }
+  ],
+  "big": true
+}

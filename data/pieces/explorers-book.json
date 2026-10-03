@@ -1,0 +1,40 @@
+{
+  "order": 540,
+  "t": "Explorer's Book",
+  "c": "props",
+  "cats": [],
+  "id": "KaQZrr",
+  "i": "/assets/img/portfolio/proposal-book-kaqzrr.webp",
+  "imgs": [
+    "/assets/img/portfolio/proposal-book-kaqzrr-2.webp",
+    "/assets/img/portfolio/proposal-book-kaqzrr-4.webp",
+    "/assets/img/portfolio/proposal-book-kaqzrr-3.webp",
+    "/assets/img/portfolio/proposal-book-kaqzrr-5.webp",
+    "/assets/img/portfolio/proposal-book-kaqzrr-6.webp",
+    "/assets/img/portfolio/proposal-book-kaqzrr-7.webp",
+    "/assets/img/portfolio/proposal-book-kaqzrr-8.webp",
+    "/assets/img/portfolio/proposal-book-kaqzrr-9.webp",
+    "/assets/img/portfolio/proposal-book-kaqzrr-10.webp",
+    "/assets/img/portfolio/proposal-book-kaqzrr-11.webp"
+  ],
+  "desc": "Explorer's Book (first made as our Proposal Book) came out of a 12-week masterclass our team took on the game prop pipeline. It's an explorer's kit packed onto one book: a green embossed leather journal strapped shut, a rolled bamboo mat, a spyglass, a quill and pencil, wax-sealed letters, coins, dice and loose sketch pages.\n\nThe challenge was making a pile of small objects read as one prop. Leather, paper, bamboo, brass and glass each get their own wear, and the loose pages and straps are arranged so the silhouette works from any angle. It's built to be seen up close, on a desk, in an inspect view or in a story moment.\n\nNeed props that tell a story up close? Talk to us about your project.",
+  "tags": [],
+  "w": 1500,
+  "h": 1500,
+  "project": "Studio work",
+  "polys": "About 25K tris",
+  "textures": "PBR, multiple texture sets from 256 to 4K",
+  "software": "ZBrush, Maya, Substance Painter, Marmoset Toolbag",
+  "specs": [
+    {
+      "label": "Target platforms",
+      "value": "PC, PlayStation 4, Xbox One"
+    },
+    {
+      "label": "Use",
+      "value": "Close-up hero prop for inspect views and story moments"
+    }
+  ],
+  "slug": "explorers-book",
+  "big": true
+}

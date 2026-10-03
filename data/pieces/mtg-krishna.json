@@ -1,0 +1,46 @@
+{
+  "order": 210,
+  "t": "MTG Krishna",
+  "c": "man-to-god",
+  "cats": [],
+  "id": "yD5Ll3",
+  "i": "/assets/img/portfolio/mtg-krishna-yd5ll3.webp",
+  "imgs": [
+    "/assets/img/portfolio/mtg-krishna-yd5ll3-3.webp",
+    "/assets/img/portfolio/mtg-krishna-yd5ll3-4.webp",
+    "/assets/img/portfolio/mtg-krishna-yd5ll3-2.webp",
+    "/assets/img/portfolio/mtg-krishna-yd5ll3-5.webp",
+    "/assets/img/portfolio/mtg-krishna-yd5ll3-6.webp",
+    "/assets/img/portfolio/mtg-krishna-yd5ll3-7.webp",
+    "/assets/img/portfolio/mtg-krishna-yd5ll3-8.webp",
+    "/assets/img/portfolio/mtg-krishna-yd5ll3-9.webp",
+    "/assets/img/portfolio/mtg-krishna-yd5ll3-10.webp",
+    "/assets/img/portfolio/mtg-krishna-yd5ll3-11.webp",
+    "/assets/img/portfolio/mtg-krishna-yd5ll3-12.webp",
+    "/assets/img/portfolio/mtg-krishna-yd5ll3-13.webp",
+    "/assets/img/portfolio/mtg-krishna-yd5ll3-14.webp"
+  ],
+  "desc": "Krishna comes from Man to God (MTG), our own original universe drawn from Indian mythology, alongside Murkaz. We built him as a cinematic digital human: a young Krishna with a calm, confident face, a lean sculpted build, and curly hair grown as real strands.\n\nThe jewelry carries a lot of the look: layered gold necklaces, body chains and arm bands set with green stones, all modeled as hard-surface pieces that hold up in close-up. The saffron shawl, sash and dhoti are built in layers for cloth sim, and the hair is an Alembic strand groom, so it moves and catches light naturally in Unreal Engine.\n\nNeed a hero or digital human for a story-driven or mythological game? We'll build yours to your style, budget and platform.",
+  "tags": [],
+  "w": 2500,
+  "h": 1968,
+  "project": "Man to God, original characters",
+  "polys": "513K tris",
+  "textures": "PBR, five 4K, three 2K and one 1K texture sets",
+  "software": "ZBrush, Maya, Substance Painter, Unreal Engine",
+  "specs": [
+    {
+      "label": "Hair",
+      "value": "Strand groom (Alembic)"
+    },
+    {
+      "label": "Target platforms",
+      "value": "PC, PlayStation 5, Xbox Series X|S"
+    },
+    {
+      "label": "Use",
+      "value": "Hero character, cutscenes and cinematics"
+    }
+  ],
+  "big": true
+}
