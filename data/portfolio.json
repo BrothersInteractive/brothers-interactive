@@ -112,9 +112,7 @@
     {
       "t": "Lee Body",
       "c": "realistic-humans",
-      "cats": [
-        "realistic-hairs"
-      ],
+      "cats": [],
       "id": "yDeg2x",
       "i": "/assets/img/portfolio/lee-body-ydeg2x.webp",
       "imgs": [
@@ -135,11 +133,28 @@
         "/assets/img/portfolio/lee-body-ydeg2x-16.webp",
         "/assets/img/portfolio/lee-body-ydeg2x-17.webp"
       ],
-      "desc": "AAA Real-Time Character Study: \"Lee\"\nDeveloped internally at Brothers Interactive, \"Lee\" represents our team's latest push into current-gen character art quality. This production-ready asset was built from the ground up to demonstrate high-end visual fidelity optimized for AAA platforms like PS5, Xbox Series X, and PC.\n\nTechnical Breakdown:\n- Budget: 160K Tris\n- Texturing:PBR workflow Five 4K and Four 2K sets\n- Pipeline: Ready for integration into modern AAA cinematic and gameplay pipelines.\n- Target Platforms - AAA platforms like PS5, Xbox Series X, and PC.",
+      "desc": "Lee is a field operator kitted out for a long mission: a headset and bandana, a camo plate carrier loaded with pouches, a big rucksack with rope lashed to it, knee pads and worn boots. We built him to show how far we can push a realistic soldier for current-gen games.\n\nEvery piece of gear is its own believable object, with stitched webbing, scuffed buckles, dusty fabric and creased cargo pants that follow the body underneath. At 160K tris with five 4K and four 2K texture sets, the detail holds up in close-ups, and the beard and hair are an Alembic strand groom, so they move and catch light naturally. He's ready for gameplay or cinematic pipelines.\n\nMaking a military or survival game that needs a lead to carry it? This is the level we deliver.",
       "tags": [],
       "w": 2400,
       "h": 2000,
-      "project": "Studio work"
+      "project": "Studio work",
+      "polys": "160K tris",
+      "textures": "PBR, five 4K and four 2K texture sets",
+      "software": "ZBrush, Maya, Substance Painter, Marmoset Toolbag",
+      "specs": [
+        {
+          "label": "Hair",
+          "value": "Strand groom (Alembic)"
+        },
+        {
+          "label": "Target platforms",
+          "value": "PC, PlayStation 5, Xbox Series X|S"
+        },
+        {
+          "label": "Use",
+          "value": "Hero or squad character, gameplay and cinematics"
+        }
+      ]
     },
     {
       "t": "Red House",
