@@ -1045,11 +1045,32 @@
         "/assets/img/portfolio/female-hair-xjgvnn-10.webp",
         "/assets/img/portfolio/female-hair-xjgvnn-11.webp"
       ],
-      "desc": "Real-Time Grooming Study: \"Female Hair\"\nDeveloped internally at Brothers Interactive, \"Female Hair\" represents our team's specialized proficiency in advanced real-time hair creation, intricate grooming layouts, and high-fidelity shader integration. This asset package was built from the ground up to showcase clean strand flow, complex layering, and exceptional silhouette definition required for modern current-gen characters and digital humans.\n\nTechnical Breakdown:\n- Budget: 60K Tris\n- Texturing: PBR workflow, single 4K texture set optimized for hair shaders\n- Target Platforms: PC, PlayStation 5, and Xbox Series X|S\n- Pipeline: Fully optimized for modern real-time hair pipelines, utilizing a clean, high-performance alpha card layout to ensure realistic depth, light scattering, and dynamic physics/wind simulation integration (Optimized for main hero characters, customizable customization systems, and current-gen gameplay).",
+      "desc": "Female Hair is the groom we built for SWAT V3: a messy high bun with loose strands falling around the face and flyaways at the hairline and nape. Messy buns are hard in real time, because the volume has to look full without turning into a solid shape.\n\nThe hair is built from layered alpha cards on a single 4K texture set, at 60K tris. Base layers give the volume, mid layers the strand clumps, and fine cards on top add flyaways and break up the silhouette, so it reads as hair from every angle, even straight down on top of the head. The card layout is set up for hair shaders, wind and physics.\n\nNeed hair that holds up on a hero character? This is the level we deliver.",
       "tags": [],
       "w": 2048,
       "h": 2048,
-      "project": "Studio work"
+      "project": "Studio work",
+      "polys": "60K tris",
+      "textures": "Single 4K texture set for hair shaders",
+      "software": "ZBrush, Maya, XGen, Photoshop, Marmoset Toolbag",
+      "specs": [
+        {
+          "label": "Hair",
+          "value": "Alpha cards"
+        },
+        {
+          "label": "Made for",
+          "value": "SWAT V3 (SWAT Squad)"
+        },
+        {
+          "label": "Target platforms",
+          "value": "PC, PlayStation 5, Xbox Series X|S"
+        },
+        {
+          "label": "Use",
+          "value": "Hero character hair and customization"
+        }
+      ]
     },
     {
       "t": "Male Hair Variations",
@@ -1062,11 +1083,32 @@
         "/assets/img/portfolio/male-hairs-variations-l4ezxw-4.webp",
         "/assets/img/portfolio/male-hairs-variations-l4ezxw-2.webp"
       ],
-      "desc": "Real-Time Grooming Study: \"Male Hair Variations\"\nDeveloped internally at Brothers Interactive, \"Male Hair Variations\" represents our team's specialized proficiency in advanced real-time hair creation, scalable grooming layouts, and highly optimized asset budgets. This asset package was built from the ground up to showcase a multi-stage production pipeline, featuring varying structural densities and clean strand flow required for modern character customization or progressive visual styling.\n\nTechnical Breakdown:\n- Budget: Progressive multi-stage optimization layout:\n                 Stage 1: 45K Tris \n                 Stage 2: 38K Tris\n                 Stage 3: 35K Tris\n                 Stage 4: 30K Tris\n                 Stage 5: 25K Tris \n- Texturing: PBR workflow, single 4K texture set\n- Target Platforms: PC, PlayStation 5, and Xbox Series X|S\n- Pipeline: Fully optimized for flexible character customization systems, utilizing a high-performance alpha card layout designed to scale fluidly across different gameplay performance targets while retaining realistic depth and dynamic physics integration.",
+      "desc": "Male Hair Variations is one short men's haircut built as a full hair-loss progression: a full head of hair at the first stage, thinning step by step through a receding hairline and crown to a balding pattern. It's made for character customization and aging systems, where one style has to work at every age.\n\nEach stage is its own alpha-card groom on a shared 4K texture set, and the tri count drops as the hair thins, from 45K at the first stage to 25K at the last, so the lighter versions cost less in game. The hairline and crown stay natural at every stage, without the hard edges you get when cards are simply deleted.\n\nBuilding a character creator or an aging system? This is the level we deliver.",
       "tags": [],
       "w": 2500,
       "h": 2125,
-      "project": "Studio work"
+      "project": "Studio work",
+      "polys": "45K / 38K / 30K / 25K tris (stages 1 to 4)",
+      "textures": "Single 4K texture set, shared by all stages",
+      "software": "ZBrush, Maya, XGen, Photoshop, Marmoset Toolbag",
+      "specs": [
+        {
+          "label": "Hair",
+          "value": "Alpha cards"
+        },
+        {
+          "label": "Stages",
+          "value": "4, from full hair to balding"
+        },
+        {
+          "label": "Target platforms",
+          "value": "PC, PlayStation 5, Xbox Series X|S"
+        },
+        {
+          "label": "Use",
+          "value": "Character customization and aging systems"
+        }
+      ]
     },
     {
       "t": "Kart",
