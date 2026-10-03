@@ -257,6 +257,13 @@ collections:
                 required: false
                 hint: "Tick to keep this piece off the site (grids, viewer, its own page, the sitemap) while it is unfinished. Untick and save to publish it."
 
+              - label: "Can be big in the collage"
+                name: "big"
+                widget: "boolean"
+                default: false
+                required: false
+                hint: "Ticked pieces get a chance to show as a big 2x2 tile in the homepage collage. A few are picked at random on every visit."
+
               - label: "Title"
                 name: "t"
                 widget: "string"

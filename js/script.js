@@ -564,6 +564,13 @@ function siteMain() {
       var box = el.closest(".container"), cs = box && getComputedStyle(box);
       var room = box ? box.clientWidth - parseFloat(cs.paddingLeft) - parseFloat(cs.paddingRight) : Infinity;
       if (k !== 1) { el.style.maxWidth = "none"; el.style.width = Math.round(Math.min(w0 * k, room)) + "px"; }
+      // two-column hero (tablets): the picture's column grows with it, so if the page now scrolls sideways,
+      // take back exactly the overflow (never below the normal 100% size)
+      if (k > 1) for (var fi = 0; fi < 4; fi++) {
+        var ex = document.documentElement.scrollWidth - document.documentElement.clientWidth, cur = parseFloat(el.style.width);
+        if (ex <= 0 || cur <= w0) break;
+        el.style.width = Math.max(w0, cur - ex - 2) + "px";
+      }
     }
     // Size, animation and position from /admin, for one entry on one element (picture, video or 3D model).
     // Move: X + = right, - = left; Y + = up, - = down, in pixels (halved on tablets and phones).
@@ -807,27 +814,113 @@ function siteMain() {
     }).join("");
   }
 
-  /* Portfolio collage (homepage): every visible piece as a small square tile, shuffled on each visit, with a
-     few bigger 2x2 tiles mixed in. A tile opens the viewer, whose arrows then walk the collage in the same
-     order. The switch above flips between this and the category tiles; the choice is remembered. */
-  var collageEl = $("#collageGrid");
+  /* Portfolio collage (homepage). "All": every visible piece as a small square tile, shuffled on each visit,
+     with some 2x2 tiles picked at random from the pieces ticked "Can be big in the collage" in /admin. The
+     number of big (and, when needed, wide 2x1) tiles is worked out for the current column count so the last
+     row comes out full, and they only sit in the top three quarters, so the bottom edge stays straight.
+     A category filter shows that category's pieces as large cards, three per row. A tile or card opens the
+     viewer, whose arrows follow what is on screen. The switch flips to the category tiles; it is remembered. */
+  var collageEl = $("#collageGrid"), collageCatEl = $("#collageCat"), collageFiltersEl = $("#collageFilters");
   if (collageEl && PROJECTS.length) {
-    var collageOrder = PROJECTS.slice();
-    for (var ci = collageOrder.length - 1; ci > 0; ci--) { var cj = Math.floor(Math.random() * (ci + 1)), ct = collageOrder[ci]; collageOrder[ci] = collageOrder[cj]; collageOrder[cj] = ct; }
-    var bigEvery = 7;   // about one tile in seven is a big one
-    collageEl.innerHTML = collageOrder.map(function (p, i) {
-      var big = i % bigEvery === 3;
-      return '<button type="button" class="collage-tile' + (big ? ' is-big' : '') + '" data-index="' + PROJECTS.indexOf(p) + '" aria-label="Open ' + esc(p.t) + '">' +
-        '<img ' + imgAttrs(p.i, big ? "(max-width: 600px) 50vw, 17vw" : "(max-width: 600px) 25vw, 9vw") + ' alt="" loading="lazy" />' +
+    var shuffle = function (a) { for (var i = a.length - 1; i > 0; i--) { var j = Math.floor(Math.random() * (i + 1)), t = a[i]; a[i] = a[j]; a[j] = t; } return a; };
+    var collageOrder = shuffle(PROJECTS.slice()), collageShown = collageOrder, collageCols = 0, collageFilter = "all";
+    var bigPool = collageOrder.filter(function (p) { return p.big; });
+    if (!bigPool.length) bigPool = collageOrder.slice();
+    var colsNow = function () { return window.matchMedia("(max-width: 600px)").matches ? 4 : window.matchMedia("(max-width: 1100px)").matches ? 8 : 12; };
+    var tileHtml = function (p, kind) {
+      return '<button type="button" class="collage-tile' + (kind ? " is-" + kind : "") + '" data-index="' + PROJECTS.indexOf(p) + '" aria-label="Open ' + esc(p.t) + '">' +
+        '<img ' + imgAttrs(p.i, kind === "big" ? "(max-width: 600px) 50vw, 17vw" : "(max-width: 600px) 25vw, 9vw") + ' alt="" loading="lazy" />' +
         '<span class="collage-name">' + esc(p.t) + '</span></button>';
-    }).join("");
-    collageEl.addEventListener("click", function (e) {
-      var t = e.target.closest(".collage-tile");
-      if (t) { visibleList = collageOrder; openLightbox(+t.dataset.index, t); }
-    });
+    };
+    var collageAll = [];   // the "All" order as laid out (the viewer's arrows follow it)
+    var layoutCollage = function () {
+      var cols = colsNow(), n = collageOrder.length;
+      collageCols = cols;
+      // cells used = n + 3 per big tile + 1 per wide tile; pick the counts closest to "one in seven big" that fill the last row
+      var target = Math.round(n / 7), maxBig = Math.min(bigPool.length, Math.floor(n / 4)), best = null;
+      for (var d = 0; d <= target + 4 && !best; d++) {
+        [target - d, target + d].forEach(function (b) {
+          if (best || b < 0 || b > maxBig) return;
+          for (var w = 0; w < cols && w <= 3; w++) if ((n + 3 * b + w) % cols === 0) { best = { b: b, w: w }; return; }
+        });
+      }
+      best = best || { b: Math.min(target, maxBig), w: 0 };
+      var bigs = bigPool.slice(0, best.b);
+      var rest = collageOrder.filter(function (p) { return bigs.indexOf(p) === -1; });
+      var wides = rest.filter(function (p) { return p.w && p.h && p.w > p.h * 1.2; }).slice(0, best.w);
+      if (wides.length < best.w) wides = wides.concat(rest.filter(function (p) { return wides.indexOf(p) === -1; }).slice(0, best.w - wides.length));
+      var smalls = rest.filter(function (p) { return wides.indexOf(p) === -1; });
+      // Place the tiles on an explicit grid: big tiles first, at random free spots that never reach the last row,
+      // then wide ones, then small tiles fill every remaining cell in reading order. No holes, straight bottom edge.
+      var rows = Math.ceil((n + 3 * bigs.length + wides.length) / cols), placed = null;
+      for (var attempt = 0; attempt < 30 && !placed; attempt++) {
+        var occ = [], items = [], ok = true;
+        for (var r = 0; r < rows; r++) occ.push(new Array(cols).fill(false));
+        var free = function (r0, c0, h, w) { for (var y = r0; y < r0 + h; y++) for (var x = c0; x < c0 + w; x++) if (y >= rows || x >= cols || occ[y][x]) return false; return true; };
+        var take = function (p, kind, h, w, maxRow) {
+          var spots = [];
+          for (var y = 0; y + h <= maxRow; y++) for (var x = 0; x + w <= cols; x++) if (free(y, x, h, w)) spots.push([y, x]);
+          if (!spots.length) return false;
+          var sp = spots[Math.floor(Math.random() * spots.length)];
+          for (var yy = sp[0]; yy < sp[0] + h; yy++) for (var xx = sp[1]; xx < sp[1] + w; xx++) occ[yy][xx] = true;
+          items.push({ p: p, kind: kind, r: sp[0], c: sp[1], h: h, w: w });
+          return true;
+        };
+        bigs.forEach(function (p) { if (ok && !take(p, "big", 2, 2, rows - 1)) ok = false; });
+        wides.forEach(function (p) { if (ok && !take(p, "wide", 1, 2, rows - 1)) ok = false; });
+        if (!ok) continue;
+        var si = 0;
+        for (var y2 = 0; y2 < rows; y2++) for (var x2 = 0; x2 < cols; x2++) if (!occ[y2][x2] && si < smalls.length) { occ[y2][x2] = true; items.push({ p: smalls[si++], kind: "", r: y2, c: x2, h: 1, w: 1 }); }
+        if (si === smalls.length) placed = items;
+      }
+      if (!placed) placed = collageOrder.map(function (p, i) { return { p: p, kind: "", r: Math.floor(i / cols), c: i % cols, h: 1, w: 1 }; });
+      placed.sort(function (m, q) { return m.r - q.r || m.c - q.c; });
+      collageAll = placed.map(function (it) { return it.p; });
+      collageEl.style.gridTemplateColumns = "repeat(" + cols + ", 1fr)";
+      collageEl.innerHTML = placed.map(function (it) {
+        return tileHtml(it.p, it.kind).replace('<button ', '<button style="grid-row:' + (it.r + 1) + " / span " + it.h + ";grid-column:" + (it.c + 1) + " / span " + it.w + '" ');
+      }).join("");
+    };
+    var showCategory = function (slug) {
+      var b = BROWSE_CATS.filter(function (c) { return c.slug === slug; })[0];
+      var list = b ? PROJECTS.filter(function (p) { return inAnyCat(p, b.match); }) : [];
+      collageShown = list;
+      collageCatEl.innerHTML = list.map(function (p) {
+        return '<button type="button" class="style-tile collage-card" data-index="' + PROJECTS.indexOf(p) + '" aria-label="Open ' + esc(p.t) + '">' +
+          '<img ' + imgAttrs(p.i, "(max-width: 600px) 100vw, (max-width: 1100px) 50vw, 33vw") + ' alt="" loading="lazy" />' +
+          '<span class="style-tile-label">' + esc(p.t) + '</span></button>';
+      }).join("");
+    };
+    var setFilter = function (f) {
+      collageFilter = f;
+      var all = f === "all";
+      collageEl.hidden = !all;
+      if (collageCatEl) collageCatEl.hidden = all;
+      if (all) { if (collageCols !== colsNow()) layoutCollage(); collageShown = collageAll; }
+      else showCategory(f);
+      if (collageFiltersEl) $$(".filter-btn", collageFiltersEl).forEach(function (btn) { var on = btn.dataset.filter === f; btn.classList.toggle("active", on); btn.setAttribute("aria-pressed", on ? "true" : "false"); });
+    };
+    if (collageFiltersEl) {
+      collageFiltersEl.innerHTML = '<button type="button" class="filter-btn active" data-filter="all" aria-pressed="true">All</button>' +
+        BROWSE_CATS.filter(function (b) { return PROJECTS.some(function (p) { return inAnyCat(p, b.match); }); }).map(function (b) {
+          return '<button type="button" class="filter-btn" data-filter="' + esc(b.slug) + '" aria-pressed="false">' + esc(b.label) + '</button>';
+        }).join("");
+      collageFiltersEl.addEventListener("click", function (e) { var btn = e.target.closest(".filter-btn"); if (btn) setFilter(btn.dataset.filter); });
+    }
+    layoutCollage();
+    collageShown = collageAll;
+    window.addEventListener("resize", function () { if (collageFilter === "all" && collageCols !== colsNow()) { layoutCollage(); collageShown = collageAll; } });
+    var openFrom = function (e) {
+      var t = e.target.closest(".collage-tile, .collage-card");
+      if (t) { visibleList = collageShown.slice(); openLightbox(+t.dataset.index, t); }
+    };
+    collageEl.addEventListener("click", openFrom);
+    if (collageCatEl) collageCatEl.addEventListener("click", openFrom);
     var pfView = function (v, save) {
       var col = v !== "categories";
-      collageEl.hidden = !col;
+      if (collageFiltersEl) collageFiltersEl.hidden = !col;
+      collageEl.hidden = !col || collageFilter !== "all";
+      if (collageCatEl) collageCatEl.hidden = !col || collageFilter === "all";
       if (categoryGridEl) categoryGridEl.hidden = col;
       $$(".pf-switch-btn").forEach(function (b) { var on = b.dataset.view === (col ? "collage" : "categories"); b.classList.toggle("active", on); b.setAttribute("aria-selected", on ? "true" : "false"); });
       if (save) { try { localStorage.setItem("bi-pf-view", col ? "collage" : "categories"); } catch (err) {} }
@@ -991,7 +1084,7 @@ function siteMain() {
     if (!visibleList.length) return;
     lbPos = (lbPos + dir + visibleList.length) % visibleList.length;
     var lbIdx = PROJECTS.indexOf(visibleList[lbPos]);
-    lbOrigin = $('.work-card[data-index="' + lbIdx + '"], .collage-tile[data-index="' + lbIdx + '"]') || lbOrigin;
+    lbOrigin = $('.work-card[data-index="' + lbIdx + '"], .collage-tile[data-index="' + lbIdx + '"], .collage-card[data-index="' + lbIdx + '"]') || lbOrigin;
     showLightbox(visibleList[lbPos], dir);
   }
 

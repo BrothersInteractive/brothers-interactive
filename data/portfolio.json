@@ -59,7 +59,8 @@
           "label": "Use",
           "value": "Enemy or boss creature"
         }
-      ]
+      ],
+      "big": true
     },
     {
       "t": "Cute Monster",
@@ -96,7 +97,8 @@
           "label": "Use",
           "value": "Evolving creature or pet for collector and strategy games"
         }
-      ]
+      ],
+      "big": true
     },
     {
       "t": "Nitro CR7",
@@ -163,7 +165,8 @@
           "label": "Use",
           "value": "Playable or NPC character, stylized games"
         }
-      ]
+      ],
+      "big": true
     },
     {
       "t": "Orc Fan Art",
@@ -244,7 +247,8 @@
           "label": "Use",
           "value": "Hero or squad character, gameplay and cinematics"
         }
-      ]
+      ],
+      "big": true
     },
     {
       "t": "Red House",
@@ -306,7 +310,8 @@
           "label": "Use",
           "value": "Stylized enemy or boss"
         }
-      ]
+      ],
+      "big": true
     },
     {
       "t": "SWAT V2",
@@ -359,7 +364,8 @@
           "label": "Use",
           "value": "Playable or enemy soldier"
         }
-      ]
+      ],
+      "big": true
     },
     {
       "t": "Twin Witch",
@@ -433,7 +439,8 @@
           "label": "Use",
           "value": "Playable character, gameplay and cutscenes"
         }
-      ]
+      ],
+      "big": true
     },
     {
       "t": "Tiger (TLR-1)",
@@ -472,7 +479,8 @@
           "label": "Use",
           "value": "Hero character, gameplay and cinematics"
         }
-      ]
+      ],
+      "big": true
     },
     {
       "t": "Craftsman",
@@ -572,7 +580,8 @@
           "label": "Use",
           "value": "Stylized enemy or boss character"
         }
-      ]
+      ],
+      "big": true
     },
     {
       "t": "Crow Mother",
@@ -643,7 +652,8 @@
           "label": "Use",
           "value": "Enemy or boss for horror and survival games, gameplay and cutscenes"
         }
-      ]
+      ],
+      "big": true
     },
     {
       "t": "Orc",
@@ -680,7 +690,8 @@
           "label": "Use",
           "value": "Stylized enemy or NPC"
         }
-      ]
+      ],
+      "big": true
     },
     {
       "t": "Father Murkle",
@@ -754,7 +765,8 @@
           "label": "Use",
           "value": "Hero character, cutscenes and cinematics"
         }
-      ]
+      ],
+      "big": true
     },
     {
       "t": "Zombie-1",
@@ -794,7 +806,8 @@
           "label": "Use",
           "value": "Enemy or boss for horror and survival games, gameplay and cutscenes"
         }
-      ]
+      ],
+      "big": true
     },
     {
       "t": "Grandma Dark",
@@ -901,7 +914,8 @@
           "label": "Use",
           "value": "Playable or enemy soldier"
         }
-      ]
+      ],
+      "big": true
     },
     {
       "t": "Pot Boy",
@@ -1010,7 +1024,8 @@
           "label": "Use",
           "value": "Playable or enemy character with color variants"
         }
-      ]
+      ],
+      "big": true
     },
     {
       "t": "Panda (TLR-1)",
@@ -1054,7 +1069,8 @@
           "label": "Use",
           "value": "Playable character with color variants"
         }
-      ]
+      ],
+      "big": true
     },
     {
       "t": "Turtle (TLR-1)",
@@ -1090,7 +1106,8 @@
           "label": "Use",
           "value": "Playable or enemy character with color variants"
         }
-      ]
+      ],
+      "big": true
     },
     {
       "t": "MTG Murkaz Tex",
@@ -1139,7 +1156,8 @@
           "label": "Use",
           "value": "Boss character, cutscenes and cinematics"
         }
-      ]
+      ],
+      "big": true
     },
     {
       "t": "Beetle - Crash Bandicoot 4 Fan Art",
@@ -1217,7 +1235,8 @@
           "label": "Use",
           "value": "Main or supporting character, cutscenes and cinematics"
         }
-      ]
+      ],
+      "big": true
     },
     {
       "t": "CHR Skins",
@@ -1268,7 +1287,8 @@
           "label": "Use",
           "value": "Multiplayer cosmetics and player customization"
         }
-      ]
+      ],
+      "big": true
     },
     {
       "t": "Female Hair",
@@ -1389,7 +1409,8 @@
           "label": "Use",
           "value": "Hero prop or set piece for towns, markets and hub areas"
         }
-      ]
+      ],
+      "big": true
     },
     {
       "t": "Toothbug",
@@ -1455,7 +1476,8 @@
           "label": "Use",
           "value": "In-game character in a released title"
         }
-      ]
+      ],
+      "big": true
     },
     {
       "t": "Rug Reader",
@@ -1755,7 +1777,8 @@
           "label": "Use",
           "value": "In-game character in a released title"
         }
-      ]
+      ],
+      "big": true
     },
     {
       "t": "Russell Del's Girl CHR",
@@ -1867,7 +1890,8 @@
           "label": "Use",
           "value": "Hero character, cutscenes and cinematics"
         }
-      ]
+      ],
+      "big": true
     },
     {
       "t": "Adam - Game Res Model",
@@ -1951,7 +1975,8 @@
           "value": "Close-up hero prop for inspect views and story moments"
         }
       ],
-      "slug": "explorers-book"
+      "slug": "explorers-book",
+      "big": true
     },
     {
       "t": "Fire Drum",
