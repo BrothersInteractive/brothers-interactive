@@ -245,7 +245,7 @@
     },
     {
       "t": "Tiger (TLR-1)",
-      "c": "realistic-creatures",
+      "c": "the-last-rebel",
       "cats": [],
       "id": "LRG1Lk",
       "i": "/assets/img/portfolio/tiger-tlr-1-lrg1lk.webp",
@@ -259,11 +259,28 @@
         "/assets/img/portfolio/tiger-tlr-1-lrg1lk-8.webp",
         "/assets/img/portfolio/tiger-tlr-1-lrg1lk-9.webp"
       ],
-      "desc": "Stylized Creature Study: \"Tiger\"\nDeveloped internally at Brothers Interactive, \"Tiger\" represents our team's advanced capabilities in high-fidelity creature art and real-time shader pipelines. This production-ready asset was built from the ground up to showcase complex organic forms, stylized emissive accents, and a highly customizable material setup optimized for current-gen cinematic and gameplay engines.\n\nTechnical Breakdown:\n- Budget: 55K Tris\n- Texturing: Channel-packed mask map workflow, utilizing six 4K and two 2K texture sets to drive real-time engine shaders.\n- Target Platforms: PC, PlayStation 5, and Xbox Series X|S\n- Pipeline: Built specifically for an Unreal Engine pipeline; all primary material properties, color variations, and emissive elements are controlled dynamically via master shaders using our optimized mask maps",
+      "desc": "Tiger is the lead of The Last Rebel (TLR), our own original universe. As the hero, he had to carry the whole look of the project: a battle-worn tiger warrior in heavy plate, with glowing runes on the armor, bloodied wraps and a torn red sash.\n\nThe sculpt balances animal anatomy with armor that still lets him move, with plates broken up around the shoulders, elbows and knees, and fur, steel, leather and cloth that each read clearly in engine. Like the rest of the TLR cast, he's built for Unreal Engine: channel-packed mask maps drive a master shader, so colors, wear and emissive accents can be changed in engine without re-texturing. The red rune glow is one of those emissive channels.\n\nNeed a hero creature that can front a game? This is the level we deliver.",
       "tags": [],
       "w": 2500,
       "h": 1758,
-      "project": "Studio work"
+      "project": "The Last Rebel, original characters",
+      "polys": "55K tris",
+      "textures": "Channel-packed mask maps, six 4K and two 2K texture sets",
+      "software": "ZBrush, Maya, Substance Painter, Unreal Engine",
+      "specs": [
+        {
+          "label": "Engine setup",
+          "value": "Unreal Engine master shader, color and emissive variants in engine"
+        },
+        {
+          "label": "Target platforms",
+          "value": "PC, PlayStation 5, Xbox Series X|S"
+        },
+        {
+          "label": "Use",
+          "value": "Hero character, gameplay and cinematics"
+        }
+      ]
     },
     {
       "t": "Craftsman",
@@ -516,7 +533,7 @@
     },
     {
       "t": "Shark (TLR-1)",
-      "c": "realistic-creatures",
+      "c": "the-last-rebel",
       "cats": [],
       "id": "QX2OBd",
       "i": "/assets/img/portfolio/shark-tlr-1-qx2obd.webp",
@@ -540,11 +557,11 @@
         "/assets/img/portfolio/shark-tlr-1-qx2obd-18.webp",
         "/assets/img/portfolio/shark-tlr-1-qx2obd-19.webp"
       ],
-      "desc": "Shark comes from The Last Rebel (TLR), our own studio universe, where Tiger leads the cast. He's the heavy brawler of the group: a shark-headed bruiser in spiked plate, wrapped in chains and dragging an anchor, with a silhouette the player can read at a glance.\n\nThe sculpt pushes big, readable forms: a thick neck and traps, plate armor with dents and scratches, and chains that sit naturally on the arms and legs. Like the rest of the TLR cast, he's built for Unreal Engine: channel-packed mask maps drive a master shader, so colors, wear and emissive accents can be changed in engine without re-texturing. One model, many variants.\n\nBuilding a roster of creature heroes, enemies or bosses? This is the level we deliver.",
+      "desc": "Shark comes from The Last Rebel (TLR), our own original universe, where Tiger leads the cast. He's the heavy brawler of the group: a shark-headed bruiser in spiked plate, wrapped in chains and dragging an anchor, with a silhouette the player can read at a glance.\n\nThe sculpt pushes big, readable forms: a thick neck and traps, plate armor with dents and scratches, and chains that sit naturally on the arms and legs. Like the rest of the TLR cast, he's built for Unreal Engine: channel-packed mask maps drive a master shader, so colors, wear and emissive accents can be changed in engine without re-texturing. One model, many variants.\n\nBuilding a roster of creature heroes, enemies or bosses? This is the level we deliver.",
       "tags": [],
       "w": 2088,
       "h": 2160,
-      "project": "The Last Rebel (TLR), studio IP",
+      "project": "The Last Rebel, original characters",
       "polys": "60K tris",
       "textures": "Channel-packed mask maps, six 4K and two 2K texture sets",
       "software": "ZBrush, Maya, Substance Painter, Unreal Engine",
@@ -565,7 +582,7 @@
     },
     {
       "t": "Panda (TLR-1)",
-      "c": "realistic-creatures",
+      "c": "the-last-rebel",
       "cats": [],
       "id": "PXvoWo",
       "i": "/assets/img/portfolio/panda-tlr-1-pxvowo.webp",
@@ -584,15 +601,32 @@
         "/assets/img/portfolio/panda-tlr-1-pxvowo-13.webp",
         "/assets/img/portfolio/panda-tlr-1-pxvowo-14.webp"
       ],
-      "desc": "Stylized Creature Study: \"Panda\"\nDeveloped internally at Brothers Interactive, \"Panda\" represents our team's advanced capabilities in high-fidelity creature art and real-time shader pipelines. This production-ready asset was built from the ground up to showcase powerful organic forms, dynamic structural design, and a highly customizable material setup optimized for current-gen cinematic and gameplay engines.\n\nTechnical Breakdown:\n- Budget: 55K Tris\n- Texturing: Channel-packed mask map workflow, utilizing six 4K and two 2K texture sets to drive real-time engine shaders.\n- Target Platforms: PC, PlayStation 5, and Xbox Series X|S\n- Pipeline: Built specifically for an Unreal Engine pipeline; all primary material properties, color variations, and emissive elements are controlled dynamically via master shaders using our optimized mask maps.",
+      "desc": "Panda is a wandering fighter from The Last Rebel (TLR), our own original universe, where Tiger leads the cast. A straw hat, prayer beads, a gourd-tipped staff and patched leather give him a monk-on-the-road feel, and his round, heavy build makes him read differently from everyone else in the lineup.\n\nThe sculpt keeps the soft volumes of a panda while layering on metal plates, rope, beads and torn cloth, each with its own wear. Like the rest of the TLR cast, he's built for Unreal Engine: channel-packed mask maps drive a master shader, so colors, wear and emissive accents can be changed in engine without re-texturing.\n\nBuilding a cast of creature heroes with real personality? This is the level we deliver.",
       "tags": [],
       "w": 2500,
       "h": 1596,
-      "project": "Studio work"
+      "project": "The Last Rebel, original characters",
+      "polys": "55K tris",
+      "textures": "Channel-packed mask maps, six 4K and two 2K texture sets",
+      "software": "ZBrush, Maya, Substance Painter, Unreal Engine",
+      "specs": [
+        {
+          "label": "Engine setup",
+          "value": "Unreal Engine master shader, color and emissive variants in engine"
+        },
+        {
+          "label": "Target platforms",
+          "value": "PC, PlayStation 5, Xbox Series X|S"
+        },
+        {
+          "label": "Use",
+          "value": "Playable character with color variants"
+        }
+      ]
     },
     {
       "t": "Turtle (TLR-1)",
-      "c": "realistic-creatures",
+      "c": "the-last-rebel",
       "cats": [],
       "id": "ZavKOG",
       "i": "/assets/img/portfolio/turtle-tlr-1-zavkog.webp",
@@ -603,11 +637,28 @@
         "/assets/img/portfolio/turtle-tlr-1-zavkog-5.webp",
         "/assets/img/portfolio/turtle-tlr-1-zavkog-6.webp"
       ],
-      "desc": "Stylized Creature Study: \"Turtle\"\nDeveloped internally at Brothers Interactive, \"Turtle\" represents our team's advanced capabilities in high-fidelity creature art and real-time shader pipelines. This production-ready asset was built from the ground up to showcase dense organic forms, rugged shell structures, and a highly customizable material setup optimized for current-gen cinematic and gameplay engines.\n\nTechnical Breakdown:\n- Budget: 55K Tris\n- Texturing: Channel-packed mask map workflow, utilizing six 4K and two 2K texture sets to drive real-time engine shaders.\n- Target Platforms: PC, PlayStation 5, and Xbox Series X|S\n- Pipeline: Built specifically for an Unreal Engine pipeline; all primary material properties, color variations, and surface elements are controlled dynamically via master shaders using our optimized mask maps.",
+      "desc": "Turtle is the tank of The Last Rebel (TLR), our own original universe, where Tiger leads the cast. A spiked shell, a steel chest plate and heavy gauntlets make him the wall of the team, and from behind, the shell alone tells you who he is.\n\nThe sculpt keeps the shell, scales and armor clearly separate, with the shell's spikes and plates readable from a distance and close-up wear on the steel and leather. Like the rest of the TLR cast, he's built for Unreal Engine: channel-packed mask maps drive a master shader, so colors, wear and emissive accents can be changed in engine without re-texturing.\n\nNeed a heavy defender or brute for a creature roster? This is the level we deliver.",
       "tags": [],
       "w": 1854,
       "h": 1836,
-      "project": "Studio work"
+      "project": "The Last Rebel, original characters",
+      "polys": "55K tris",
+      "textures": "Channel-packed mask maps, six 4K and two 2K texture sets",
+      "software": "ZBrush, Maya, Substance Painter, Unreal Engine",
+      "specs": [
+        {
+          "label": "Engine setup",
+          "value": "Unreal Engine master shader, color and emissive variants in engine"
+        },
+        {
+          "label": "Target platforms",
+          "value": "PC, PlayStation 5, Xbox Series X|S"
+        },
+        {
+          "label": "Use",
+          "value": "Playable or enemy character with color variants"
+        }
+      ]
     },
     {
       "t": "MTG Murkaz Tex",
