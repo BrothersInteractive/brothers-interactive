@@ -1190,11 +1190,29 @@
         "/assets/img/portfolio/toothbug-lr56mr-2.webp",
         "/assets/img/portfolio/toothbug-lr56mr-5.webp"
       ],
-      "desc": "Stylized Creature Study: \"Tooth Bug\"\nDeveloped internally at Brothers Interactive, \"Tooth Bug\" represents our team's talent for expressive creature design, unique character concepts, and clean shape language. This production-ready asset was built from the ground up to showcase bold anatomical silhouettes, vibrant material definitions, and high-impact personality required for modern fantasy, adventure, or strategy titles.\nConcept art by Tooth Wu!",
+      "desc": "Toothbug is a sculpt of Tooth Wu's creature concept: a many-legged beast with a gaping, tusked jaw, a back of curved spines and plated, segmented armor down its body. It's a pure sculpting piece, about turning a 2D design into convincing 3D form.\n\nThe work is all in the forms. The jaw and tusks read from any angle, the spines flow along the body instead of sitting on it, and the legs and claws carry the weight of a heavy creature. It's the kind of high-poly master a game team bakes from, ready to be retopologized and textured for any budget.\n\nNeed creature sculpts that stay true to your concept art? We can match this look, or take it wherever your project needs to go.",
       "tags": [],
       "w": 1500,
       "h": 1080,
-      "project": "Studio work"
+      "project": "Fan art / studio piece",
+      "software": "ZBrush",
+      "polys": "",
+      "textures": "",
+      "specs": [
+        {
+          "label": "Concept",
+          "value": "Tooth Wu"
+        },
+        {
+          "label": "Stage",
+          "value": "High-poly sculpt, ready for retopology and baking"
+        },
+        {
+          "label": "Use",
+          "value": "Creature sculpt for enemies and bosses"
+        }
+      ],
+      "hidden": true
     },
     {
       "t": "Death",
@@ -1349,11 +1367,28 @@
         "/assets/img/portfolio/russell-del-s-girl-chr-l3a48w-3.webp",
         "/assets/img/portfolio/russell-del-s-girl-chr-l3a48w-4.webp"
       ],
-      "desc": "Stylized Character Study: \"Russell Del's Girl\"\nDeveloped internally at Brothers Interactive, \"Russell Del's Girl\" represents our team's talent for expressive stylized character modeling, clean shape translation, and high-efficiency production pipelines. This production-ready asset was built from the ground up to showcase elegant silhouettes, charming facial proportions, and vibrant material definition required for modern animated adventure, RPG, or stylized action titles.\n\nTechnical Breakdown:\n- Budget: 25K Tris\n- Texturing: PBR workflow, two 2K texture sets\n- Target Platforms: Mobile, Nintendo Switch, and PC\n- Pipeline: Fully optimized with clean, deformation-ready topology and structured facial loops, ready for seamless rigging, performance animation, and integration into modern cross-platform gameplay engines.",
+      "desc": "Russell Del's Girl is our 3D version of a character concept by Russell Del: a girl with a green beanie, pink braids, a denim jacket trimmed with leaves, and pink shorts and sneakers. The job was to keep the charm of the drawing, especially the face, while making her work as a game-ready model.\n\nThe face carries it, with big eyes, a confident little smirk and simple, readable shapes, and the clothes stay graphic, with clean folds instead of noisy detail. She's 25K tris on two 2K texture sets, with clean topology and facial loops ready for rigging and expressions on mobile, Switch or PC.\n\nMaking a stylized game with a young, colorful cast? Talk to us about your characters.",
       "tags": [],
       "w": 2304,
       "h": 2160,
-      "project": "Studio work"
+      "project": "Fan art / studio piece",
+      "polys": "25K tris",
+      "textures": "PBR, two 2K texture sets",
+      "software": "ZBrush, Maya, Substance Painter, Marmoset Toolbag",
+      "specs": [
+        {
+          "label": "Concept",
+          "value": "Russell Del"
+        },
+        {
+          "label": "Target platforms",
+          "value": "Mobile, Nintendo Switch, PC"
+        },
+        {
+          "label": "Use",
+          "value": "Playable or NPC character, stylized games"
+        }
+      ]
     },
     {
       "t": "Russell Del's Boy CHR",
@@ -1365,11 +1400,28 @@
         "/assets/img/portfolio/russell-del-s-boy-chr-zoaxkd-3.webp",
         "/assets/img/portfolio/russell-del-s-boy-chr-zoaxkd-4.webp"
       ],
-      "desc": "Stylized Character Study: \"Russell Del's Girl\"\nDeveloped internally at Brothers Interactive, \"Russell Del's Girl\" represents our team's talent for expressive stylized character modeling, clean shape translation, and high-efficiency production pipelines. This production-ready asset was built from the ground up to showcase elegant silhouettes, charming facial proportions, and vibrant material definition required for modern animated adventure, RPG, or stylized action titles.\n\nTechnical Breakdown:\n- Budget: 21K Tris\n- Texturing: PBR workflow, two 2K texture sets\n- Target Platforms: Mobile, Nintendo Switch, and PC\n- Pipeline: Fully optimized with clean, deformation-ready topology and structured facial loops, ready for seamless rigging, performance animation, and integration into modern cross-platform gameplay engines.",
+      "desc": "Russell Del's Boy is the companion to our Russell Del's Girl, also built from Russell Del's concept: spiky white hair with red streaks, an orange hoodie, a crossbody bag, shorts and chunky sneakers. Like her, he needed to keep the drawing's energy in a game-ready model.\n\nHis hair is sculpted as bold, stylized clumps, and the hoodie, bag and shoes keep the clean, graphic look of the concept. He's 21K tris on two 2K texture sets, with clean topology and facial loops ready for rigging and expressions on mobile, Switch or PC.\n\nMaking a stylized game with a young, colorful cast? Talk to us about your characters.",
       "tags": [],
       "w": 2500,
       "h": 1935,
-      "project": "Studio work"
+      "project": "Fan art / studio piece",
+      "polys": "21K tris",
+      "textures": "PBR, two 2K texture sets",
+      "software": "ZBrush, Maya, Substance Painter, Marmoset Toolbag",
+      "specs": [
+        {
+          "label": "Concept",
+          "value": "Russell Del"
+        },
+        {
+          "label": "Target platforms",
+          "value": "Mobile, Nintendo Switch, PC"
+        },
+        {
+          "label": "Use",
+          "value": "Playable or NPC character, stylized games"
+        }
+      ]
     },
     {
       "t": "Sir Galahad: The Order 1886 Fan Art",

@@ -249,7 +249,8 @@ function siteMain() {
   if (CATEGORY_LIST.length) URLS.setCategories(CATEGORY_LIST);
   BROWSE_CATS.forEach(function (b) { b.match.forEach(function (k) { CAT[k] = b.label; }); });
 
-  var PROJECTS = loadList("portfolio", BI.PROJECTS);
+  // Pieces ticked "Hide from the website" in /admin stay out of every grid, the viewer and the artwork page
+  var PROJECTS = loadList("portfolio", BI.PROJECTS).filter(function (p) { return p && !p.hidden; });
   // Each piece's own address, e.g. /portfolio/realistic-character/lehri/ (falls back to the old ?id= page)
   var PIECE_PATH = URLS.piecePaths(PROJECTS);
   function pieceUrl(id) { return PIECE_PATH[id] || "/asset.html?id=" + encodeURIComponent(id); }

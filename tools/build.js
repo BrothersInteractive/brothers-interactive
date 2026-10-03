@@ -108,7 +108,7 @@ for (const id of URLS.SECTIONS) if (id !== "home") writePage("/" + id + "/", "ho
 // ---- 4. categories: /category/<slug>/ ---------------------------------------------
 // Categories as edited in /admin (data/categories.json) replace the built-in list
 URLS.setCategories(json("data/categories.json", {}).items);
-const PROJECTS = (json("data/portfolio.json", {}).items || []).filter((p) => p && p.id);
+const PROJECTS = (json("data/portfolio.json", {}).items || []).filter((p) => p && p.id && !p.hidden); // "Hide from the website" in /admin
 const inCat = (p, key) => p.c === key || (Array.isArray(p.cats) && p.cats.indexOf(key) !== -1);
 for (const b of URLS.BROWSE_CATS) {
   const pieces = PROJECTS.filter((p) => b.match.some((k) => inCat(p, k)));

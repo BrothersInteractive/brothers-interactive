@@ -248,8 +248,15 @@ collections:
             widget: "list"
             collapsed: true
             label_singular: "Piece"
-            summary: "{{fields.t}} — {{fields.c}}"
+            summary: "{{fields.t}} — {{fields.c}}{{fields.hidden | ternary(' · HIDDEN', '')}}"
             fields:
+              - label: "Hide from the website"
+                name: "hidden"
+                widget: "boolean"
+                default: false
+                required: false
+                hint: "Tick to keep this piece off the site (grids, viewer, its own page, the sitemap) while it is unfinished. Untick and save to publish it."
+
               - label: "Title"
                 name: "t"
                 widget: "string"
