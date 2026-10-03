@@ -113,6 +113,7 @@ collections:
         format: "json"
         description: "The heading and subtitle above the games."
         fields:
+          - { label: "Hide this section from the website", name: "hidden", widget: "boolean", required: false, default: false, hint: "Tick while this section has nothing good to show: it disappears from the homepage, the menu and every link to it. Untick and save to bring it back." }
           - { label: "Small line above the heading", name: "eyebrow", widget: "string", required: false }
           - { label: "Heading", name: "title", widget: "string", hint: "Put *stars* around the words that should be gold, e.g. Production *breakdowns*" }
           - { label: "Subtitle", name: "sub", widget: "text", required: false, hint: "A link can be written as [words](/contact)." }
@@ -144,6 +145,7 @@ collections:
         format: "json"
         description: "The heading and subtitle above the client quotes."
         fields:
+          - { label: "Hide this section from the website", name: "hidden", widget: "boolean", required: false, default: false, hint: "Tick while this section has nothing good to show: it disappears from the homepage, the menu and every link to it. Untick and save to bring it back." }
           - { label: "Small line above the heading", name: "eyebrow", widget: "string", required: false }
           - { label: "Heading", name: "title", widget: "string", hint: "Put *stars* around the words that should be gold, e.g. Production *breakdowns*" }
           - { label: "Subtitle", name: "sub", widget: "text", required: false, hint: "A link can be written as [words](/contact)." }
@@ -217,6 +219,7 @@ collections:
         format: "json"
         description: "The heading and subtitle above the category tiles."
         fields:
+          - { label: "Hide this section from the website", name: "hidden", widget: "boolean", required: false, default: false, hint: "Tick while this section has nothing good to show: it disappears from the homepage, the menu and every link to it. Untick and save to bring it back." }
           - { label: "Small line above the heading", name: "eyebrow", widget: "string", required: false }
           - { label: "Heading", name: "title", widget: "string", hint: "Put *stars* around the words that should be gold, e.g. Production *breakdowns*" }
           - { label: "Subtitle", name: "sub", widget: "text", required: false, hint: "A link can be written as [words](/contact)." }
@@ -465,6 +468,7 @@ collections:
         format: "json"
         description: "The heading and subtitle above the breakdown tiles."
         fields:
+          - { label: "Hide this section from the website", name: "hidden", widget: "boolean", required: false, default: false, hint: "Tick while this section has nothing good to show: it disappears from the homepage, the menu and every link to it. Untick and save to bring it back." }
           - { label: "Small line above the heading", name: "eyebrow", widget: "string", required: false }
           - { label: "Heading", name: "title", widget: "string", hint: "Put *stars* around the words that should be gold, e.g. Production *breakdowns*" }
           - { label: "Subtitle", name: "sub", widget: "text", required: false, hint: "A link can be written as [words](/contact)." }
@@ -516,6 +520,7 @@ collections:
         format: "json"
         description: "The heading and subtitle, and the service cards. Keep each card to about 4 short tags (2-3 words each) so they sit in two rows."
         fields:
+          - { label: "Hide this section from the website", name: "hidden", widget: "boolean", required: false, default: false, hint: "Tick while this section has nothing good to show: it disappears from the homepage, the menu and every link to it. Untick and save to bring it back." }
           - { label: "Small line above the heading", name: "eyebrow", widget: "string", required: false }
           - { label: "Heading", name: "title", widget: "string", hint: "Put *stars* around the words that should be gold, e.g. Production *breakdowns*" }
           - { label: "Subtitle", name: "sub", widget: "text", required: false, hint: "A link can be written as [words](/contact)." }
@@ -546,6 +551,7 @@ collections:
         format: "json"
         description: "The FAQ heading and text, the questions, and the call-to-action band under them."
         fields:
+          - { label: "Hide this section from the website", name: "hidden", widget: "boolean", required: false, default: false, hint: "Tick while this section has nothing good to show: it disappears from the homepage, the menu and every link to it. Untick and save to bring it back." }
           - { label: "Small line above the heading", name: "eyebrow", widget: "string", required: false }
           - { label: "Heading", name: "title", widget: "string", hint: "Put *stars* around the words that should be gold, e.g. Production *breakdowns*" }
           - { label: "Text under the heading", name: "sub", widget: "text", required: false, hint: "A link can be written as [words](/contact)." }
@@ -577,6 +583,7 @@ collections:
         format: "json"
         description: "The heading and subtitle above the team."
         fields:
+          - { label: "Hide this section from the website", name: "hidden", widget: "boolean", required: false, default: false, hint: "Tick while this section has nothing good to show: it disappears from the homepage, the menu and every link to it. Untick and save to bring it back." }
           - { label: "Small line above the heading", name: "eyebrow", widget: "string", required: false }
           - { label: "Heading", name: "title", widget: "string", hint: "Put *stars* around the words that should be gold, e.g. Production *breakdowns*" }
           - { label: "Subtitle", name: "sub", widget: "text", required: false, hint: "A link can be written as [words](/contact)." }
@@ -620,6 +627,7 @@ collections:
         format: "json"
         description: "The heading and paragraph, and the Google Form the blinking Join Us button opens."
         fields:
+          - { label: "Hide this section from the website", name: "hidden", widget: "boolean", required: false, default: false, hint: "Tick while this section has nothing good to show: it disappears from the homepage, the menu and every link to it. Untick and save to bring it back." }
           - { label: "Small line above the heading", name: "eyebrow", widget: "string", required: false }
           - { label: "Heading", name: "title", widget: "string", hint: "Put *stars* around the words that should be gold, e.g. Production *breakdowns*" }
           - { label: "Paragraph", name: "sub", widget: "text", required: false, hint: "A link can be written as [words](/contact)." }
@@ -650,6 +658,7 @@ collections:
         format: "json"
         description: "The heading and subtitle above the posts."
         fields:
+          - { label: "Hide this section from the website", name: "hidden", widget: "boolean", required: false, default: false, hint: "Tick while this section has nothing good to show: it disappears from the homepage, the menu and every link to it. Untick and save to bring it back." }
           - { label: "Small line above the heading", name: "eyebrow", widget: "string", required: false }
           - { label: "Heading", name: "title", widget: "string", hint: "Put *stars* around the words that should be gold, e.g. Production *breakdowns*" }
           - { label: "Subtitle", name: "sub", widget: "text", required: false, hint: "A link can be written as [words](/contact)." }

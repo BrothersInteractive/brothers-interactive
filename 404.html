@@ -68,7 +68,12 @@
       <div class="container">
         <div class="code">404</div>
         <h1 class="section-title">This asset was never <span class="accent">modeled</span></h1>
-        <p class="section-sub" style="margin-inline:auto">The page you asked for does not exist or has moved. Try the portfolio, or head back home.</p>
+        <p class="section-sub" style="margin-inline:auto">The page you asked for does not exist or has moved. Taking you to the homepage in <span id="goHomeIn">3</span> seconds.</p>
+        <script>
+          /* a mistyped or old address: count down, then go to the homepage (the buttons below still work straight away) */
+          (function () { var n = 3, el = document.getElementById("goHomeIn");
+            var t = setInterval(function () { n--; if (el) el.textContent = n; if (n <= 0) { clearInterval(t); location.replace("/"); } }, 1000); })();
+        </script>
         <div class="hero-actions" style="justify-content:center;margin-top:28px">
           <a href="/" class="btn btn--primary">Home</a>
           <a href="/portfolio/" class="btn btn--ghost">Portfolio</a>

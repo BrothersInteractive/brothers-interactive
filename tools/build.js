@@ -142,7 +142,11 @@ function writePage(address, tpl, info, meta) {
 }
 
 // ---- 3. homepage sections: /portfolio/, /team/ … ------------------------------------
-for (const id of URLS.SECTIONS) if (id !== "home") writePage("/" + id + "/", "home", { section: id });
+// A section ticked "Hide this section from the website" in /admin gets no page (its address then shows the
+// 404 page, which takes visitors home), and is hidden with every link to it (see step 8).
+const HIDDEN = (URLS.TEXT_SECTIONS || []).filter((id) => (json("data/sections/" + id + ".json", {}) || {}).hidden);
+if (HIDDEN.length) console.log("Hidden sections: " + HIDDEN.join(", "));
+for (const id of URLS.SECTIONS) if (id !== "home" && HIDDEN.indexOf(id) === -1) writePage("/" + id + "/", "home", { section: id });
 
 // ---- 4. categories: /category/<slug>/ opens the homepage at the Portfolio collage with that filter on ---------
 // Categories as edited in /admin (data/categories.json) replace the built-in list
@@ -173,8 +177,8 @@ for (const p of PROJECTS) {
 }
 
 // ---- 6. breakdowns: /breakdowns/ and /breakdowns/<id>/ -----------------------------
-const BREAKDOWNS = (json("data/breakdowns.json", {}).items || []).filter((b) => b && b.t && b.id);
-writePage(URLS.breakdownPath(), "breakdown", {}, {
+const BREAKDOWNS = HIDDEN.indexOf("breakdown") !== -1 ? [] : (json("data/breakdowns.json", {}).items || []).filter((b) => b && b.t && b.id);
+if (HIDDEN.indexOf("breakdown") === -1) writePage(URLS.breakdownPath(), "breakdown", {}, {
   title: "Production Breakdowns | Brothers Interactive",
   description: "Sculpt to final, in detail: production breakdowns of game characters from Brothers Interactive.",
   image: BREAKDOWNS[0] && (BREAKDOWNS[0].cover || BREAKDOWNS[0].after)
@@ -228,5 +232,24 @@ fs.writeFileSync(path.join(OUT, "sitemap.xml"),
 
 console.log("Built _site: " + written.length + " pages (" + PROJECTS.length + " artworks, " + URLS.BROWSE_CATS.length +
   " categories, " + BREAKDOWNS.length + " breakdowns), sitemap with " + urls.length + " addresses.");
+
+// ---- 8. hidden sections: one style block in every page hides the section and every link to it -------
+if (HIDDEN.length) {
+  const sel = [];
+  for (const id of HIDDEN) {
+    sel.push("#" + id, 'a[href="#' + id + '"]', 'a[href="/' + id + '/"]', 'li:has(> a[href="#' + id + '"])', 'li:has(> a[href="/' + id + '/"])');
+    if (id === "breakdown") sel.push('a[href^="/breakdowns"]');
+  }
+  const css = "<style>/* hidden in /admin */" + sel.join(",") + "{display:none!important}</style>";
+  (function walk(dir) {
+    for (const f of fs.readdirSync(dir)) {
+      const p = path.join(dir, f);
+      if (fs.statSync(p).isDirectory()) { if (f !== "admin") walk(p); continue; }
+      if (!f.endsWith(".html")) continue;
+      const html = fs.readFileSync(p, "utf8");
+      if (html.includes("</head>")) fs.writeFileSync(p, html.replace("</head>", css + "</head>"));
+    }
+  })(OUT);
+}
 
 makeThumbs().then(makeShareImages).catch((e) => { console.error(e); process.exit(1); });
