@@ -253,11 +253,28 @@
       "id": "XaBYJ0",
       "i": "/assets/img/portfolio/red-house-xabyj0.webp",
       "imgs": [],
-      "desc": "The Midnight Walk - Red House\n\nAt Brothers Interactive, we contributed character cleanup, Sculpt & Texture Improvements, game res version and rigging services for multiple characters featured in The Midnight Walk, helping prepare scanned character assets for integration and use within the game pipeline.\n\nOur work focused on optimizing character assets, technical cleanup, and rigging support to ensure the characters were production-ready for gameplay implementation.",
+      "desc": "Red House is one of the living houses of The Midnight Walk: a crooked red cabin on spindly legs, with a tiled, cone-shaped roof and round windows.\n\nThe game's characters began as handmade clay sculpts that were scanned for production. Our job was to turn those scans into game assets: cleaning up the scan data, improving the sculpt and textures, building the game-res version, then rigging and skinning it so it could go straight into the game, all without losing the handmade, pressed-clay look the game is known for.\n\nNeed scanned or handmade characters made game-ready? We'll build yours to your style, budget and platform.",
       "tags": [],
       "w": 1500,
       "h": 1008,
-      "project": "The Midnight Walk"
+      "project": "The Midnight Walk",
+      "software": "ZBrush, Maya, Substance Painter",
+      "polys": "About 10K to 15K tris",
+      "textures": "",
+      "specs": [
+        {
+          "label": "Our role",
+          "value": "Scan cleanup, sculpt and texture improvements, game-res version, rigging and skinning"
+        },
+        {
+          "label": "Target platforms",
+          "value": "PC, PlayStation 5, PlayStation VR2"
+        },
+        {
+          "label": "Use",
+          "value": "In-game character in a released title"
+        }
+      ]
     },
     {
       "t": "T-Rex - Crash Bandicoot 4 Fan Art",
@@ -351,11 +368,28 @@
       "id": "lEVXGY",
       "i": "/assets/img/portfolio/twin-witch-levxgy.webp",
       "imgs": [],
-      "desc": "The Midnight Walk - Twin Witch\n\nAt Brothers Interactive, we contributed character cleanup, Sculpt & Texture Improvements, game res version and rigging services for multiple characters featured in The Midnight Walk, helping prepare scanned character assets for integration and use within the game pipeline.\n\nOur work focused on optimizing character assets, technical cleanup, and rigging support to ensure the characters were production-ready for gameplay implementation.",
+      "desc": "Twin Witch is a tall, thin witch from The Midnight Walk with two faces, pointed hats and layer upon layer of ragged yellow robes.\n\nThe game's characters began as handmade clay sculpts that were scanned for production. Our job was to turn those scans into game assets: cleaning up the scan data, improving the sculpt and textures, building the game-res version, then rigging and skinning it so it could go straight into the game, all without losing the handmade, pressed-clay look the game is known for.\n\nNeed scanned or handmade characters made game-ready? We'll build yours to your style, budget and platform.",
       "tags": [],
       "w": 1500,
       "h": 1333,
-      "project": "The Midnight Walk"
+      "project": "The Midnight Walk",
+      "software": "ZBrush, Maya, Substance Painter",
+      "polys": "About 10K to 15K tris",
+      "textures": "",
+      "specs": [
+        {
+          "label": "Our role",
+          "value": "Scan cleanup, sculpt and texture improvements, game-res version, rigging and skinning"
+        },
+        {
+          "label": "Target platforms",
+          "value": "PC, PlayStation 5, PlayStation VR2"
+        },
+        {
+          "label": "Use",
+          "value": "In-game character in a released title"
+        }
+      ]
     },
     {
       "t": "SWAT V3",
@@ -447,11 +481,28 @@
       "id": "lEVXDY",
       "i": "/assets/img/portfolio/craftsman-levxdy.webp",
       "imgs": [],
-      "desc": "The Midnight Walk - Craftsman\n\nAt Brothers Interactive, we contributed character cleanup, Sculpt & Texture Improvements, game res version and rigging services for multiple characters featured in The Midnight Walk, helping prepare scanned character assets for integration and use within the game pipeline.\n\nOur work focused on optimizing character assets, technical cleanup, and rigging support to ensure the characters were production-ready for gameplay implementation.",
+      "desc": "Craftsman is a towering, stooped figure from The Midnight Walk, draped in grey rags and straps, with long, bony arms and a mask-like head crowned with spikes.\n\nThe game's characters began as handmade clay sculpts that were scanned for production. Our job was to turn those scans into game assets: cleaning up the scan data, improving the sculpt and textures, building the game-res version, then rigging and skinning it so it could go straight into the game, all without losing the handmade, pressed-clay look the game is known for.\n\nNeed scanned or handmade characters made game-ready? We'll build yours to your style, budget and platform.",
       "tags": [],
       "w": 1500,
       "h": 1237,
-      "project": "The Midnight Walk"
+      "project": "The Midnight Walk",
+      "software": "ZBrush, Maya, Substance Painter",
+      "polys": "About 10K to 15K tris",
+      "textures": "",
+      "specs": [
+        {
+          "label": "Our role",
+          "value": "Scan cleanup, sculpt and texture improvements, game-res version, rigging and skinning"
+        },
+        {
+          "label": "Target platforms",
+          "value": "PC, PlayStation 5, PlayStation VR2"
+        },
+        {
+          "label": "Use",
+          "value": "In-game character in a released title"
+        }
+      ]
     },
     {
       "t": "Princess",
@@ -460,11 +511,28 @@
       "id": "xdzK3r",
       "i": "/assets/img/portfolio/princess-xdzk3r.webp",
       "imgs": [],
-      "desc": "The Midnight Walk - Princess\nAt Brothers Interactive, we contributed character cleanup, Sculpt & Texture Improvements, game res version and rigging services for multiple characters featured in The Midnight Walk, helping prepare scanned character assets for integration and use within the game pipeline.\n\nOur work focused on optimizing character assets, technical cleanup, and rigging support to ensure the characters were production-ready for gameplay implementation.",
+      "desc": "Princess is a fragile, stick-thin figure from The Midnight Walk in a tattered dress, with a single-eyed, star-shaped head that makes her instantly readable.\n\nThe game's characters began as handmade clay sculpts that were scanned for production. Our job was to turn those scans into game assets: cleaning up the scan data, improving the sculpt and textures, building the game-res version, then rigging and skinning it so it could go straight into the game, all without losing the handmade, pressed-clay look the game is known for.\n\nNeed scanned or handmade characters made game-ready? We'll build yours to your style, budget and platform.",
       "tags": [],
       "w": 1500,
       "h": 1472,
-      "project": "The Midnight Walk"
+      "project": "The Midnight Walk",
+      "software": "ZBrush, Maya, Substance Painter",
+      "polys": "About 10K to 15K tris",
+      "textures": "",
+      "specs": [
+        {
+          "label": "Our role",
+          "value": "Scan cleanup, sculpt and texture improvements, game-res version, rigging and skinning"
+        },
+        {
+          "label": "Target platforms",
+          "value": "PC, PlayStation 5, PlayStation VR2"
+        },
+        {
+          "label": "Use",
+          "value": "In-game character in a released title"
+        }
+      ]
     },
     {
       "t": "Big Bad Wolf",
@@ -513,11 +581,28 @@
       "id": "wO850X",
       "i": "/assets/img/portfolio/crow-mother-wo850x.webp",
       "imgs": [],
-      "desc": "The Midnight Walk - Crow Mother\n\nAt Brothers Interactive, we contributed character cleanup, Sculpt & Texture Improvements, game res version and rigging services for multiple characters featured in The Midnight Walk, helping prepare scanned character assets for integration and use within the game pipeline.\n\nOur work focused on optimizing character assets, technical cleanup, and rigging support to ensure the characters were production-ready for gameplay implementation.",
+      "desc": "Crow Mother is a hunched, feathered bird-woman from The Midnight Walk, with a long curved beak, ragged blue-green plumage and thin, clawed legs.\n\nThe game's characters began as handmade clay sculpts that were scanned for production. Our job was to turn those scans into game assets: cleaning up the scan data, improving the sculpt and textures, building the game-res version, then rigging and skinning it so it could go straight into the game, all without losing the handmade, pressed-clay look the game is known for.\n\nNeed scanned or handmade characters made game-ready? We'll build yours to your style, budget and platform.",
       "tags": [],
       "w": 1500,
       "h": 835,
-      "project": "The Midnight Walk"
+      "project": "The Midnight Walk",
+      "software": "ZBrush, Maya, Substance Painter",
+      "polys": "About 10K to 15K tris",
+      "textures": "",
+      "specs": [
+        {
+          "label": "Our role",
+          "value": "Scan cleanup, sculpt and texture improvements, game-res version, rigging and skinning"
+        },
+        {
+          "label": "Target platforms",
+          "value": "PC, PlayStation 5, PlayStation VR2"
+        },
+        {
+          "label": "Use",
+          "value": "In-game character in a released title"
+        }
+      ]
     },
     {
       "t": "Zombie-2",
@@ -604,11 +689,28 @@
       "id": "KRaBex",
       "i": "/assets/img/portfolio/father-murkle-krabex.webp",
       "imgs": [],
-      "desc": "Father Murkle by Brothers Interactive.",
+      "desc": "Father Murkle is a round little gentleman from The Midnight Walk, with a top hat, goggle-like eyes, a stained yellow coat and a gramophone horn in hand.\n\nThe game's characters began as handmade clay sculpts that were scanned for production. Our job was to turn those scans into game assets: cleaning up the scan data, improving the sculpt and textures, building the game-res version, then rigging and skinning it so it could go straight into the game, all without losing the handmade, pressed-clay look the game is known for.\n\nNeed scanned or handmade characters made game-ready? We'll build yours to your style, budget and platform.",
       "tags": [],
       "w": 1500,
       "h": 864,
-      "project": "The Midnight Walk"
+      "project": "The Midnight Walk",
+      "software": "ZBrush, Maya, Substance Painter",
+      "polys": "About 10K to 15K tris",
+      "textures": "",
+      "specs": [
+        {
+          "label": "Our role",
+          "value": "Scan cleanup, sculpt and texture improvements, game-res version, rigging and skinning"
+        },
+        {
+          "label": "Target platforms",
+          "value": "PC, PlayStation 5, PlayStation VR2"
+        },
+        {
+          "label": "Use",
+          "value": "In-game character in a released title"
+        }
+      ]
     },
     {
       "t": "MTG Krishna",
@@ -701,11 +803,28 @@
       "id": "0aXrlE",
       "i": "/assets/img/portfolio/grandma-dark-0axrle.webp",
       "imgs": [],
-      "desc": "The Midnight Walk - Grandma Dark\n\nAt Brothers Interactive, we contributed character cleanup, Sculpt & Texture Improvements, game res version and rigging services for multiple characters featured in The Midnight Walk, helping prepare scanned character assets for integration and use within the game pipeline.\n\nOur work focused on optimizing character assets, technical cleanup, and rigging support to ensure the characters were production-ready for gameplay implementation.",
+      "desc": "Grandma Dark is as much a scene as a character: a bed heaped with tangled red and grey sheets under a twisted iron frame, with plants creeping in, from The Midnight Walk.\n\nThe game's characters began as handmade clay sculpts that were scanned for production. Our job was to turn those scans into game assets: cleaning up the scan data, improving the sculpt and textures, building the game-res version, then rigging and skinning it so it could go straight into the game, all without losing the handmade, pressed-clay look the game is known for.\n\nNeed scanned or handmade characters made game-ready? We'll build yours to your style, budget and platform.",
       "tags": [],
       "w": 1500,
       "h": 850,
-      "project": "The Midnight Walk"
+      "project": "The Midnight Walk",
+      "software": "ZBrush, Maya, Substance Painter",
+      "polys": "About 10K to 15K tris",
+      "textures": "",
+      "specs": [
+        {
+          "label": "Our role",
+          "value": "Scan cleanup, sculpt and texture improvements, game-res version, rigging and skinning"
+        },
+        {
+          "label": "Target platforms",
+          "value": "PC, PlayStation 5, PlayStation VR2"
+        },
+        {
+          "label": "Use",
+          "value": "In-game character in a released title"
+        }
+      ]
     },
     {
       "t": "Crow",
@@ -714,11 +833,28 @@
       "id": "dLORKw",
       "i": "/assets/img/portfolio/crow-dlorkw.webp",
       "imgs": [],
-      "desc": "The Midnight Walk - Crow\n\nAt Brothers Interactive, we contributed character cleanup, Sculpt & Texture Improvements, game res version and rigging services for multiple characters featured in The Midnight Walk, helping prepare scanned character assets for integration and use within the game pipeline.\n\nOur work focused on optimizing character assets, technical cleanup, and rigging support to ensure the characters were production-ready for gameplay implementation.",
+      "desc": "Crow is a gaunt, cloaked bird figure from The Midnight Walk, in tattered grey rags, with a long beak and a single glowing red eye.\n\nThe game's characters began as handmade clay sculpts that were scanned for production. Our job was to turn those scans into game assets: cleaning up the scan data, improving the sculpt and textures, building the game-res version, then rigging and skinning it so it could go straight into the game, all without losing the handmade, pressed-clay look the game is known for.\n\nNeed scanned or handmade characters made game-ready? We'll build yours to your style, budget and platform.",
       "tags": [],
       "w": 1500,
       "h": 1151,
-      "project": "The Midnight Walk"
+      "project": "The Midnight Walk",
+      "software": "ZBrush, Maya, Substance Painter",
+      "polys": "About 10K to 15K tris",
+      "textures": "",
+      "specs": [
+        {
+          "label": "Our role",
+          "value": "Scan cleanup, sculpt and texture improvements, game-res version, rigging and skinning"
+        },
+        {
+          "label": "Target platforms",
+          "value": "PC, PlayStation 5, PlayStation VR2"
+        },
+        {
+          "label": "Use",
+          "value": "In-game character in a released title"
+        }
+      ]
     },
     {
       "t": "SWAT V1",
@@ -774,11 +910,28 @@
       "id": "ayRb09",
       "i": "/assets/img/portfolio/pot-boy-ayrb09.webp",
       "imgs": [],
-      "desc": "The Midnight Walk - Pot Boy\n\nAt Brothers Interactive, we contributed character cleanup, Sculpt & Texture Improvements, game res version and rigging services for multiple characters featured in The Midnight Walk, helping prepare scanned character assets for integration and use within the game pipeline.\n\nOur work focused on optimizing character assets, technical cleanup, and rigging support to ensure the characters were production-ready for gameplay implementation.",
+      "desc": "Pot Boy is a small clay boy from The Midnight Walk with a pot for a head: big hollow eyes, a wide toothy grin and carved swirls all over his body.\n\nThe game's characters began as handmade clay sculpts that were scanned for production. Our job was to turn those scans into game assets: cleaning up the scan data, improving the sculpt and textures, building the game-res version, then rigging and skinning it so it could go straight into the game, all without losing the handmade, pressed-clay look the game is known for.\n\nNeed scanned or handmade characters made game-ready? We'll build yours to your style, budget and platform.",
       "tags": [],
       "w": 1500,
       "h": 1125,
-      "project": "The Midnight Walk"
+      "project": "The Midnight Walk",
+      "software": "ZBrush, Maya, Substance Painter",
+      "polys": "About 10K to 15K tris",
+      "textures": "",
+      "specs": [
+        {
+          "label": "Our role",
+          "value": "Scan cleanup, sculpt and texture improvements, game-res version, rigging and skinning"
+        },
+        {
+          "label": "Target platforms",
+          "value": "PC, PlayStation 5, PlayStation VR2"
+        },
+        {
+          "label": "Use",
+          "value": "In-game character in a released title"
+        }
+      ]
     },
     {
       "t": "Four Witch",
@@ -787,11 +940,28 @@
       "id": "G1XVva",
       "i": "/assets/img/portfolio/four-witch-g1xvva.webp",
       "imgs": [],
-      "desc": "The Midnight Walk - Four Witch\n\nAt Brothers Interactive, we contributed character cleanup, Sculpt & Texture Improvements, game res version and rigging services for multiple characters featured in The Midnight Walk, helping prepare scanned character assets for integration and use within the game pipeline.\n\nOur work focused on optimizing character assets, technical cleanup, and rigging support to ensure the characters were production-ready for gameplay implementation.",
+      "desc": "Four Witch is a hooded, red-robed figure from The Midnight Walk with a face on every side, carrying a little bag and topped with a tiny umbrella.\n\nThe game's characters began as handmade clay sculpts that were scanned for production. Our job was to turn those scans into game assets: cleaning up the scan data, improving the sculpt and textures, building the game-res version, then rigging and skinning it so it could go straight into the game, all without losing the handmade, pressed-clay look the game is known for.\n\nNeed scanned or handmade characters made game-ready? We'll build yours to your style, budget and platform.",
       "tags": [],
       "w": 1500,
       "h": 978,
-      "project": "The Midnight Walk"
+      "project": "The Midnight Walk",
+      "software": "ZBrush, Maya, Substance Painter",
+      "polys": "About 10K to 15K tris",
+      "textures": "",
+      "specs": [
+        {
+          "label": "Our role",
+          "value": "Scan cleanup, sculpt and texture improvements, game-res version, rigging and skinning"
+        },
+        {
+          "label": "Target platforms",
+          "value": "PC, PlayStation 5, PlayStation VR2"
+        },
+        {
+          "label": "Use",
+          "value": "In-game character in a released title"
+        }
+      ]
     },
     {
       "t": "Shark (TLR-1)",
