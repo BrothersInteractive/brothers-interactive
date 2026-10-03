@@ -807,6 +807,36 @@ function siteMain() {
     }).join("");
   }
 
+  /* Portfolio collage (homepage): every visible piece as a small square tile, shuffled on each visit, with a
+     few bigger 2x2 tiles mixed in. A tile opens the viewer, whose arrows then walk the collage in the same
+     order. The switch above flips between this and the category tiles; the choice is remembered. */
+  var collageEl = $("#collageGrid");
+  if (collageEl && PROJECTS.length) {
+    var collageOrder = PROJECTS.slice();
+    for (var ci = collageOrder.length - 1; ci > 0; ci--) { var cj = Math.floor(Math.random() * (ci + 1)), ct = collageOrder[ci]; collageOrder[ci] = collageOrder[cj]; collageOrder[cj] = ct; }
+    var bigEvery = 7;   // about one tile in seven is a big one
+    collageEl.innerHTML = collageOrder.map(function (p, i) {
+      var big = i % bigEvery === 3;
+      return '<button type="button" class="collage-tile' + (big ? ' is-big' : '') + '" data-index="' + PROJECTS.indexOf(p) + '" aria-label="Open ' + esc(p.t) + '">' +
+        '<img ' + imgAttrs(p.i, big ? "(max-width: 600px) 50vw, 17vw" : "(max-width: 600px) 25vw, 9vw") + ' alt="" loading="lazy" />' +
+        '<span class="collage-name">' + esc(p.t) + '</span></button>';
+    }).join("");
+    collageEl.addEventListener("click", function (e) {
+      var t = e.target.closest(".collage-tile");
+      if (t) { visibleList = collageOrder; openLightbox(+t.dataset.index, t); }
+    });
+    var pfView = function (v, save) {
+      var col = v !== "categories";
+      collageEl.hidden = !col;
+      if (categoryGridEl) categoryGridEl.hidden = col;
+      $$(".pf-switch-btn").forEach(function (b) { var on = b.dataset.view === (col ? "collage" : "categories"); b.classList.toggle("active", on); b.setAttribute("aria-selected", on ? "true" : "false"); });
+      if (save) { try { localStorage.setItem("bi-pf-view", col ? "collage" : "categories"); } catch (err) {} }
+    };
+    var savedView = null; try { savedView = localStorage.getItem("bi-pf-view"); } catch (err) {}
+    pfView(savedView || "collage", false);
+    $$(".pf-switch-btn").forEach(function (b) { b.addEventListener("click", function () { pfView(b.dataset.view, true); }); });
+  } else if (categoryGridEl) categoryGridEl.hidden = false;
+
   /* ------------------------------------------------------------------
      Lightbox
      ------------------------------------------------------------------ */
@@ -960,7 +990,8 @@ function siteMain() {
   function stepLightbox(dir) {
     if (!visibleList.length) return;
     lbPos = (lbPos + dir + visibleList.length) % visibleList.length;
-    lbOrigin = $('.work-card[data-index="' + PROJECTS.indexOf(visibleList[lbPos]) + '"]') || lbOrigin;
+    var lbIdx = PROJECTS.indexOf(visibleList[lbPos]);
+    lbOrigin = $('.work-card[data-index="' + lbIdx + '"], .collage-tile[data-index="' + lbIdx + '"]') || lbOrigin;
     showLightbox(visibleList[lbPos], dir);
   }
 

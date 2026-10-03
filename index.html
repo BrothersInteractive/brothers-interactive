@@ -50,8 +50,8 @@
   <link rel="icon" href="assets/img/brand/favicon.png" />
   <link rel="preload" href="assets/fonts/orbitron-var-latin.woff2" as="font" type="font/woff2" crossorigin />
   <link rel="preload" href="assets/fonts/rajdhani-400-latin.woff2" as="font" type="font/woff2" crossorigin />
-  <link rel="stylesheet" href="css/fonts.css?v=20261003t113" />
-  <link rel="stylesheet" href="css/style.css?v=20261003t113" />
+  <link rel="stylesheet" href="css/fonts.css?v=20261003t114" />
+  <link rel="stylesheet" href="css/style.css?v=20261003t114" />
   <script>try { var q = (location.search.match(/[?&]theme=([a-z]+)/) || [])[1]; var t = q || localStorage.getItem("bi-theme"); if (t && t !== "midnight" && "arctic ocean steel aurora desert".split(" ").indexOf(t) !== -1) document.documentElement.setAttribute("data-theme", t); } catch (e) {}</script>
 </head>
 <body>
@@ -233,7 +233,16 @@
           <p class="section-sub">Realistic humans, creatures, stylized characters, hair, props and production work for shipped titles.</p>
         </div>
 
-        <div class="style-grid" id="categoryGrid" aria-label="Browse by art style">
+        <div class="pf-switch reveal" role="tablist" aria-label="How to browse the portfolio">
+          <button type="button" class="pf-switch-btn active" data-view="collage" role="tab" aria-selected="true">Portfolio collage</button>
+          <button type="button" class="pf-switch-btn" data-view="categories" role="tab" aria-selected="false">Category tiles</button>
+        </div>
+
+        <div class="collage-grid" id="collageGrid" aria-label="Every portfolio piece">
+          <!-- Rendered by script.js: every visible piece, in a new random order on each visit -->
+        </div>
+
+        <div class="style-grid" id="categoryGrid" aria-label="Browse by art style" hidden>
           <!-- Rendered by script.js: one tile per category, links to category.html?cat=... -->
         </div>
 
@@ -578,9 +587,9 @@
     </div>
   </div>
 
-  <script src="js/urls.js?v=20261003t113"></script>
-  <script src="js/data.js?v=20261003t113"></script>
-  <script src="js/script.js?v=20261003t113"></script>
+  <script src="js/urls.js?v=20261003t114"></script>
+  <script src="js/data.js?v=20261003t114"></script>
+  <script src="js/script.js?v=20261003t114"></script>
   <!--/FOOTER-->
 </body>
 </html>
