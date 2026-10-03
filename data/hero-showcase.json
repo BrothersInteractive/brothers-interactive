@@ -1,16 +1,49 @@
 {
-  "mode": "together",
+  "mode": "random",
   "items": [
     {
-      "img": "/assets/img/portfolio/big-bad-wolf-podium.webp",
-      "imgSize": 150,
-      "animation": "glow",
-      "offsetX": -50,
+      "img": "/assets/img/portfolio/Mion.png",
+      "imgSize": null,
+      "animation": "breathe",
+      "offsetX": null,
       "offsetY": null,
       "model": "",
-      "modelSize": 150,
+      "modelSize": null,
       "video": "",
-      "alt": "Big Bad Wolf, stylized creature"
+      "alt": "Mion"
+    },
+    {
+      "img": "/assets/img/portfolio/SWAT V3.png",
+      "imgSize": null,
+      "animation": "breathe",
+      "offsetX": null,
+      "offsetY": null,
+      "model": "",
+      "modelSize": null,
+      "video": "",
+      "alt": "SWAT V3"
+    },
+    {
+      "img": "/assets/img/portfolio/Tutle.png",
+      "imgSize": null,
+      "animation": "breathe",
+      "offsetX": null,
+      "offsetY": null,
+      "model": "",
+      "modelSize": null,
+      "video": "",
+      "alt": "Turtle TLR"
+    },
+    {
+      "img": "/assets/img/portfolio/Krishna.png",
+      "imgSize": null,
+      "animation": "float",
+      "offsetX": null,
+      "offsetY": null,
+      "model": "",
+      "modelSize": null,
+      "video": "",
+      "alt": "Krishna MTG"
     }
   ]
 }
