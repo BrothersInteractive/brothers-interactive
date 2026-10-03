@@ -257,12 +257,26 @@ collections:
                 required: false
                 hint: "Tick to keep this piece off the site (grids, viewer, its own page, the sitemap) while it is unfinished. Untick and save to publish it."
 
-              - label: "Can be big in the collage"
+              - label: "Collage: can be 2x2 (big square)"
                 name: "big"
                 widget: "boolean"
                 default: false
                 required: false
-                hint: "Ticked pieces get a chance to show as a big 2x2 tile in the homepage collage. A few are picked at random on every visit."
+                hint: "The homepage collage picks a few ticked pieces at random on every visit for each shape. Tick the shapes this piece's main picture suits."
+
+              - label: "Collage: can be 2x1 (wide)"
+                name: "wide"
+                widget: "boolean"
+                default: false
+                required: false
+                hint: "Good for landscape pictures, such as front and back turnarounds."
+
+              - label: "Collage: can be 1x2 (tall)"
+                name: "tall"
+                widget: "boolean"
+                default: false
+                required: false
+                hint: "Shows the middle of the picture as a tall strip. Good for a single standing figure."
 
               - label: "Title"
                 name: "t"

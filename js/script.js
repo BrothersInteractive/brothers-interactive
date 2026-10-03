@@ -814,72 +814,87 @@ function siteMain() {
     }).join("");
   }
 
-  /* Portfolio collage (homepage). "All": every visible piece as a small square tile, shuffled on each visit,
-     with some 2x2 tiles picked at random from the pieces ticked "Can be big in the collage" in /admin. The
-     number of big (and, when needed, wide 2x1) tiles is worked out for the current column count so the last
-     row comes out full, and they only sit in the top three quarters, so the bottom edge stays straight.
-     A category filter shows that category's pieces as large cards, three per row. A tile or card opens the
-     viewer, whose arrows follow what is on screen. The switch flips to the category tiles; it is remembered. */
+  /* Portfolio collage (homepage). "All": every visible piece as a square tile, shuffled on each visit, with
+     some 2x2, 2x1 and 1x2 tiles drawn at random from the pieces ticked for that shape in /admin ("Collage
+     shapes"). For the current column count it tries mixes of those shapes, closest to a natural mix first,
+     and keeps the first one that fills the last row exactly and can be placed: 2x2 and 1x2 tiles never reach
+     the last row, 2x1 tiles can go anywhere, square tiles fill every remaining cell. So the bottom edge is
+     always straight, however many pieces there are. A category filter shows that category's pieces as large
+     cards, three per row. A tile or card opens the viewer, whose arrows follow what is on screen. The switch
+     flips to the category tiles; the choice is remembered. */
   var collageEl = $("#collageGrid"), collageCatEl = $("#collageCat"), collageFiltersEl = $("#collageFilters");
   if (collageEl && PROJECTS.length) {
     var shuffle = function (a) { for (var i = a.length - 1; i > 0; i--) { var j = Math.floor(Math.random() * (i + 1)), t = a[i]; a[i] = a[j]; a[j] = t; } return a; };
-    var collageOrder = shuffle(PROJECTS.slice()), collageShown = collageOrder, collageCols = 0, collageFilter = "all";
-    var bigPool = collageOrder.filter(function (p) { return p.big; });
-    if (!bigPool.length) bigPool = collageOrder.slice();
+    var collageOrder = shuffle(PROJECTS.slice()), collageShown = collageOrder, collageAll = [], collageCols = 0, collageFilter = "all";
+    var pool = { big: collageOrder.filter(function (p) { return p.big; }), tall: collageOrder.filter(function (p) { return p.tall; }), wide: collageOrder.filter(function (p) { return p.wide; }) };
+    var SHAPE = { big: { h: 2, w: 2, extra: 3, lastRowOk: false }, tall: { h: 2, w: 1, extra: 1, lastRowOk: false }, wide: { h: 1, w: 2, extra: 1, lastRowOk: true } };
     var colsNow = function () { return window.matchMedia("(max-width: 600px)").matches ? 4 : window.matchMedia("(max-width: 1100px)").matches ? 8 : 12; };
-    var tileHtml = function (p, kind) {
-      return '<button type="button" class="collage-tile' + (kind ? " is-" + kind : "") + '" data-index="' + PROJECTS.indexOf(p) + '" aria-label="Open ' + esc(p.t) + '">' +
-        '<img ' + imgAttrs(p.i, kind === "big" ? "(max-width: 600px) 50vw, 17vw" : "(max-width: 600px) 25vw, 9vw") + ' alt="" loading="lazy" />' +
-        '<span class="collage-name">' + esc(p.t) + '</span></button>';
+    var tileHtml = function (it) {
+      var big = it.kind === "big";
+      return '<button type="button" class="collage-tile' + (it.kind ? " is-" + it.kind : "") + '" data-index="' + PROJECTS.indexOf(it.p) + '" aria-label="Open ' + esc(it.p.t) + '"' +
+        ' style="grid-row:' + (it.r + 1) + " / span " + it.h + ";grid-column:" + (it.c + 1) + " / span " + it.w + '">' +
+        '<img ' + imgAttrs(it.p.i, big || it.kind === "wide" ? "(max-width: 600px) 50vw, 17vw" : "(max-width: 600px) 25vw, 9vw") + ' alt="" loading="lazy" />' +
+        '<span class="collage-name">' + esc(it.p.t) + '</span></button>';
     };
-    var collageAll = [];   // the "All" order as laid out (the viewer's arrows follow it)
+    // one attempt at placing a given mix; returns the placed tiles, or null if it did not fit
+    var placeMix = function (mix, cols) {
+      var n = collageOrder.length, rows = (n + 3 * mix.big + mix.tall + mix.wide) / cols;
+      var used = [], picks = [];
+      ["big", "tall", "wide"].forEach(function (k) {
+        var got = pool[k].filter(function (p) { return used.indexOf(p) === -1; }).slice(0, mix[k]);
+        got.forEach(function (p) { used.push(p); picks.push([p, k]); });
+      });
+      if (picks.length !== mix.big + mix.tall + mix.wide) return null;
+      var smalls = collageOrder.filter(function (p) { return used.indexOf(p) === -1; });
+      for (var attempt = 0; attempt < 25; attempt++) {
+        var occ = [], items = [], ok = true;
+        for (var r = 0; r < rows; r++) occ.push(new Array(cols).fill(false));
+        var free = function (r0, c0, h, w) { for (var y = r0; y < r0 + h; y++) for (var x = c0; x < c0 + w; x++) if (occ[y][x]) return false; return true; };
+        for (var q = 0; q < picks.length && ok; q++) {
+          var sh = SHAPE[picks[q][1]], maxRow = sh.lastRowOk ? rows : rows - 1, spots = [];
+          for (var y = 0; y + sh.h <= maxRow; y++) for (var x = 0; x + sh.w <= cols; x++) if (free(y, x, sh.h, sh.w)) spots.push([y, x]);
+          if (!spots.length) { ok = false; break; }
+          var sp = spots[Math.floor(Math.random() * spots.length)];
+          for (var yy = sp[0]; yy < sp[0] + sh.h; yy++) for (var xx = sp[1]; xx < sp[1] + sh.w; xx++) occ[yy][xx] = true;
+          items.push({ p: picks[q][0], kind: picks[q][1], r: sp[0], c: sp[1], h: sh.h, w: sh.w });
+        }
+        if (!ok) continue;
+        var si = 0;
+        for (var y2 = 0; y2 < rows; y2++) for (var x2 = 0; x2 < cols; x2++) if (!occ[y2][x2]) {
+          if (si >= smalls.length) { ok = false; break; }
+          occ[y2][x2] = true; items.push({ p: smalls[si++], kind: "", r: y2, c: x2, h: 1, w: 1 });
+        }
+        if (ok && si === smalls.length) return items;
+      }
+      return null;
+    };
+    // every row exactly one square tall: a row holding only a wide tile and halves of 2-row tiles has nothing else to size it
+    var sizeRows = function () {
+      var w = collageEl.clientWidth; if (!w || !collageCols) return;
+      var gap = parseFloat(getComputedStyle(collageEl).columnGap) || 0;
+      collageEl.style.gridAutoRows = ((w - gap * (collageCols - 1)) / collageCols) + "px";
+    };
     var layoutCollage = function () {
       var cols = colsNow(), n = collageOrder.length;
       collageCols = cols;
-      // cells used = n + 3 per big tile + 1 per wide tile; pick the counts closest to "one in seven big" that fill the last row
-      var target = Math.round(n / 7), maxBig = Math.min(bigPool.length, Math.floor(n / 4)), best = null;
-      for (var d = 0; d <= target + 4 && !best; d++) {
-        [target - d, target + d].forEach(function (b) {
-          if (best || b < 0 || b > maxBig) return;
-          for (var w = 0; w < cols && w <= 3; w++) if ((n + 3 * b + w) % cols === 0) { best = { b: b, w: w }; return; }
-        });
-      }
-      best = best || { b: Math.min(target, maxBig), w: 0 };
-      var bigs = bigPool.slice(0, best.b);
-      var rest = collageOrder.filter(function (p) { return bigs.indexOf(p) === -1; });
-      var wides = rest.filter(function (p) { return p.w && p.h && p.w > p.h * 1.2; }).slice(0, best.w);
-      if (wides.length < best.w) wides = wides.concat(rest.filter(function (p) { return wides.indexOf(p) === -1; }).slice(0, best.w - wides.length));
-      var smalls = rest.filter(function (p) { return wides.indexOf(p) === -1; });
-      // Place the tiles on an explicit grid: big tiles first, at random free spots that never reach the last row,
-      // then wide ones, then small tiles fill every remaining cell in reading order. No holes, straight bottom edge.
-      var rows = Math.ceil((n + 3 * bigs.length + wides.length) / cols), placed = null;
-      for (var attempt = 0; attempt < 30 && !placed; attempt++) {
-        var occ = [], items = [], ok = true;
-        for (var r = 0; r < rows; r++) occ.push(new Array(cols).fill(false));
-        var free = function (r0, c0, h, w) { for (var y = r0; y < r0 + h; y++) for (var x = c0; x < c0 + w; x++) if (y >= rows || x >= cols || occ[y][x]) return false; return true; };
-        var take = function (p, kind, h, w, maxRow) {
-          var spots = [];
-          for (var y = 0; y + h <= maxRow; y++) for (var x = 0; x + w <= cols; x++) if (free(y, x, h, w)) spots.push([y, x]);
-          if (!spots.length) return false;
-          var sp = spots[Math.floor(Math.random() * spots.length)];
-          for (var yy = sp[0]; yy < sp[0] + h; yy++) for (var xx = sp[1]; xx < sp[1] + w; xx++) occ[yy][xx] = true;
-          items.push({ p: p, kind: kind, r: sp[0], c: sp[1], h: h, w: w });
-          return true;
-        };
-        bigs.forEach(function (p) { if (ok && !take(p, "big", 2, 2, rows - 1)) ok = false; });
-        wides.forEach(function (p) { if (ok && !take(p, "wide", 1, 2, rows - 1)) ok = false; });
-        if (!ok) continue;
-        var si = 0;
-        for (var y2 = 0; y2 < rows; y2++) for (var x2 = 0; x2 < cols; x2++) if (!occ[y2][x2] && si < smalls.length) { occ[y2][x2] = true; items.push({ p: smalls[si++], kind: "", r: y2, c: x2, h: 1, w: 1 }); }
-        if (si === smalls.length) placed = items;
-      }
-      if (!placed) placed = collageOrder.map(function (p, i) { return { p: p, kind: "", r: Math.floor(i / cols), c: i % cols, h: 1, w: 1 }; });
+      // every mix that fills whole rows, closest first to about one big in seven, one wide in twelve, one tall in twenty
+      var want = { big: n / 7, wide: n / 12, tall: n / 20 }, mixes = [];
+      for (var b = 0; b <= Math.min(pool.big.length, Math.floor(n / 4)); b++)
+        for (var t = 0; t <= Math.min(pool.tall.length, 6); t++)
+          for (var w = 0; w <= Math.min(pool.wide.length, 8); w++) {
+            if (b + t + w > n || (n + 3 * b + t + w) % cols) continue;
+            mixes.push({ big: b, tall: t, wide: w, score: 2 * Math.abs(b - want.big) + Math.abs(w - want.wide) + Math.abs(t - want.tall) });
+          }
+      mixes.sort(function (m, q) { return m.score - q.score; });
+      var placed = null;
+      for (var i = 0; i < mixes.length && i < 40 && !placed; i++) placed = placeMix(mixes[i], cols);
+      // nothing fits (e.g. no shapes ticked and the count does not divide): plain squares, last row partly empty
+      if (!placed) placed = collageOrder.map(function (p, k) { return { p: p, kind: "", r: Math.floor(k / cols), c: k % cols, h: 1, w: 1 }; });
       placed.sort(function (m, q) { return m.r - q.r || m.c - q.c; });
       collageAll = placed.map(function (it) { return it.p; });
       collageEl.style.gridTemplateColumns = "repeat(" + cols + ", 1fr)";
-      collageEl.innerHTML = placed.map(function (it) {
-        return tileHtml(it.p, it.kind).replace('<button ', '<button style="grid-row:' + (it.r + 1) + " / span " + it.h + ";grid-column:" + (it.c + 1) + " / span " + it.w + '" ');
-      }).join("");
+      collageEl.innerHTML = placed.map(tileHtml).join("");
+      sizeRows();
     };
     var showCategory = function (slug) {
       var b = BROWSE_CATS.filter(function (c) { return c.slug === slug; })[0];
@@ -896,7 +911,7 @@ function siteMain() {
       var all = f === "all";
       collageEl.hidden = !all;
       if (collageCatEl) collageCatEl.hidden = all;
-      if (all) { if (collageCols !== colsNow()) layoutCollage(); collageShown = collageAll; }
+      if (all) { if (collageCols !== colsNow()) layoutCollage(); sizeRows(); collageShown = collageAll; }
       else showCategory(f);
       if (collageFiltersEl) $$(".filter-btn", collageFiltersEl).forEach(function (btn) { var on = btn.dataset.filter === f; btn.classList.toggle("active", on); btn.setAttribute("aria-pressed", on ? "true" : "false"); });
     };
@@ -909,7 +924,9 @@ function siteMain() {
     }
     layoutCollage();
     collageShown = collageAll;
-    window.addEventListener("resize", function () { if (collageFilter === "all" && collageCols !== colsNow()) { layoutCollage(); collageShown = collageAll; } });
+    window.addEventListener("resize", function () { if (collageFilter !== "all") return; if (collageCols !== colsNow()) { layoutCollage(); collageShown = collageAll; } else sizeRows(); });
+    // the collage's own width can change without a window resize (scrollbar appearing, zoom): keep the rows square
+    if (window.ResizeObserver) { var lastW = 0; new ResizeObserver(function () { var w = collageEl.clientWidth; if (w && w !== lastW) { lastW = w; sizeRows(); } }).observe(collageEl); }
     var openFrom = function (e) {
       var t = e.target.closest(".collage-tile, .collage-card");
       if (t) { visibleList = collageShown.slice(); openLightbox(+t.dataset.index, t); }
@@ -922,6 +939,7 @@ function siteMain() {
       collageEl.hidden = !col || collageFilter !== "all";
       if (collageCatEl) collageCatEl.hidden = !col || collageFilter === "all";
       if (categoryGridEl) categoryGridEl.hidden = col;
+      if (col) sizeRows();
       $$(".pf-switch-btn").forEach(function (b) { var on = b.dataset.view === (col ? "collage" : "categories"); b.classList.toggle("active", on); b.setAttribute("aria-selected", on ? "true" : "false"); });
       if (save) { try { localStorage.setItem("bi-pf-view", col ? "collage" : "categories"); } catch (err) {} }
     };

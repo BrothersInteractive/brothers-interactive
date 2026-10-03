@@ -27,7 +27,8 @@
           "label": "Use",
           "value": "Stylized hero or NPC character"
         }
-      ]
+      ],
+      "wide": true
     },
     {
       "t": "Monster Lizard",
@@ -60,7 +61,8 @@
           "value": "Enemy or boss creature"
         }
       ],
-      "big": true
+      "big": true,
+      "wide": true
     },
     {
       "t": "Cute Monster",
@@ -129,7 +131,8 @@
           "label": "Use",
           "value": "Playable character for sports and arena games"
         }
-      ]
+      ],
+      "wide": true
     },
     {
       "t": "Mion",
@@ -200,7 +203,8 @@
           "label": "Use",
           "value": "Stylized character or enemy head, portrait renders"
         }
-      ]
+      ],
+      "tall": true
     },
     {
       "t": "Lee Body",
@@ -480,7 +484,8 @@
           "value": "Hero character, gameplay and cinematics"
         }
       ],
-      "big": true
+      "big": true,
+      "wide": true
     },
     {
       "t": "Craftsman",
@@ -581,7 +586,8 @@
           "value": "Stylized enemy or boss character"
         }
       ],
-      "big": true
+      "big": true,
+      "wide": true
     },
     {
       "t": "Crow Mother",
@@ -807,7 +813,8 @@
           "value": "Enemy or boss for horror and survival games, gameplay and cutscenes"
         }
       ],
-      "big": true
+      "big": true,
+      "wide": true
     },
     {
       "t": "Grandma Dark",
@@ -915,7 +922,8 @@
           "value": "Playable or enemy soldier"
         }
       ],
-      "big": true
+      "big": true,
+      "wide": true
     },
     {
       "t": "Pot Boy",
@@ -1025,7 +1033,8 @@
           "value": "Playable or enemy character with color variants"
         }
       ],
-      "big": true
+      "big": true,
+      "tall": true
     },
     {
       "t": "Panda (TLR-1)",
@@ -1070,7 +1079,8 @@
           "value": "Playable character with color variants"
         }
       ],
-      "big": true
+      "big": true,
+      "wide": true
     },
     {
       "t": "Turtle (TLR-1)",
@@ -1236,7 +1246,8 @@
           "value": "Main or supporting character, cutscenes and cinematics"
         }
       ],
-      "big": true
+      "big": true,
+      "tall": true
     },
     {
       "t": "CHR Skins",
@@ -1288,7 +1299,8 @@
           "value": "Multiplayer cosmetics and player customization"
         }
       ],
-      "big": true
+      "big": true,
+      "wide": true
     },
     {
       "t": "Female Hair",
@@ -1333,7 +1345,8 @@
           "label": "Use",
           "value": "Hero character hair and customization"
         }
-      ]
+      ],
+      "tall": true
     },
     {
       "t": "Male Hair Variations",
@@ -1476,8 +1489,7 @@
           "label": "Use",
           "value": "In-game character in a released title"
         }
-      ],
-      "big": true
+      ]
     },
     {
       "t": "Rug Reader",
@@ -1777,8 +1789,7 @@
           "label": "Use",
           "value": "In-game character in a released title"
         }
-      ],
-      "big": true
+      ]
     },
     {
       "t": "Russell Del's Girl CHR",
@@ -1891,7 +1902,8 @@
           "value": "Hero character, cutscenes and cinematics"
         }
       ],
-      "big": true
+      "big": true,
+      "wide": true
     },
     {
       "t": "Adam - Game Res Model",
@@ -1937,7 +1949,8 @@
           "label": "Use",
           "value": "Playable hero with visible progression"
         }
-      ]
+      ],
+      "wide": true
     },
     {
       "t": "Explorer's Book",
@@ -2049,7 +2062,8 @@
           "label": "Use",
           "value": "First-person hero prop with animated parts"
         }
-      ]
+      ],
+      "wide": true
     },
     {
       "t": "Dhakad",
@@ -2087,7 +2101,8 @@
           "label": "Use",
           "value": "Head for NPCs, dialogue scenes and cutscenes"
         }
-      ]
+      ],
+      "tall": true
     },
     {
       "t": "Head Study",
@@ -2116,7 +2131,8 @@
           "label": "Use",
           "value": "Hero head or digital double, baking source"
         }
-      ]
+      ],
+      "wide": true
     },
     {
       "t": "Rasch: Crysis 3 Fan Art",
