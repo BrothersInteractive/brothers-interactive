@@ -540,11 +540,28 @@
         "/assets/img/portfolio/shark-tlr-1-qx2obd-18.webp",
         "/assets/img/portfolio/shark-tlr-1-qx2obd-19.webp"
       ],
-      "desc": "Stylized Creature Study: \"Shark\"\nDeveloped internally at Brothers Interactive, \"Shark\" represents our team's advanced capabilities in high-fidelity creature art and real-time shader pipelines. This production-ready asset was built from the ground up to showcase powerful organic forms, dynamic emissive accents, and a highly customizable material setup optimized for current-gen cinematic and gameplay engines.\n\nTechnical Breakdown:\n- Budget: 60K Tris\n- Texturing: Channel-packed mask map workflow, utilizing six 4K and two 2K texture sets to drive real-time engine shaders.\n- Target Platforms: PC, PlayStation 5, and Xbox Series X|S\n- Pipeline: Built specifically for an Unreal Engine pipeline; all primary material properties, color variations, and emissive elements are controlled dynamically via master shaders using our optimized mask maps.\n\nThanks",
+      "desc": "Shark is a heavy brawler built for an Unreal pipeline: a shark-headed bruiser in spiked plate, wrapped in chains and dragging an anchor. The silhouette reads at a glance, which is exactly what you want from an enemy the player has to spot fast.\n\nThe sculpt pushes big, readable forms: a thick neck and traps, plate armor with dents and scratches, and chains that sit naturally on the arms and legs. The materials run on channel-packed mask maps driving a master shader, so colors, wear and emissive accents can be changed in engine without re-texturing. One model, many enemy variants.\n\nBuilding a roster of creature enemies or bosses? This is the level we deliver.",
       "tags": [],
       "w": 2088,
       "h": 2160,
-      "project": "Studio work"
+      "project": "Studio work",
+      "polys": "60K tris",
+      "textures": "Channel-packed mask maps, six 4K and two 2K texture sets",
+      "software": "ZBrush, Maya, Substance Painter, Unreal Engine",
+      "specs": [
+        {
+          "label": "Engine setup",
+          "value": "Unreal Engine master shader, color and emissive variants in engine"
+        },
+        {
+          "label": "Target platforms",
+          "value": "PC, PlayStation 5, Xbox Series X|S"
+        },
+        {
+          "label": "Use",
+          "value": "Enemy or boss character with color variants"
+        }
+      ]
     },
     {
       "t": "Panda (TLR-1)",
@@ -618,11 +635,28 @@
         "/assets/img/portfolio/mtg-murkaz-tex-ldnwka-18.webp",
         "/assets/img/portfolio/mtg-murkaz-tex-ldnwka-19.webp"
       ],
-      "desc": "Cinematic Character Study: \"Murkaz\"\nDeveloped internally at Brothers Interactive, \"Murkaz\" represents our team's peak proficiency in hyper-realistic dark fantasy creature creation and high-end cinematic art. This production-ready asset was built from the ground up to showcase complex organic anatomy, heavily weathered hard-surface armor, and advanced real-time grooming workflows required for premier current-gen titles and cinematic narratives.\n\nTechnical Breakdown:\n- Budget: 320K Tris\n- Texturing: PBR workflow, eight 4K and three 2K texture sets\n- Target Platforms: PC, PlayStation 5, and Xbox Series X|S\n- Pipeline: Fully optimized for current-gen engines, utilizing an advanced real-time alpha card hair and fur method for dense, high-fidelity shading and physics integration (Optimized for boss gameplay assets, next-gen cutscenes, and high-end cinematics).",
+      "desc": "Murkaz comes from Man to God (MTG), our own studio universe drawn from Indian mythology. We built him as a boss-sized brute: heavy frame, braided beard, fur everywhere, and a mace big enough to sell every hit, made to carry a boss fight in gameplay and still hold the camera in a cutscene.\n\nThe sculpt does the heavy lifting, with real weight in the belly, shoulders and calves, and leather, cloth and metal that each read differently. Fur trims, beard and hair are alpha cards, so they stay dense and soft without the cost of strand grooms. The lion-head pauldron, carved mace, face paint and embroidered cloth carry most of the surface detail.\n\nNeed a mythic boss or a heavy hitter for a dark fantasy game? This is the level we deliver.",
       "tags": [],
       "w": 2000,
       "h": 2000,
-      "project": "Studio work"
+      "project": "Man to God (MTG), studio IP",
+      "polys": "320K tris",
+      "textures": "PBR, eight 4K and three 2K texture sets",
+      "software": "ZBrush, Maya, Substance Painter, Marmoset Toolbag",
+      "specs": [
+        {
+          "label": "Hair and fur",
+          "value": "Alpha cards"
+        },
+        {
+          "label": "Target platforms",
+          "value": "PC, PlayStation 5, Xbox Series X|S"
+        },
+        {
+          "label": "Use",
+          "value": "Boss character, cutscenes and cinematics"
+        }
+      ]
     },
     {
       "t": "Beetle - Crash Bandicoot 4 Fan Art",
