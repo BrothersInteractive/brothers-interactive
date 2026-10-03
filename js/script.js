@@ -48,6 +48,30 @@ function siteMain() {
      files to show them at ~400-600px. A missing thumbnail (e.g. a brand-new /admin upload)
      falls back to the full image automatically. Returns the src/srcset/sizes attributes. */
   var THUMB_RE = /assets\/img\/(portfolio|games|categories)\/([^\/?#]+)\.(webp|jpe?g|png)$/i;
+  /* Small copies made by tools/build.js: the strip of views uses a tiny one (200px tall), and switching views
+     shows the 960px grid copy at once while the full picture downloads. Both fall back to the original. */
+  function stripThumb(u) { var m = THUMB_RE.exec(u || ""); return m && m[1] === "portfolio" ? "assets/img/thumbs/strip/" + m[2] + ".webp" : u; }
+  function midThumb(u) { var m = THUMB_RE.exec(u || ""); return m ? "assets/img/thumbs/" + m[1] + "/" + m[2] + ".webp" : u; }
+  // Show a picture straight away from its small copy, then swap in the full file once it has arrived
+  function swapToFull(img, full, isCurrent) {
+    var mid = midThumb(full);
+    img.setAttribute("fetchpriority", "high");
+    if (mid === full) { img.src = full; return; }
+    img.classList.add("is-soft");
+    img.src = mid;
+    var pre = new Image();
+    pre.onload = pre.onerror = function () { if (!isCurrent || isCurrent()) { img.src = full; img.classList.remove("is-soft"); } };
+    pre.src = full;
+  }
+  // The strip's tiny pictures start loading only once the main picture is in, so it never waits behind them
+  function loadStripAfter(main, box) {
+    var go = function () { $$("img[data-src]", box).forEach(function (im) { im.src = im.getAttribute("data-src"); im.removeAttribute("data-src"); }); };
+    if (main.complete && main.naturalWidth) go();
+    else { main.addEventListener("load", go, { once: true }); main.addEventListener("error", go, { once: true }); setTimeout(go, 2500); }
+  }
+  function stripImg(u, alt) {
+    return '<img data-src="' + esc(stripThumb(u)) + '" alt="' + esc(alt || "") + '" decoding="async" onerror="this.onerror=null;this.src=\'' + esc(midThumb(u)) + '\'" />';
+  }
   function imgAttrs(u, sizes) {
     u = u || "";
     if (!THUMB_RE.test(u)) return 'src="' + u + '"';
@@ -1077,6 +1101,8 @@ function siteMain() {
   }
   function showLightbox(p, dir) {
     var swap = function () {
+      lbImg.setAttribute("fetchpriority", "high");   // the main picture before anything else
+      lbImg.classList.remove("is-soft");
       lbImg.src = p.i;
       lbImg.alt = p.t;
       lbImg.classList.add("loaded");
@@ -1134,7 +1160,7 @@ function siteMain() {
   var lbVariants = [], lbActive = 0;
   var wideViewer = window.matchMedia ? window.matchMedia("(min-width: 1001px)") : { matches: true };
   function lbThumb(i) {
-    return '<button class="asset-thumb' + (i === lbActive ? ' active' : '') + '" data-idx="' + i + '" aria-label="View image ' + (i + 1) + ' of ' + lbVariants.length + '"><img ' + imgAttrs(lbVariants[i], "240px") + ' alt="" /></button>';   // not lazy: in the strip their width comes from the loaded image
+    return '<button class="asset-thumb' + (i === lbActive ? ' active' : '') + '" data-idx="' + i + '" aria-label="View image ' + (i + 1) + ' of ' + lbVariants.length + '">' + stripImg(lbVariants[i]) + '</button>';   // tiny copies, loaded once the main picture is in
   }
   /* Size the picture element to the picture itself: the largest fit inside one fixed box (wide pictures
      stop at its width, tall ones at its height), so the theme outline hugs the artwork. On wide screens
@@ -1188,7 +1214,7 @@ function siteMain() {
     hideLens();
     lbImg.classList.add("fading");
     setTimeout(function () {
-      lbImg.src = lbVariants[idx];
+      swapToFull(lbImg, lbVariants[idx], function () { return lbActive === idx; });
       lbImg.classList.remove("fading");
       renderLbThumbs();
     }, 160);
@@ -1219,6 +1245,7 @@ function siteMain() {
     lbPrevBtn.setAttribute("aria-label", "Previous image");
     lbNextBtn.setAttribute("aria-label", "Next image");
     lbThumbs.innerHTML = n > 1 ? lbVariants.map(function (u, i) { return lbThumb(i); }).join("") : "";
+    loadStripAfter(lbImg, lbThumbs);
     var on = $(".asset-thumb.active", lbThumbs);
     if (on && on.scrollIntoView && lbThumbs.scrollWidth > lbThumbs.clientWidth) on.scrollIntoView({ block: "nearest", inline: "center" });
     fitLbImg();
@@ -1962,6 +1989,7 @@ function siteMain() {
     $("#assetDesc").innerHTML = paras.length ? paras.map(function (t) { return '<p>' + esc(t).replace(/\n/g, '<br>') + '</p>'; }).join("") : '<p>Breakdown and technical details available on request.</p>';
     var all = [P.i].concat(P.imgs || []);
     var aMain = $("#assetMain");
+    aMain.setAttribute("fetchpriority", "high");   // the main picture before the strip of views
     aMain.src = all[0]; aMain.alt = P.t;
     // Same size rule as the viewer: the largest fit inside 1500 x 750 (and the page width), so the lens and
     // its zoom levels behave the same on this page as in the viewer
@@ -1985,10 +2013,12 @@ function siteMain() {
     assetTools.innerHTML = lensToolButtons("all");
     $(".asset-main").insertAdjacentElement("afterend", assetTools);
     showLensMode();
-    $("#assetThumbs").innerHTML = all.map(function (u, i) { return '<button class="asset-thumb' + (i ? '' : ' active') + '" data-src="' + u + '" aria-label="View ' + (i + 1) + '"><img ' + imgAttrs(u, "120px") + ' alt="' + esc(P.t) + ' view ' + (i + 1) + '" loading="lazy" /></button>'; }).join("");
+    $("#assetThumbs").innerHTML = all.map(function (u, i) { return '<button class="asset-thumb' + (i ? '' : ' active') + '" data-full="' + esc(u) + '" aria-label="View ' + (i + 1) + '">' + stripImg(u, P.t + " view " + (i + 1)) + '</button>'; }).join("");
+    loadStripAfter(aMain, $("#assetThumbs"));
     $("#assetThumbs").addEventListener("click", function (e) {
-      var b = e.target.closest(".asset-thumb"); if (!b) return;
-      $("#assetMain").src = b.dataset.src; $$(".asset-thumb").forEach(function (x) { x.classList.toggle("active", x === b); });
+      var b = e.target.closest(".asset-thumb"); if (!b || b.classList.contains("active")) return;
+      $$(".asset-thumb").forEach(function (x) { x.classList.toggle("active", x === b); });
+      swapToFull(aMain, b.dataset.full, function () { return b.classList.contains("active"); });
     });
     // Tags are for the studio's own reference in /admin and are not shown to visitors
     var commissionBtn = $("#assetCommission");

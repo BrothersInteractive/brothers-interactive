@@ -83,6 +83,20 @@ async function makeThumbs() {
     } catch (e) { console.log("Collage thumbnail failed for " + f + ": " + e.message); }
   }
   console.log("Collage thumbnails (480px short side): made " + cmade + ".");
+  // the strip of views (viewer and artwork page): tiny copies, 200px tall, for every portfolio picture
+  const sdst = path.join(OUT, "assets/img/thumbs/strip");
+  fs.mkdirSync(sdst, { recursive: true });
+  let smade = 0;
+  for (const f of fs.readdirSync(csrc)) {
+    if (!/\.(webp|jpe?g|png)$/i.test(f)) continue;
+    const out = path.join(sdst, f.replace(/\.(webp|jpe?g|png)$/i, ".webp"));
+    if (fs.existsSync(out)) continue;
+    try {
+      const buf = await sharp(fs.readFileSync(path.join(csrc, f))).resize({ height: 200, withoutEnlargement: true }).webp({ quality: 74 }).toBuffer();
+      fs.writeFileSync(out, buf); smade++;
+    } catch (e) { console.log("Strip thumbnail failed for " + f + ": " + e.message); }
+  }
+  console.log("Strip thumbnails (200px tall): made " + smade + ".");
 }
 
 // ---- 1b. share pictures: LinkedIn and some chat apps do not show WebP previews, so each page's

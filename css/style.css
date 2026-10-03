@@ -1509,3 +1509,6 @@ body.lens-on .art-cursor, body.lens-on .art-cursor-ring, body.lens-on .cursor-gl
 .asset-media .asset-3d { width: min(1200px, 100%); margin-top: 12px; position: relative; }
 .asset-mview .bd-embed-note { position: absolute; inset: 0; display: grid; place-items: center; margin: 0; color: var(--text-muted); }
 .asset-specs li strong:only-child { padding-top: 2px; }
+
+/* a view shown from its small copy while the full picture downloads (a moment, then it sharpens) */
+img.is-soft { filter: blur(1.5px); }
