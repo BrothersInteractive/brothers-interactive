@@ -1266,7 +1266,7 @@
       ]
     },
     {
-      "t": "Proposal Book",
+      "t": "Explorer's Book",
       "c": "props",
       "cats": [],
       "id": "KaQZrr",
@@ -1283,11 +1283,25 @@
         "/assets/img/portfolio/proposal-book-kaqzrr-10.webp",
         "/assets/img/portfolio/proposal-book-kaqzrr-11.webp"
       ],
-      "desc": "Ornate Prop Study: \"Proposal Book\"\nDeveloped internally at Brothers Interactive, we finished a 12-week masterclass in 2019 about gaming pipeline for props. \n\nProduction Concept:\nAn ancient, masterfully crafted heavy tome featuring prominent, hand-forged metallic scrollwork and defensive metal plates layered across a weathered leather binding, anchored by a central embedded magical gemstone.\n\nTechnical Breakdown:\n- Budget: Fully optimized current-gen prop triangle budget\n- Texturing: High-fidelity PBR workflow, utilizing high-resolution texture sets to maximize micro-surface metallic scratch details, leather aging, and crystal refractivity\n- Target Platforms: PC, PlayStation 5, and Xbox Series X|S\n- Pipeline: Fully optimized with clean hard-surface topology and precise material IDs, ready for seamless integration into close-up first-person viewports, narrative puzzle interactions, and current-gen gameplay engines.",
+      "desc": "Explorer's Book (first made as our Proposal Book) came out of a 12-week masterclass our team took on the game prop pipeline. It's an explorer's kit packed onto one book: a green embossed leather journal strapped shut, a rolled bamboo mat, a spyglass, a quill and pencil, wax-sealed letters, coins, dice and loose sketch pages.\n\nThe challenge was making a pile of small objects read as one prop. Leather, paper, bamboo, brass and glass each get their own wear, and the loose pages and straps are arranged so the silhouette works from any angle. It's built to be seen up close, on a desk, in an inspect view or in a story moment.\n\nNeed props that tell a story up close? Talk to us about your project.",
       "tags": [],
       "w": 1500,
       "h": 1500,
-      "project": "Studio work"
+      "project": "Studio work",
+      "polys": "About 25K tris",
+      "textures": "PBR, multiple texture sets from 256 to 4K",
+      "software": "ZBrush, Maya, Substance Painter, Marmoset Toolbag",
+      "specs": [
+        {
+          "label": "Target platforms",
+          "value": "PC, PlayStation 4, Xbox One"
+        },
+        {
+          "label": "Use",
+          "value": "Close-up hero prop for inspect views and story moments"
+        }
+      ],
+      "slug": "explorers-book"
     },
     {
       "t": "Fire Drum",
