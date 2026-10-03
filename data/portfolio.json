@@ -49,11 +49,28 @@
         "/assets/img/portfolio/cute-monster-xdazdy-6.webp",
         "/assets/img/portfolio/cute-monster-xdazdy-7.webp"
       ],
-      "desc": "Cute Monster,\nDeveloped internally at Brothers Interactive, \"Cute Monster\" represents our team's expertise in high-quality stylized creature and character art. This production-ready asset was built from the ground up to showcase Clean hand-painted art style approach, readability, expressive anatomical proportions, and vibrant material definition required for modern stylized fantasy and strategy titles.\n\nTechnical Breakdown:\n- Level 1 Triangle Budget: 7,090 Tris\n- Level 2 Triangle Budget: 7,582 Tris\n- Level 3 Triangle Budget: 9,548 Tris\n- Level 4 Triangle Budget: 12,548 Tris\n\n- Texturing: single 1K Diffuse map (For Each Level)\n- Target Platforms: Mobile, Nintendo Switch, and PC\n- Pipeline: Fully optimized with clean, deformation-ready topology, ready for seamless integration into modern low-spec and cross-platform gameplay engines.",
+      "desc": "Cute Monster is one creature in four evolutions: a chubby little lizard at level 1 that grows armor, horns, spikes and finally wings by level 4. Each stage is its own model, so the player sees the creature level up, not just change color.\n\nIt's built in a clean hand-painted style for mobile, Switch and PC, with each level on a single 1K diffuse map and tri counts rising from about 7K to 12.5K as the armor builds up. Bright colors and big, simple shapes keep him readable on a small screen, and the topology is ready for rigging and animation across all four stages.\n\nMaking a creature collector, strategy or idle game with evolving monsters? This is the level we deliver.",
       "tags": [],
       "w": 2500,
       "h": 2310,
-      "project": "Studio work"
+      "project": "Studio work",
+      "polys": "7,090 / 7,582 / 9,548 / 12,548 tris (levels 1 to 4)",
+      "textures": "Hand-painted, one 1K diffuse map per level",
+      "software": "ZBrush, Maya, Substance Painter, Unreal Engine",
+      "specs": [
+        {
+          "label": "Stages",
+          "value": "4 evolution levels"
+        },
+        {
+          "label": "Target platforms",
+          "value": "Mobile, Nintendo Switch, PC"
+        },
+        {
+          "label": "Use",
+          "value": "Evolving creature or pet for collector and strategy games"
+        }
+      ]
     },
     {
       "t": "Nitro CR7",
