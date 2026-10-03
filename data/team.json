@@ -43,7 +43,7 @@
     {
       "name": "Deepak Gautam",
       "role": "Lead Character Artist",
-      "initials": "D",
+      "initials": "DG",
       "photo": "/assets/img/team/avatar-placeholder-3.svg",
       "bio": "Deepak leads character production, from high-poly sculpt to game-ready model, and guides the artists on anatomy, form and style. He also heads the studio's AI R&D, testing new tools and workflows that speed up production without compromising quality.",
       "tags": [
@@ -56,9 +56,9 @@
     {
       "name": "Krutik Basan",
       "role": "Lead Character Artist",
-      "initials": "K",
+      "initials": "KB",
       "photo": "/assets/img/team/avatar-placeholder-4.svg",
-      "bio": "Krutik leads the texturing and technical department. He owns PBR and stylized texturing, material setup and the technical checks that keep every character clean, optimised and engine-ready in Unreal, Unity or a client's own engine.",
+      "bio": "Krutik leads the texturing and technical department. He owns PBR and stylized texturing, material setup and the technical checks that keep every character clean, optimized and engine-ready in Unreal, Unity or a client's own engine.",
       "tags": [
         "Texturing",
         "Technical art",

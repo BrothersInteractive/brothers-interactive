@@ -528,7 +528,10 @@ function siteMain() {
       el.style.width = ""; el.style.maxWidth = ""; el.style.setProperty("--pic-k", 1);
       var w0 = el.offsetWidth;
       el.style.setProperty("--pic-k", k);
-      if (k !== 1) { el.style.maxWidth = "none"; el.style.width = Math.round(w0 * k) + "px"; }
+      // never wider than the hero itself, or a phone gets a sideways scroll (150% of 280px is 420px)
+      var box = el.closest(".container"), cs = box && getComputedStyle(box);
+      var room = box ? box.clientWidth - parseFloat(cs.paddingLeft) - parseFloat(cs.paddingRight) : Infinity;
+      if (k !== 1) { el.style.maxWidth = "none"; el.style.width = Math.round(Math.min(w0 * k, room)) + "px"; }
     }
     // Size, animation and position from /admin, for one entry on one element (picture, video or 3D model).
     // Move: X + = right, - = left; Y + = up, - = down, in pixels (halved on tablets and phones).
