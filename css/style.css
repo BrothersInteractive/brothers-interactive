@@ -351,6 +351,13 @@ button { font: inherit; color: inherit; cursor: pointer; background: none; borde
 .collage-filters { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px; margin: 0 0 22px; }
 .collage-filters[hidden] { display: none; }
 .collage-filters .filter-btn { padding: 8px 14px; font-size: 0.64rem; letter-spacing: 0.12em; }
+/* phones: one row you swipe sideways (13 wrapped buttons took a whole screen before any artwork) */
+@media (max-width: 600px) {
+  .collage-filters { flex-wrap: nowrap; justify-content: flex-start; overflow-x: auto; scrollbar-width: none; margin: 0 -16px 18px; padding: 2px 16px 6px; scroll-padding: 0 16px;
+    -webkit-mask-image: linear-gradient(90deg, transparent, #000 16px, #000 calc(100% - 28px), transparent); mask-image: linear-gradient(90deg, transparent, #000 16px, #000 calc(100% - 28px), transparent); }
+  .collage-filters::-webkit-scrollbar { display: none; }
+  .collage-filters .filter-btn { flex: none; }
+}
 .collage-card { width: 100%; padding: 0; text-align: left; font: inherit; }
 /* the picture never sizes its tile (a wide tile took its picture's height and opened gaps in that row) */
 .collage-tile img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 0.35s ease, filter 0.35s ease; }

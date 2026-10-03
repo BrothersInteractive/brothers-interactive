@@ -733,7 +733,9 @@ function siteMain() {
     var catLabel = (activeBrowseCat && activeBrowseCat.label) || CAT[activeFilter] || "Portfolio";
     catTitleEl.textContent = catLabel;
     document.title = catLabel + " | Brothers Interactive";
-    if (activeBrowseCat) setAddress(URLS.categoryPath(activeBrowseCat.slug));
+    // an old category.html?cat= link: category addresses now open the homepage collage with that filter on
+    var oldCat = activeBrowseCat || BROWSE_CATS.filter(function (b) { return b.match.indexOf(activeFilter) !== -1; })[0];   // a slug, or an older code like realistic-humans
+    if (oldCat) { location.replace(URLS.categoryPath(oldCat.slug)); return; }
   }
 
   /* A fresh random order on every page load, so the portfolio never looks the same twice */
@@ -922,7 +924,11 @@ function siteMain() {
       if (collageCatEl) collageCatEl.hidden = all;
       if (all) { if (collageCols !== colsNow()) layoutCollage(); sizeRows(); collageShown = collageAll; }
       else showCategory(f);
-      if (collageFiltersEl) $$(".filter-btn", collageFiltersEl).forEach(function (btn) { var on = btn.dataset.filter === f; btn.classList.toggle("active", on); btn.setAttribute("aria-pressed", on ? "true" : "false"); });
+      if (collageFiltersEl) $$(".filter-btn", collageFiltersEl).forEach(function (btn) {
+        var on = btn.dataset.filter === f; btn.classList.toggle("active", on); btn.setAttribute("aria-pressed", on ? "true" : "false");
+        // phones: the filters are one sideways row, so bring the chosen one into view
+        if (on && collageFiltersEl.scrollWidth > collageFiltersEl.clientWidth) collageFiltersEl.scrollLeft = btn.offsetLeft - (collageFiltersEl.clientWidth - btn.offsetWidth) / 2;
+      });
     };
     if (collageFiltersEl) {
       collageFiltersEl.innerHTML = '<button type="button" class="filter-btn active" data-filter="all" aria-pressed="true">All</button>' +
@@ -2419,7 +2425,8 @@ function siteMain() {
    edits still show on the next refresh without re-downloading everything.
    ------------------------------------------------------------------ */
 (function () {
-  var names = ["portfolio", "games", "cases", "posts", "testimonials", "roles", "clients", "press", "team", "hero-showcase", "config", "hero", "breakdowns", "careers-hero"];
+  // (cases, roles and press are no longer on any page, so they are not fetched)
+  var names = ["portfolio", "games", "posts", "testimonials", "clients", "team", "hero-showcase", "config", "hero", "breakdowns", "careers-hero"];
   if (document.getElementById("about")) names.push("about");
   if (document.getElementById("services") && window.BIURL) window.BIURL.TEXT_SECTIONS.forEach(function (id) { names.push("sections/" + id); });
   if (document.getElementById("contactForm")) names.push("sections/contact");
