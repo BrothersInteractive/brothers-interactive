@@ -829,11 +829,12 @@ function siteMain() {
     var pool = { big: collageOrder.filter(function (p) { return p.big; }), tall: collageOrder.filter(function (p) { return p.tall; }), wide: collageOrder.filter(function (p) { return p.wide; }) };
     var SHAPE = { big: { h: 2, w: 2, extra: 3, lastRowOk: false }, tall: { h: 2, w: 1, extra: 1, lastRowOk: false }, wide: { h: 1, w: 2, extra: 1, lastRowOk: true } };
     var colsNow = function () { return window.matchMedia("(max-width: 600px)").matches ? 4 : window.matchMedia("(max-width: 1100px)").matches ? 8 : 12; };
+    // the collage's own small copy (480px on the short side, made by tools/build.js); the full picture if it is missing
+    var collageThumb = function (u) { var m = THUMB_RE.exec(u || ""); return m && m[1] === "portfolio" ? "assets/img/thumbs/collage/" + m[2] + ".webp" : u; };
     var tileHtml = function (it) {
-      var big = it.kind === "big";
       return '<button type="button" class="collage-tile' + (it.kind ? " is-" + it.kind : "") + '" data-index="' + PROJECTS.indexOf(it.p) + '" aria-label="Open ' + esc(it.p.t) + '"' +
         ' style="grid-row:' + (it.r + 1) + " / span " + it.h + ";grid-column:" + (it.c + 1) + " / span " + it.w + '">' +
-        '<img ' + imgAttrs(it.p.i, big || it.kind === "wide" ? "(max-width: 600px) 50vw, 17vw" : "(max-width: 600px) 25vw, 9vw") + ' alt="" loading="lazy" />' +
+        '<img src="' + esc(collageThumb(it.p.i)) + '" alt="" loading="lazy" decoding="async" onerror="this.onerror=null;this.src=\'' + esc(it.p.i) + '\'" />' +
         '<span class="collage-name">' + esc(it.p.t) + '</span></button>';
     };
     // one attempt at placing a given mix; returns the placed tiles, or null if it did not fit
@@ -849,13 +850,16 @@ function siteMain() {
       for (var attempt = 0; attempt < 25; attempt++) {
         var occ = [], items = [], ok = true;
         for (var r = 0; r < rows; r++) occ.push(new Array(cols).fill(false));
+        var bigAt = [];
+        for (var rb = 0; rb < rows; rb++) bigAt.push(new Array(cols).fill(false));
         var free = function (r0, c0, h, w) { for (var y = r0; y < r0 + h; y++) for (var x = c0; x < c0 + w; x++) if (occ[y][x]) return false; return true; };
+        var nearBig = function (r0, c0, h, w) { for (var y = r0 - 1; y <= r0 + h; y++) for (var x = c0 - 1; x <= c0 + w; x++) if (y >= 0 && y < rows && x >= 0 && x < cols && bigAt[y][x]) return true; return false; };
         for (var q = 0; q < picks.length && ok; q++) {
           var sh = SHAPE[picks[q][1]], maxRow = sh.lastRowOk ? rows : rows - 1, spots = [];
-          for (var y = 0; y + sh.h <= maxRow; y++) for (var x = 0; x + sh.w <= cols; x++) if (free(y, x, sh.h, sh.w)) spots.push([y, x]);
+          for (var y = 0; y + sh.h <= maxRow; y++) for (var x = 0; x + sh.w <= cols; x++) if (free(y, x, sh.h, sh.w) && !(picks[q][1] === "big" && nearBig(y, x, 2, 2))) spots.push([y, x]);
           if (!spots.length) { ok = false; break; }
           var sp = spots[Math.floor(Math.random() * spots.length)];
-          for (var yy = sp[0]; yy < sp[0] + sh.h; yy++) for (var xx = sp[1]; xx < sp[1] + sh.w; xx++) occ[yy][xx] = true;
+          for (var yy = sp[0]; yy < sp[0] + sh.h; yy++) for (var xx = sp[1]; xx < sp[1] + sh.w; xx++) { occ[yy][xx] = true; if (picks[q][1] === "big") bigAt[yy][xx] = true; }
           items.push({ p: picks[q][0], kind: picks[q][1], r: sp[0], c: sp[1], h: sh.h, w: sh.w });
         }
         if (!ok) continue;
@@ -877,13 +881,14 @@ function siteMain() {
     var layoutCollage = function () {
       var cols = colsNow(), n = collageOrder.length;
       collageCols = cols;
-      // every mix that fills whole rows, closest first to about one big in seven, one wide in twelve, one tall in twenty
-      var want = { big: n / 7, wide: n / 12, tall: n / 20 }, mixes = [];
-      for (var b = 0; b <= Math.min(pool.big.length, Math.floor(n / 4)); b++)
-        for (var t = 0; t <= Math.min(pool.tall.length, 6); t++)
-          for (var w = 0; w <= Math.min(pool.wide.length, 8); w++) {
-            if (b + t + w > n || (n + 3 * b + t + w) % cols) continue;
-            mixes.push({ big: b, tall: t, wide: w, score: 2 * Math.abs(b - want.big) + Math.abs(w - want.wide) + Math.abs(t - want.tall) });
+      // every mix that fills whole rows within the limits (big up to 10% of the pieces, wide and tall up to 15% each):
+      // as many big tiles as the limit allows, then as few wide and tall ones as will fill the last row
+      var maxBig = Math.min(pool.big.length, Math.floor(n * 0.10)), maxSide = Math.floor(n * 0.15), mixes = [];
+      for (var b = 0; b <= maxBig; b++)
+        for (var t = 0; t <= Math.min(pool.tall.length, maxSide); t++)
+          for (var w = 0; w <= Math.min(pool.wide.length, maxSide); w++) {
+            if ((n + 3 * b + t + w) % cols) continue;
+            mixes.push({ big: b, tall: t, wide: w, score: 4 * (maxBig - b) + t + w + 0.5 * Math.abs(w - t) + Math.random() * 0.5 });
           }
       mixes.sort(function (m, q) { return m.score - q.score; });
       var placed = null;
@@ -906,8 +911,10 @@ function siteMain() {
           '<span class="style-tile-label">' + esc(p.t) + '</span></button>';
       }).join("");
     };
+    var collageHome = location.pathname.indexOf("/category/") === 0 ? "/portfolio/" : location.pathname + location.search;
     var setFilter = function (f) {
       collageFilter = f;
+      setAddress(f === "all" ? collageHome : URLS.categoryPath(f));
       var all = f === "all";
       collageEl.hidden = !all;
       if (collageCatEl) collageCatEl.hidden = all;
@@ -933,19 +940,6 @@ function siteMain() {
     };
     collageEl.addEventListener("click", openFrom);
     if (collageCatEl) collageCatEl.addEventListener("click", openFrom);
-    var pfView = function (v, save) {
-      var col = v !== "categories";
-      if (collageFiltersEl) collageFiltersEl.hidden = !col;
-      collageEl.hidden = !col || collageFilter !== "all";
-      if (collageCatEl) collageCatEl.hidden = !col || collageFilter === "all";
-      if (categoryGridEl) categoryGridEl.hidden = col;
-      if (col) sizeRows();
-      $$(".pf-switch-btn").forEach(function (b) { var on = b.dataset.view === (col ? "collage" : "categories"); b.classList.toggle("active", on); b.setAttribute("aria-selected", on ? "true" : "false"); });
-      if (save) { try { localStorage.setItem("bi-pf-view", col ? "collage" : "categories"); } catch (err) {} }
-    };
-    var savedView = null; try { savedView = localStorage.getItem("bi-pf-view"); } catch (err) {}
-    pfView(savedView || "collage", false);
-    $$(".pf-switch-btn").forEach(function (b) { b.addEventListener("click", function () { pfView(b.dataset.view, true); }); });
   } else if (categoryGridEl) categoryGridEl.hidden = false;
 
   /* ------------------------------------------------------------------

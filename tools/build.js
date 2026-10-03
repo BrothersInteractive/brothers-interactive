@@ -68,6 +68,21 @@ async function makeThumbs() {
     }
   }
   console.log("Thumbnails (" + THUMB_W + "px): made " + made + " new, remade " + remade + " narrower ones.");
+  // the homepage collage's own copies: 480px on the short side, enough for a 2x2 tile and for wide or tall crops
+  const csrc = path.join(OUT, "assets/img/portfolio"), cdst = path.join(OUT, "assets/img/thumbs/collage");
+  fs.mkdirSync(cdst, { recursive: true });
+  let cmade = 0;
+  const covers = new Set(PROJECTS.map((p) => path.basename(String(p.i || ""))));   // only each piece's main picture is shown
+  for (const f of fs.readdirSync(csrc)) {
+    if (!covers.has(f)) continue;
+    const out = path.join(cdst, f.replace(/\.(webp|jpe?g|png)$/i, ".webp"));
+    if (fs.existsSync(out)) continue;
+    try {
+      const buf = await sharp(fs.readFileSync(path.join(csrc, f))).resize({ width: 480, height: 480, fit: "outside", withoutEnlargement: true }).webp({ quality: 78 }).toBuffer();
+      fs.writeFileSync(out, buf); cmade++;
+    } catch (e) { console.log("Collage thumbnail failed for " + f + ": " + e.message); }
+  }
+  console.log("Collage thumbnails (480px short side): made " + cmade + ".");
 }
 
 // ---- 1b. share pictures: LinkedIn and some chat apps do not show WebP previews, so each page's
