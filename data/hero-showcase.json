@@ -2,37 +2,81 @@
   "mode": "random",
   "items": [
     {
+      "img": "/assets/img/portfolio/SWAT V1.png",
+      "imgSize": null,
+      "animation": "float",
+      "offsetX": null,
+      "offsetY": null,
+      "model": "",
+      "modelSize": null,
+      "video": "",
+      "alt": "SWAT 1"
+    },
+    {
+      "img": "/assets/img/portfolio/SWAT V3.png",
+      "imgSize": null,
+      "animation": "float",
+      "offsetX": null,
+      "offsetY": null,
+      "model": "",
+      "modelSize": null,
+      "video": "",
+      "alt": "SWAT 3"
+    },
+    {
+      "img": "/assets/img/portfolio/Tutle.png",
+      "imgSize": null,
+      "animation": "float",
+      "offsetX": null,
+      "offsetY": null,
+      "model": "",
+      "modelSize": null,
+      "video": "",
+      "alt": "Turtle"
+    },
+    {
+      "img": "/assets/img/portfolio/Zombie1.png",
+      "imgSize": null,
+      "animation": "float",
+      "offsetX": null,
+      "offsetY": null,
+      "model": "",
+      "modelSize": null,
+      "video": "",
+      "alt": "Zombie1"
+    },
+    {
+      "img": "/assets/img/portfolio/Female_Hair.png",
+      "imgSize": null,
+      "animation": "float",
+      "offsetX": null,
+      "offsetY": null,
+      "model": "",
+      "modelSize": null,
+      "video": "",
+      "alt": "Female Hair"
+    },
+    {
+      "img": "/assets/img/portfolio/Book.png",
+      "imgSize": null,
+      "animation": "float",
+      "offsetX": null,
+      "offsetY": null,
+      "model": "",
+      "modelSize": null,
+      "video": "",
+      "alt": "Book"
+    },
+    {
       "img": "/assets/img/portfolio/Mion.png",
       "imgSize": null,
-      "animation": "breathe",
+      "animation": "float",
       "offsetX": null,
       "offsetY": null,
       "model": "",
       "modelSize": null,
       "video": "",
       "alt": "Mion"
-    },
-    {
-      "img": "/assets/img/portfolio/SWAT V3.png",
-      "imgSize": null,
-      "animation": "breathe",
-      "offsetX": null,
-      "offsetY": null,
-      "model": "",
-      "modelSize": null,
-      "video": "",
-      "alt": "SWAT V3"
-    },
-    {
-      "img": "/assets/img/portfolio/Tutle.png",
-      "imgSize": null,
-      "animation": "breathe",
-      "offsetX": null,
-      "offsetY": null,
-      "model": "",
-      "modelSize": null,
-      "video": "",
-      "alt": "Turtle TLR"
     },
     {
       "img": "/assets/img/portfolio/Krishna.png",
@@ -43,7 +87,18 @@
       "model": "",
       "modelSize": null,
       "video": "",
-      "alt": "Krishna MTG"
+      "alt": "Krishna"
+    },
+    {
+      "img": "/assets/img/portfolio/Orc.png",
+      "imgSize": null,
+      "animation": "float",
+      "offsetX": null,
+      "offsetY": null,
+      "model": "",
+      "modelSize": null,
+      "video": "",
+      "alt": "Orc"
     }
   ]
 }
