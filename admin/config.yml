@@ -298,7 +298,34 @@ collections:
                   - { label: "Right", value: "right" }
                   - { label: "Top (e.g. keep the face)", value: "top" }
                   - { label: "Bottom", value: "bottom" }
-                hint: "Which part of the picture stays in view when the tile crops it to a square, wide or tall shape."
+                hint: "Which part of the picture stays in view when the tile crops it to a square, wide or tall shape. For any other spot, use Focus X and Y below."
+
+              - label: "Collage focus X (%)"
+                name: "fx"
+                widget: "number"
+                value_type: "int"
+                min: 0
+                max: 100
+                required: false
+                hint: "0 = left edge, 100 = right edge. With Focus Y it places the focus anywhere (and replaces the choice above). Easiest: open /admin/focus.html, click on the picture and copy the numbers."
+
+              - label: "Collage focus Y (%)"
+                name: "fy"
+                widget: "number"
+                value_type: "int"
+                min: 0
+                max: 100
+                required: false
+                hint: "0 = top edge, 100 = bottom edge."
+
+              - label: "Collage zoom (%)"
+                name: "zoom"
+                widget: "number"
+                value_type: "int"
+                min: 100
+                max: 300
+                required: false
+                hint: "100 = no zoom. 150 shows the focus area 1.5 times bigger in the tile."
 
               - label: "Title"
                 name: "t"

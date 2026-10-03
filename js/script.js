@@ -834,11 +834,19 @@ function siteMain() {
     // the collage's own small copy (480px on the short side, made by tools/build.js); the full picture if it is missing
     // "Collage focus" in /admin: which part of the picture stays in view when a tile crops it
     var FOCUS = { left: "left center", right: "right center", top: "center top", bottom: "center bottom" };
+    // Focus X / Y (any spot, 0-100 %) win over the preset; Zoom scales the picture around that spot
+    var focusStyle = function (p) {
+      var pos = (p.fx != null && p.fy != null && p.fx !== "" && p.fy !== "") ? Math.max(0, Math.min(100, +p.fx)) + "% " + Math.max(0, Math.min(100, +p.fy)) + "%" : FOCUS[p.focus];
+      var z = +p.zoom > 100 ? Math.min(300, +p.zoom) / 100 : 0, css = "";
+      if (pos) css += "object-position:" + pos + ";transform-origin:" + pos + ";";
+      if (z) css += "--z:" + z + ";";
+      return css ? ' style="' + css + '"' : "";
+    };
     var collageThumb = function (u) { var m = THUMB_RE.exec(u || ""); return m && m[1] === "portfolio" ? "assets/img/thumbs/collage/" + m[2] + ".webp" : u; };
     var tileHtml = function (it) {
       return '<button type="button" class="collage-tile' + (it.kind ? " is-" + it.kind : "") + '" data-index="' + PROJECTS.indexOf(it.p) + '" aria-label="Open ' + esc(it.p.t) + '"' +
         ' style="grid-row:' + (it.r + 1) + " / span " + it.h + ";grid-column:" + (it.c + 1) + " / span " + it.w + '">' +
-        '<img src="' + esc(collageThumb(it.p.thumb || it.p.i)) + '" alt="" loading="lazy" decoding="async"' + (FOCUS[it.p.focus] ? ' style="object-position:' + FOCUS[it.p.focus] + '"' : '') +
+        '<img src="' + esc(collageThumb(it.p.thumb || it.p.i)) + '" alt="" loading="lazy" decoding="async"' + focusStyle(it.p) +
         ' onerror="this.onerror=null;this.src=\'' + esc(it.p.thumb || it.p.i) + '\'" />' +
         '<span class="collage-name">' + esc(it.p.t) + '</span></button>';
     };
