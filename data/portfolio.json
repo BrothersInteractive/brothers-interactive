@@ -717,11 +717,28 @@
         "/assets/img/portfolio/chr-skins-gevbob-18.webp",
         "/assets/img/portfolio/chr-skins-gevbob-19.webp"
       ],
-      "desc": "Character Customization Study: \"CHR Skins\"\nDeveloped internally at Brothers Interactive, \"CHR Skins\" represents our team's proficiency in creating modular character cosmetic variations, modern apparel design, and highly efficient production pipelines. This asset package was built from the ground up to showcase distinct textile definition, trendy streetwear aesthetics, and optimized multi-layered clothing assets required for modern live-service and multiplayer titles.\n\nTechnical Breakdown:\n- Budget: 35K Tris (Average per full character outfit skin)\n- Texturing: PBR workflow, two 4K sets for apparel and one 2K set specifically for footwear\n- Target Platforms: PC, PlayStation 5, Xbox Series X|S, and Cross-Platform Multiplayer\n- Pipeline: Fully optimized for modular character customization systems, featuring clean topology ready for skin-weighting, dynamic cloth simulations, and high-volume live-service asset integration (Optimized for multiplayer cosmetic skins, battle pass rewards, and player customization systems).\n\nThanks",
+      "desc": "We made CHR Skins to show what a cosmetics pipeline looks like when it's built for volume. Every outfit is a set of swappable pieces (top, layer, jeans, shoes) on one shared base body, so new skins come from recombining and retexturing, not rebuilding.\n\nFive base sets (hoodie, shirt, leather jacket, denim jacket and sleeveless denim vest) become 15 distinct looks through color, wash and wear passes. Swap the tops, bottoms and shoes between them and you get hundreds of casual outfits, with fabric that reads as real fleece, cotton and denim at gameplay distance. Topology stays consistent across pieces, so skin weights carry over and everything mixes and matches without clipping.\n\nNeed a steady stream of skins for a multiplayer, live-service or streetwear-style game? This is how we'd build it.",
       "tags": [],
       "w": 2500,
       "h": 1513,
-      "project": "Studio work"
+      "project": "Studio work",
+      "polys": "About 35K tris per outfit",
+      "textures": "PBR, two 4K sets for clothing, one 2K set for shoes",
+      "software": "Marvelous Designer, ZBrush, Maya, Substance Painter, Marmoset Toolbag",
+      "specs": [
+        {
+          "label": "Outfits",
+          "value": "15 starting skins from 5 base sets, hundreds when mixed"
+        },
+        {
+          "label": "Target platforms",
+          "value": "PC, PlayStation 5, Xbox Series X|S, cross-platform"
+        },
+        {
+          "label": "Use",
+          "value": "Multiplayer cosmetics and player customization"
+        }
+      ]
     },
     {
       "t": "Female Hair",
@@ -1005,11 +1022,28 @@
         "/assets/img/portfolio/sir-galahad-the-order-1886-fanart-b1nbk8-15.webp",
         "/assets/img/portfolio/sir-galahad-the-order-1886-fanart-b1nbk8-16.webp"
       ],
-      "desc": "Cinematic Character Study: \"Sir Galahad\" (The Order 1886 Fan Art)\nDeveloped internally at Brothers Interactive, \"Sir Galahad\" represents our team's proficiency in replicating complex AAA cinematic character designs, advanced hard-surface armor integration, and realistic fabric weathering. This production-ready asset was built from the ground up to showcase multi-layered historical tailoring, intricate metallic ornaments, and dense material realism required for premier current-gen action and narrative titles.\n\nTechnical Breakdown:\n- Budget: 160K Tris\n- Texturing: PBR workflow, two 4K and eight 2K texture sets\n- Target Platforms: PC, PlayStation 5, and Xbox Series X|S\n- Pipeline: Fully optimized for current-gen cinematic and gameplay engines, ensuring clean topology for heavy cloth simulation and rigid hard-surface deformation workflows (Optimized for hero gameplay assets, next-gen cutscenes, and high-end cinematics).",
+      "desc": "Sir Galahad is our take on the lead knight from The Order: 1886, built from scratch to match a AAA cinematic look. The goal was simple: could our version hold up in the same kind of close-up shots as the original?\n\nThe uniform does most of the talking: a wool coat with gold braiding, a leather belt rig with holster and dagger, an embroidered cape emblem, and engraved steel bracers and greaves, each with its own wear and edge breakup. The face and beard are sculpted for close-ups, and the coat and cape are built as clean quad meshes, ready for rigging and cloth sim.\n\nPlanning a story-driven action game with period costume? Talk to us about your hero.",
       "tags": [],
       "w": 2500,
       "h": 1407,
-      "project": "Fan art / studio piece"
+      "project": "Fan art / studio piece",
+      "polys": "160K tris",
+      "textures": "PBR, two 4K and eight 2K texture sets",
+      "software": "ZBrush, Maya, Substance Painter, Marmoset Toolbag",
+      "specs": [
+        {
+          "label": "Hair",
+          "value": "Hair cards"
+        },
+        {
+          "label": "Target platforms",
+          "value": "PC, PlayStation 4, Xbox One"
+        },
+        {
+          "label": "Use",
+          "value": "Hero character, cutscenes and cinematics"
+        }
+      ]
     },
     {
       "t": "Adam - Game Res Model",
