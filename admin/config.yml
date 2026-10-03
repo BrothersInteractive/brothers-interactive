@@ -629,6 +629,51 @@ collections:
               - { label: "Title", name: "t", widget: "string" }
               - { label: "YouTube video", name: "yt", widget: "string", hint: "Paste the full YouTube URL or just the video ID." }
 
+  - name: "contact-pages"
+    label: "Contact pages"
+    description: "The text on the Contact page (/contact) and the Get a quote page (/getting-started)."
+    files:
+      - name: "text-contact"
+        label: "Contact page"
+        file: "data/sections/contact.json"
+        format: "json"
+        description: "The words beside the contact form. The form fields themselves stay as they are."
+        fields:
+          - { label: "Small line above the heading", name: "eyebrow", widget: "string", required: false }
+          - { label: "Heading", name: "title", widget: "string", hint: "Put *stars* around the words that should be gold, e.g. Let's *talk*" }
+          - { label: "Text under the heading", name: "sub", widget: "text", required: false, hint: "A link can be written as [words](/getting-started)." }
+          - { label: "Heading above the social links", name: "otherTitle", widget: "string", required: false }
+      - name: "text-getting-started"
+        label: "Get a quote page"
+        file: "data/sections/getting-started.json"
+        format: "json"
+        description: "The five-step process page, linked from Start a project."
+        fields:
+          - { label: "Small line above the heading", name: "eyebrow", widget: "string", required: false }
+          - { label: "Heading", name: "title", widget: "string", hint: "Put *stars* around the words that should be gold." }
+          - { label: "Subtitle", name: "sub", widget: "text", required: false }
+          - label: "Steps"
+            name: "steps"
+            widget: "list"
+            collapsed: true
+            label_singular: "Step"
+            summary: "{{fields.day}} · {{fields.title}}"
+            fields:
+              - { label: "When (e.g. Day 1-3)", name: "day", widget: "string" }
+              - { label: "Title", name: "title", widget: "string" }
+              - { label: "Text", name: "text", widget: "text" }
+          - label: "Engagement models (the small boxes under the steps)"
+            name: "models"
+            widget: "list"
+            collapsed: true
+            label_singular: "Box"
+            summary: "{{fields.title}}"
+            fields:
+              - { label: "Title", name: "title", widget: "string" }
+              - { label: "Text", name: "text", widget: "text" }
+          - { label: "Bottom banner heading", name: "ctaTitle", widget: "string", required: false }
+          - { label: "Bottom banner text", name: "ctaText", widget: "text", required: false }
+
   - divider: true
 
   - name: "settings"

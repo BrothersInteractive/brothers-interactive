@@ -334,6 +334,38 @@ function siteMain() {
       return /^(\/|https?:|mailto:)/.test(url) ? '<a href="' + url + '">' + label + '</a>' : label;
     });
   }
+  /* Contact and Getting Started page text, edited in /admin (Contact pages): data/sections/contact.json and
+     data/sections/getting-started.json. The words written in the two pages stay as the fallback. */
+  (function () {
+    var C = $("#contactForm") && loadJSON("sections/contact"), cc = $(".contact-copy");
+    if (C && typeof C === "object" && cc) {
+      var ce = $(".eyebrow", cc), ct = $(".section-title", cc), cp = $(".section-title + p", cc), co = $(".contact-sub", cc);
+      if (ce && C.eyebrow) ce.textContent = C.eyebrow;
+      if (ct && C.title) ct.innerHTML = accentTitle(C.title);
+      if (cp && C.sub) cp.innerHTML = richText(C.sub);
+      if (co && C.otherTitle) co.textContent = C.otherTitle;
+    }
+    var G = $(".quote-steps") && loadJSON("sections/getting-started"), gh = $(".page-hero");
+    if (!G || typeof G !== "object") return;
+    if (gh) {
+      var ge = $(".eyebrow", gh), gt = $(".page-title", gh), gs = $(".page-sub", gh);
+      if (ge && G.eyebrow) ge.innerHTML = '<span class="eyebrow-dot"></span> ' + esc(G.eyebrow);
+      if (gt && G.title) gt.innerHTML = accentTitle(G.title);
+      if (gs && G.sub) gs.innerHTML = richText(G.sub);
+    }
+    if (Array.isArray(G.steps) && G.steps.length) $(".quote-steps").innerHTML = G.steps.map(function (st, i) {
+      return '<li class="process-step reveal"><span class="service-badge">' + esc(st.day || "") + '</span><span class="process-num">' + (i < 9 ? "0" : "") + (i + 1) + '</span>' +
+        '<h3>' + esc(st.title || "") + '</h3><p>' + esc(st.text || "") + '</p></li>';
+    }).join("");
+    var notes = $(".process-notes");
+    if (notes && Array.isArray(G.models) && G.models.length) notes.innerHTML = G.models.map(function (m) {
+      return '<div class="note-card"><strong>' + esc(m.title || "") + '</strong><span>' + esc(m.text || "") + '</span></div>';
+    }).join("");
+    var band = $("main .cta-band");
+    if (band && G.ctaTitle) $("h3", band).textContent = G.ctaTitle;
+    if (band && G.ctaText) $("p", band).textContent = G.ctaText;
+  })();
+
   if (HOME && typeof HOME === "object") {
     var HSEC = HOME.sections || {};
     Object.keys(HSEC).forEach(function (id) {
@@ -2250,6 +2282,8 @@ function siteMain() {
   var names = ["portfolio", "games", "cases", "posts", "testimonials", "roles", "clients", "press", "team", "hero-showcase", "config", "hero", "breakdowns", "careers-hero"];
   if (document.getElementById("about")) names.push("about");
   if (document.getElementById("services") && window.BIURL) window.BIURL.TEXT_SECTIONS.forEach(function (id) { names.push("sections/" + id); });
+  if (document.getElementById("contactForm")) names.push("sections/contact");
+  if (document.querySelector(".quote-steps")) names.push("sections/getting-started");
   names.push("categories");
   var store = window.__BI_JSON = {};
   if (!window.fetch || !window.Promise) { siteMain(); return; }

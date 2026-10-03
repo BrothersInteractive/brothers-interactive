@@ -1,0 +1,52 @@
+{
+  "eyebrow": "Get a quote",
+  "title": "From first call *to signed agreement*",
+  "sub": "A clear five-step process takes every project from the first call to a signed agreement, typically within 7–10 days.",
+  "steps": [
+    {
+      "day": "Day 1",
+      "title": "Discussion",
+      "text": "Initial call to understand concept, references, scope and quality target."
+    },
+    {
+      "day": "Day 1–3",
+      "title": "Rate Card & Sample",
+      "text": "We share the rate card and sample production files for review."
+    },
+    {
+      "day": "Day 3–5",
+      "title": "Client Scope & Files",
+      "text": "You share the full task scope, references and technical files."
+    },
+    {
+      "day": "Day 5–7",
+      "title": "Tier & Engagement",
+      "text": "Tier and engagement model selected using historical benchmarks."
+    },
+    {
+      "day": "Day 7–10",
+      "title": "Agreement & NDA",
+      "text": "Agreement and NDA signed: rate × estimated production effort."
+    }
+  ],
+  "models": [
+    {
+      "title": "Fixed Scope",
+      "text": "Defined deliverables at an agreed price, billed against milestone approvals."
+    },
+    {
+      "title": "Time & Materials",
+      "text": "Approved hours × rate, within an agreed range, for scope that's still evolving."
+    },
+    {
+      "title": "Artist Pod",
+      "text": "A dedicated team billed monthly, best for volume, ongoing work or DLCs."
+    },
+    {
+      "title": "Data-driven",
+      "text": "Production time is logged across every task, so estimates stay defensible and transparent."
+    }
+  ],
+  "ctaTitle": "Ready to talk about your project?",
+  "ctaText": "Send us your brief and we'll walk you through the process from here."
+}
