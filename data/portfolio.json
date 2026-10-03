@@ -419,11 +419,28 @@
         "/assets/img/portfolio/zombie-2-rjvn4e-10.webp",
         "/assets/img/portfolio/zombie-2-rjvn4e-11.webp"
       ],
-      "desc": "Cinematic Character Study: \"Zombie - 2\"\nDeveloped internally at Brothers Interactive, \"Zombie - 2\" represents our team's proficiency in organic horror sculpting, advanced tissue deformation, and high-end texture weathering. This production-ready asset was built from the ground up to showcase hyper-detailed organic trauma, realistic anatomical decay, and complex fabric distressing required for current-gen horror, survival, and action titles.\n\nTechnical Breakdown:\n- Budget: 120K Tris\n- Texturing: PBR workflow, four 4K, two 2K, and one 1K texture sets\n- Target Platforms: PC, PlayStation 5, and Xbox Series X|S\n- Pipeline: Fully optimized for current-gen cinematic and gameplay engines, utilizing an advanced high-to-low poly baking pipeline to capture fine micro-surface tissue details (Optimized for enemy/boss gameplay assets, survival-horror mechanics, and real-time cinematic cutscenes).\n\nThanks",
+      "desc": "Zombie-2 has been dead a lot longer: a gaunt, leathery body with skin shrunk tight over the bones, an open torso, white hair still tied back in a bun, and the cargo pants and boots of whoever this used to be. Where Zombie-1 is fresh, this one is dried out, and together they show the range a horde needs.\n\nAt 120K tris there's room for the hard parts: tendons and ribs pushing through dry skin, exposed tissue in the stomach, and hair cards for the long white hair. The same texture setup as Zombie-1 (four 4K, two 2K and one 1K sets) carries the cracked skin and stained fabric, and the high-to-low bake keeps the fine detail at game resolution.\n\nNeed a range of enemies that each tell their own story? This is the level we deliver.",
       "tags": [],
       "w": 2500,
       "h": 2160,
-      "project": "Studio work"
+      "project": "Studio work",
+      "polys": "120K tris",
+      "textures": "PBR, four 4K, two 2K and one 1K texture sets",
+      "software": "ZBrush, Maya, Substance Painter, Marmoset Toolbag",
+      "specs": [
+        {
+          "label": "Hair",
+          "value": "Hair cards"
+        },
+        {
+          "label": "Target platforms",
+          "value": "PC, PlayStation 5, Xbox Series X|S"
+        },
+        {
+          "label": "Use",
+          "value": "Enemy or boss for horror and survival games, gameplay and cutscenes"
+        }
+      ]
     },
     {
       "t": "Orc",
@@ -536,11 +553,28 @@
         "/assets/img/portfolio/zombie-1-qezjmn-9.webp",
         "/assets/img/portfolio/zombie-1-qezjmn-10.webp"
       ],
-      "desc": "Cinematic Character Study: \"Zombie - 1\"\nDeveloped internally at Brothers Interactive, \"Zombie - 1\" represents our team's proficiency in organic horror sculpting, advanced tissue deformation, and high-end texture weathering. This production-ready asset was built from the ground up to showcase hyper-detailed organic trauma, realistic anatomical decay, and complex fabric distressing required for current-gen horror, survival, and action titles.\n\nTechnical Breakdown:\n- Budget: 80K Tris\n- Texturing: PBR workflow, four 4K, two 2K, and one 1K texture sets\n- Target Platforms: PC, PlayStation 5, and Xbox Series X|S\n- Pipeline: Fully optimized for current-gen cinematic and gameplay engines, utilizing an advanced high-to-low poly baking pipeline to capture fine micro-surface tissue details (Optimized for enemy/boss gameplay assets, survival-horror mechanics, and real-time cinematic cutscenes).\n\nThanks",
+      "desc": "Zombie-1 is a freshly turned walker: a torn shirt, rotting skin, a jaw pulled back over broken teeth, and thinning hair still hanging on. He's built to be the face of a horde, readable from across a street and still nasty in a close-up.\n\nThe sculpt layers the decay in passes, from the overall body to wounds, peeling skin and swollen tissue, then bakes it all down to an 80K-tri game mesh. Four 4K, two 2K and one 1K texture sets handle the blood, grime and wet tissue, and the jeans and boots get their own wear, so the clothes never look cleaner than the man. He's shown in Unreal Engine, ready for gameplay and cutscenes.\n\nBuilding a horror or survival game that needs enemies people remember? This is the level we deliver.",
       "tags": [],
       "w": 2500,
       "h": 1800,
-      "project": "Studio work"
+      "project": "Studio work",
+      "polys": "80K tris",
+      "textures": "PBR, four 4K, two 2K and one 1K texture sets",
+      "software": "ZBrush, Maya, Substance Painter, Unreal Engine",
+      "specs": [
+        {
+          "label": "Hair",
+          "value": "Hair cards"
+        },
+        {
+          "label": "Target platforms",
+          "value": "PC, PlayStation 5, Xbox Series X|S"
+        },
+        {
+          "label": "Use",
+          "value": "Enemy or boss for horror and survival games, gameplay and cutscenes"
+        }
+      ]
     },
     {
       "t": "Grandma Dark",
