@@ -70,6 +70,30 @@ async function makeThumbs() {
   console.log("Thumbnails (" + THUMB_W + "px): made " + made + " new, remade " + remade + " narrower ones.");
 }
 
+// ---- 1b. share pictures: LinkedIn and some chat apps do not show WebP previews, so each page's
+//      og:image points at a 1200px JPG copy made here (only when sharp is available) ----------------
+let HAS_SHARP = false; try { require.resolve("sharp"); HAS_SHARP = true; } catch (e) {}
+const SHARE = new Map();   // site path of the original -> site path of its JPG copy
+function shareImage(img) {
+  if (!HAS_SHARP || !img || !/^\/?assets\/img\/.+\.(webp|png)$/i.test(img)) return img;
+  const src = "/" + img.replace(/^\//, ""), jpg = "/assets/img/share/" + path.basename(src).replace(/\.(webp|png)$/i, ".jpg");
+  SHARE.set(src, jpg);
+  return jpg;
+}
+async function makeShareImages() {
+  if (!SHARE.size) return;
+  const sharp = require("sharp"); sharp.cache(false);
+  fs.mkdirSync(path.join(OUT, "assets/img/share"), { recursive: true });
+  let n = 0;
+  for (const [src, jpg] of SHARE) {
+    const from = path.join(OUT, src);
+    if (!fs.existsSync(from)) continue;
+    const buf = await sharp(fs.readFileSync(from)).flatten({ background: "#0b1020" }).resize({ width: 1200, withoutEnlargement: true }).jpeg({ quality: 82, mozjpeg: true }).toBuffer();
+    fs.writeFileSync(path.join(OUT, jpg), buf); n++;
+  }
+  console.log("Share pictures (JPG for link previews): " + n);
+}
+
 // ---- 2. page writer ------------------------------------------------------------------
 const TEMPLATES = { home: read("index.html"), category: read("category.html"), asset: read("asset.html"), breakdown: read("breakdown.html") };
 const written = [];
@@ -88,7 +112,7 @@ function writePage(address, tpl, info, meta) {
       '<meta name="description" content="' + esc(meta.description) + '" />',
       '<meta property="og:title" content="' + esc(meta.title) + '" />',
       '<meta property="og:description" content="' + esc(meta.description) + '" />',
-      '<meta property="og:image" content="' + esc(abs(meta.image)) + '" />',
+      '<meta property="og:image" content="' + esc(abs(shareImage(meta.image))) + '" />',
       '<meta property="og:url" content="' + SITE + address + '" />',
       '<meta name="twitter:card" content="summary_large_image" />',
       '<link rel="canonical" href="' + SITE + address + '" />'
@@ -115,7 +139,7 @@ for (const b of URLS.BROWSE_CATS) {
   writePage(URLS.categoryPath(b.slug), "category", { cat: b.slug }, {
     title: b.label + " | Brothers Interactive",
     description: b.label + " from the Brothers Interactive portfolio: game-ready 3D work by a studio specialized in characters for games.",
-    image: pieces[0] && pieces[0].i
+    image: b.tile || (pieces[0] && pieces[0].i)   // the tile picture chosen in /admin, else the first piece
   });
   // /portfolio/<slug>/ (someone trimming an artwork link) leads to the same category
   writePage("/portfolio/" + b.slug + "/", "category", { cat: b.slug });
@@ -190,4 +214,4 @@ fs.writeFileSync(path.join(OUT, "sitemap.xml"),
 console.log("Built _site: " + written.length + " pages (" + PROJECTS.length + " artworks, " + URLS.BROWSE_CATS.length +
   " categories, " + BREAKDOWNS.length + " breakdowns), sitemap with " + urls.length + " addresses.");
 
-makeThumbs().catch((e) => { console.error(e); process.exit(1); });
+makeThumbs().then(makeShareImages).catch((e) => { console.error(e); process.exit(1); });
