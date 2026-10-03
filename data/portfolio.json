@@ -49,7 +49,7 @@
         "/assets/img/portfolio/cute-monster-xdazdy-6.webp",
         "/assets/img/portfolio/cute-monster-xdazdy-7.webp"
       ],
-      "desc": "Cute Monster is one creature in four evolutions: a chubby little lizard at level 1 that grows armor, horns, spikes and finally wings by level 4. Each stage is its own model, so the player sees the creature level up, not just change color.\n\nIt's built in a clean hand-painted style for mobile, Switch and PC, with each level on a single 1K diffuse map and tri counts rising from about 7K to 12.5K as the armor builds up. Bright colors and big, simple shapes keep him readable on a small screen, and the topology is ready for rigging and animation across all four stages.\n\nMaking a creature collector, strategy or idle game with evolving monsters? This is the level we deliver.",
+      "desc": "Cute Monster is one creature in four evolutions: a chubby little lizard at level 1 that grows armor, horns, spikes and finally wings by level 4. Each stage is its own model, so the player sees the creature level up, not just change color.\n\nIt's built in a clean hand-painted style for mobile, Switch and PC, with each level on a single 1K diffuse map and tri counts rising from about 7K to 12.5K as the armor builds up. Bright colors and big, simple shapes keep him readable on a small screen, and the topology is ready for rigging and animation across all four stages.\n\nMaking a creature collector, strategy or idle game with evolving monsters? We can match this look, or take it wherever your project needs to go.",
       "tags": [],
       "w": 2500,
       "h": 2310,
@@ -84,11 +84,24 @@
         "/assets/img/portfolio/nitro-cr7-ndwq0o-2.webp",
         "/assets/img/portfolio/nitro-cr7-ndwq0o-5.webp"
       ],
-      "desc": "Nitro CR7 - WIP\nStylized 3D Character created by our team Brothers Interactive.\nWith this character, we are exploring, testing and pushing mobile games and similar art style, and game-ready appeal.\n\nNitro CR7,\nDeveloped internally at Brothers Interactive, \"Nitro CR7\" represents our team's expertise in high-quality character art. This production-ready asset was built from the ground up to showcase bold silhouette, readability, expressive anatomical proportions, and vibrant material definition required for modern stylized fantasy and strategy titles.\n\nTechnical Breakdown:\n- Budget: 12,028 Tris\n- Texturing: PBR workflow, single 2K texture set\n- Target Platforms: Mobile, Nintendo Switch, and PC\n- Pipeline: Fully optimized with clean, deformation-ready topology, ready for seamless integration into modern low-spec and cross-platform gameplay engines.",
+      "desc": "Nitro CR7 is a stylized football star: an athletic hero build, a red kit with gold trim and the number 7, and boots ready for the pitch. We built him to explore how a sports or arena character looks in a punchier, mobile-friendly style.\n\nThe kit's panels and trims are modeled into the shapes, so the silhouette stays readable at a distance, and the face is simplified just enough to read on a phone. He fits in just over 12K tris and a single 2K texture set, shown in Unreal Engine, with clean topology for rigging and fast animation.\n\nBuilding a stylized sports or arena game? We can match this look, or take it wherever your project needs to go.",
       "tags": [],
       "w": 2000,
       "h": 1500,
-      "project": "Studio work"
+      "project": "Studio work",
+      "polys": "12,028 tris",
+      "textures": "PBR, single 2K texture set",
+      "software": "ZBrush, Maya, Substance Painter, Unreal Engine",
+      "specs": [
+        {
+          "label": "Target platforms",
+          "value": "Mobile, Nintendo Switch, PC"
+        },
+        {
+          "label": "Use",
+          "value": "Playable character for sports and arena games"
+        }
+      ]
     },
     {
       "t": "Mion",
@@ -103,11 +116,28 @@
         "/assets/img/portfolio/mion-vza1jo-5.webp",
         "/assets/img/portfolio/mion-vza1jo-6.webp"
       ],
-      "desc": "Mion,\n\nDeveloped internally at Brothers Interactive, \"Mion\" represents our team's expertise in high-quality stylized creature and character art. This production-ready asset was built from the ground up to showcase bold Cell Shading silhouette readability, expressive anatomical proportions, and vibrant material definition required for modern stylized fantasy and strategy titles.\n\nTechnical Breakdown:\n- Budget: 20,000 Tris\n- Texturing: PBR workflow, single 2K texture set\n- Target Platforms: Mobile, Nintendo Switch, and PC\n- Pipeline: Fully optimized with clean, deformation-ready topology, ready for seamless integration into modern low-spec and cross-platform gameplay engines.",
+      "desc": "Mion is a stylized kid character in a cel-shaded, animated-film style: big curly hair, a bold patterned windbreaker, shorts and chunky sneakers. The look is made to pop on small screens and still feel premium on PC.\n\nHe's 20K tris on a single 2K texture set, with clean shapes and flat, graphic color that suit toon shading in Unreal Engine 5. A second outfit, a plain blue hoodie with different sneakers, uses the same body and texture layout, which shows how quickly he can be reskinned. Topology is clean and deformation-ready for rigging and animation.\n\nMaking a stylized mobile or cross-platform game with a young cast? We can match this look, or take it wherever your project needs to go.",
       "tags": [],
       "w": 1800,
       "h": 1500,
-      "project": "Studio work"
+      "project": "Studio work",
+      "polys": "20K tris",
+      "textures": "PBR, single 2K texture set",
+      "software": "ZBrush, Maya, Substance Painter, Unreal Engine",
+      "specs": [
+        {
+          "label": "Variants",
+          "value": "Two outfits: patterned windbreaker, blue hoodie"
+        },
+        {
+          "label": "Target platforms",
+          "value": "Mobile, Nintendo Switch, PC"
+        },
+        {
+          "label": "Use",
+          "value": "Playable or NPC character, stylized games"
+        }
+      ]
     },
     {
       "t": "Orc Fan Art",
@@ -150,7 +180,7 @@
         "/assets/img/portfolio/lee-body-ydeg2x-16.webp",
         "/assets/img/portfolio/lee-body-ydeg2x-17.webp"
       ],
-      "desc": "Lee is a field operator kitted out for a long mission: a headset and bandana, a camo plate carrier loaded with pouches, a big rucksack with rope lashed to it, knee pads and worn boots. We built him to show how far we can push a realistic soldier for current-gen games.\n\nEvery piece of gear is its own believable object, with stitched webbing, scuffed buckles, dusty fabric and creased cargo pants that follow the body underneath. At 160K tris with five 4K and four 2K texture sets, the detail holds up in close-ups, and the beard and hair are an Alembic strand groom, so they move and catch light naturally. He's ready for gameplay or cinematic pipelines.\n\nMaking a military or survival game that needs a lead to carry it? This is the level we deliver.",
+      "desc": "Lee is a field operator kitted out for a long mission: a headset and bandana, a camo plate carrier loaded with pouches, a big rucksack with rope lashed to it, knee pads and worn boots. We built him to show how far we can push a realistic soldier for current-gen games.\n\nEvery piece of gear is its own believable object, with stitched webbing, scuffed buckles, dusty fabric and creased cargo pants that follow the body underneath. At 160K tris with five 4K and four 2K texture sets, the detail holds up in close-ups, and the beard and hair are an Alembic strand groom, so they move and catch light naturally. He's ready for gameplay or cinematic pipelines.\n\nMaking a military or survival game that needs a lead to carry it? We'll build yours to your style, budget and platform.",
       "tags": [],
       "w": 2400,
       "h": 2000,
@@ -199,7 +229,7 @@
         "/assets/img/portfolio/t-rex-crash-bandicoot-4-fanart-mannrv-5.webp",
         "/assets/img/portfolio/t-rex-crash-bandicoot-4-fanart-mannrv-6.webp"
       ],
-      "desc": "T-Rex is our fan-art take on the Crash Bandicoot 4 look: a cartoon dinosaur with a huge grinning head, tiny arms, a spiky purple back and a long swinging tail. Crash 4 has one of the most recognizable stylized looks in games, so matching it was the whole point.\n\nThe sculpt pushes the shapes the way the game does, with chunky teeth, a squashed snout and simple, bold forms, and the textures carry all of it in a single 2K set with hand-tuned color. At 10K tris he's light enough for mobile and Switch while still holding up on PC and console. He shares a scene with our Beetle, and both were built to the same budget.\n\nNeed stylized creatures that match an established art style? This is the level we deliver.",
+      "desc": "T-Rex is our fan-art take on the Crash Bandicoot 4 look: a cartoon dinosaur with a huge grinning head, tiny arms, a spiky purple back and a long swinging tail. Crash 4 has one of the most recognizable stylized looks in games, so matching it was the whole point.\n\nThe sculpt pushes the shapes the way the game does, with chunky teeth, a squashed snout and simple, bold forms, and the textures carry all of it in a single 2K set with hand-tuned color. At 10K tris he's light enough for mobile and Switch while still holding up on PC and console. He shares a scene with our Beetle, and both were built to the same budget.\n\nNeed stylized creatures that match an established art style? We can match this look, or take it wherever your project needs to go.",
       "tags": [],
       "w": 1611,
       "h": 1435,
@@ -244,7 +274,7 @@
         "/assets/img/portfolio/swat-v2-dykqqq-18.webp",
         "/assets/img/portfolio/swat-v2-dykqqq-19.webp"
       ],
-      "desc": "SWAT V2 is the heavy unit of SWAT Squad, our own original set of tactical characters: a gas-mask helmet with round goggles, a full plate carrier, a backpack rig with cables and an antenna, and magazine and grenade pouches packed around the waist. He's the one you send through the door first.\n\nAll that gear has to stay readable, so the plate carrier, pouches, straps and webbing are built as separate layered pieces with real thickness, and yellow trim lines guide the eye across the silhouette. Up close you get worn fabric, scuffed boots and stitched straps at 4K texture density. He's fully rigged and tested with production motion data, and the red version shows his texture variants.\n\nNeed tactical or military characters for a shooter? This is the level we deliver.",
+      "desc": "SWAT V2 is the heavy unit of SWAT Squad, our own original set of tactical characters: a gas-mask helmet with round goggles, a full plate carrier, a backpack rig with cables and an antenna, and magazine and grenade pouches packed around the waist. He's the one you send through the door first.\n\nAll that gear has to stay readable, so the plate carrier, pouches, straps and webbing are built as separate layered pieces with real thickness, and yellow trim lines guide the eye across the silhouette. Up close you get worn fabric, scuffed boots and stitched straps at 4K texture density. He's fully rigged and tested with production motion data, and the red version shows his texture variants.\n\nNeed tactical or military characters for a shooter? We'll build yours to your style, budget and platform.",
       "tags": [],
       "w": 2500,
       "h": 2052,
@@ -301,7 +331,7 @@
         "/assets/img/portfolio/swat-v3-rkx2ly-9.webp",
         "/assets/img/portfolio/swat-v3-rkx2ly-10.webp"
       ],
-      "desc": "SWAT V3 is the female operator of SWAT Squad, our own original set of tactical characters, built for higher-end use than V1 and V2: a lighter, more mobile armor kit in navy and orange, with plates on the shoulders, forearms and shins, and a belt of pouches over a fitted undersuit. Her face and braided hair are made for close-ups, not just gameplay distance.\n\nAt 142K tris with five 4K and two 2K texture sets, there's room for detail: layered pouches and straps, metal and plastic armor that read differently, and fabric folds that follow her proportions. She's fully rigged and tested with production motion data, ready for gameplay and cutscenes.\n\nNeed a playable lead or squad member for a modern shooter? This is the level we deliver.",
+      "desc": "SWAT V3 is the female operator of SWAT Squad, our own original set of tactical characters, built for higher-end use than V1 and V2: a lighter, more mobile armor kit in navy and orange, with plates on the shoulders, forearms and shins, and a belt of pouches over a fitted undersuit. Her face and braided hair are made for close-ups, not just gameplay distance.\n\nAt 142K tris with five 4K and two 2K texture sets, there's room for detail: layered pouches and straps, metal and plastic armor that read differently, and fabric folds that follow her proportions. She's fully rigged and tested with production motion data, ready for gameplay and cutscenes.\n\nNeed a playable lead or squad member for a modern shooter? We'll build yours to your style, budget and platform.",
       "tags": [],
       "w": 2500,
       "h": 2138,
@@ -344,7 +374,7 @@
         "/assets/img/portfolio/tiger-tlr-1-lrg1lk-8.webp",
         "/assets/img/portfolio/tiger-tlr-1-lrg1lk-9.webp"
       ],
-      "desc": "Tiger is the lead of The Last Rebel (TLR), our own original universe. As the hero, he had to carry the whole look of the project: a battle-worn tiger warrior in heavy plate, with glowing runes on the armor, bloodied wraps and a torn red sash.\n\nThe sculpt balances animal anatomy with armor that still lets him move, with plates broken up around the shoulders, elbows and knees, and fur, steel, leather and cloth that each read clearly in engine. Like the rest of the TLR cast, he's built for Unreal Engine: channel-packed mask maps drive a master shader, so colors, wear and emissive accents can be changed in engine without re-texturing. The red rune glow is one of those emissive channels.\n\nNeed a hero creature that can front a game? This is the level we deliver.",
+      "desc": "Tiger is the lead of The Last Rebel (TLR), our own original universe. As the hero, he had to carry the whole look of the project: a battle-worn tiger warrior in heavy plate, with glowing runes on the armor, bloodied wraps and a torn red sash.\n\nThe sculpt balances animal anatomy with armor that still lets him move, with plates broken up around the shoulders, elbows and knees, and fur, steel, leather and cloth that each read clearly in engine. Like the rest of the TLR cast, he's built for Unreal Engine: channel-packed mask maps drive a master shader, so colors, wear and emissive accents can be changed in engine without re-texturing. The red rune glow is one of those emissive channels.\n\nNeed a hero creature that can front a game? We'll build yours to your style, budget and platform.",
       "tags": [],
       "w": 2500,
       "h": 1758,
@@ -410,7 +440,7 @@
         "/assets/img/portfolio/big-bad-wolf-rl0xea-9.webp",
         "/assets/img/portfolio/big-bad-wolf-rl0xea-10.webp"
       ],
-      "desc": "Big Bad Wolf is our 3D take on Nicola Saviori's concept: a hunched, hooded wolf with glowing red eyes, a drooling grin, a huge bushy tail and a pair of curved blades. The job was to keep everything that makes the 2D design fun while making it work from every angle.\n\nThe shapes stay bold, with a big head and hands, a skinny body under the cloak and an oversized tail, so he reads instantly even on a phone screen. All of it fits in 13K tris and a single 2K texture set, with painted-style colors that hold the concept's look under real-time lighting. Topology is clean and deformation-ready, so he can go straight to rigging and animation.\n\nNeed stylized enemies or heroes for mobile, Switch or PC? This is the level we deliver.",
+      "desc": "Big Bad Wolf is our 3D take on Nicola Saviori's concept: a hunched, hooded wolf with glowing red eyes, a drooling grin, a huge bushy tail and a pair of curved blades. The job was to keep everything that makes the 2D design fun while making it work from every angle.\n\nThe shapes stay bold, with a big head and hands, a skinny body under the cloak and an oversized tail, so he reads instantly even on a phone screen. All of it fits in 13K tris and a single 2K texture set, with painted-style colors that hold the concept's look under real-time lighting. Topology is clean and deformation-ready, so he can go straight to rigging and animation.\n\nNeed stylized enemies or heroes for mobile, Switch or PC? We can match this look, or take it wherever your project needs to go.",
       "tags": [],
       "w": 2200,
       "h": 1500,
@@ -464,7 +494,7 @@
         "/assets/img/portfolio/zombie-2-rjvn4e-10.webp",
         "/assets/img/portfolio/zombie-2-rjvn4e-11.webp"
       ],
-      "desc": "Zombie-2 has been dead a lot longer: a gaunt, leathery body with skin shrunk tight over the bones, an open torso, white hair still tied back in a bun, and the cargo pants and boots of whoever this used to be. Where Zombie-1 is fresh, this one is dried out, and together they show the range a horde needs.\n\nAt 120K tris there's room for the hard parts: tendons and ribs pushing through dry skin, exposed tissue in the stomach, and hair cards for the long white hair. The same texture setup as Zombie-1 (four 4K, two 2K and one 1K sets) carries the cracked skin and stained fabric, and the high-to-low bake keeps the fine detail at game resolution.\n\nNeed a range of enemies that each tell their own story? This is the level we deliver.",
+      "desc": "Zombie-2 has been dead a lot longer: a gaunt, leathery body with skin shrunk tight over the bones, an open torso, white hair still tied back in a bun, and the cargo pants and boots of whoever this used to be. Where Zombie-1 is fresh, this one is dried out, and together they show the range a horde needs.\n\nAt 120K tris there's room for the hard parts: tendons and ribs pushing through dry skin, exposed tissue in the stomach, and hair cards for the long white hair. The same texture setup as Zombie-1 (four 4K, two 2K and one 1K sets) carries the cracked skin and stained fabric, and the high-to-low bake keeps the fine detail at game resolution.\n\nNeed a range of enemies that each tell their own story? We'll build yours to your style, budget and platform.",
       "tags": [],
       "w": 2500,
       "h": 2160,
@@ -501,7 +531,7 @@
         "/assets/img/portfolio/orc-qjy3qa-6.webp",
         "/assets/img/portfolio/orc-qjy3qa-7.webp"
       ],
-      "desc": "Orc is a heavy, stylized brute: a round green belly, short legs, a hood and tattered skirt, and huge bone spikes growing off his shoulders and arms. The proportions do the talking, so he reads as a tough, slightly comic enemy from any distance.\n\nHe's built for low-spec and cross-platform games, at just under 12K tris on a single 2K texture set, with the color, normal and material maps packed into one layout. He comes with a full control rig too, so animators can start on him straight away.\n\nNeed stylized enemies that look good and run on anything from phones to PC? This is the level we deliver.",
+      "desc": "Orc is a heavy, stylized brute: a round green belly, short legs, a hood and tattered skirt, and huge bone spikes growing off his shoulders and arms. The proportions do the talking, so he reads as a tough, slightly comic enemy from any distance.\n\nHe's built for low-spec and cross-platform games, at just under 12K tris on a single 2K texture set, with the color, normal and material maps packed into one layout. He comes with a full control rig too, so animators can start on him straight away.\n\nNeed stylized enemies that look good and run on anything from phones to PC? We can match this look, or take it wherever your project needs to go.",
       "tags": [],
       "w": 2400,
       "h": 2160,
@@ -558,7 +588,7 @@
         "/assets/img/portfolio/mtg-krishna-yd5ll3-13.webp",
         "/assets/img/portfolio/mtg-krishna-yd5ll3-14.webp"
       ],
-      "desc": "Krishna comes from Man to God (MTG), our own original universe drawn from Indian mythology, alongside Murkaz. We built him as a cinematic digital human: a young Krishna with a calm, confident face, a lean sculpted build, and curly hair grown as real strands.\n\nThe jewelry carries a lot of the look: layered gold necklaces, body chains and arm bands set with green stones, all modeled as hard-surface pieces that hold up in close-up. The saffron shawl, sash and dhoti are built in layers for cloth sim, and the hair is an Alembic strand groom, so it moves and catches light naturally in Unreal Engine.\n\nNeed a hero or digital human for a story-driven or mythological game? This is the level we deliver.",
+      "desc": "Krishna comes from Man to God (MTG), our own original universe drawn from Indian mythology, alongside Murkaz. We built him as a cinematic digital human: a young Krishna with a calm, confident face, a lean sculpted build, and curly hair grown as real strands.\n\nThe jewelry carries a lot of the look: layered gold necklaces, body chains and arm bands set with green stones, all modeled as hard-surface pieces that hold up in close-up. The saffron shawl, sash and dhoti are built in layers for cloth sim, and the hair is an Alembic strand groom, so it moves and catches light naturally in Unreal Engine.\n\nNeed a hero or digital human for a story-driven or mythological game? We'll build yours to your style, budget and platform.",
       "tags": [],
       "w": 2500,
       "h": 1968,
@@ -598,7 +628,7 @@
         "/assets/img/portfolio/zombie-1-qezjmn-9.webp",
         "/assets/img/portfolio/zombie-1-qezjmn-10.webp"
       ],
-      "desc": "Zombie-1 is a freshly turned walker: a torn shirt, rotting skin, a jaw pulled back over broken teeth, and thinning hair still hanging on. He's built to be the face of a horde, readable from across a street and still nasty in a close-up.\n\nThe sculpt layers the decay in passes, from the overall body to wounds, peeling skin and swollen tissue, then bakes it all down to an 80K-tri game mesh. Four 4K, two 2K and one 1K texture sets handle the blood, grime and wet tissue, and the jeans and boots get their own wear, so the clothes never look cleaner than the man. He's shown in Unreal Engine, ready for gameplay and cutscenes.\n\nBuilding a horror or survival game that needs enemies people remember? This is the level we deliver.",
+      "desc": "Zombie-1 is a freshly turned walker: a torn shirt, rotting skin, a jaw pulled back over broken teeth, and thinning hair still hanging on. He's built to be the face of a horde, readable from across a street and still nasty in a close-up.\n\nThe sculpt layers the decay in passes, from the overall body to wounds, peeling skin and swollen tissue, then bakes it all down to an 80K-tri game mesh. Four 4K, two 2K and one 1K texture sets handle the blood, grime and wet tissue, and the jeans and boots get their own wear, so the clothes never look cleaner than the man. He's shown in Unreal Engine, ready for gameplay and cutscenes.\n\nBuilding a horror or survival game that needs enemies people remember? We'll build yours to your style, budget and platform.",
       "tags": [],
       "w": 2500,
       "h": 1800,
@@ -667,7 +697,7 @@
         "/assets/img/portfolio/swat-v1-ygbqby-12.webp",
         "/assets/img/portfolio/swat-v1-ygbqby-13.webp"
       ],
-      "desc": "SWAT V1 comes from SWAT Squad, our own original set of tactical characters. He's a sci-fi trooper built for shooters: a full-face visor helmet, hard armor plates over a fabric undersuit, and a belt rig of pouches and holsters. The design leans near-future, so it fits a grounded military game as well as a sci-fi one.\n\nThe hard-surface plates get clean bevels and edge wear, while the suit underneath keeps its seams, stitching and fabric folds. Hazard stripes and yellow piping help him read at range, and the red version shows how quickly the look changes through texture variants. He's fully rigged and tested with production motion data, ready to drop into gameplay.\n\nBuilding a shooter that needs a squad of soldiers? This is the level we deliver.",
+      "desc": "SWAT V1 comes from SWAT Squad, our own original set of tactical characters. He's a sci-fi trooper built for shooters: a full-face visor helmet, hard armor plates over a fabric undersuit, and a belt rig of pouches and holsters. The design leans near-future, so it fits a grounded military game as well as a sci-fi one.\n\nThe hard-surface plates get clean bevels and edge wear, while the suit underneath keeps its seams, stitching and fabric folds. Hazard stripes and yellow piping help him read at range, and the red version shows how quickly the look changes through texture variants. He's fully rigged and tested with production motion data, ready to drop into gameplay.\n\nBuilding a shooter that needs a squad of soldiers? We'll build yours to your style, budget and platform.",
       "tags": [],
       "w": 2500,
       "h": 1903,
@@ -746,7 +776,7 @@
         "/assets/img/portfolio/shark-tlr-1-qx2obd-18.webp",
         "/assets/img/portfolio/shark-tlr-1-qx2obd-19.webp"
       ],
-      "desc": "Shark comes from The Last Rebel (TLR), our own original universe, where Tiger leads the cast. He's the heavy brawler of the group: a shark-headed bruiser in spiked plate, wrapped in chains and dragging an anchor, with a silhouette the player can read at a glance.\n\nThe sculpt pushes big, readable forms: a thick neck and traps, plate armor with dents and scratches, and chains that sit naturally on the arms and legs. Like the rest of the TLR cast, he's built for Unreal Engine: channel-packed mask maps drive a master shader, so colors, wear and emissive accents can be changed in engine without re-texturing. One model, many variants.\n\nBuilding a roster of creature heroes, enemies or bosses? This is the level we deliver.",
+      "desc": "Shark comes from The Last Rebel (TLR), our own original universe, where Tiger leads the cast. He's the heavy brawler of the group: a shark-headed bruiser in spiked plate, wrapped in chains and dragging an anchor, with a silhouette the player can read at a glance.\n\nThe sculpt pushes big, readable forms: a thick neck and traps, plate armor with dents and scratches, and chains that sit naturally on the arms and legs. Like the rest of the TLR cast, he's built for Unreal Engine: channel-packed mask maps drive a master shader, so colors, wear and emissive accents can be changed in engine without re-texturing. One model, many variants.\n\nBuilding a roster of creature heroes, enemies or bosses? We'll build yours to your style, budget and platform.",
       "tags": [],
       "w": 2088,
       "h": 2160,
@@ -790,7 +820,7 @@
         "/assets/img/portfolio/panda-tlr-1-pxvowo-13.webp",
         "/assets/img/portfolio/panda-tlr-1-pxvowo-14.webp"
       ],
-      "desc": "Panda is a wandering fighter from The Last Rebel (TLR), our own original universe, where Tiger leads the cast. A straw hat, prayer beads, a gourd-tipped staff and patched leather give him a monk-on-the-road feel, and his round, heavy build makes him read differently from everyone else in the lineup.\n\nThe sculpt keeps the soft volumes of a panda while layering on metal plates, rope, beads and torn cloth, each with its own wear. Like the rest of the TLR cast, he's built for Unreal Engine: channel-packed mask maps drive a master shader, so colors, wear and emissive accents can be changed in engine without re-texturing.\n\nBuilding a cast of creature heroes with real personality? This is the level we deliver.",
+      "desc": "Panda is a wandering fighter from The Last Rebel (TLR), our own original universe, where Tiger leads the cast. A straw hat, prayer beads, a gourd-tipped staff and patched leather give him a monk-on-the-road feel, and his round, heavy build makes him read differently from everyone else in the lineup.\n\nThe sculpt keeps the soft volumes of a panda while layering on metal plates, rope, beads and torn cloth, each with its own wear. Like the rest of the TLR cast, he's built for Unreal Engine: channel-packed mask maps drive a master shader, so colors, wear and emissive accents can be changed in engine without re-texturing.\n\nBuilding a cast of creature heroes with real personality? We'll build yours to your style, budget and platform.",
       "tags": [],
       "w": 2500,
       "h": 1596,
@@ -826,7 +856,7 @@
         "/assets/img/portfolio/turtle-tlr-1-zavkog-5.webp",
         "/assets/img/portfolio/turtle-tlr-1-zavkog-6.webp"
       ],
-      "desc": "Turtle is the tank of The Last Rebel (TLR), our own original universe, where Tiger leads the cast. A spiked shell, a steel chest plate and heavy gauntlets make him the wall of the team, and from behind, the shell alone tells you who he is.\n\nThe sculpt keeps the shell, scales and armor clearly separate, with the shell's spikes and plates readable from a distance and close-up wear on the steel and leather. Like the rest of the TLR cast, he's built for Unreal Engine: channel-packed mask maps drive a master shader, so colors, wear and emissive accents can be changed in engine without re-texturing.\n\nNeed a heavy defender or brute for a creature roster? This is the level we deliver.",
+      "desc": "Turtle is the tank of The Last Rebel (TLR), our own original universe, where Tiger leads the cast. A spiked shell, a steel chest plate and heavy gauntlets make him the wall of the team, and from behind, the shell alone tells you who he is.\n\nThe sculpt keeps the shell, scales and armor clearly separate, with the shell's spikes and plates readable from a distance and close-up wear on the steel and leather. Like the rest of the TLR cast, he's built for Unreal Engine: channel-packed mask maps drive a master shader, so colors, wear and emissive accents can be changed in engine without re-texturing.\n\nNeed a heavy defender or brute for a creature roster? We'll build yours to your style, budget and platform.",
       "tags": [],
       "w": 1854,
       "h": 1836,
@@ -875,7 +905,7 @@
         "/assets/img/portfolio/mtg-murkaz-tex-ldnwka-18.webp",
         "/assets/img/portfolio/mtg-murkaz-tex-ldnwka-19.webp"
       ],
-      "desc": "Murkaz comes from Man to God (MTG), our own original universe drawn from Indian mythology. We built him as a boss-sized brute: heavy frame, braided beard, fur everywhere, and a mace big enough to sell every hit, made to carry a boss fight in gameplay and still hold the camera in a cutscene.\n\nThe sculpt does the heavy lifting, with real weight in the belly, shoulders and calves, and leather, cloth and metal that each read differently. Fur trims, beard and hair are alpha cards, so they stay dense and soft without the cost of strand grooms. The lion-head pauldron, carved mace, face paint and embroidered cloth carry most of the surface detail.\n\nNeed a mythic boss or a heavy hitter for a dark fantasy game? This is the level we deliver.",
+      "desc": "Murkaz comes from Man to God (MTG), our own original universe drawn from Indian mythology. We built him as a boss-sized brute: heavy frame, braided beard, fur everywhere, and a mace big enough to sell every hit, made to carry a boss fight in gameplay and still hold the camera in a cutscene.\n\nThe sculpt does the heavy lifting, with real weight in the belly, shoulders and calves, and leather, cloth and metal that each read differently. Fur trims, beard and hair are alpha cards, so they stay dense and soft without the cost of strand grooms. The lion-head pauldron, carved mace, face paint and embroidered cloth carry most of the surface detail.\n\nNeed a mythic boss or a heavy hitter for a dark fantasy game? We'll build yours to your style, budget and platform.",
       "tags": [],
       "w": 2000,
       "h": 2000,
@@ -911,7 +941,7 @@
         "/assets/img/portfolio/beatle-crash-bandicoot-4-fanart-zxbexq-5.webp",
         "/assets/img/portfolio/beatle-crash-bandicoot-4-fanart-zxbexq-6.webp"
       ],
-      "desc": "Beetle is the T-Rex's small companion in our Crash Bandicoot 4 fan art: a round red bug with a spiked blue shell, papery wings and oversized pincers. It's a small enemy, so the shape has to read in a split second.\n\nThe shell plates, wings and legs are modeled as clear, separate pieces, and the split between the red body and the blue shell keeps the silhouette clean. Like the T-Rex, it's 10K tris on a single 2K texture set, with clean, deformation-ready topology for rigging and animation on mobile, Switch or PC.\n\nBuilding a cast of small stylized enemies? This is the level we deliver.",
+      "desc": "Beetle is the T-Rex's small companion in our Crash Bandicoot 4 fan art: a round red bug with a spiked blue shell, papery wings and oversized pincers. It's a small enemy, so the shape has to read in a split second.\n\nThe shell plates, wings and legs are modeled as clear, separate pieces, and the split between the red body and the blue shell keeps the silhouette clean. Like the T-Rex, it's 10K tris on a single 2K texture set, with clean, deformation-ready topology for rigging and animation on mobile, Switch or PC.\n\nBuilding a cast of small stylized enemies? We can match this look, or take it wherever your project needs to go.",
       "tags": [],
       "w": 2448,
       "h": 2160,
@@ -953,7 +983,7 @@
         "/assets/img/portfolio/lehri-dkwxla-16.webp",
         "/assets/img/portfolio/lehri-dkwxla-17.webp"
       ],
-      "desc": "We built Lehri to hold up in a close-up cutscene and still work in gameplay. Most of the hours went into her face: a sculpt-driven likeness with real skin breakup that reads well under cinematic lighting.\n\nHer outfit is built in real layers, with the blouse, corset, holster, skirt and ruffled underskirt as separate pieces, so it's ready for cloth sim. Hair is cards, kept light enough for gameplay. Topology is clean quads with deformation loops where animators need them, so your riggers can pick her up and go.\n\nMaking a western or period game? This is the level of realistic lead we deliver.",
+      "desc": "We built Lehri to hold up in a close-up cutscene and still work in gameplay. Most of the hours went into her face: a sculpt-driven likeness with real skin breakup that reads well under cinematic lighting.\n\nHer outfit is built in real layers, with the blouse, corset, holster, skirt and ruffled underskirt as separate pieces, so it's ready for cloth sim. Hair is cards, kept light enough for gameplay. Topology is clean quads with deformation loops where animators need them, so your riggers can pick her up and go.\n\nMaking a western or period game? We'll build yours to your style, budget and platform.",
       "tags": [],
       "w": 2160,
       "h": 2160,
@@ -1004,7 +1034,7 @@
         "/assets/img/portfolio/chr-skins-gevbob-18.webp",
         "/assets/img/portfolio/chr-skins-gevbob-19.webp"
       ],
-      "desc": "We made CHR Skins to show what a cosmetics pipeline looks like when it's built for volume. Every outfit is a set of swappable pieces (top, layer, jeans, shoes) on one shared base body, so new skins come from recombining and retexturing, not rebuilding.\n\nFive base sets (hoodie, shirt, leather jacket, denim jacket and sleeveless denim vest) become 15 distinct looks through color, wash and wear passes. Swap the tops, bottoms and shoes between them and you get hundreds of casual outfits, with fabric that reads as real fleece, cotton and denim at gameplay distance. Topology stays consistent across pieces, so skin weights carry over and everything mixes and matches without clipping.\n\nNeed a steady stream of skins for a multiplayer, live-service or streetwear-style game? This is how we'd build it.",
+      "desc": "We made CHR Skins to show what a cosmetics pipeline looks like when it's built for volume. Every outfit is a set of swappable pieces (top, layer, jeans, shoes) on one shared base body, so new skins come from recombining and retexturing, not rebuilding.\n\nFive base sets (hoodie, shirt, leather jacket, denim jacket and sleeveless denim vest) become 15 distinct looks through color, wash and wear passes. Swap the tops, bottoms and shoes between them and you get hundreds of casual outfits, with fabric that reads as real fleece, cotton and denim at gameplay distance. Topology stays consistent across pieces, so skin weights carry over and everything mixes and matches without clipping.\n\nNeed a steady stream of skins for a multiplayer, live-service or streetwear-style game? We'll build yours to your style, budget and platform.",
       "tags": [],
       "w": 2500,
       "h": 1513,
@@ -1045,7 +1075,7 @@
         "/assets/img/portfolio/female-hair-xjgvnn-10.webp",
         "/assets/img/portfolio/female-hair-xjgvnn-11.webp"
       ],
-      "desc": "Female Hair is the groom we built for SWAT V3: a messy high bun with loose strands falling around the face and flyaways at the hairline and nape. Messy buns are hard in real time, because the volume has to look full without turning into a solid shape.\n\nThe hair is built from layered alpha cards on a single 4K texture set, at 60K tris. Base layers give the volume, mid layers the strand clumps, and fine cards on top add flyaways and break up the silhouette, so it reads as hair from every angle, even straight down on top of the head. The card layout is set up for hair shaders, wind and physics.\n\nNeed hair that holds up on a hero character? This is the level we deliver.",
+      "desc": "Female Hair is the groom we built for SWAT V3: a messy high bun with loose strands falling around the face and flyaways at the hairline and nape. Messy buns are hard in real time, because the volume has to look full without turning into a solid shape.\n\nThe hair is built from layered alpha cards on a single 4K texture set, at 60K tris. Base layers give the volume, mid layers the strand clumps, and fine cards on top add flyaways and break up the silhouette, so it reads as hair from every angle, even straight down on top of the head. The card layout is set up for hair shaders, wind and physics.\n\nNeed hair that holds up on a hero character? We'll build yours to your style, budget and platform.",
       "tags": [],
       "w": 2048,
       "h": 2048,
@@ -1083,7 +1113,7 @@
         "/assets/img/portfolio/male-hairs-variations-l4ezxw-4.webp",
         "/assets/img/portfolio/male-hairs-variations-l4ezxw-2.webp"
       ],
-      "desc": "Male Hair Variations is one short men's haircut built as a full hair-loss progression: a full head of hair at the first stage, thinning step by step through a receding hairline and crown to a balding pattern. It's made for character customization and aging systems, where one style has to work at every age.\n\nEach stage is its own alpha-card groom on a shared 4K texture set, and the tri count drops as the hair thins, from 45K at the first stage to 25K at the last, so the lighter versions cost less in game. The hairline and crown stay natural at every stage, without the hard edges you get when cards are simply deleted.\n\nBuilding a character creator or an aging system? This is the level we deliver.",
+      "desc": "Male Hair Variations is one short men's haircut built as a full hair-loss progression: a full head of hair at the first stage, thinning step by step through a receding hairline and crown to a balding pattern. It's made for character customization and aging systems, where one style has to work at every age.\n\nEach stage is its own alpha-card groom on a shared 4K texture set, and the tri count drops as the hair thins, from 45K at the first stage to 25K at the last, so the lighter versions cost less in game. The hairline and crown stay natural at every stage, without the hard edges you get when cards are simply deleted.\n\nBuilding a character creator or an aging system? We'll build yours to your style, budget and platform.",
       "tags": [],
       "w": 2500,
       "h": 2125,
@@ -1129,7 +1159,7 @@
         "/assets/img/portfolio/kart-lgylmv-11.webp",
         "/assets/img/portfolio/kart-lgylmv-12.webp"
       ],
-      "desc": "Kart is a stylized desert drink stall on wheels: a leaning wooden wagon with a cactus sign, a sun umbrella, barrels, clay pots and glowing potion bottles, all built as one set piece. It's the kind of prop that gives a town, market or hub area its personality.\n\nThe shapes are pushed for readability, with exaggerated planks, chunky wheels and a tilted roof that read from any camera angle. Everything is sculpted first for clean bakes, then packed into a single 4K texture set with distinct material IDs, which keeps draw calls low for a prop this busy. Pivots are set properly, so the pieces can be moved and dressed in engine.\n\nNeed hero props or set pieces for a stylized game world? This is the level we deliver.",
+      "desc": "Kart is a stylized desert drink stall on wheels: a leaning wooden wagon with a cactus sign, a sun umbrella, barrels, clay pots and glowing potion bottles, all built as one set piece. It's the kind of prop that gives a town, market or hub area its personality.\n\nThe shapes are pushed for readability, with exaggerated planks, chunky wheels and a tilted roof that read from any camera angle. Everything is sculpted first for clean bakes, then packed into a single 4K texture set with distinct material IDs, which keeps draw calls low for a prop this busy. Pivots are set properly, so the pieces can be moved and dressed in engine.\n\nNeed hero props or set pieces for a stylized game world? We can match this look, or take it wherever your project needs to go.",
       "tags": [],
       "w": 1487,
       "h": 1200,
