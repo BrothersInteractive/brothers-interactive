@@ -182,11 +182,24 @@
         "/assets/img/portfolio/t-rex-crash-bandicoot-4-fanart-mannrv-5.webp",
         "/assets/img/portfolio/t-rex-crash-bandicoot-4-fanart-mannrv-6.webp"
       ],
-      "desc": "Stylized Character Study: \"T-Rex\" (Crash Bandicoot 4 Fan Art)\nDeveloped internally at Brothers Interactive, this asset represents our team's capability in high-quality stylized character art. Built from the ground up as a tribute to the distinct aesthetic of Crash Bandicoot 4, this production-ready asset demonstrates high-end visual appeal while maintaining an ultra-lean optimization profile perfect for Mobile, Nintendo Switch, or stylized PC/Console titles.\n\nTechnical Breakdown:\n- Budget: 10K Tris\n- Texturing: 2K PBR texture workflow\n- Pipeline:  Modern mobile, cross-platform, or lightweight gameplay pipelines.\n- Target Platforms - Mobile, Nintendo Switch, or stylized PC/Console titles",
+      "desc": "T-Rex is our fan-art take on the Crash Bandicoot 4 look: a cartoon dinosaur with a huge grinning head, tiny arms, a spiky purple back and a long swinging tail. Crash 4 has one of the most recognizable stylized looks in games, so matching it was the whole point.\n\nThe sculpt pushes the shapes the way the game does, with chunky teeth, a squashed snout and simple, bold forms, and the textures carry all of it in a single 2K set with hand-tuned color. At 10K tris he's light enough for mobile and Switch while still holding up on PC and console. He shares a scene with our Beetle, and both were built to the same budget.\n\nNeed stylized creatures that match an established art style? This is the level we deliver.",
       "tags": [],
       "w": 1611,
       "h": 1435,
-      "project": "Fan art / studio piece"
+      "project": "Fan art / studio piece",
+      "polys": "10K tris",
+      "textures": "PBR, single 2K texture set",
+      "software": "ZBrush, Maya, Substance Painter, Marmoset Toolbag",
+      "specs": [
+        {
+          "label": "Target platforms",
+          "value": "Mobile, Nintendo Switch, PC"
+        },
+        {
+          "label": "Use",
+          "value": "Stylized enemy or boss"
+        }
+      ]
     },
     {
       "t": "SWAT V2",
@@ -881,11 +894,24 @@
         "/assets/img/portfolio/beatle-crash-bandicoot-4-fanart-zxbexq-5.webp",
         "/assets/img/portfolio/beatle-crash-bandicoot-4-fanart-zxbexq-6.webp"
       ],
-      "desc": "Stylized Creature Study: \"Beetle\"\nDeveloped internally at Brothers Interactive, \"Beetle\" represents our team's capability in stylized insect and creature design. This production-ready asset was built from the ground up to showcase bold shell silhouettes, distinct carapace segmentation, and vibrant material definition required for modern fantasy, adventure, or RPG titles.\n\nTechnical Breakdown:\n- Budget: 10K Tris\n- Texturing: PBR workflow, single 2K texture set\n- Target Platforms: Mobile, Nintendo Switch, and PC\n- Pipeline: Fully optimized with clean, deformation-ready topology, ready for seamless integration into modern low-spec and cross-platform gameplay engines.",
+      "desc": "Beetle is the T-Rex's small companion in our Crash Bandicoot 4 fan art: a round red bug with a spiked blue shell, papery wings and oversized pincers. It's a small enemy, so the shape has to read in a split second.\n\nThe shell plates, wings and legs are modeled as clear, separate pieces, and the split between the red body and the blue shell keeps the silhouette clean. Like the T-Rex, it's 10K tris on a single 2K texture set, with clean, deformation-ready topology for rigging and animation on mobile, Switch or PC.\n\nBuilding a cast of small stylized enemies? This is the level we deliver.",
       "tags": [],
       "w": 2448,
       "h": 2160,
-      "project": "Fan art / studio piece"
+      "project": "Fan art / studio piece",
+      "polys": "10K tris",
+      "textures": "PBR, single 2K texture set",
+      "software": "ZBrush, Maya, Substance Painter, Marmoset Toolbag",
+      "specs": [
+        {
+          "label": "Target platforms",
+          "value": "Mobile, Nintendo Switch, PC"
+        },
+        {
+          "label": "Use",
+          "value": "Small stylized enemy"
+        }
+      ]
     },
     {
       "t": "Lehri",
