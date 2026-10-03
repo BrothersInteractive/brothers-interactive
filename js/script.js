@@ -90,14 +90,13 @@ function siteMain() {
   try { var savedLens = localStorage.getItem("bi-lens"); if (savedLens === "big" || savedLens === "off") lensMode = savedLens; } catch (e) {}
   /* Zoom inside the lens, picked with the three zoom buttons (top to bottom): "native" = actual pixels, the
      uploaded file at its true 1:1 size, so the lens shows all the real detail there is and is never stretched,
-     at least 1.5x so it still magnifies on smaller files (default); "2" = 200% and "3" = 300% of the picture
-     as shown on screen. */
+     at least 1.5x so it still magnifies on smaller files; "2" = 2X and "3" = 3X the picture as shown on
+     screen. Every visit starts at 1:1 (Arun: 1:1 is the default, so an earlier 2X/3X choice is not restored). */
   var lensZoom = "native";
-  try { var savedZoom = localStorage.getItem("bi-zoom"); if (savedZoom === "2" || savedZoom === "3") lensZoom = savedZoom; } catch (e) {}
   function lensFactor(img, shownW) { return lensZoom === "native" ? Math.max(1.5, img.naturalWidth / shownW) : +lensZoom; }
-  /* The picture inside the lens is sharpened slightly (Arun chose "medium-low" after testing three
-     levels): a 3x3 sharpen kernel, centre 1+4a and neighbours -a with a = 0.3, as an SVG filter on the
-     lens picture only, never on its ring or handle. */
+  /* At 2X and 3X the picture inside the lens is sharpened slightly (Arun chose "medium-low" after testing
+     three levels): a 3x3 sharpen kernel, centre 1+4a and neighbours -a with a = 0.3, as an SVG filter on
+     the lens picture only, never on its ring or handle. 1:1 shows the real pixels untouched. */
   var LENS_SHARPEN = 0.3;
   function sharpenDefs() {
     if (document.getElementById("biSharpDefs")) return;
@@ -129,7 +128,6 @@ function siteMain() {
       lensEl.appendChild(lensPic);
       document.body.appendChild(lensEl);
       sharpenDefs();
-      lensPic.style.filter = "url(#biSharp)";
     }
     // Draw the lens for the point (cx, cy) on screen; touch = true lifts the lens above the finger
     function showAt(cx, cy, touch) {
@@ -148,6 +146,7 @@ function siteMain() {
       if (lensEl.dataset.src !== src) { lensPic.style.backgroundImage = 'url("' + src.replace(/"/g, "%22") + '")'; lensEl.dataset.src = src; }
       lensEl.style.width = lensEl.style.height = size + "px";
       var z = lensFactor(img, w);
+      lensPic.style.filter = lensZoom === "native" ? "" : "url(#biSharp)";
       lensPic.style.backgroundSize = (w * z) + "px " + (h * z) + "px";
       lensPic.style.backgroundPosition = (size / 2 - x * z) + "px " + (size / 2 - y * z) + "px";
       var lx = cx - size / 2, ly = touch ? cy - size - 36 : cy - size / 2;
@@ -187,20 +186,19 @@ function siteMain() {
   }
   window.addEventListener("scroll", function () { hideLens(); }, { passive: true });
 
-  /* The lens buttons, shared by the viewer and the artwork page: zoom 200% (small +) / 300% (big +), and
+  /* The lens buttons, shared by the viewer and the artwork page: zoom 1:1 / 2X / 3X, and
      lens normal (small magnifier) / bigger (big magnifier) / none (crossed-out circle). The chosen one in
      each group is lit up, and the choice is remembered per visitor. */
   var LENS_ICON = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="10" cy="10" r="6.5"/><path d="M15 15l5.5 5.5"/></svg>';
-  var PLUS_ICON = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg>';
   var NO_LENS_ICON = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="8.5"/><path d="M8.5 8.5l7 7M15.5 8.5l-7 7"/></svg>';
   function lensBtn(cls, attr, label, icon) {
     return '<button type="button" class="lb-lens-btn ' + cls + '" ' + attr + ' aria-label="' + label + '" title="' + label + '">' + icon + '</button>';
   }
   function lensToolButtons(which) {
-    // Order (top to bottom) as Arun set it: 1:1, 200%, 300%  /  no lens, normal lens, bigger lens
+    // Order (top to bottom) as Arun set it: 1:1, 2X, 3X  /  no lens, normal lens, bigger lens
     var zoom = lensBtn("lb-lens-btn--small lb-lens-btn--native", 'data-zoom="native"', "Actual pixels (1:1)", '<span class="lb-native-label" aria-hidden="true">1:1</span>') +
-      lensBtn("lb-lens-btn--small", 'data-zoom="2"', "Zoom 200%", PLUS_ICON) +
-      lensBtn("lb-lens-btn--big", 'data-zoom="3"', "Zoom 300%", PLUS_ICON);
+      lensBtn("lb-lens-btn--small", 'data-zoom="2"', "Zoom 2X", '<span class="lb-native-label" aria-hidden="true">2X</span>') +
+      lensBtn("lb-lens-btn--big", 'data-zoom="3"', "Zoom 3X", '<span class="lb-native-label" aria-hidden="true">3X</span>');
     var lens = lensBtn("lb-lens-btn--small lb-lens-btn--off", 'data-lens="off"', "No lens", NO_LENS_ICON) +
       lensBtn("lb-lens-btn--small", 'data-lens="small"', "Normal lens (512 px)", LENS_ICON) +
       lensBtn("lb-lens-btn--big", 'data-lens="big"', "Bigger lens (750 px)", LENS_ICON);
@@ -216,7 +214,7 @@ function siteMain() {
   document.addEventListener("click", function (e) {
     var b = e.target.closest && e.target.closest(".lb-lens-btn"); if (!b) return;
     if (b.dataset.lens) { lensMode = b.dataset.lens; try { localStorage.setItem("bi-lens", lensMode); } catch (err) {} if (lensMode === "off") hideLens(); }
-    else if (b.dataset.zoom) { lensZoom = b.dataset.zoom; try { localStorage.setItem("bi-zoom", lensZoom); } catch (err) {} }
+    else if (b.dataset.zoom) { lensZoom = b.dataset.zoom; }
     showLensMode();
   });
 
@@ -2173,7 +2171,7 @@ function siteMain() {
     cur.className = "art-cursor";
     cur.innerHTML =
       '<svg viewBox="0 0 32 32" fill="none" aria-hidden="true">' +
-        '<path d="M2 2c4 .4 8.5 3 10.5 7.5L8 14C3.5 12 1.2 7 2 2z" class="c-tip"/>' +
+        '<path d="M2 2c4 .4 8.5 3 10.5 7.5L8 14C3.5 12 1.2 7 2 2z" class="c-tip" transform="translate(-1 1)"/>' +
         '<path d="M11 11.5 27 27.5c1.4 1.4 1.4 3.2 0 4.4-1.2 1.2-3 1.2-4.4 0L6.8 16z" class="c-handle"/>' +
         '<path d="M11 11.5 14.5 15" class="c-band"/>' +
         '<circle cx="27.5" cy="28" r="1.6" class="c-dot"/>' +

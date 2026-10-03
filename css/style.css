@@ -1421,6 +1421,7 @@ body.no-scroll .work-card img, body.no-scroll .work-card::before { animation-pla
 .lb-lens-btn--small svg { width: 17px; height: 17px; }
 .lb-lens-btn--big { width: 52px; height: 52px; }
 .lb-lens-btn--big svg { width: 26px; height: 26px; }
+.lb-lens-btn--big .lb-native-label { font-size: 1.05rem; }
 .lb-lens-btn:hover { border-color: var(--accent); box-shadow: var(--glow); }
 .lb-lens-btn.on { background: var(--accent); color: var(--on-accent); border-color: var(--accent); box-shadow: var(--glow); }
 .lb-native-label { font-family: "Rajdhani", system-ui, sans-serif; font-weight: 700; font-size: 0.9rem; letter-spacing: 0.02em; line-height: 1; }   /* the display font draws a tiny colon (1:1 read as 11) */
