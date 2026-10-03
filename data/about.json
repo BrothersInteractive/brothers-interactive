@@ -34,7 +34,7 @@
       "tools": [
         "Marvelous Designer",
         "ZBrush",
-        "Modeling tools (for Anime)"
+        "Maya / Blender"
       ]
     },
     {
@@ -86,7 +86,7 @@
   ],
   "toolsNote": "These are our main tools, and we're always open to learning and adopting new software.",
   "statFoundedLabel": "Founded",
-  "statGamesLabel": "Titles shipped",
+  "statGamesLabel": "Shipped games",
   "statProjectsLabel": "Published pieces",
   "statYearsLabel": "Years in production",
   "workflowTitle": "How we work with your team"

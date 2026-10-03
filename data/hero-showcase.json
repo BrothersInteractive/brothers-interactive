@@ -2,7 +2,7 @@
   "mode": "together",
   "items": [
     {
-      "img": "/assets/img/portfolio/monster-lizar-without-bg.png",
+      "img": "/assets/img/portfolio/big-bad-wolf-podium.webp",
       "imgSize": 150,
       "animation": "glow",
       "offsetX": -50,
@@ -10,7 +10,7 @@
       "model": "",
       "modelSize": 150,
       "video": "",
-      "alt": "Monster lizard creature"
+      "alt": "Big Bad Wolf, stylized creature"
     }
   ]
 }

@@ -259,7 +259,7 @@ function siteMain() {
   var POSTS = loadList("posts", BI.POSTS);
   var TESTIMONIALS = loadList("testimonials", BI.TESTIMONIALS);
   var ROLES = loadList("roles", BI.ROLES);
-  var PAIRS = loadList("pairs", BI.PAIRS);
+  var PAIRS = BI.PAIRS || [];
   var CLIENTS = loadList("clients", BI.CLIENTS);
   var PRESS = loadList("press", BI.PRESS);
   var TEAM = loadList("team", []);
@@ -2247,7 +2247,7 @@ function siteMain() {
    edits still show on the next refresh without re-downloading everything.
    ------------------------------------------------------------------ */
 (function () {
-  var names = ["portfolio", "games", "cases", "posts", "testimonials", "roles", "pairs", "clients", "press", "team", "hero-showcase", "config", "hero", "breakdowns", "careers-hero"];
+  var names = ["portfolio", "games", "cases", "posts", "testimonials", "roles", "clients", "press", "team", "hero-showcase", "config", "hero", "breakdowns", "careers-hero"];
   if (document.getElementById("about")) names.push("about");
   if (document.getElementById("services") && window.BIURL) window.BIURL.TEXT_SECTIONS.forEach(function (id) { names.push("sections/" + id); });
   names.push("categories");

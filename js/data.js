@@ -13,7 +13,7 @@ window.BI = {
     bookingUrl: "",                                 // e.g. "https://calendly.com/brothersinteractive/intro" — empty hides the button
     plausibleDomain: "",                            // e.g. "brothersinteractive.com" — empty = analytics off
     showreelYouTubeId: "",                          // e.g. "dQw4w9WgXcQ" — empty = image reel from the portfolio
-    deckPdf: "/assets/brothers-interactive-capabilities.pdf",
+    deckPdf: "",
     email: "business@brothersinteractive.com",
     address: "79/5 Shipra Path, Mansarovar, Jaipur 302020, Rajasthan, India"
   },
