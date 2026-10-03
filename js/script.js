@@ -832,11 +832,14 @@ function siteMain() {
     var SHAPE = { big: { h: 2, w: 2, extra: 3, lastRowOk: false }, tall: { h: 2, w: 1, extra: 1, lastRowOk: false }, wide: { h: 1, w: 2, extra: 1, lastRowOk: true } };
     var colsNow = function () { return window.matchMedia("(max-width: 600px)").matches ? 4 : window.matchMedia("(max-width: 1100px)").matches ? 8 : 12; };
     // the collage's own small copy (480px on the short side, made by tools/build.js); the full picture if it is missing
+    // "Collage focus" in /admin: which part of the picture stays in view when a tile crops it
+    var FOCUS = { left: "left center", right: "right center", top: "center top", bottom: "center bottom" };
     var collageThumb = function (u) { var m = THUMB_RE.exec(u || ""); return m && m[1] === "portfolio" ? "assets/img/thumbs/collage/" + m[2] + ".webp" : u; };
     var tileHtml = function (it) {
       return '<button type="button" class="collage-tile' + (it.kind ? " is-" + it.kind : "") + '" data-index="' + PROJECTS.indexOf(it.p) + '" aria-label="Open ' + esc(it.p.t) + '"' +
         ' style="grid-row:' + (it.r + 1) + " / span " + it.h + ";grid-column:" + (it.c + 1) + " / span " + it.w + '">' +
-        '<img src="' + esc(collageThumb(it.p.i)) + '" alt="" loading="lazy" decoding="async" onerror="this.onerror=null;this.src=\'' + esc(it.p.i) + '\'" />' +
+        '<img src="' + esc(collageThumb(it.p.thumb || it.p.i)) + '" alt="" loading="lazy" decoding="async"' + (FOCUS[it.p.focus] ? ' style="object-position:' + FOCUS[it.p.focus] + '"' : '') +
+        ' onerror="this.onerror=null;this.src=\'' + esc(it.p.thumb || it.p.i) + '\'" />' +
         '<span class="collage-name">' + esc(it.p.t) + '</span></button>';
     };
     // one attempt at placing a given mix; returns the placed tiles, or null if it did not fit

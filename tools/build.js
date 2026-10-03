@@ -72,7 +72,7 @@ async function makeThumbs() {
   const csrc = path.join(OUT, "assets/img/portfolio"), cdst = path.join(OUT, "assets/img/thumbs/collage");
   fs.mkdirSync(cdst, { recursive: true });
   let cmade = 0;
-  const covers = new Set(PROJECTS.map((p) => path.basename(String(p.i || ""))));   // only each piece's main picture is shown
+  const covers = new Set(PROJECTS.map((p) => path.basename(String(p.thumb || p.i || ""))));   // each piece's collage picture (else its main one)
   for (const f of fs.readdirSync(csrc)) {
     if (!covers.has(f)) continue;
     const out = path.join(cdst, f.replace(/\.(webp|jpe?g|png)$/i, ".webp"));

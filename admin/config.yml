@@ -278,6 +278,25 @@ collections:
                 required: false
                 hint: "Shows the middle of the picture as a tall strip. Good for a single standing figure."
 
+              - label: "Collage picture (optional)"
+                name: "thumb"
+                widget: "image"
+                required: false
+                hint: "The picture used for this piece's tile in the homepage collage. Leave empty to use the Main Image. Pick one of this piece's pictures (a close-up often looks best in a small square), or upload a crop made for it."
+
+              - label: "Collage focus"
+                name: "focus"
+                widget: "select"
+                required: false
+                default: "center"
+                options:
+                  - { label: "Center", value: "center" }
+                  - { label: "Left (e.g. the front figure of a front/back pair)", value: "left" }
+                  - { label: "Right", value: "right" }
+                  - { label: "Top (e.g. keep the face)", value: "top" }
+                  - { label: "Bottom", value: "bottom" }
+                hint: "Which part of the picture stays in view when the tile crops it to a square, wide or tall shape."
+
               - label: "Title"
                 name: "t"
                 widget: "string"

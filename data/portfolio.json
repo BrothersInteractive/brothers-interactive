@@ -28,7 +28,8 @@
           "value": "Stylized hero or NPC character"
         }
       ],
-      "wide": true
+      "wide": true,
+      "focus": "right"
     },
     {
       "t": "Monster Lizard",
@@ -132,7 +133,8 @@
           "value": "Playable character for sports and arena games"
         }
       ],
-      "wide": true
+      "wide": true,
+      "focus": "left"
     },
     {
       "t": "Mion",
@@ -169,7 +171,8 @@
           "value": "Playable or NPC character, stylized games"
         }
       ],
-      "big": true
+      "big": true,
+      "focus": "left"
     },
     {
       "t": "Orc Fan Art",
@@ -252,7 +255,9 @@
           "value": "Hero or squad character, gameplay and cinematics"
         }
       ],
-      "big": true
+      "big": true,
+      "thumb": "/assets/img/portfolio/lee-body-ydeg2x-5.webp",
+      "focus": "left"
     },
     {
       "t": "Red House",
@@ -282,7 +287,8 @@
           "label": "Use",
           "value": "In-game character in a released title"
         }
-      ]
+      ],
+      "focus": "left"
     },
     {
       "t": "T-Rex - Crash Bandicoot 4 Fan Art",
@@ -369,7 +375,8 @@
           "value": "Playable or enemy soldier"
         }
       ],
-      "big": true
+      "big": true,
+      "thumb": "/assets/img/portfolio/swat-v2-dykqqq-9.webp"
     },
     {
       "t": "Twin Witch",
@@ -399,7 +406,8 @@
           "label": "Use",
           "value": "In-game character in a released title"
         }
-      ]
+      ],
+      "focus": "left"
     },
     {
       "t": "SWAT V3",
@@ -444,7 +452,8 @@
           "value": "Playable character, gameplay and cutscenes"
         }
       ],
-      "big": true
+      "big": true,
+      "focus": "left"
     },
     {
       "t": "Tiger (TLR-1)",
@@ -515,7 +524,8 @@
           "label": "Use",
           "value": "In-game character in a released title"
         }
-      ]
+      ],
+      "focus": "left"
     },
     {
       "t": "Princess",
@@ -545,7 +555,8 @@
           "label": "Use",
           "value": "In-game character in a released title"
         }
-      ]
+      ],
+      "focus": "left"
     },
     {
       "t": "Big Bad Wolf",
@@ -617,7 +628,8 @@
           "label": "Use",
           "value": "In-game character in a released title"
         }
-      ]
+      ],
+      "focus": "left"
     },
     {
       "t": "Zombie-2",
@@ -727,7 +739,8 @@
           "label": "Use",
           "value": "In-game character in a released title"
         }
-      ]
+      ],
+      "focus": "left"
     },
     {
       "t": "MTG Krishna",
@@ -844,7 +857,8 @@
           "label": "Use",
           "value": "In-game character in a released title"
         }
-      ]
+      ],
+      "focus": "left"
     },
     {
       "t": "Crow",
@@ -874,7 +888,8 @@
           "label": "Use",
           "value": "In-game character in a released title"
         }
-      ]
+      ],
+      "focus": "left"
     },
     {
       "t": "SWAT V1",
@@ -923,7 +938,8 @@
         }
       ],
       "big": true,
-      "wide": true
+      "wide": true,
+      "thumb": "/assets/img/portfolio/swat-v1-ygbqby-9.webp"
     },
     {
       "t": "Pot Boy",
@@ -953,7 +969,8 @@
           "label": "Use",
           "value": "In-game character in a released title"
         }
-      ]
+      ],
+      "focus": "left"
     },
     {
       "t": "Four Witch",
@@ -983,7 +1000,8 @@
           "label": "Use",
           "value": "In-game character in a released title"
         }
-      ]
+      ],
+      "focus": "left"
     },
     {
       "t": "Shark (TLR-1)",
@@ -1822,7 +1840,9 @@
           "label": "Use",
           "value": "Playable or NPC character, stylized games"
         }
-      ]
+      ],
+      "thumb": "/assets/img/portfolio/russell-del-s-girl-chr-l3a48w-4.webp",
+      "focus": "top"
     },
     {
       "t": "Russell Del's Boy CHR",
@@ -1855,7 +1875,9 @@
           "label": "Use",
           "value": "Playable or NPC character, stylized games"
         }
-      ]
+      ],
+      "thumb": "/assets/img/portfolio/russell-del-s-boy-chr-zoaxkd-4.webp",
+      "focus": "top"
     },
     {
       "t": "Sir Galahad: The Order 1886 Fan Art",
@@ -1903,7 +1925,8 @@
         }
       ],
       "big": true,
-      "wide": true
+      "wide": true,
+      "thumb": "/assets/img/portfolio/sir-galahad-the-order-1886-fanart-b1nbk8-11.webp"
     },
     {
       "t": "Adam - Game Res Model",
@@ -2168,7 +2191,9 @@
           "label": "Use",
           "value": "Supporting character, gameplay and cutscenes"
         }
-      ]
+      ],
+      "thumb": "/assets/img/portfolio/rasch-crysis-3-fanart-r3z0m-4.webp",
+      "focus": "top"
     }
   ]
 }
