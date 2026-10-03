@@ -144,20 +144,20 @@ function writePage(address, tpl, info, meta) {
 // ---- 3. homepage sections: /portfolio/, /team/ … ------------------------------------
 for (const id of URLS.SECTIONS) if (id !== "home") writePage("/" + id + "/", "home", { section: id });
 
-// ---- 4. categories: /category/<slug>/ ---------------------------------------------
+// ---- 4. categories: /category/<slug>/ opens the homepage at the Portfolio collage with that filter on ---------
 // Categories as edited in /admin (data/categories.json) replace the built-in list
 URLS.setCategories(json("data/categories.json", {}).items);
 const PROJECTS = (json("data/portfolio.json", {}).items || []).filter((p) => p && p.id && !p.hidden); // "Hide from the website" in /admin
 const inCat = (p, key) => p.c === key || (Array.isArray(p.cats) && p.cats.indexOf(key) !== -1);
 for (const b of URLS.BROWSE_CATS) {
   const pieces = PROJECTS.filter((p) => b.match.some((k) => inCat(p, k)));
-  writePage(URLS.categoryPath(b.slug), "category", { cat: b.slug }, {
+  writePage(URLS.categoryPath(b.slug), "home", { section: "portfolio", cat: b.slug }, {
     title: b.label + " | Brothers Interactive",
     description: b.label + " from the Brothers Interactive portfolio: game-ready 3D work by a studio specialized in characters for games.",
     image: b.tile || (pieces[0] && pieces[0].i)   // the tile picture chosen in /admin, else the first piece
   });
   // /portfolio/<slug>/ (someone trimming an artwork link) leads to the same category
-  writePage("/portfolio/" + b.slug + "/", "category", { cat: b.slug });
+  writePage("/portfolio/" + b.slug + "/", "home", { section: "portfolio", cat: b.slug });
 }
 
 // ---- 5. artworks: /portfolio/<category>/<name>/ -------------------------------------

@@ -912,7 +912,8 @@ function siteMain() {
           '<span class="style-tile-label">' + esc(p.t) + '</span></button>';
       }).join("");
     };
-    var collageHome = location.pathname.indexOf("/category/") === 0 ? "/portfolio/" : location.pathname + location.search;
+    // a category address (/category/<slug>/) opens the homepage with that filter on; All then shows /portfolio/
+    var collageHome = PAGE_INFO.cat || location.pathname.indexOf("/category/") === 0 ? "/portfolio/" : location.pathname + location.search;
     var setFilter = function (f) {
       collageFilter = f;
       setAddress(f === "all" ? collageHome : URLS.categoryPath(f));
@@ -932,6 +933,7 @@ function siteMain() {
     }
     layoutCollage();
     collageShown = collageAll;
+    if (PAGE_INFO.cat && BROWSE_CATS.some(function (b) { return b.slug === PAGE_INFO.cat; })) setFilter(PAGE_INFO.cat);
     window.addEventListener("resize", function () { if (collageFilter !== "all") return; if (collageCols !== colsNow()) { layoutCollage(); collageShown = collageAll; } else sizeRows(); });
     // the collage's own width can change without a window resize (scrollbar appearing, zoom): keep the rows square
     if (window.ResizeObserver) { var lastW = 0; new ResizeObserver(function () { var w = collageEl.clientWidth; if (w && w !== lastW) { lastW = w; sizeRows(); } }).observe(collageEl); }
@@ -941,21 +943,6 @@ function siteMain() {
     };
     collageEl.addEventListener("click", openFrom);
     if (collageCatEl) collageCatEl.addEventListener("click", openFrom);
-    // the switch: collage (with its filters) or the category tiles; remembered per visitor
-    var pfView = function (v, save) {
-      var col = v !== "categories";
-      if (collageFiltersEl) collageFiltersEl.hidden = !col;
-      collageEl.hidden = !col || collageFilter !== "all";
-      if (collageCatEl) collageCatEl.hidden = !col || collageFilter === "all";
-      if (categoryGridEl) categoryGridEl.hidden = col;
-      if (col) sizeRows();
-      setAddress(col && collageFilter !== "all" ? URLS.categoryPath(collageFilter) : collageHome);
-      $$(".pf-switch-btn").forEach(function (b) { var on = b.dataset.view === (col ? "collage" : "categories"); b.classList.toggle("active", on); b.setAttribute("aria-selected", on ? "true" : "false"); });
-      if (save) { try { localStorage.setItem("bi-pf-view", col ? "collage" : "categories"); } catch (err) {} }
-    };
-    var savedView = null; try { savedView = localStorage.getItem("bi-pf-view"); } catch (err) {}
-    if (savedView === "categories") pfView("categories", false);
-    $$(".pf-switch-btn").forEach(function (b) { b.addEventListener("click", function () { pfView(b.dataset.view, true); }); });
   } else if (categoryGridEl) categoryGridEl.hidden = false;
 
   /* ------------------------------------------------------------------
@@ -1953,6 +1940,7 @@ function siteMain() {
     setAddress(pieceUrl(P.id));
     document.title = P.t + " | Brothers Interactive";
     $("#assetTitle").textContent = P.t; $("#assetCat").textContent = CAT[P.c] || "";
+    $("#assetCat").href = URLS.categoryPath(URLS.catSlug(P.c));   // back to the homepage collage with this category's filter on
     var paras = (P.desc || "").split(/\n\n+/).filter(Boolean);
     $("#assetDesc").innerHTML = paras.length ? paras.map(function (t) { return '<p>' + esc(t).replace(/\n/g, '<br>') + '</p>'; }).join("") : '<p>Breakdown and technical details available on request.</p>';
     var all = [P.i].concat(P.imgs || []);
@@ -2415,7 +2403,7 @@ function siteMain() {
   var startId = PAGE_INFO.section || decodeURIComponent(location.hash.slice(1));
   if (startId && document.getElementById(startId)) {
     if ("scrollRestoration" in history) history.scrollRestoration = "manual";
-    if (URLS.SECTIONS.indexOf(startId) !== -1) setAddress(URLS.sectionPath(startId));
+    if (URLS.SECTIONS.indexOf(startId) !== -1 && !PAGE_INFO.cat) setAddress(URLS.sectionPath(startId));   // a category address stays as it is
     else if (location.hash) setAddress(location.pathname + location.search);   // drop the "#…"
     goToSection(startId, false);
     var jobAtStart = sectionJob;
