@@ -1168,11 +1168,28 @@
         "/assets/img/portfolio/adam-game-res-model-b1e5nm-15.webp",
         "/assets/img/portfolio/adam-game-res-model-b1e5nm-16.webp"
       ],
-      "desc": "Progressive Character Study: \"Adam\"\nDeveloped internally at Brothers Interactive, \"Adam\" represents our team's proficiency in creating modular character progression systems, progressive armor tiering, and highly efficient production workflows. This game-ready asset showcases a 5-stage evolutionary pipeline, built from the ground up to demonstrate how a character can seamlessly scale from a base level to an advanced endgame warrior while maintaining strict optimization for low-end performance brackets.\n\nCharacter Progression Pipeline:\n- 1st Level: Base schoolboy archetype.\n- 2nd Level: Rebel tier with light guerrilla combat gear additions.\n- 3rd Level: Ranged combat specialization featuring specialized bow and arrow equipment.\n- 4th Level: Melee combat tier integrating lightweight sword-fighting gear and armor pieces.\n- 5th Level: Elite warrior tier fully equipped for one-on-one boss encounters.\n\nTechnical Breakdown:\n- Budget: Highly optimized low-end triangle budget across all modular tiers\n- Texturing: PBR workflow, single 2K base texture map with scalable supporting map slots added per equipment tier requirement\n- Target Platforms: Mobile, Nintendo Switch, PC, and Cross-Platform Multiplayer\n- Pipeline: Fully optimized with a unified base skeleton and clean deformation topology, engineered for seamless modular attachment swapping, progressive visual upgrades, and fluid integration into real-time gameplay engines.",
+      "desc": "Adam is a five-stage progression character: one stylized boy who grows from a schoolkid into a fully armored warrior. Each stage adds gear on top of the last, so the player sees the journey on the model itself.\n\nStage 1 is the base schoolboy, stage 2 adds a rebel's mask, vest and pouches, stage 3 a bow and quiver, stage 4 a sword and light armor, and stage 5 the full knight set with crested helmet, cape and shield. Everything sits on one base body and skeleton, so gear attaches and swaps cleanly. The budget stays low and texturing starts from a single 2K map, so the full set runs on mobile and Switch as well as PC.\n\nPlanning an RPG or progression game with visible character upgrades? Talk to us about your hero.",
       "tags": [],
       "w": 2044,
       "h": 1065,
-      "project": "Studio work"
+      "project": "Studio work",
+      "polys": "About 8K tris (stage 1) to 15K tris (stage 5)",
+      "textures": "PBR, one 2K base map plus extra maps per gear stage",
+      "software": "ZBrush, Maya, Substance Painter, Marmoset Toolbag",
+      "specs": [
+        {
+          "label": "Stages",
+          "value": "5, from schoolboy to elite warrior"
+        },
+        {
+          "label": "Target platforms",
+          "value": "Mobile, Nintendo Switch, PC"
+        },
+        {
+          "label": "Use",
+          "value": "Playable hero with visible progression"
+        }
+      ]
     },
     {
       "t": "Proposal Book",
