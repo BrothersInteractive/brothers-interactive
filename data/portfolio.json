@@ -365,11 +365,28 @@
         "/assets/img/portfolio/big-bad-wolf-rl0xea-9.webp",
         "/assets/img/portfolio/big-bad-wolf-rl0xea-10.webp"
       ],
-      "desc": "Stylized Creature Study: \"Big Bad Wolf\"\nDeveloped internally at Brothers Interactive, \"Big Bad Wolf\" represents our team's talent for expressive, animated creature design and stylized character art. This production-ready asset was built from the ground up to showcase a strong silhouette, dynamic personality, and clean shape language perfect for modern fantasy, adventure, or strategy titles.\nBad Wolf fan art by Nicola Saviori -https://www.artstation.com/nicolasaviori\n\nTechnical Breakdown:\nBudget: 13K Tris\nTexturing: PBR workflow, single 2K texture set\nTarget Platforms: Mobile, Nintendo Switch, and PC\nPipeline: Fully optimized with clean, deformation-ready topology, ready for seamless integration into modern low-spec and cross-platform gameplay engines.",
+      "desc": "Big Bad Wolf is our 3D take on Nicola Saviori's concept: a hunched, hooded wolf with glowing red eyes, a drooling grin, a huge bushy tail and a pair of curved blades. The job was to keep everything that makes the 2D design fun while making it work from every angle.\n\nThe shapes stay bold, with a big head and hands, a skinny body under the cloak and an oversized tail, so he reads instantly even on a phone screen. All of it fits in 13K tris and a single 2K texture set, with painted-style colors that hold the concept's look under real-time lighting. Topology is clean and deformation-ready, so he can go straight to rigging and animation.\n\nNeed stylized enemies or heroes for mobile, Switch or PC? This is the level we deliver.",
       "tags": [],
       "w": 2200,
       "h": 1500,
-      "project": "Studio work"
+      "project": "Fan art / studio piece",
+      "polys": "13K tris",
+      "textures": "PBR, single 2K texture set",
+      "software": "ZBrush, Maya, Substance Painter, Marmoset Toolbag",
+      "specs": [
+        {
+          "label": "Concept",
+          "value": "Nicola Saviori (artstation.com/nicolasaviori)"
+        },
+        {
+          "label": "Target platforms",
+          "value": "Mobile, Nintendo Switch, PC"
+        },
+        {
+          "label": "Use",
+          "value": "Stylized enemy or boss character"
+        }
+      ]
     },
     {
       "t": "Crow Mother",
