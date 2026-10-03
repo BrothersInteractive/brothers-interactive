@@ -175,7 +175,7 @@
     },
     {
       "t": "SWAT V2",
-      "c": "realistic-humans",
+      "c": "swat-squad",
       "cats": [],
       "id": "dyKqQQ",
       "i": "/assets/img/portfolio/swat-v2-dykqqq.webp",
@@ -199,11 +199,32 @@
         "/assets/img/portfolio/swat-v2-dykqqq-18.webp",
         "/assets/img/portfolio/swat-v2-dykqqq-19.webp"
       ],
-      "desc": "Realistic Tactical Character Study: \"SWAT V2\"\nDeveloped internally at Brothers Interactive, \"SWAT V2\" represents our team's expertise in high-fidelity military realism and complex hard-surface character art. This production-ready asset was built from the ground up to showcase advanced material layering, intricate tactical gear details, and precise textile definition required for modern action and shooter titles.\n\nTechnical Breakdown:\n- Budget: 60K Tris \n- Texturing: PBR workflow, 4K texture sets\n- Target Platforms: PC, PlayStation 5, and Xbox Series X|S\n- Pipeline: Fully rigged and tested with production motion data, ready for seamless integration into modern AAA gameplay and cinematic engines.",
+      "desc": "SWAT V2 is the heavy unit of SWAT Squad, our own original set of tactical characters: a gas-mask helmet with round goggles, a full plate carrier, a backpack rig with cables and an antenna, and magazine and grenade pouches packed around the waist. He's the one you send through the door first.\n\nAll that gear has to stay readable, so the plate carrier, pouches, straps and webbing are built as separate layered pieces with real thickness, and yellow trim lines guide the eye across the silhouette. Up close you get worn fabric, scuffed boots and stitched straps at 4K texture density. He's fully rigged and tested with production motion data, and the red version shows his texture variants.\n\nNeed tactical or military characters for a shooter? This is the level we deliver.",
       "tags": [],
       "w": 2500,
       "h": 2052,
-      "project": "Studio work"
+      "project": "SWAT Squad, original characters",
+      "polys": "60K tris",
+      "textures": "PBR, 4K texture sets",
+      "software": "ZBrush, Maya, Substance Painter, Marmoset Toolbag",
+      "specs": [
+        {
+          "label": "Rig",
+          "value": "Fully rigged, tested with production motion data"
+        },
+        {
+          "label": "Variants",
+          "value": "Black and red color versions"
+        },
+        {
+          "label": "Target platforms",
+          "value": "PC, PlayStation 5, Xbox Series X|S"
+        },
+        {
+          "label": "Use",
+          "value": "Playable or enemy soldier"
+        }
+      ]
     },
     {
       "t": "Twin Witch",
@@ -220,10 +241,8 @@
     },
     {
       "t": "SWAT V3",
-      "c": "realistic-humans",
-      "cats": [
-        "realistic-hairs"
-      ],
+      "c": "swat-squad",
+      "cats": [],
       "id": "RKX2Ly",
       "i": "/assets/img/portfolio/swat-v3-rkx2ly.webp",
       "imgs": [
@@ -237,11 +256,32 @@
         "/assets/img/portfolio/swat-v3-rkx2ly-9.webp",
         "/assets/img/portfolio/swat-v3-rkx2ly-10.webp"
       ],
-      "desc": "Realistic Tactical Character Study: \"Female SWAT 3\"\nDeveloped internally at Brothers Interactive, \"Female SWAT 3\" represents our team's elite proficiency in high-fidelity military realism and complex, current-gen character art. This production-ready asset was built from the ground up to showcase premier material layering, intricate multi-part tactical gear, and the precise textile definition required for modern AAA action, shooter, and cinematic titles.\n\nTechnical Breakdown:\n- Budget: 142K Tris\n- Texturing: PBR workflow, five 4K and two 2K texture sets\n- Target Platforms: PC, PlayStation 5, and Xbox Series X|S\n- Pipeline: Fully rigged and tested with production motion data, ready for seamless integration into modern AAA gameplay and cinematic engines.",
+      "desc": "SWAT V3 is the female operator of SWAT Squad, our own original set of tactical characters, built for higher-end use than V1 and V2: a lighter, more mobile armor kit in navy and orange, with plates on the shoulders, forearms and shins, and a belt of pouches over a fitted undersuit. Her face and braided hair are made for close-ups, not just gameplay distance.\n\nAt 142K tris with five 4K and two 2K texture sets, there's room for detail: layered pouches and straps, metal and plastic armor that read differently, and fabric folds that follow her proportions. She's fully rigged and tested with production motion data, ready for gameplay and cutscenes.\n\nNeed a playable lead or squad member for a modern shooter? This is the level we deliver.",
       "tags": [],
       "w": 2500,
       "h": 2138,
-      "project": "Studio work"
+      "project": "SWAT Squad, original characters",
+      "polys": "142K tris",
+      "textures": "PBR, five 4K and two 2K texture sets",
+      "software": "ZBrush, Maya, Substance Painter, Marmoset Toolbag",
+      "specs": [
+        {
+          "label": "Hair",
+          "value": "Hair cards"
+        },
+        {
+          "label": "Rig",
+          "value": "Fully rigged, tested with production motion data"
+        },
+        {
+          "label": "Target platforms",
+          "value": "PC, PlayStation 5, Xbox Series X|S"
+        },
+        {
+          "label": "Use",
+          "value": "Playable character, gameplay and cutscenes"
+        }
+      ]
     },
     {
       "t": "Tiger (TLR-1)",
@@ -496,7 +536,7 @@
     },
     {
       "t": "SWAT V1",
-      "c": "realistic-humans",
+      "c": "swat-squad",
       "cats": [],
       "id": "YGBQbY",
       "i": "/assets/img/portfolio/swat-v1-ygbqby.webp",
@@ -514,11 +554,32 @@
         "/assets/img/portfolio/swat-v1-ygbqby-12.webp",
         "/assets/img/portfolio/swat-v1-ygbqby-13.webp"
       ],
-      "desc": "Realistic Tactical Character Study: \"SWAT V2\"\nDeveloped internally at Brothers Interactive, \"SWAT V2\" represents our team's expertise in high-fidelity military realism and complex hard-surface character art. This production-ready asset was built from the ground up to showcase advanced material layering, intricate tactical gear details, and precise textile definition required for modern action and shooter titles.\n\nTechnical Breakdown:\n- Budget: 65K Tris\n- Texturing: PBR workflow, 4K texture sets\n- Target Platforms: PC, PlayStation 5, and Xbox Series X|S\n- Pipeline: Fully rigged and tested with production motion data, ready for seamless integration into modern AAA gameplay and cinematic engines.",
+      "desc": "SWAT V1 comes from SWAT Squad, our own original set of tactical characters. He's a sci-fi trooper built for shooters: a full-face visor helmet, hard armor plates over a fabric undersuit, and a belt rig of pouches and holsters. The design leans near-future, so it fits a grounded military game as well as a sci-fi one.\n\nThe hard-surface plates get clean bevels and edge wear, while the suit underneath keeps its seams, stitching and fabric folds. Hazard stripes and yellow piping help him read at range, and the red version shows how quickly the look changes through texture variants. He's fully rigged and tested with production motion data, ready to drop into gameplay.\n\nBuilding a shooter that needs a squad of soldiers? This is the level we deliver.",
       "tags": [],
       "w": 2500,
       "h": 1903,
-      "project": "Studio work"
+      "project": "SWAT Squad, original characters",
+      "polys": "65K tris",
+      "textures": "PBR, 4K texture sets",
+      "software": "ZBrush, Maya, Substance Painter, Marmoset Toolbag",
+      "specs": [
+        {
+          "label": "Rig",
+          "value": "Fully rigged, tested with production motion data"
+        },
+        {
+          "label": "Variants",
+          "value": "Black and red color versions"
+        },
+        {
+          "label": "Target platforms",
+          "value": "PC, PlayStation 5, Xbox Series X|S"
+        },
+        {
+          "label": "Use",
+          "value": "Playable or enemy soldier"
+        }
+      ]
     },
     {
       "t": "Pot Boy",
