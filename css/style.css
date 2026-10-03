@@ -320,6 +320,11 @@ button { font: inherit; color: inherit; cursor: pointer; background: none; borde
   .hero-showcase-img { max-height: calc(min(700px, 73vh) * var(--pic-k, 1)); max-width: calc(115% * var(--pic-k, 1) * var(--share, 1)); margin-bottom: -2.4vh; }
   .hero-podium { bottom: calc(6% - 7.5vh); }
 }
+/* taller screens: picture and podium a little lower still, same size (Arun marked where the feet go) */
+@media (min-width: 1101px) and (min-height: 800px) {
+  .hero-showcase-img { margin-bottom: -7.4vh; }
+  .hero-podium { bottom: calc(6% - 12.5vh); }
+}
 /* smaller laptops: less room beside the headline, so a wide picture (front + back views) stays clear of it */
 @media (min-width: 1101px) and (max-width: 1600px) {
   .hero-visual { translate: -5.75vw 0; }
