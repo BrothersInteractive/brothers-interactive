@@ -18,7 +18,7 @@ function siteMain() {
     "realistic-hairs": "Realistic Hair Card",
     "stylized-human": "Stylized CHR",
     "stylized-creature": "Stylized Creature",
-    "props": "Realistic Props",
+    "props": "Props",
     "weapons": "Realistic Weapons",
     "mid-night-walk": "Game - Midnight Walk",
     "lost-in-random": "Game - Lost in Random"

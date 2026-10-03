@@ -21,7 +21,7 @@
     { slug: "realistic-hair", label: "Realistic Hair Card", match: ["realistic-hairs"] },
     { slug: "stylized-character", label: "Stylized CHR", match: ["stylized-human"] },
     { slug: "stylized-creature", label: "Stylized Creature", match: ["stylized-creature"] },
-    { slug: "props", label: "Realistic Props", match: ["props"] },
+    { slug: "props", label: "Props", match: ["props"] },
     { slug: "weapons", label: "Realistic Weapons", match: ["weapons"] },
     { slug: "midnight-walk", label: "Game - Midnight Walk", match: ["mid-night-walk"] },
     { slug: "lost-in-random", label: "Game - Lost in Random", match: ["lost-in-random"] }

@@ -961,11 +961,24 @@
         "/assets/img/portfolio/kart-lgylmv-11.webp",
         "/assets/img/portfolio/kart-lgylmv-12.webp"
       ],
-      "desc": "Stylized Vehicle Study: \"Kart\"\nDeveloped internally at Brothers Interactive, \"Kart\" represents our team's proficiency in stylized hard-surface vehicle design, mechanical silhouette composition, and optimized prop modeling. This production-ready asset was built from the ground up to showcase bold geometric forms, clean material separation, and high-impact arcade aesthetics required for modern racing, action, and multiplayer titles.\n\nTechnical Breakdown:\n- Budget: 29K Tris\n- Texturing: PBR workflow, single 4K texture set\n- Target Platforms: PC, PlayStation 5, Xbox Series X|S, and Nintendo Switch\n- Pipeline: Fully optimized with clean mechanical topology, featuring distinct material IDs and proper pivot orientation.",
+      "desc": "Kart is a stylized desert drink stall on wheels: a leaning wooden wagon with a cactus sign, a sun umbrella, barrels, clay pots and glowing potion bottles, all built as one set piece. It's the kind of prop that gives a town, market or hub area its personality.\n\nThe shapes are pushed for readability, with exaggerated planks, chunky wheels and a tilted roof that read from any camera angle. Everything is sculpted first for clean bakes, then packed into a single 4K texture set with distinct material IDs, which keeps draw calls low for a prop this busy. Pivots are set properly, so the pieces can be moved and dressed in engine.\n\nNeed hero props or set pieces for a stylized game world? This is the level we deliver.",
       "tags": [],
       "w": 1487,
       "h": 1200,
-      "project": "Studio work"
+      "project": "Studio work",
+      "polys": "29K tris",
+      "textures": "PBR, single 4K texture set",
+      "software": "ZBrush, Maya, Substance Painter, Marmoset Toolbag",
+      "specs": [
+        {
+          "label": "Target platforms",
+          "value": "PC, PlayStation 5, Xbox Series X|S, Nintendo Switch"
+        },
+        {
+          "label": "Use",
+          "value": "Hero prop or set piece for towns, markets and hub areas"
+        }
+      ]
     },
     {
       "t": "Toothbug",

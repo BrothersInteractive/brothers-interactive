@@ -267,7 +267,7 @@ collections:
                   - { label: "Realistic Hair Card", value: "realistic-hairs" }
                   - { label: "Stylized CHR", value: "stylized-human" }
                   - { label: "Stylized Creature", value: "stylized-creature" }
-                  - { label: "Realistic Props", value: "props" }
+                  - { label: "Props", value: "props" }
                   - { label: "Realistic Weapons", value: "weapons" }
                   - { label: "Game - Midnight Walk", value: "mid-night-walk" }
                   - { label: "Game - Lost in Random", value: "lost-in-random" }
@@ -287,7 +287,7 @@ collections:
                   - { label: "Realistic Hair Card", value: "realistic-hairs" }
                   - { label: "Stylized CHR", value: "stylized-human" }
                   - { label: "Stylized Creature", value: "stylized-creature" }
-                  - { label: "Realistic Props", value: "props" }
+                  - { label: "Props", value: "props" }
                   - { label: "Realistic Weapons", value: "weapons" }
                   - { label: "Game - Midnight Walk", value: "mid-night-walk" }
                   - { label: "Game - Lost in Random", value: "lost-in-random" }
