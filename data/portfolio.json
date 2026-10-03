@@ -1,7 +1,7 @@
 {
   "items": [
     {
-      "t": "The Adventures",
+      "t": "The Adventurer",
       "c": "stylized-human",
       "cats": [],
       "id": "mOZqAe",
@@ -10,11 +10,24 @@
         "/assets/img/portfolio/the-adventures-mozqae-3.webp",
         "/assets/img/portfolio/the-adventures-mozqae-4.webp"
       ],
-      "desc": "The Adventures \nStylized 3D Character created by our team Brothers Interactive.\nWith this character, we are exploring, testing and pushing a high-end, clean stylized art style, and game-ready appeal.",
+      "desc": "The Adventurer is a high-poly sculpt of a stylized young explorer: messy red hair, a cheerful face, a knit sweater, cargo pants and sneakers, and a big hiking backpack carrying a bedroll and a water bottle. The look is clean and appealing, close to modern animated-film style.\n\nThe shapes stay simple and readable while each material keeps its own feel: soft knit folds in the sweater, heavier canvas in the pants and pack, and leather straps and buckles on the backpack. The backpack is sculpted as its own piece, so it can be swapped or removed in game. This is the high-poly stage, ready for retopology, baking and texturing to whatever budget a project needs.\n\nNeed stylized heroes with a friendly, film-quality look? We can match this look, or take it wherever your project needs to go.",
       "tags": [],
       "w": 2240,
       "h": 1680,
-      "project": "Studio work"
+      "project": "Studio work",
+      "software": "ZBrush (sculpt and polypaint)",
+      "polys": "",
+      "textures": "",
+      "specs": [
+        {
+          "label": "Stage",
+          "value": "High-poly sculpt, ready for retopology and baking"
+        },
+        {
+          "label": "Use",
+          "value": "Stylized hero or NPC character"
+        }
+      ]
     },
     {
       "t": "Monster Lizard",
@@ -1704,11 +1717,24 @@
         "/assets/img/portfolio/head-study-0qoke-3.webp",
         "/assets/img/portfolio/head-study-0qoke-4.webp"
       ],
-      "desc": "Head Study - Benedict Wong\n\nDeveloped internally at Brothers Interactive, \"Head Study\" represents our team's foundational strength in hyper-realistic organic sculpting and secondary form definition. This high-poly asset was developed to showcase an advanced understanding of facial fat distribution, complex skin micro-detailing, and natural tissue weight distribution required for high-fidelity AAA character generation.",
+      "desc": "Head Study is a likeness sculpt of actor Benedict Wong, done in ZBrush as a pure anatomy and likeness exercise. Likeness work leaves nowhere to hide: if the proportions, or the fat and muscle under the skin, are off even slightly, the face stops looking like the person.\n\nThe focus is on the forms under the skin: the fullness of the cheeks and jowls, the weight around the eyes and mouth, the folds of the neck, and the pores and fine wrinkles on top. It's the kind of high-poly head a game team bakes from for a hero character or a digital double.\n\nNeed a likeness or a realistic head for your game? Talk to us about your characters.",
       "tags": [],
       "w": 1500,
       "h": 1103,
-      "project": "Studio work"
+      "project": "Studio work",
+      "software": "ZBrush",
+      "polys": "",
+      "textures": "",
+      "specs": [
+        {
+          "label": "Stage",
+          "value": "High-poly likeness sculpt"
+        },
+        {
+          "label": "Use",
+          "value": "Hero head or digital double, baking source"
+        }
+      ]
     },
     {
       "t": "Rasch: Crysis 3 Fan Art",
