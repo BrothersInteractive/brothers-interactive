@@ -4,7 +4,7 @@
     {
       "img": "/assets/img/portfolio/SWAT V1.png",
       "imgSize": null,
-      "animation": "float",
+      "animation": "sway",
       "offsetX": null,
       "offsetY": null,
       "model": "",
@@ -15,7 +15,7 @@
     {
       "img": "/assets/img/portfolio/SWAT V3.png",
       "imgSize": null,
-      "animation": "float",
+      "animation": "sway",
       "offsetX": null,
       "offsetY": null,
       "model": "",
@@ -26,7 +26,7 @@
     {
       "img": "/assets/img/portfolio/Tutle.png",
       "imgSize": null,
-      "animation": "float",
+      "animation": "sway",
       "offsetX": null,
       "offsetY": null,
       "model": "",
@@ -37,7 +37,7 @@
     {
       "img": "/assets/img/portfolio/Zombie1.png",
       "imgSize": null,
-      "animation": "float",
+      "animation": "sway",
       "offsetX": null,
       "offsetY": null,
       "model": "",
@@ -48,7 +48,7 @@
     {
       "img": "/assets/img/portfolio/Female_Hair.png",
       "imgSize": null,
-      "animation": "float",
+      "animation": "sway",
       "offsetX": null,
       "offsetY": null,
       "model": "",
@@ -59,7 +59,7 @@
     {
       "img": "/assets/img/portfolio/Book.png",
       "imgSize": null,
-      "animation": "float",
+      "animation": "sway",
       "offsetX": null,
       "offsetY": null,
       "model": "",
@@ -70,7 +70,7 @@
     {
       "img": "/assets/img/portfolio/Mion.png",
       "imgSize": null,
-      "animation": "float",
+      "animation": "sway",
       "offsetX": null,
       "offsetY": null,
       "model": "",
@@ -81,7 +81,7 @@
     {
       "img": "/assets/img/portfolio/Krishna.png",
       "imgSize": null,
-      "animation": "float",
+      "animation": "sway",
       "offsetX": null,
       "offsetY": null,
       "model": "",
@@ -92,7 +92,7 @@
     {
       "img": "/assets/img/portfolio/Orc.png",
       "imgSize": null,
-      "animation": "float",
+      "animation": "sway",
       "offsetX": null,
       "offsetY": null,
       "model": "",
