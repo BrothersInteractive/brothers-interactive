@@ -1343,11 +1343,24 @@
         "/assets/img/portfolio/pip-boy-2000-game-res-asset-ybzdb8-11.webp",
         "/assets/img/portfolio/pip-boy-2000-game-res-asset-ybzdb8-12.webp"
       ],
-      "desc": "Realistic Prop Study: \"Pip-Boy\" (Fallout Fan Art)\nDeveloped internally at Brothers Interactive, \"Pip-Boy\" represents our team's proficiency in retro-futuristic hard-surface modeling, industrial prop design, and complex surface weathering. This game-ready asset was built from the ground up to showcase mechanical complexity, analog component detailing, and realistic metallic wear required for premier sci-fi, RPG, and survival titles.\n\nTechnical Breakdown:\n- Budget: 8K Tris\n- Texturing: PBR workflow, single 2K texture set\n- Target Platforms: PC, PlayStation 5, Xbox Series X|S, and Nintendo Switch\n- Pipeline: Fully optimized with clean hard-surface topology and precise pivot setups for interactive components, ready for seamless integration into first-person viewport layouts, UI screen casting, and real-time gameplay engines.",
+      "desc": "Our fan-art take on the Pip-Boy 2000 from the Fallout series: the chunky wrist computer with a green CRT screen, dials, a speaker grille and a padded red cuff. A prop like this sits right in front of the first-person camera, so every surface gets looked at.\n\nWe kept the retro-industrial feel, with olive paint chipped down to the metal, hazard stripes, warning stickers, worn leather straps and a scratched glass screen. Even with all that detail it's only 8K tris on a single 2K texture set, with clean topology and pivots on the moving parts, so the screen and controls can be animated and the display can show live UI in engine.\n\nNeed hero props for a first-person game? Talk to us about your project.",
       "tags": [],
       "w": 1500,
       "h": 1125,
-      "project": "Studio work"
+      "project": "Fan art / studio piece",
+      "polys": "8K tris",
+      "textures": "PBR, single 2K texture set",
+      "software": "ZBrush, Maya, Substance Painter, Marmoset Toolbag",
+      "specs": [
+        {
+          "label": "Target platforms",
+          "value": "PC, PlayStation 4, Xbox One, Nintendo Switch"
+        },
+        {
+          "label": "Use",
+          "value": "First-person hero prop with animated parts"
+        }
+      ]
     },
     {
       "t": "Dhakad",
