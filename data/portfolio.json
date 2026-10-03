@@ -403,10 +403,8 @@
     },
     {
       "t": "MTG Krishna",
-      "c": "realistic-humans",
-      "cats": [
-        "realistic-hairs"
-      ],
+      "c": "man-to-god",
+      "cats": [],
       "id": "yD5Ll3",
       "i": "/assets/img/portfolio/mtg-krishna-yd5ll3.webp",
       "imgs": [
@@ -424,11 +422,28 @@
         "/assets/img/portfolio/mtg-krishna-yd5ll3-13.webp",
         "/assets/img/portfolio/mtg-krishna-yd5ll3-14.webp"
       ],
-      "desc": "Cinematic Character Study: \"MTG - Krishna\"\nDeveloped internally at Brothers Interactive, \"Krishna\" represents our team's peak proficiency in hyper-realistic digital human creation and high-end cinematic art. This production-ready asset was built from the ground up to showcase intricate hard-surface jewelry, complex multi-layered textile garments, and advanced strand-based grooming workflows required for premier current-gen titles and cinematic narratives.\n\nTechnical Breakdown:\n- Budget: 513K Tris\n- Texturing: PBR workflow, five 4K, three 2K, and one 1K texture sets\n- Target Platforms: PC, PlayStation 5, and Xbox Series X|S\n- Pipeline: Fully optimized for current-gen cinematic engines, utilizing an advanced Alembic strand-based hair workflow for realistic, dynamic hair physics simulations (Optimized for hero gameplay assets, next-gen cutscenes, and high-end cinematics).",
+      "desc": "Krishna comes from Man to God (MTG), our own original universe drawn from Indian mythology, alongside Murkaz. We built him as a cinematic digital human: a young Krishna with a calm, confident face, a lean sculpted build, and curly hair grown as real strands.\n\nThe jewelry carries a lot of the look: layered gold necklaces, body chains and arm bands set with green stones, all modeled as hard-surface pieces that hold up in close-up. The saffron shawl, sash and dhoti are built in layers for cloth sim, and the hair is an Alembic strand groom, so it moves and catches light naturally in Unreal Engine.\n\nNeed a hero or digital human for a story-driven or mythological game? This is the level we deliver.",
       "tags": [],
       "w": 2500,
       "h": 1968,
-      "project": "Studio work"
+      "project": "Man to God, original characters",
+      "polys": "513K tris",
+      "textures": "PBR, five 4K, three 2K and one 1K texture sets",
+      "software": "ZBrush, Maya, Substance Painter, Unreal Engine",
+      "specs": [
+        {
+          "label": "Hair",
+          "value": "Strand groom (Alembic)"
+        },
+        {
+          "label": "Target platforms",
+          "value": "PC, PlayStation 5, Xbox Series X|S"
+        },
+        {
+          "label": "Use",
+          "value": "Hero character, cutscenes and cinematics"
+        }
+      ]
     },
     {
       "t": "Zombie-1",
@@ -662,7 +677,7 @@
     },
     {
       "t": "MTG Murkaz Tex",
-      "c": "realistic-creatures",
+      "c": "man-to-god",
       "cats": [],
       "id": "lDNWka",
       "i": "/assets/img/portfolio/mtg-murkaz-tex-ldnwka.webp",
@@ -686,11 +701,11 @@
         "/assets/img/portfolio/mtg-murkaz-tex-ldnwka-18.webp",
         "/assets/img/portfolio/mtg-murkaz-tex-ldnwka-19.webp"
       ],
-      "desc": "Murkaz comes from Man to God (MTG), our own studio universe drawn from Indian mythology. We built him as a boss-sized brute: heavy frame, braided beard, fur everywhere, and a mace big enough to sell every hit, made to carry a boss fight in gameplay and still hold the camera in a cutscene.\n\nThe sculpt does the heavy lifting, with real weight in the belly, shoulders and calves, and leather, cloth and metal that each read differently. Fur trims, beard and hair are alpha cards, so they stay dense and soft without the cost of strand grooms. The lion-head pauldron, carved mace, face paint and embroidered cloth carry most of the surface detail.\n\nNeed a mythic boss or a heavy hitter for a dark fantasy game? This is the level we deliver.",
+      "desc": "Murkaz comes from Man to God (MTG), our own original universe drawn from Indian mythology. We built him as a boss-sized brute: heavy frame, braided beard, fur everywhere, and a mace big enough to sell every hit, made to carry a boss fight in gameplay and still hold the camera in a cutscene.\n\nThe sculpt does the heavy lifting, with real weight in the belly, shoulders and calves, and leather, cloth and metal that each read differently. Fur trims, beard and hair are alpha cards, so they stay dense and soft without the cost of strand grooms. The lion-head pauldron, carved mace, face paint and embroidered cloth carry most of the surface detail.\n\nNeed a mythic boss or a heavy hitter for a dark fantasy game? This is the level we deliver.",
       "tags": [],
       "w": 2000,
       "h": 2000,
-      "project": "Man to God (MTG), studio IP",
+      "project": "Man to God, original characters",
       "polys": "320K tris",
       "textures": "PBR, eight 4K and three 2K texture sets",
       "software": "ZBrush, Maya, Substance Painter, Marmoset Toolbag",
