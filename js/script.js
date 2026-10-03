@@ -1921,7 +1921,7 @@ function siteMain() {
       if ($("#cfCount")) $("#cfCount").value = $("#estCount").value + " × " + typeSel.value + ($("#estRig").checked ? ", rigged" : "");
       if ($("#cfMessage")) $("#cfMessage").value = "Estimator result: about " + $("#estDays").textContent + " artist-days (" + $("#estWeeks").textContent + " weeks with " + $("#estPar").textContent + " artists in parallel).\n\n";
       track("estimate_used");
-      location.hash = "#contact";
+      if (document.getElementById("contact")) goToSection("contact", true); else location.href = "/contact";   // never a "#" in the address
     });
   }
 
@@ -2434,15 +2434,22 @@ function siteMain() {
   document.addEventListener("click", function (e) {
     var a = e.target.closest && e.target.closest('a[href*="#"]');
     if (!a || e.defaultPrevented || e.button !== 0 || e.metaKey || e.ctrlKey || e.shiftKey) return;
-    var url = new URL(a.getAttribute("href"), document.baseURI);
+    var raw = a.getAttribute("href") || "";
+    // a bare "#" is a placeholder (filled in later, or a hidden button): it must never put "/#" in the address
+    if (raw === "#") { e.preventDefault(); return; }
+    var url = new URL(raw, document.baseURI);
     var id = url.hash.slice(1);
     if (!id || !document.getElementById(id)) return;
+    // "#main" (Skip to content) and other bare "#id" links mean this page; with <base href="/"> the browser
+    // would otherwise load the homepage at "/#id"
+    var samePage = raw.charAt(0) === "#";
     // The homepage and its section copies (/portfolio/, /team/ …) all hold the same sections, so a
     // "#team" link (which resolves to "/#team") is handled right here instead of loading a new page.
     var homeLike = !!document.getElementById("home");
-    if (url.pathname !== location.pathname && !(homeLike && url.pathname === "/")) return;
+    if (!samePage && url.pathname !== location.pathname && !(homeLike && url.pathname === "/")) return;
     e.preventDefault();
     goToSection(id, true);
+    if (id === "main") { var mainEl = document.getElementById("main"); mainEl.setAttribute("tabindex", "-1"); mainEl.focus({ preventScroll: true }); }
     // The address shows the section as a real path (/portfolio/, Home = /), never "#section"
     if (homeLike && URLS.SECTIONS.indexOf(id) !== -1) setAddress(URLS.sectionPath(id));
   });
