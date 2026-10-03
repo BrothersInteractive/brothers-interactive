@@ -1390,11 +1390,24 @@
         "/assets/img/portfolio/rasch-crysis-3-fanart-r3z0m-9.webp",
         "/assets/img/portfolio/rasch-crysis-3-fanart-r3z0m-10.webp"
       ],
-      "desc": "Realistic Sci-Fi Character Study: \"Rasch\" (Crysis 3 Fan Art)\nDeveloped internally at Brothers Interactive, \"Rasch\" represents our team's proficiency in complex mechanical hard-surface modeling, industrial cybernetic design, and advanced surface weathering. This production-ready asset was built from the ground up to showcase intricate robotic anatomy, layered plating, and realistic metallic wear required for premier current-gen sci-fi, action, and shooter titles.\n\nTechnical Breakdown:\n- Budget: 55K Tris\n- Texturing: PBR workflow, three 2K and one 1K texture sets\n- Target Platforms: PC, PlayStation 5, and Xbox Series X|S\n- Pipeline: Fully optimized with clean mechanical topology and precise articulation pivots, ready for seamless integration into advanced rigging, robotic animation networks, and current-gen gameplay engines.",
+      "desc": "Rasch is our fan-art take on Karl Ernst Rasch from Crysis 3, the veteran who helps the resistance from behind the scenes. Instead of armor and weapons, the challenge here was an ordinary older man who still had to feel at home in a AAA shooter.\n\nThe likeness carries it: grey hair, glasses, and wrinkles and skin that sag naturally with age. His field gear is worn but practical, with a canvas shirt, a padded vest carrying a radio and devices, and cargo pants with reinforced knees, each with its own wear and fabric detail. The wireframes show tidy, game-ready topology with extra loops around the face for expression.\n\nWorking on a story-heavy game with supporting characters who need to feel real? Talk to us about your cast.",
       "tags": [],
       "w": 1500,
       "h": 1500,
-      "project": "Fan art / studio piece"
+      "project": "Fan art / studio piece",
+      "polys": "55K tris",
+      "textures": "PBR, three 2K and one 1K texture sets",
+      "software": "ZBrush, Maya, Substance Painter, Marmoset Toolbag",
+      "specs": [
+        {
+          "label": "Target platforms",
+          "value": "PC, PlayStation 4, Xbox One"
+        },
+        {
+          "label": "Use",
+          "value": "Supporting character, gameplay and cutscenes"
+        }
+      ]
     }
   ]
 }
