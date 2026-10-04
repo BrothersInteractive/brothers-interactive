@@ -1,15 +1,15 @@
 {
   "order": 450,
+  "hidden": false,
+  "nocollage": false,
+  "big": false,
+  "wide": false,
+  "tall": false,
+  "thumb": "",
+  "crop": "16,9.6,76.5,76.5",
   "t": "McBiggo",
   "c": "lost-in-random",
   "cats": [],
-  "id": "4X1Eq4",
-  "i": "/assets/img/portfolio/mcbiggo-4x1eq4.webp",
-  "imgs": [],
-  "desc": "McBiggo is a hulking, round armored guard from Lost in Random, covered in spikes, with a glowing furnace in his chest and a long staff in hand.\n\nLost in Random was the first game our studio contributed to. We built its characters from scratch through the full standard pipeline (high-poly sculpt, retopology, UVs, baking and texturing), at around 10K to 15K tris on 2K maps, keeping the game's dark storybook look of thin limbs, oversized heads and worn, handmade materials.\n\nNeed characters built to match your game's art direction? We'll build yours to your style, budget and platform.",
-  "tags": [],
-  "w": 2000,
-  "h": 2000,
   "project": "Lost in Random",
   "software": "ZBrush, Maya, Substance Painter",
   "polys": "About 10K to 15K tris",
@@ -27,5 +27,14 @@
       "label": "Use",
       "value": "In-game character in a released title"
     }
-  ]
+  ],
+  "id": "4X1Eq4",
+  "i": "/assets/img/portfolio/mcbiggo-4x1eq4.webp",
+  "imgs": [],
+  "desc": "McBiggo is a hulking, round armored guard from Lost in Random, covered in spikes, with a glowing furnace in his chest and a long staff in hand.\n\nLost in Random was the first game our studio contributed to. We built its characters from scratch through the full standard pipeline (high-poly sculpt, retopology, UVs, baking and texturing), at around 10K to 15K tris on 2K maps, keeping the game's dark storybook look of thin limbs, oversized heads and worn, handmade materials.\n\nNeed characters built to match your game's art direction? We'll build yours to your style, budget and platform.",
+  "tags": [],
+  "sketchfab": "",
+  "marmoset": "",
+  "h": 2000,
+  "w": 2000
 }
