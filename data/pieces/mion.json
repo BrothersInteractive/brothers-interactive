@@ -1,25 +1,19 @@
 {
   "order": 50,
+  "hidden": false,
+  "nocollage": false,
+  "big": true,
+  "wide": false,
+  "tall": false,
+  "thumb": "",
+  "crop": "0,2.4,57.3,68.7",
   "t": "Mion",
   "c": "stylized-human",
   "cats": [],
-  "id": "vzA1JO",
-  "i": "/assets/img/portfolio/mion-vza1jo.webp",
-  "imgs": [
-    "/assets/img/portfolio/mion-vza1jo-4.webp",
-    "/assets/img/portfolio/mion-vza1jo-2.webp",
-    "/assets/img/portfolio/mion-vza1jo-3.webp",
-    "/assets/img/portfolio/mion-vza1jo-5.webp",
-    "/assets/img/portfolio/mion-vza1jo-6.webp"
-  ],
-  "desc": "Mion is a stylized kid character in a cel-shaded, animated-film style: big curly hair, a bold patterned windbreaker, shorts and chunky sneakers. The look is made to pop on small screens and still feel premium on PC.\n\nHe's 20K tris on a single 2K texture set, with clean shapes and flat, graphic color that suit toon shading in Unreal Engine 5. A second outfit, a plain blue hoodie with different sneakers, uses the same body and texture layout, which shows how quickly he can be reskinned. Topology is clean and deformation-ready for rigging and animation.\n\nMaking a stylized mobile or cross-platform game with a young cast? We can match this look, or take it wherever your project needs to go.",
-  "tags": [],
-  "w": 1800,
-  "h": 1500,
   "project": "Studio work",
+  "software": "ZBrush, Maya, Substance Painter, Unreal Engine",
   "polys": "20K tris",
   "textures": "PBR, single 2K texture set",
-  "software": "ZBrush, Maya, Substance Painter, Unreal Engine",
   "specs": [
     {
       "label": "Variants",
@@ -34,6 +28,20 @@
       "value": "Playable or NPC character, stylized games"
     }
   ],
-  "big": true,
-  "focus": "left"
+  "id": "vzA1JO",
+  "i": "/assets/img/portfolio/mion-vza1jo.webp",
+  "imgs": [
+    "/assets/img/portfolio/mion-vza1jo-4.webp",
+    "/assets/img/portfolio/mion-vza1jo-2.webp",
+    "/assets/img/portfolio/mion-vza1jo-3.webp",
+    "/assets/img/portfolio/mion-vza1jo-5.webp",
+    "/assets/img/portfolio/mion-vza1jo-6.webp"
+  ],
+  "desc": "Mion is a stylized kid character in a cel-shaded, animated-film style: big curly hair, a bold patterned windbreaker, shorts and chunky sneakers. The look is made to pop on small screens and still feel premium on PC.\n\nHe's 20K tris on a single 2K texture set, with clean shapes and flat, graphic color that suit toon shading in Unreal Engine 5. A second outfit, a plain blue hoodie with different sneakers, uses the same body and texture layout, which shows how quickly he can be reskinned. Topology is clean and deformation-ready for rigging and animation.\n\nMaking a stylized mobile or cross-platform game with a young cast? We can match this look, or take it wherever your project needs to go.",
+  "tags": [],
+  "sketchfab": "",
+  "marmoset": "",
+  "focus": "left",
+  "h": 1500,
+  "w": 1800
 }
