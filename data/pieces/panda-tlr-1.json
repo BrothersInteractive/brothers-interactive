@@ -1,8 +1,33 @@
 {
   "order": 290,
+  "hidden": false,
+  "nocollage": false,
+  "big": true,
+  "wide": false,
+  "tall": true,
+  "thumb": "",
+  "crop": "17.1,0,63.8,100",
   "t": "Panda (TLR-1)",
   "c": "the-last-rebel",
   "cats": [],
+  "project": "The Last Rebel, original characters",
+  "software": "ZBrush, Maya, Substance Painter, Unreal Engine",
+  "polys": "55K tris",
+  "textures": "Channel-packed mask maps, six 4K and two 2K texture sets",
+  "specs": [
+    {
+      "label": "Engine setup",
+      "value": "Unreal Engine master shader, color and emissive variants in engine"
+    },
+    {
+      "label": "Target platforms",
+      "value": "PC, PlayStation 5, Xbox Series X|S"
+    },
+    {
+      "label": "Use",
+      "value": "Playable character with color variants"
+    }
+  ],
   "id": "PXvoWo",
   "i": "/assets/img/portfolio/panda-tlr-1-pxvowo.webp",
   "imgs": [
@@ -22,26 +47,8 @@
   ],
   "desc": "Panda is a wandering fighter from The Last Rebel (TLR), our own original universe, where Tiger leads the cast. A straw hat, prayer beads, a gourd-tipped staff and patched leather give him a monk-on-the-road feel, and his round, heavy build makes him read differently from everyone else in the lineup.\n\nThe sculpt keeps the soft volumes of a panda while layering on metal plates, rope, beads and torn cloth, each with its own wear. Like the rest of the TLR cast, he's built for Unreal Engine: channel-packed mask maps drive a master shader, so colors, wear and emissive accents can be changed in engine without re-texturing.\n\nBuilding a cast of creature heroes with real personality? We'll build yours to your style, budget and platform.",
   "tags": [],
-  "w": 2500,
+  "sketchfab": "",
+  "marmoset": "",
   "h": 1596,
-  "project": "The Last Rebel, original characters",
-  "polys": "55K tris",
-  "textures": "Channel-packed mask maps, six 4K and two 2K texture sets",
-  "software": "ZBrush, Maya, Substance Painter, Unreal Engine",
-  "specs": [
-    {
-      "label": "Engine setup",
-      "value": "Unreal Engine master shader, color and emissive variants in engine"
-    },
-    {
-      "label": "Target platforms",
-      "value": "PC, PlayStation 5, Xbox Series X|S"
-    },
-    {
-      "label": "Use",
-      "value": "Playable character with color variants"
-    }
-  ],
-  "big": true,
-  "wide": true
+  "w": 2500
 }
