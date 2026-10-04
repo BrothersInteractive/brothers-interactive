@@ -6,13 +6,7 @@
   "wide": false,
   "tall": true,
   "thumb": "",
-  "focus": "center",
-  "crop": "",
-  "cropWide": "",
-  "cropTall": "",
-  "fx": null,
-  "fy": null,
-  "zoom": null,
+  "crop": "18.5,15.9,63.2,63.2",
   "t": "Death",
   "c": "lost-in-random",
   "cats": [],
@@ -41,6 +35,12 @@
   "tags": [],
   "sketchfab": "",
   "marmoset": "",
+  "cropTall": "",
+  "cropWide": "",
+  "focus": "center",
+  "fx": null,
+  "fy": null,
   "h": 2000,
-  "w": 2000
+  "w": 2000,
+  "zoom": null
 }
