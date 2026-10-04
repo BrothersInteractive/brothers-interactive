@@ -35,17 +35,6 @@
       "alt": "Turtle"
     },
     {
-      "img": "/assets/img/portfolio/Zombie1.png",
-      "imgSize": null,
-      "animation": "drift",
-      "offsetX": null,
-      "offsetY": null,
-      "model": "",
-      "modelSize": null,
-      "video": "",
-      "alt": "Zombie1"
-    },
-    {
       "img": "/assets/img/portfolio/Female_Hair.png",
       "imgSize": null,
       "animation": "drift",
