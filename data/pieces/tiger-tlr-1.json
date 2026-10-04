@@ -1,28 +1,22 @@
 {
   "order": 130,
+  "hidden": false,
+  "big": true,
+  "wide": true,
+  "tall": false,
+  "thumb": "",
+  "focus": "top",
+  "crop": "",
+  "fx": null,
+  "fy": null,
+  "zoom": null,
   "t": "Tiger (TLR-1)",
   "c": "the-last-rebel",
   "cats": [],
-  "id": "LRG1Lk",
-  "i": "/assets/img/portfolio/tiger-tlr-1-lrg1lk.webp",
-  "imgs": [
-    "/assets/img/portfolio/tiger-tlr-1-lrg1lk-3.webp",
-    "/assets/img/portfolio/tiger-tlr-1-lrg1lk-4.webp",
-    "/assets/img/portfolio/tiger-tlr-1-lrg1lk-2.webp",
-    "/assets/img/portfolio/tiger-tlr-1-lrg1lk-5.webp",
-    "/assets/img/portfolio/tiger-tlr-1-lrg1lk-6.webp",
-    "/assets/img/portfolio/tiger-tlr-1-lrg1lk-7.webp",
-    "/assets/img/portfolio/tiger-tlr-1-lrg1lk-8.webp",
-    "/assets/img/portfolio/tiger-tlr-1-lrg1lk-9.webp"
-  ],
-  "desc": "Tiger is the lead of The Last Rebel (TLR), our own original universe. As the hero, he had to carry the whole look of the project: a battle-worn tiger warrior in heavy plate, with glowing runes on the armor, bloodied wraps and a torn red sash.\n\nThe sculpt balances animal anatomy with armor that still lets him move, with plates broken up around the shoulders, elbows and knees, and fur, steel, leather and cloth that each read clearly in engine. Like the rest of the TLR cast, he's built for Unreal Engine: channel-packed mask maps drive a master shader, so colors, wear and emissive accents can be changed in engine without re-texturing. The red rune glow is one of those emissive channels.\n\nNeed a hero creature that can front a game? We'll build yours to your style, budget and platform.",
-  "tags": [],
-  "w": 2500,
-  "h": 1758,
   "project": "The Last Rebel, original characters",
+  "software": "ZBrush, Maya, Substance Painter, Unreal Engine",
   "polys": "55K tris",
   "textures": "Channel-packed mask maps, six 4K and two 2K texture sets",
-  "software": "ZBrush, Maya, Substance Painter, Unreal Engine",
   "specs": [
     {
       "label": "Engine setup",
@@ -37,6 +31,22 @@
       "value": "Hero character, gameplay and cinematics"
     }
   ],
-  "big": true,
-  "wide": true
+  "id": "LRG1Lk",
+  "i": "/assets/img/portfolio/tiger-tlr-1-lrg1lk.webp",
+  "imgs": [
+    "/assets/img/portfolio/tiger-tlr-1-lrg1lk-3.webp",
+    "/assets/img/portfolio/tiger-tlr-1-lrg1lk-4.webp",
+    "/assets/img/portfolio/tiger-tlr-1-lrg1lk-2.webp",
+    "/assets/img/portfolio/tiger-tlr-1-lrg1lk-5.webp",
+    "/assets/img/portfolio/tiger-tlr-1-lrg1lk-6.webp",
+    "/assets/img/portfolio/tiger-tlr-1-lrg1lk-7.webp",
+    "/assets/img/portfolio/tiger-tlr-1-lrg1lk-8.webp",
+    "/assets/img/portfolio/tiger-tlr-1-lrg1lk-9.webp"
+  ],
+  "desc": "Tiger is the lead of The Last Rebel (TLR), our own original universe. As the hero, he had to carry the whole look of the project: a battle-worn tiger warrior in heavy plate, with glowing runes on the armor, bloodied wraps and a torn red sash.\n\nThe sculpt balances animal anatomy with armor that still lets him move, with plates broken up around the shoulders, elbows and knees, and fur, steel, leather and cloth that each read clearly in engine. Like the rest of the TLR cast, he's built for Unreal Engine: channel-packed mask maps drive a master shader, so colors, wear and emissive accents can be changed in engine without re-texturing. The red rune glow is one of those emissive channels.\n\nNeed a hero creature that can front a game? We'll build yours to your style, budget and platform.",
+  "tags": [],
+  "sketchfab": "",
+  "marmoset": "",
+  "h": 1758,
+  "w": 2500
 }
