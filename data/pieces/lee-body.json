@@ -1,8 +1,35 @@
 {
   "order": 70,
+  "hidden": false,
+  "big": true,
+  "wide": false,
+  "tall": false,
+  "thumb": "/assets/img/portfolio/lee-body-ydeg2x-5.webp",
+  "focus": "left",
+  "fx": 20,
+  "fy": null,
+  "zoom": null,
   "t": "Lee Body",
   "c": "realistic-humans",
   "cats": [],
+  "project": "Studio work",
+  "software": "ZBrush, Maya, Substance Painter, Marmoset Toolbag",
+  "polys": "160K tris",
+  "textures": "PBR, five 4K and four 2K texture sets",
+  "specs": [
+    {
+      "label": "Hair",
+      "value": "Strand groom (Alembic)"
+    },
+    {
+      "label": "Target platforms",
+      "value": "PC, PlayStation 5, Xbox Series X|S"
+    },
+    {
+      "label": "Use",
+      "value": "Hero or squad character, gameplay and cinematics"
+    }
+  ],
   "id": "yDeg2x",
   "i": "/assets/img/portfolio/lee-body-ydeg2x.webp",
   "imgs": [
@@ -25,27 +52,8 @@
   ],
   "desc": "Lee is a field operator kitted out for a long mission: a headset and bandana, a camo plate carrier loaded with pouches, a big rucksack with rope lashed to it, knee pads and worn boots. We built him to show how far we can push a realistic soldier for current-gen games.\n\nEvery piece of gear is its own believable object, with stitched webbing, scuffed buckles, dusty fabric and creased cargo pants that follow the body underneath. At 160K tris with five 4K and four 2K texture sets, the detail holds up in close-ups, and the beard and hair are an Alembic strand groom, so they move and catch light naturally. He's ready for gameplay or cinematic pipelines.\n\nMaking a military or survival game that needs a lead to carry it? We'll build yours to your style, budget and platform.",
   "tags": [],
-  "w": 2400,
+  "sketchfab": "",
+  "marmoset": "",
   "h": 2000,
-  "project": "Studio work",
-  "polys": "160K tris",
-  "textures": "PBR, five 4K and four 2K texture sets",
-  "software": "ZBrush, Maya, Substance Painter, Marmoset Toolbag",
-  "specs": [
-    {
-      "label": "Hair",
-      "value": "Strand groom (Alembic)"
-    },
-    {
-      "label": "Target platforms",
-      "value": "PC, PlayStation 5, Xbox Series X|S"
-    },
-    {
-      "label": "Use",
-      "value": "Hero or squad character, gameplay and cinematics"
-    }
-  ],
-  "big": true,
-  "thumb": "/assets/img/portfolio/lee-body-ydeg2x-5.webp",
-  "focus": "left"
+  "w": 2400
 }
