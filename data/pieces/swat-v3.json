@@ -1,15 +1,12 @@
 {
   "order": 120,
   "hidden": false,
+  "nocollage": false,
   "big": false,
   "wide": false,
   "tall": true,
   "thumb": "/assets/img/portfolio/swat-v3-rkx2ly-3.webp",
-  "focus": "left",
-  "crop": "",
-  "fx": null,
-  "fy": null,
-  "zoom": 125,
+  "crop": "52.8,3.2,47.2,53.4",
   "t": "SWAT V3",
   "c": "swat-squad",
   "cats": [],
@@ -52,6 +49,10 @@
   "tags": [],
   "sketchfab": "",
   "marmoset": "",
+  "focus": "left",
+  "fx": null,
+  "fy": null,
   "h": 2138,
-  "w": 2500
+  "w": 2500,
+  "zoom": 125
 }
