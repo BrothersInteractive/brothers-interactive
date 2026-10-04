@@ -1,14 +1,12 @@
 {
   "order": 460,
   "hidden": false,
+  "nocollage": false,
   "big": false,
   "wide": false,
-  "tall": true,
+  "tall": false,
   "thumb": "",
-  "focus": "center",
-  "fx": null,
-  "fy": null,
-  "zoom": null,
+  "crop": "11.3,18,76.7,76.7",
   "t": "Janitor",
   "c": "lost-in-random",
   "cats": [],
@@ -37,6 +35,10 @@
   "tags": [],
   "sketchfab": "",
   "marmoset": "",
+  "focus": "center",
+  "fx": null,
+  "fy": null,
   "h": 2000,
-  "w": 2000
+  "w": 2000,
+  "zoom": null
 }
