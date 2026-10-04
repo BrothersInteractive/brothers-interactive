@@ -1,8 +1,36 @@
 {
   "order": 180,
+  "hidden": false,
+  "big": true,
+  "wide": false,
+  "tall": true,
+  "thumb": "",
+  "focus": "center",
+  "crop": "",
+  "fx": null,
+  "fy": null,
+  "zoom": null,
   "t": "Zombie-2",
   "c": "realistic-creatures",
   "cats": [],
+  "project": "Studio work",
+  "software": "ZBrush, Maya, Substance Painter, Marmoset Toolbag",
+  "polys": "120K tris",
+  "textures": "PBR, four 4K, two 2K and one 1K texture sets",
+  "specs": [
+    {
+      "label": "Hair",
+      "value": "Hair cards"
+    },
+    {
+      "label": "Target platforms",
+      "value": "PC, PlayStation 5, Xbox Series X|S"
+    },
+    {
+      "label": "Use",
+      "value": "Enemy or boss for horror and survival games, gameplay and cutscenes"
+    }
+  ],
   "id": "rJVn4e",
   "i": "/assets/img/portfolio/zombie-2-rjvn4e.webp",
   "imgs": [
@@ -19,25 +47,8 @@
   ],
   "desc": "Zombie-2 has been dead a lot longer: a gaunt, leathery body with skin shrunk tight over the bones, an open torso, white hair still tied back in a bun, and the cargo pants and boots of whoever this used to be. Where Zombie-1 is fresh, this one is dried out, and together they show the range a horde needs.\n\nAt 120K tris there's room for the hard parts: tendons and ribs pushing through dry skin, exposed tissue in the stomach, and hair cards for the long white hair. The same texture setup as Zombie-1 (four 4K, two 2K and one 1K sets) carries the cracked skin and stained fabric, and the high-to-low bake keeps the fine detail at game resolution.\n\nNeed a range of enemies that each tell their own story? We'll build yours to your style, budget and platform.",
   "tags": [],
-  "w": 2500,
+  "sketchfab": "",
+  "marmoset": "",
   "h": 2160,
-  "project": "Studio work",
-  "polys": "120K tris",
-  "textures": "PBR, four 4K, two 2K and one 1K texture sets",
-  "software": "ZBrush, Maya, Substance Painter, Marmoset Toolbag",
-  "specs": [
-    {
-      "label": "Hair",
-      "value": "Hair cards"
-    },
-    {
-      "label": "Target platforms",
-      "value": "PC, PlayStation 5, Xbox Series X|S"
-    },
-    {
-      "label": "Use",
-      "value": "Enemy or boss for horror and survival games, gameplay and cutscenes"
-    }
-  ],
-  "big": true
+  "w": 2500
 }
