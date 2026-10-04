@@ -1532,24 +1532,25 @@ body.lens-on .art-cursor, body.lens-on .art-cursor-ring, body.lens-on .cursor-gl
 /* a view shown from its small copy while the full picture downloads (a moment, then it sharpens) */
 img.is-soft { filter: blur(1.5px); }
 
-/* Shuffle button beside the Portfolio heading: a soft gold pulse so visitors notice it; stops on hover */
-#portfolio .section-head { position: relative; }
+/* Shuffle button at the right end of the filter rows (Arun's mark); it blinks filled gold so visitors notice
+   it, and stops blinking on hover. Below 1100px it sits on its own line under the filters. */
+.collage-bar { position: relative; }
 .collage-shuffle {
-  position: absolute; right: 0; top: 50%; transform: translateY(-50%);
-  display: inline-flex; align-items: center; gap: 10px; padding: 12px 22px; border-radius: 999px;
-  border: 1px solid var(--accent); color: var(--accent); background: rgba(var(--accent-rgb), 0.06);
-  font-family: var(--font-display); font-size: 0.78rem; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase;
-  animation: shufflePulse 2.4s ease-in-out infinite;
+  position: absolute; right: 0; bottom: -4px;   /* centred on the last filter row (the filters' bottom margin sits outside .collage-bar) */
+  display: inline-flex; align-items: center; gap: 10px; padding: 10px 20px; border-radius: 999px;
+  border: 1px solid var(--accent); color: var(--accent); background: transparent;
+  font-family: var(--font-display); font-size: 0.74rem; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase;
+  animation: shuffleBlink 1.8s ease-in-out infinite;
 }
-.collage-shuffle svg { width: 18px; height: 18px; transition: transform 0.5s var(--ease); }
-.collage-shuffle:hover, .collage-shuffle:focus-visible { animation: none; background: rgba(var(--accent-rgb), 0.16); box-shadow: var(--glow); }
+.collage-shuffle svg { width: 17px; height: 17px; transition: transform 0.5s var(--ease); }
+.collage-shuffle:hover, .collage-shuffle:focus-visible { animation: none; background: var(--accent); color: #160f00; box-shadow: var(--glow); }
 .collage-shuffle:hover svg { transform: rotate(180deg); }
 .collage-shuffle.spin svg { transform: rotate(360deg); }
-@keyframes shufflePulse {
-  0%, 100% { box-shadow: 0 0 0 0 rgba(var(--accent-rgb), 0); opacity: 1; }
-  50% { box-shadow: 0 0 22px 2px rgba(var(--accent-rgb), 0.45); opacity: 0.72; }
+@keyframes shuffleBlink {
+  0%, 100% { background: transparent; color: var(--accent); box-shadow: 0 0 0 0 rgba(var(--accent-rgb), 0); }
+  50% { background: var(--accent); color: #160f00; box-shadow: 0 0 24px 2px rgba(var(--accent-rgb), 0.5); }
 }
-@media (prefers-reduced-motion: reduce) { .collage-shuffle { animation: none; } }
+@media (prefers-reduced-motion: reduce) { .collage-shuffle { animation: none; background: var(--accent); color: #160f00; } }
 .collage-grid { transition: opacity 0.25s ease; }
 .collage-grid.is-shuffling { opacity: 0; }
-@media (max-width: 1100px) { .collage-shuffle { position: static; transform: none; margin-top: 16px; } }
+@media (max-width: 1100px) { .collage-bar { display: flex; flex-direction: column; align-items: center; } .collage-bar .collage-filters { align-self: stretch; } .collage-shuffle { position: static; margin: -8px 0 18px; } }

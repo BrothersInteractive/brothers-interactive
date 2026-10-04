@@ -42,17 +42,17 @@
 <body>
 <main>
   <h1>Collage crop helper</h1>
-  <p class="lead">Pick a piece, then drag a box over the part of the picture the collage should show. Drag inside the box to move it, or drag its gold corner to resize it. The previews show the result in each tile shape. Press <b>Copy</b>, open that piece in /admin, paste into <b>Collage crop</b> and save.</p>
+  <p class="lead">Pick a piece, then drag a box over the part of the picture the collage should show. Drag inside the box to move it, or drag its gold corner to resize it. The previews show the result in each tile shape. Each tile shape has its own crop: pick the tab, drag, press <b>Copy</b>, then paste into the field of the same name in that piece in /admin (Portfolio pieces) and save. Wide and tall tiles use the square crop when theirs is empty.</p>
   <div class="row">
     <div class="pick">
       <label for="piece">Piece</label>
       <select id="piece"></select>
-      <span class="lbl">Box shape</span>
+      <p class="lead" id="picNote" style="margin:10px 0 0"></p>
+      <span class="lbl">Crop for</span>
       <div class="shapes" id="shapes">
-        <button type="button" data-r="1" class="on">Square (normal and big tiles)</button>
-        <button type="button" data-r="2">Wide 2:1</button>
-        <button type="button" data-r="0.5">Tall 1:2</button>
-        <button type="button" data-r="0">Free</button>
+        <button type="button" data-f="crop" class="on">Square tiles (1x1 and 2x2)</button>
+        <button type="button" data-f="cropWide">Wide 2x1 tiles</button>
+        <button type="button" data-f="cropTall">Tall 1x2 tiles</button>
       </div>
       <span class="lbl">Drag on the picture</span>
       <div class="stage" id="stage"><img id="big" alt="" /><div class="box" id="box" hidden><i id="grip"></i></div></div>
@@ -60,12 +60,12 @@
     <div class="side">
       <span class="lbl">Preview (big 2x2, wide 2x1, tall 1x2)</span>
       <div class="previews">
-        <div class="tile t-big"><span>2x2 / square</span><img alt="" /></div>
+        <div class="tile t-big"><span>Square: 1x1 and 2x2</span><img alt="" /></div>
         <div class="tile t-wide"><span>2x1 wide</span><img alt="" /></div>
         <div class="tile t-tall"><span>1x2 tall</span><img alt="" /></div>
       </div>
       <div class="vals" id="vals"></div>
-      <button type="button" class="main" id="copy">Copy</button><button type="button" class="ghost" id="reset">Whole picture</button>
+      <button type="button" class="main" id="copy">Copy</button><button type="button" class="ghost" id="reset">Clear this crop</button>
     </div>
   </div>
 </main>
@@ -73,85 +73,82 @@
 (function () {
   var $ = function (s) { return document.querySelector(s); };
   var pieces = [], big = $("#big"), box = $("#box"), stage = $("#stage");
-  var ratio = 1;          // box shape in real pixels (w / h); 0 = free
-  var crop = null;        // [x, y, w, h] in % of the picture, or null = whole picture
-  function round1(v) { return Math.round(v * 10) / 10; }
-  function text() { return crop ? crop.map(round1).join(",") : ""; }
+  var FIELDS = { crop: { r: 1, name: "Collage crop" }, cropWide: { r: 2, name: "Collage crop: wide 2x1 tiles" }, cropTall: { r: 0.5, name: "Collage crop: tall 1x2 tiles" } };
+  var f = "crop", ratio = 1;
+  var crops = { crop: null, cropWide: null, cropTall: null };   // [x, y, w, h] in % of the picture, or null
+  function parse(v) { var n = String(v || "").split(",").map(Number); return n.length === 4 && n.every(isFinite) && n[2] > 0 && n[3] > 0 ? n : null; }
+  function text(c) { return c ? c.map(function (v) { return Math.round(v * 10) / 10; }).join(",") : ""; }
   function draw() {
+    var crop = crops[f];
     box.hidden = !crop;
     if (crop) { box.style.left = crop[0] + "%"; box.style.top = crop[1] + "%"; box.style.width = crop[2] + "%"; box.style.height = crop[3] + "%"; }
-    // previews: the tile is covered by the crop, centred (exactly what the collage does with the cut-out copy)
+    // previews: each tile is covered by its own crop (else the square one), centred: exactly what the collage does
     var nw = big.naturalWidth, nh = big.naturalHeight; if (!nw) return;
-    var c = crop || [0, 0, 100, 100], cx = nw * c[0] / 100, cy = nh * c[1] / 100, cw = nw * c[2] / 100, ch = nh * c[3] / 100;
-    document.querySelectorAll(".tile").forEach(function (t) {
-      var im = t.querySelector("img"), tw = t.clientWidth, th = t.clientHeight, s = Math.max(tw / cw, th / ch);
+    [["t-big", "crop"], ["t-wide", "cropWide"], ["t-tall", "cropTall"]].forEach(function (pair) {
+      var t = document.querySelector("." + pair[0]), im = t.querySelector("img");
+      var c = crops[pair[1]] || crops.crop || [0, 0, 100, 100];
+      var cx = nw * c[0] / 100, cy = nh * c[1] / 100, cw = nw * c[2] / 100, ch = nh * c[3] / 100, tw = t.clientWidth, th = t.clientHeight, s = Math.max(tw / cw, th / ch);
       im.style.width = nw * s + "px"; im.style.height = nh * s + "px";
       im.style.left = (tw / 2 - (cx + cw / 2) * s) + "px"; im.style.top = (th / 2 - (cy + ch / 2) * s) + "px";
     });
-    $("#vals").innerHTML = crop ? "Collage crop: <b>" + text() + "</b>" : "No crop: the collage shows the whole picture (Focus X, Y and Zoom still apply).";
+    $("#vals").innerHTML = Object.keys(FIELDS).map(function (k) {
+      return (k === f ? "&#9654; " : "") + FIELDS[k].name + ": " + (crops[k] ? "<b>" + text(crops[k]) + "</b>" : '<span style="color:var(--dim)">empty' + (k === "crop" ? " (whole picture)" : " (uses the square crop)") + "</span>");
+    }).join("<br>");
   }
-  // pointer position in % of the picture
   function pct(e) { var r = big.getBoundingClientRect(); return [Math.max(0, Math.min(100, (e.clientX - r.left) / r.width * 100)), Math.max(0, Math.min(100, (e.clientY - r.top) / r.height * 100))]; }
-  // height in % for a width in %, keeping the chosen shape in real pixels
   function hFor(w) { return w * big.naturalWidth / big.naturalHeight / ratio; }
   function fit(x, y, w, h) {
-    if (ratio) { h = hFor(w); if (h > 100) { h = 100; w = h * ratio * big.naturalHeight / big.naturalWidth; } }
+    h = hFor(w); if (h > 100) { h = 100; w = h * ratio * big.naturalHeight / big.naturalWidth; }
     w = Math.min(w, 100); h = Math.min(h, 100);
-    x = Math.max(0, Math.min(100 - w, x)); y = Math.max(0, Math.min(100 - h, y));
-    return [x, y, w, h];
+    return [Math.max(0, Math.min(100 - w, x)), Math.max(0, Math.min(100 - h, y)), w, h];
   }
   var drag = null;
   stage.addEventListener("pointerdown", function (e) {
     if (!big.naturalWidth) return;
     stage.setPointerCapture(e.pointerId);
-    var p = pct(e);
-    if (e.target.id === "grip") drag = { mode: "size", start: p, c: crop.slice() };
-    else if (e.target === box) drag = { mode: "move", start: p, c: crop.slice() };
-    else { drag = { mode: "new", start: p }; crop = null; draw(); }
+    var p = pct(e), c = crops[f];
+    if (e.target.id === "grip" && c) drag = { mode: "size", start: p, c: c.slice() };
+    else if (e.target === box && c) drag = { mode: "move", start: p, c: c.slice() };
+    else drag = { mode: "new", start: p };
     e.preventDefault();
   });
   stage.addEventListener("pointermove", function (e) {
     if (!drag) return;
     var p = pct(e), s = drag.start;
-    if (drag.mode === "move") crop = fit(drag.c[0] + p[0] - s[0], drag.c[1] + p[1] - s[1], drag.c[2], drag.c[3]);
-    else if (drag.mode === "size") {
-      var w = Math.max(2, Math.min(100 - drag.c[0], drag.c[2] + p[0] - s[0])), h = Math.max(2, Math.min(100 - drag.c[1], drag.c[3] + p[1] - s[1]));
-      crop = fit(drag.c[0], drag.c[1], w, h);
-    } else {
-      var w2 = Math.abs(p[0] - s[0]); if (w2 < 1) return;
-      var h2 = ratio ? hFor(w2) : Math.abs(p[1] - s[1]);
-      crop = fit(p[0] < s[0] ? s[0] - w2 : s[0], p[1] < s[1] ? s[1] - h2 : s[1], w2, h2);
-    }
+    if (drag.mode === "move") crops[f] = fit(drag.c[0] + p[0] - s[0], drag.c[1] + p[1] - s[1], drag.c[2], drag.c[3]);
+    else if (drag.mode === "size") crops[f] = fit(drag.c[0], drag.c[1], Math.max(2, Math.min(100 - drag.c[0], drag.c[2] + p[0] - s[0])), 0);
+    else { var w = Math.abs(p[0] - s[0]); if (w < 1) return; var h = hFor(w); crops[f] = fit(p[0] < s[0] ? s[0] - w : s[0], p[1] < s[1] ? s[1] - h : s[1], w, h); }
     draw();
   });
   stage.addEventListener("pointerup", function () { drag = null; });
   document.querySelectorAll("#shapes button").forEach(function (b) {
     b.addEventListener("click", function () {
       document.querySelectorAll("#shapes button").forEach(function (x) { x.classList.toggle("on", x === b); });
-      ratio = +b.dataset.r;
-      if (crop && ratio) { var cx = crop[0] + crop[2] / 2, cy = crop[1] + crop[3] / 2, w = crop[2], h = hFor(w); crop = fit(cx - w / 2, cy - h / 2, w, h); }
-      draw();
+      f = b.dataset.f; ratio = FIELDS[f].r; draw();
     });
   });
   function load(i) {
     var cur = pieces[i];
-    var n = String(cur.crop || "").split(",").map(Number);
-    crop = n.length === 4 && n.every(isFinite) && n[2] > 0 && n[3] > 0 ? n : null;
+    Object.keys(FIELDS).forEach(function (k) { crops[k] = parse(cur[k]); });
+    $("#picNote").innerHTML = "Picture: " + (cur.thumb ? "this piece's <b>Collage picture</b>" : "its <b>Main image</b> (no Collage picture set)") +
+      ". To use a different one, or a new upload, change <b>Collage picture</b> in /admin first; crops belong to the picture they were drawn on." +
+      (cur.nocollage ? ' <b style="color:#f87171">This piece is left out of the collage.</b>' : "") +
+      "<br>Shapes ticked in /admin: " + ([cur.big ? "2x2" : "", cur.wide ? "2x1" : "", cur.tall ? "1x2" : ""].filter(Boolean).join(", ") || "none (square tiles only)") + ".";
     big.onload = draw;
     big.src = "/" + String(cur.thumb || cur.i).replace(/^\//, "");
     document.querySelectorAll(".tile img").forEach(function (im) { im.src = big.src; });
   }
   $("#piece").addEventListener("change", function () { load(+this.value); });
-  $("#reset").addEventListener("click", function () { crop = null; draw(); });
+  $("#reset").addEventListener("click", function () { crops[f] = null; draw(); });
   $("#copy").addEventListener("click", function () {
-    var t = text();
-    var done = function () { $("#copy").textContent = t ? "Copied: " + t : "Copied (empty: whole picture)"; setTimeout(function () { $("#copy").textContent = "Copy"; }, 2500); };
+    var t = text(crops[f]);
+    var done = function () { $("#copy").textContent = t ? "Copied for " + FIELDS[f].name + ": " + t : "Copied (empty)"; setTimeout(function () { $("#copy").textContent = "Copy"; }, 3000); };
     if (navigator.clipboard) navigator.clipboard.writeText(t).then(done, done); else done();
   });
   window.addEventListener("resize", draw);
   fetch("/data/portfolio.json", { cache: "no-cache" }).then(function (r) { return r.json(); }).then(function (d) {
     pieces = (d.items || []).filter(function (p) { return p && p.i; }).sort(function (a, b) { return a.t.localeCompare(b.t); });
-    $("#piece").innerHTML = pieces.map(function (p, i) { return '<option value="' + i + '">' + p.t.replace(/</g, "&lt;") + (p.hidden ? " (hidden)" : "") + "</option>"; }).join("");
+    $("#piece").innerHTML = pieces.map(function (p, i) { return '<option value="' + i + '">' + p.t.replace(/</g, "&lt;") + (p.hidden ? " (hidden)" : "") + (p.nocollage ? " (not in collage)" : "") + "</option>"; }).join("");
     var want = decodeURIComponent((location.search.match(/[?&]piece=([^&]+)/) || [])[1] || "");
     var start = Math.max(0, pieces.findIndex(function (p) { return p.id === want || p.t === want; }));
     $("#piece").value = start; load(start);

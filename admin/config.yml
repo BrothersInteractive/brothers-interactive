@@ -258,7 +258,7 @@ collections:
   - name: "pieces"
     label: "Portfolio pieces"
     label_singular: "Piece"
-    description: "Every piece in the portfolio, one entry each. Search for a piece by name and open it: the form and the preview then show only that piece. Changes go live about two minutes after saving."
+    description: "Collage pictures: use the Collage crop helper at brothersinteractive.in/admin/focus.html (button at the bottom left). Every piece in the portfolio, one entry each. Search for a piece by name and open it: the form and the preview then show only that piece. Changes go live about two minutes after saving."
     folder: "data/pieces"
     format: "json"
     extension: "json"
@@ -287,6 +287,13 @@ collections:
         required: false
         hint: "Tick to keep this piece off the site (grids, viewer, its own page, the sitemap) while it is unfinished. Untick and save to publish it."
 
+      - label: "Leave out of the homepage collage"
+        name: "nocollage"
+        widget: "boolean"
+        default: false
+        required: false
+        hint: "Tick to keep this piece out of the collage only. It still shows in its category, the viewer and its own page."
+
       - label: "Collage: can be 2x2 (big square)"
         name: "big"
         widget: "boolean"
@@ -312,7 +319,7 @@ collections:
         name: "thumb"
         widget: "image"
         required: false
-        hint: "The picture used for this piece's tile in the homepage collage. Leave empty to use the Main Image. Pick one of this piece's pictures (a close-up often looks best in a small square), or upload a crop made for it."
+        hint: "The picture used for this piece's tile in the homepage collage. Leave empty to use the Main Image. Pick one of this piece's pictures, or upload a new one made for the collage. Then choose the part to show with the [Collage crop helper](/admin/focus.html)."
 
       - label: "Collage focus"
         name: "focus"
@@ -331,7 +338,19 @@ collections:
         name: "crop"
         widget: "string"
         required: false
-        hint: "The easiest way to set the collage picture: open brothersinteractive.in/admin/focus.html, pick this piece, drag a box over the part you want, press Copy and paste the numbers here. The collage then shows exactly that part (Focus X, Y and Zoom below are ignored). Clear it to go back to the whole picture."
+        hint: "For square tiles (1x1 and 2x2). Open the [Collage crop helper](/admin/focus.html), pick this piece, drag a box over the part you want, press Copy and paste the numbers here. The collage then shows exactly that part (Focus X, Y and Zoom below are ignored). Clear it to go back to the whole picture."
+
+      - label: "Collage crop: wide 2x1 tiles"
+        name: "cropWide"
+        widget: "string"
+        required: false
+        hint: "Only used when 'can be 2x1' is ticked. Made the same way, with the helper's Wide tab. Empty = wide tiles use the square crop above."
+
+      - label: "Collage crop: tall 1x2 tiles"
+        name: "cropTall"
+        widget: "string"
+        required: false
+        hint: "Only used when 'can be 1x2' is ticked. Made the same way, with the helper's Tall tab. Empty = tall tiles use the square crop above."
 
       - label: "Collage focus X (%)"
         name: "fx"

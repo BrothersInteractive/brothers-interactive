@@ -849,7 +849,9 @@ function siteMain() {
   var collageEl = $("#collageGrid"), collageCatEl = $("#collageCat"), collageFiltersEl = $("#collageFilters");
   if (collageEl && PROJECTS.length) {
     var shuffle = function (a) { for (var i = a.length - 1; i > 0; i--) { var j = Math.floor(Math.random() * (i + 1)), t = a[i]; a[i] = a[j]; a[j] = t; } return a; };
-    var collageOrder = shuffle(PROJECTS.slice()), collageShown = collageOrder, collageAll = [], collageCols = 0, collageFilter = "all";
+    // "Not in the collage" in /admin: the piece stays everywhere else (categories, viewer, its page)
+    var COLLAGE_PIECES = PROJECTS.filter(function (p) { return !p.nocollage; });
+    var collageOrder = shuffle(COLLAGE_PIECES.slice()), collageShown = collageOrder, collageAll = [], collageCols = 0, collageFilter = "all";
     var pool = { big: collageOrder.filter(function (p) { return p.big; }), tall: collageOrder.filter(function (p) { return p.tall; }), wide: collageOrder.filter(function (p) { return p.wide; }) };
     var SHAPE = { big: { h: 2, w: 2, extra: 3, lastRowOk: false }, tall: { h: 2, w: 1, extra: 1, lastRowOk: false }, wide: { h: 1, w: 2, extra: 1, lastRowOk: true } };
     var colsNow = function () { return window.matchMedia("(max-width: 600px)").matches ? 4 : window.matchMedia("(max-width: 1100px)").matches ? 8 : 12; };
@@ -865,12 +867,15 @@ function siteMain() {
       return css ? ' style="' + css + '"' : "";
     };
     var collageThumb = function (u) { var m = THUMB_RE.exec(u || ""); return m && m[1] === "portfolio" ? "assets/img/thumbs/collage/" + m[2] + ".webp" : u; };
-    // "Collage crop" in /admin: the build has cut that rectangle out as the piece's own collage copy (p.ct),
-    // so the tile simply shows it centred, and focus / zoom no longer apply
+    // "Collage crop" in /admin: the build has cut that rectangle out as the piece's own collage copy, one per
+    // tile shape (p.ct square, p.ctw wide, p.ctt tall; wide and tall fall back to the square one), so the
+    // tile simply shows it centred, and focus / zoom no longer apply
+    var cropFor = function (it) { return (it.kind === "wide" && it.p.ctw) || (it.kind === "tall" && it.p.ctt) || it.p.ct || ""; };
     var tileHtml = function (it) {
+      var cut = cropFor(it);
       return '<button type="button" class="collage-tile' + (it.kind ? " is-" + it.kind : "") + '" data-index="' + PROJECTS.indexOf(it.p) + '" aria-label="Open ' + esc(it.p.t) + '"' +
         ' style="grid-row:' + (it.r + 1) + " / span " + it.h + ";grid-column:" + (it.c + 1) + " / span " + it.w + '">' +
-        '<img src="' + esc(it.p.ct || collageThumb(it.p.thumb || it.p.i)) + '" alt="" loading="lazy" decoding="async"' + (it.p.ct ? "" : focusStyle(it.p)) +
+        '<img src="' + esc(cut || collageThumb(it.p.thumb || it.p.i)) + '" alt="" loading="lazy" decoding="async"' + (cut ? "" : focusStyle(it.p)) +
         ' onerror="this.onerror=null;this.src=\'' + esc(it.p.thumb || it.p.i) + '\'" />' +
         '<span class="collage-name">' + esc(it.p.t) + '</span></button>';
     };
@@ -980,7 +985,7 @@ function siteMain() {
       shuffleBtn.classList.remove("spin"); void shuffleBtn.offsetWidth; shuffleBtn.classList.add("spin");
       collageEl.classList.add("is-shuffling");
       setTimeout(function () {
-        collageOrder = shuffle(PROJECTS.slice());
+        collageOrder = shuffle(COLLAGE_PIECES.slice());
         ["big", "tall", "wide"].forEach(function (k) { pool[k] = collageOrder.filter(function (p) { return p[k]; }); });
         layoutCollage();
         if (collageFilter !== "all") setFilter("all");

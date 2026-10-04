@@ -85,12 +85,12 @@ async function makeThumbs() {
   console.log("Collage thumbnails (480px short side): made " + cmade + ".");
   // the dragged crops: that rectangle of the picture, 640px on the short side (sharp in a 2x2 tile)
   let crmade = 0;
-  for (const p of PROJECTS) {
-    if (!p.ct) continue;
-    const out = path.join(OUT, p.ct), from = path.join(csrc, path.basename(String(p.thumb || p.i)));
+  for (const p of PROJECTS) for (const [field, key] of CROPS) {
+    if (!p[key]) continue;
+    const out = path.join(OUT, p[key]), from = path.join(csrc, path.basename(String(p.thumb || p.i)));
     if (fs.existsSync(out) || !fs.existsSync(from)) continue;
     try {
-      const c = parseCrop(p.crop), img = sharp(fs.readFileSync(from)), m = await img.metadata();
+      const c = parseCrop(p[field]), img = sharp(fs.readFileSync(from)), m = await img.metadata();
       const left = Math.round(m.width * c[0] / 100), top = Math.round(m.height * c[1] / 100);
       const width = Math.max(1, Math.min(m.width - left, Math.round(m.width * c[2] / 100))), height = Math.max(1, Math.min(m.height - top, Math.round(m.height * c[3] / 100)));
       const buf = await img.extract({ left, top, width, height }).resize({ width: 640, height: 640, fit: "outside", withoutEnlargement: true }).webp({ quality: 80 }).toBuffer();
@@ -188,9 +188,15 @@ const ALL_PIECES = fs.readdirSync(path.join(ROOT, "data/pieces")).filter((f) => 
 // "Collage crop" (x,y,w,h in % of the picture, drawn on /admin/focus.html): the collage copy is that rectangle,
 // cut out in makeThumbs; its name carries the numbers, so a new crop always makes a new file
 const parseCrop = (c) => { const n = String(c || "").split(",").map((v) => +v); return n.length === 4 && n.every((v) => isFinite(v)) && n[2] > 0 && n[3] > 0 ? n.map((v) => Math.max(0, Math.min(100, v))) : null; };
+// one per tile shape: crop (square 1x1 and 2x2) -> p.ct, cropWide (2x1) -> p.ctw, cropTall (1x2) -> p.ctt
+const CROPS = [["crop", "ct"], ["cropWide", "ctw"], ["cropTall", "ctt"]];
 for (const p of ALL_PIECES) {
-  const c = parseCrop(p.crop), src = String(p.thumb || p.i || "");
-  if (c && /^\/?assets\/img\/portfolio\//.test(src)) p.ct = "assets/img/thumbs/collage/" + path.basename(src).replace(/\.(webp|jpe?g|png)$/i, "") + "-crop-" + c.map((v) => Math.round(v * 10)).join("-") + ".webp";
+  const src = String(p.thumb || p.i || "");
+  if (!/^\/?assets\/img\/portfolio\//.test(src)) continue;
+  for (const [field, key] of CROPS) {
+    const c = parseCrop(p[field]);
+    if (c) p[key] = "assets/img/thumbs/collage/" + path.basename(src).replace(/\.(webp|jpe?g|png)$/i, "") + "-crop-" + c.map((v) => Math.round(v * 10)).join("-") + ".webp";
+  }
 }
 fs.writeFileSync(path.join(OUT, "data/portfolio.json"), JSON.stringify({ items: ALL_PIECES }, null, 2) + "\n");
 console.log("Portfolio: " + ALL_PIECES.length + " pieces joined from data/pieces/");
