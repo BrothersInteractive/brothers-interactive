@@ -1,8 +1,29 @@
 {
   "order": 20,
+  "hidden": false,
+  "nocollage": false,
+  "big": true,
+  "wide": true,
+  "tall": false,
+  "thumb": "",
+  "crop": "13,0,56.3,100",
   "t": "Monster Lizard",
   "c": "realistic-creatures",
   "cats": [],
+  "project": "Studio work",
+  "software": "ZBrush, Maya, Substance Painter, Unreal Engine",
+  "polys": "34,341 tris",
+  "textures": "PBR, single 4K texture set",
+  "specs": [
+    {
+      "label": "Target platforms",
+      "value": "PC, PlayStation 5, Xbox Series X|S"
+    },
+    {
+      "label": "Use",
+      "value": "Enemy or boss creature"
+    }
+  ],
   "id": "JwalrD",
   "i": "/assets/img/portfolio/monster-lizard-jwalrd.webp",
   "imgs": [
@@ -14,22 +35,8 @@
   ],
   "desc": "Monster Lizard is a realistic enemy creature: a hulking, low-slung reptile with a toothy grin, a ridge of dark spines down its back, mottled armored hide and a long, heavy tail. It's built to be the thing that charges out of the dark in an action or survival game.\n\nThe sculpt is all about weight and anatomy: thick shoulders and forearms, a body that sags between the legs, and scales and plates that change size across the body so the hide never looks tiled. It fits in about 34K tris and a single 4K texture set, shown in Unreal Engine, with clean topology ready for a quadruped rig.\n\nNeed creature enemies that feel heavy and dangerous? We'll build yours to your style, budget and platform.",
   "tags": [],
-  "w": 1500,
+  "sketchfab": "",
+  "marmoset": "",
   "h": 844,
-  "project": "Studio work",
-  "polys": "34,341 tris",
-  "textures": "PBR, single 4K texture set",
-  "software": "ZBrush, Maya, Substance Painter, Unreal Engine",
-  "specs": [
-    {
-      "label": "Target platforms",
-      "value": "PC, PlayStation 5, Xbox Series X|S"
-    },
-    {
-      "label": "Use",
-      "value": "Enemy or boss creature"
-    }
-  ],
-  "big": true,
-  "wide": true
+  "w": 1500
 }
