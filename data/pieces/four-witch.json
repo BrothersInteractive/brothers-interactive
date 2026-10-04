@@ -1,15 +1,15 @@
 {
   "order": 270,
+  "hidden": false,
+  "nocollage": false,
+  "big": false,
+  "wide": false,
+  "tall": false,
+  "thumb": "",
+  "crop": "9.3,24.7,36,55.2",
   "t": "Four Witch",
   "c": "mid-night-walk",
   "cats": [],
-  "id": "G1XVva",
-  "i": "/assets/img/portfolio/four-witch-g1xvva.webp",
-  "imgs": [],
-  "desc": "Four Witch is a hooded, red-robed figure from The Midnight Walk with a face on every side, carrying a little bag and topped with a tiny umbrella.\n\nThe game's characters began as handmade clay sculpts that were scanned for production. Our job was to turn those scans into game assets: cleaning up the scan data, improving the sculpt and textures, building the game-res version, then rigging and skinning it so it could go straight into the game, all without losing the handmade, pressed-clay look the game is known for.\n\nNeed scanned or handmade characters made game-ready? We'll build yours to your style, budget and platform.",
-  "tags": [],
-  "w": 1500,
-  "h": 978,
   "project": "The Midnight Walk",
   "software": "ZBrush, Maya, Substance Painter",
   "polys": "About 10K to 15K tris",
@@ -28,5 +28,14 @@
       "value": "In-game character in a released title"
     }
   ],
-  "focus": "left"
+  "id": "G1XVva",
+  "i": "/assets/img/portfolio/four-witch-g1xvva.webp",
+  "imgs": [],
+  "desc": "Four Witch is a hooded, red-robed figure from The Midnight Walk with a face on every side, carrying a little bag and topped with a tiny umbrella.\n\nThe game's characters began as handmade clay sculpts that were scanned for production. Our job was to turn those scans into game assets: cleaning up the scan data, improving the sculpt and textures, building the game-res version, then rigging and skinning it so it could go straight into the game, all without losing the handmade, pressed-clay look the game is known for.\n\nNeed scanned or handmade characters made game-ready? We'll build yours to your style, budget and platform.",
+  "tags": [],
+  "sketchfab": "",
+  "marmoset": "",
+  "focus": "left",
+  "h": 978,
+  "w": 1500
 }
