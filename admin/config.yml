@@ -258,7 +258,7 @@ collections:
   - name: "pieces"
     label: "Portfolio pieces"
     label_singular: "Piece"
-    description: "Collage pictures: use the Collage crop helper at brothersinteractive.in/admin/focus.html (button at the bottom left). Every piece in the portfolio, one entry each. Search for a piece by name and open it: the form and the preview then show only that piece. Changes go live about two minutes after saving."
+    description: "Every piece in the portfolio, one entry each. Open a piece to set its collage picture, shapes and crops (drag a box on the picture), then Save. Search for a piece by name and open it: the form and the preview then show only that piece. Changes go live about two minutes after saving."
     folder: "data/pieces"
     format: "json"
     extension: "json"
@@ -319,9 +319,9 @@ collections:
         name: "thumb"
         widget: "image"
         required: false
-        hint: "The picture used for this piece's tile in the homepage collage. Leave empty to use the Main Image. Pick one of this piece's pictures, or upload a new one made for the collage. Then choose the part to show with the [Collage crop helper](/admin/focus.html)."
+        hint: "The picture used for this piece's tile in the homepage collage. Leave empty to use the Main Image. Pick one of this piece's pictures, or upload a new one made for the collage. Then drag the crop boxes below to choose the part each tile shape shows."
 
-      - label: "Collage focus"
+      - label: "Collage focus (old way: only used without a crop)"
         name: "focus"
         widget: "select"
         required: false
@@ -334,25 +334,28 @@ collections:
           - { label: "Bottom", value: "bottom" }
         hint: "Which part of the picture stays in view when the tile crops it to a square, wide or tall shape. For any other spot, use Focus X and Y below."
 
-      - label: "Collage crop"
+      - label: "Collage crop: square tiles (1x1 and 2x2)"
         name: "crop"
-        widget: "string"
+        widget: "collagecrop"
+        ratio: 1
         required: false
-        hint: "For square tiles (1x1 and 2x2). Open the [Collage crop helper](/admin/focus.html), pick this piece, drag a box over the part you want, press Copy and paste the numbers here. The collage then shows exactly that part (Focus X, Y and Zoom below are ignored). Clear it to go back to the whole picture."
+        hint: "Drag a box over the part of the picture the square tiles should show, then Save. The small tile beside it is the preview. If you change the Collage picture above, save first, then crop. Clear = the middle of the whole picture."
 
       - label: "Collage crop: wide 2x1 tiles"
         name: "cropWide"
-        widget: "string"
+        widget: "collagecrop"
+        ratio: 2
         required: false
-        hint: "Only used when 'can be 2x1' is ticked. Made the same way, with the helper's Wide tab. Empty = wide tiles use the square crop above."
+        hint: "Only used when 'Collage: can be 2x1 (wide)' is ticked. Empty = wide tiles use the square crop."
 
       - label: "Collage crop: tall 1x2 tiles"
         name: "cropTall"
-        widget: "string"
+        widget: "collagecrop"
+        ratio: 0.5
         required: false
-        hint: "Only used when 'can be 1x2' is ticked. Made the same way, with the helper's Tall tab. Empty = tall tiles use the square crop above."
+        hint: "Only used when 'Collage: can be 1x2 (tall)' is ticked. Empty = tall tiles use the square crop."
 
-      - label: "Collage focus X (%)"
+      - label: "Collage focus X (%) (old way)"
         name: "fx"
         widget: "number"
         value_type: "int"
@@ -361,7 +364,7 @@ collections:
         required: false
         hint: "0 = left edge, 100 = right edge. With Focus Y it places the focus anywhere (and replaces the choice above). Easiest: open /admin/focus.html, click on the picture and copy the numbers."
 
-      - label: "Collage focus Y (%)"
+      - label: "Collage focus Y (%) (old way)"
         name: "fy"
         widget: "number"
         value_type: "int"
@@ -370,7 +373,7 @@ collections:
         required: false
         hint: "0 = top edge, 100 = bottom edge."
 
-      - label: "Collage zoom (%)"
+      - label: "Collage zoom (%) (old way)"
         name: "zoom"
         widget: "number"
         value_type: "int"
