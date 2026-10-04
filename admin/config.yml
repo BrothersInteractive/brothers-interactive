@@ -327,6 +327,12 @@ collections:
           - { label: "Bottom", value: "bottom" }
         hint: "Which part of the picture stays in view when the tile crops it to a square, wide or tall shape. For any other spot, use Focus X and Y below."
 
+      - label: "Collage crop"
+        name: "crop"
+        widget: "string"
+        required: false
+        hint: "The easiest way to set the collage picture: open brothersinteractive.in/admin/focus.html, pick this piece, drag a box over the part you want, press Copy and paste the numbers here. The collage then shows exactly that part (Focus X, Y and Zoom below are ignored). Clear it to go back to the whole picture."
+
       - label: "Collage focus X (%)"
         name: "fx"
         widget: "number"
@@ -717,6 +723,7 @@ collections:
             fields:
               - { label: "Title", name: "t", widget: "string" }
               - { label: "YouTube video", name: "yt", widget: "string", hint: "Paste the full YouTube URL or just the video ID." }
+              - { label: "Thumbnail (optional)", name: "thumb", widget: "image", required: false, media_folder: "/assets/img/blog", public_folder: "/assets/img/blog", hint: "Your own picture for this card, best 16:9 (e.g. 1280x720). Leave empty to use the video's YouTube picture: the site keeps its own small copy either way, so the Blog loads fast." }
 
   - name: "contact-pages"
     label: "Contact pages"

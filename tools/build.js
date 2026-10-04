@@ -83,6 +83,21 @@ async function makeThumbs() {
     } catch (e) { console.log("Collage thumbnail failed for " + f + ": " + e.message); }
   }
   console.log("Collage thumbnails (480px short side): made " + cmade + ".");
+  // the dragged crops: that rectangle of the picture, 640px on the short side (sharp in a 2x2 tile)
+  let crmade = 0;
+  for (const p of PROJECTS) {
+    if (!p.ct) continue;
+    const out = path.join(OUT, p.ct), from = path.join(csrc, path.basename(String(p.thumb || p.i)));
+    if (fs.existsSync(out) || !fs.existsSync(from)) continue;
+    try {
+      const c = parseCrop(p.crop), img = sharp(fs.readFileSync(from)), m = await img.metadata();
+      const left = Math.round(m.width * c[0] / 100), top = Math.round(m.height * c[1] / 100);
+      const width = Math.max(1, Math.min(m.width - left, Math.round(m.width * c[2] / 100))), height = Math.max(1, Math.min(m.height - top, Math.round(m.height * c[3] / 100)));
+      const buf = await img.extract({ left, top, width, height }).resize({ width: 640, height: 640, fit: "outside", withoutEnlargement: true }).webp({ quality: 80 }).toBuffer();
+      fs.writeFileSync(out, buf); crmade++;
+    } catch (e) { console.log("Collage crop failed for " + p.t + ": " + e.message); }
+  }
+  console.log("Collage crops: made " + crmade + ".");
   // the strip of views (viewer and artwork page): tiny copies, 200px tall, for every portfolio picture
   const sdst = path.join(OUT, "assets/img/thumbs/strip");
   fs.mkdirSync(sdst, { recursive: true });
@@ -170,6 +185,13 @@ URLS.setCategories(json("data/categories.json", {}).items);
 const ALL_PIECES = fs.readdirSync(path.join(ROOT, "data/pieces")).filter((f) => f.endsWith(".json"))
   .map((f) => json("data/pieces/" + f, null)).filter((p) => p && p.t)
   .sort((a, b) => ((+a.order || 1000) - (+b.order || 1000)) || String(a.t).localeCompare(String(b.t)));
+// "Collage crop" (x,y,w,h in % of the picture, drawn on /admin/focus.html): the collage copy is that rectangle,
+// cut out in makeThumbs; its name carries the numbers, so a new crop always makes a new file
+const parseCrop = (c) => { const n = String(c || "").split(",").map((v) => +v); return n.length === 4 && n.every((v) => isFinite(v)) && n[2] > 0 && n[3] > 0 ? n.map((v) => Math.max(0, Math.min(100, v))) : null; };
+for (const p of ALL_PIECES) {
+  const c = parseCrop(p.crop), src = String(p.thumb || p.i || "");
+  if (c && /^\/?assets\/img\/portfolio\//.test(src)) p.ct = "assets/img/thumbs/collage/" + path.basename(src).replace(/\.(webp|jpe?g|png)$/i, "") + "-crop-" + c.map((v) => Math.round(v * 10)).join("-") + ".webp";
+}
 fs.writeFileSync(path.join(OUT, "data/portfolio.json"), JSON.stringify({ items: ALL_PIECES }, null, 2) + "\n");
 console.log("Portfolio: " + ALL_PIECES.length + " pieces joined from data/pieces/");
 const PROJECTS = ALL_PIECES.filter((p) => p && p.id && !p.hidden); // "Hide from the website" in /admin
@@ -273,4 +295,35 @@ if (HIDDEN.length) {
   })(OUT);
 }
 
-makeThumbs().then(makeShareImages).catch((e) => { console.error(e); process.exit(1); });
+// ---- Blog thumbnails: assets/img/thumbs/blog/<video id>.webp, 640x360 -------------------------------
+// From the post's own "Thumbnail" in /admin when set, otherwise YouTube's picture with its black bars trimmed.
+// The site then never waits on YouTube for these; if one cannot be made, the card falls back to YouTube's.
+async function makeBlogThumbs() {
+  let sharp; try { sharp = require("sharp"); sharp.cache(false); } catch (e) { return; }
+  const ytId = (v) => { const m = String(v || "").match(/(?:youtu\.be\/|v=|embed\/|shorts\/)([\w-]{11})/); return m ? m[1] : String(v || "").trim(); };
+  const dst = path.join(OUT, "assets/img/thumbs/blog");
+  fs.mkdirSync(dst, { recursive: true });
+  let made = 0, failed = 0;
+  for (const p of (json("data/posts.json", {}).items || [])) {
+    const id = ytId(p.yt); if (!/^[\w-]{11}$/.test(id)) continue;
+    const out = path.join(dst, id + ".webp");
+    try {
+      let buf, trim = false;
+      if (p.thumb && fs.existsSync(path.join(ROOT, p.thumb.replace(/^\//, "")))) buf = fs.readFileSync(path.join(ROOT, p.thumb.replace(/^\//, "")));
+      else {
+        if (fs.existsSync(out)) continue;
+        let r = null;
+        for (let t = 0; t < 3 && !(r && r.ok); t++) { try { r = await fetch("https://img.youtube.com/vi/" + id + "/hqdefault.jpg"); } catch (e) { if (t === 2) throw e; } }   // up to 3 tries: a network hiccup is common
+        if (!r || !r.ok) throw new Error("YouTube said " + r.status);
+        buf = Buffer.from(await r.arrayBuffer()); trim = true;
+      }
+      let img = sharp(buf);
+      if (trim) { const m = await img.metadata(), h = Math.round(m.width * 9 / 16); img = img.extract({ left: 0, top: Math.round((m.height - h) / 2), width: m.width, height: h }); }   // 4:3 with bars -> 16:9
+      fs.writeFileSync(out, await img.resize({ width: 640, height: 360, fit: "cover", withoutEnlargement: !trim }).webp({ quality: 80 }).toBuffer());
+      made++;
+    } catch (e) { failed++; console.log("Blog thumbnail failed for " + (p.t || id) + ": " + e.message); }
+  }
+  console.log("Blog thumbnails: made " + made + (failed ? ", " + failed + " failed (those cards use YouTube's picture)" : "") + ".");
+}
+
+makeThumbs().then(makeShareImages).then(makeBlogThumbs).catch((e) => { console.error(e); process.exit(1); });

@@ -18,9 +18,16 @@
     (function () {
       if (location.hash.indexOf("#/collections/portfolio/entries/pieces") === 0) location.replace(location.pathname + "#/collections/pieces");
     })();
+    // Night view by default (Arun, 4 Oct 2026): set once per browser, so a theme picked later in the admin's
+    // own Settings (account menu > Settings > Appearance) is kept from then on.
+    (function () {
+      try {
+        if (localStorage.getItem("bi-admin-night")) return;
+        var k = "sveltia-cms.prefs", p = JSON.parse(localStorage.getItem(k) || "{}") || {};
+        p.theme = "dark"; localStorage.setItem(k, JSON.stringify(p)); localStorage.setItem("bi-admin-night", "1");
+      } catch (e) {}
+    })();
   </script>
   <script src="https://unpkg.com/@sveltia/cms/dist/sveltia-cms.js"></script>
-  <!-- "Find on this page" box (top right): finds a word inside the open page, including typed field values -->
-  <script src="find.js?v=3"></script>
 </body>
 </html>

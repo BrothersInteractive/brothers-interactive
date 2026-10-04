@@ -4,112 +4,155 @@
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <meta name="robots" content="noindex" />
-<title>Collage Focus Helper</title>
+<title>Collage Crop Helper</title>
 <style>
   :root { --bg: #05070f; --surface: #0e1424; --border: rgba(255,255,255,.12); --text: #e8ecf5; --dim: #8a92a6; --accent: #d4af37; }
   * { box-sizing: border-box; }
   body { margin: 0; background: var(--bg); color: var(--text); font: 15px/1.5 system-ui, sans-serif; }
   main { max-width: 1240px; margin: 0 auto; padding: 24px 16px 60px; }
   h1 { font-size: 1.4rem; margin: 0 0 4px; }
-  p.lead { color: var(--dim); margin: 0 0 20px; }
+  p.lead { color: var(--dim); margin: 0 0 20px; max-width: 900px; }
   .row { display: flex; flex-wrap: wrap; gap: 24px; align-items: flex-start; }
-  label { display: block; color: var(--dim); font-size: .8rem; text-transform: uppercase; letter-spacing: .08em; margin: 14px 0 6px; }
-  select, input[type=range] { width: 100%; }
-  select { background: var(--surface); color: var(--text); border: 1px solid var(--border); border-radius: 8px; padding: 10px; font: inherit; }
+  label, .lbl { display: block; color: var(--dim); font-size: .8rem; text-transform: uppercase; letter-spacing: .08em; margin: 14px 0 6px; }
+  select { width: 100%; background: var(--surface); color: var(--text); border: 1px solid var(--border); border-radius: 8px; padding: 10px; font: inherit; }
   .pick { flex: 1 1 520px; min-width: 0; }
-  .stage { position: relative; display: inline-block; max-width: 100%; cursor: crosshair; border: 1px solid var(--border); border-radius: 8px; overflow: hidden; }
-  .stage img { display: block; max-width: 100%; max-height: 62vh; }
-  .dot { position: absolute; width: 22px; height: 22px; margin: -11px 0 0 -11px; border: 2px solid var(--accent); border-radius: 50%; box-shadow: 0 0 0 2px rgba(0,0,0,.6); pointer-events: none; }
+  .stage { position: relative; display: inline-block; max-width: 100%; cursor: crosshair; border: 1px solid var(--border); border-radius: 8px; overflow: hidden; user-select: none; touch-action: none; }
+  .stage img { display: block; max-width: 100%; max-height: 66vh; pointer-events: none; }
+  .box { position: absolute; border: 2px solid var(--accent); box-shadow: 0 0 0 9999px rgba(0,0,0,.55); cursor: move; }
+  .box[hidden] { display: none; }
+  .box i { position: absolute; width: 14px; height: 14px; right: -8px; bottom: -8px; background: var(--accent); border-radius: 3px; cursor: nwse-resize; }
+  .shapes { display: flex; flex-wrap: wrap; gap: 6px; }
+  .shapes button { margin: 0; background: none; color: var(--text); border: 1px solid var(--border); border-radius: 999px; padding: 7px 14px; font: 600 .82rem system-ui; cursor: pointer; }
+  .shapes button.on { border-color: var(--accent); color: var(--accent); }
   .side { flex: 0 1 560px; }
   .previews { display: grid; grid-template-columns: 160px 160px 160px; grid-template-rows: 160px 160px; gap: 8px; }
   .tile { position: relative; overflow: hidden; border-radius: 8px; border: 1px solid var(--border); background: var(--surface); }
-  .tile img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+  .tile img { position: absolute; max-width: none; }
   .tile span { position: absolute; left: 6px; top: 4px; font-size: .7rem; color: #fff; text-shadow: 0 1px 2px #000; z-index: 1; }
   .t-big { grid-column: 1 / span 2; grid-row: 1 / span 2; }
   .t-wide { grid-column: 3; grid-row: 1; }
   .t-tall { grid-column: 3; grid-row: 2; }
-  .t-sq { display: none; }
   .vals { margin-top: 18px; padding: 14px; border: 1px solid var(--border); border-radius: 8px; background: var(--surface); }
-  .vals b { color: var(--accent); }
-  button { margin-top: 10px; background: var(--accent); color: #160f00; border: 0; border-radius: 999px; padding: 10px 18px; font: 600 .9rem system-ui; cursor: pointer; }
-  button.ghost { background: none; color: var(--text); border: 1px solid var(--border); margin-left: 6px; }
-  .num { color: var(--text); font-weight: 600; float: right; text-transform: none; letter-spacing: 0; }
+  .vals b { color: var(--accent); font-size: 1.1rem; }
+  button.main { margin-top: 10px; background: var(--accent); color: #160f00; border: 0; border-radius: 999px; padding: 10px 18px; font: 600 .9rem system-ui; cursor: pointer; }
+  button.ghost { margin-top: 10px; margin-left: 6px; background: none; color: var(--text); border: 1px solid var(--border); border-radius: 999px; padding: 10px 18px; font: 600 .9rem system-ui; cursor: pointer; }
   @media (max-width: 760px) { .previews { grid-template-columns: repeat(3, 1fr); grid-template-rows: auto auto; } .tile { aspect-ratio: 1; } .t-big { aspect-ratio: auto; } }
 </style>
 </head>
 <body>
 <main>
-  <h1>Collage focus helper</h1>
-  <p class="lead">Pick a piece, click on its picture where the tile should focus, and set the zoom. The previews show exactly how the homepage collage will crop it. Then type the three numbers into that piece in /admin (Collage focus X, Y and Zoom) and save.</p>
+  <h1>Collage crop helper</h1>
+  <p class="lead">Pick a piece, then drag a box over the part of the picture the collage should show. Drag inside the box to move it, or drag its gold corner to resize it. The previews show the result in each tile shape. Press <b>Copy</b>, open that piece in /admin, paste into <b>Collage crop</b> and save.</p>
   <div class="row">
     <div class="pick">
       <label for="piece">Piece</label>
       <select id="piece"></select>
-      <label>Click on the picture to set the focus point</label>
-      <div class="stage" id="stage"><img id="big" alt="" /><div class="dot" id="dot"></div></div>
+      <span class="lbl">Box shape</span>
+      <div class="shapes" id="shapes">
+        <button type="button" data-r="1" class="on">Square (normal and big tiles)</button>
+        <button type="button" data-r="2">Wide 2:1</button>
+        <button type="button" data-r="0.5">Tall 1:2</button>
+        <button type="button" data-r="0">Free</button>
+      </div>
+      <span class="lbl">Drag on the picture</span>
+      <div class="stage" id="stage"><img id="big" alt="" /><div class="box" id="box" hidden><i id="grip"></i></div></div>
     </div>
     <div class="side">
-      <label>Preview (big 2x2, wide 2x1, tall 1x2)</label>
+      <span class="lbl">Preview (big 2x2, wide 2x1, tall 1x2)</span>
       <div class="previews">
         <div class="tile t-big"><span>2x2 / square</span><img alt="" /></div>
         <div class="tile t-wide"><span>2x1 wide</span><img alt="" /></div>
         <div class="tile t-tall"><span>1x2 tall</span><img alt="" /></div>
       </div>
-      <label for="fx">Focus X (left to right) <span class="num" id="fxv"></span></label>
-      <input type="range" id="fx" min="0" max="100" step="1" />
-      <label for="fy">Focus Y (top to bottom) <span class="num" id="fyv"></span></label>
-      <input type="range" id="fy" min="0" max="100" step="1" />
-      <label for="zoom">Zoom <span class="num" id="zv"></span></label>
-      <input type="range" id="zoom" min="100" max="300" step="5" />
       <div class="vals" id="vals"></div>
-      <button type="button" id="copy">Copy the numbers</button><button type="button" class="ghost" id="reset">Reset to centre</button>
+      <button type="button" class="main" id="copy">Copy</button><button type="button" class="ghost" id="reset">Whole picture</button>
     </div>
   </div>
 </main>
 <script>
 (function () {
   var $ = function (s) { return document.querySelector(s); };
-  var pieces = [], cur = null;
-  var fx = $("#fx"), fy = $("#fy"), zoom = $("#zoom"), big = $("#big"), dot = $("#dot");
-  var PRESET = { left: [0, 50], right: [100, 50], top: [50, 0], bottom: [50, 100] };
-  function apply() {
-    var x = +fx.value, y = +fy.value, z = +zoom.value / 100;
-    $("#fxv").textContent = x + " %"; $("#fyv").textContent = y + " %"; $("#zv").textContent = Math.round(z * 100) + " %";
-    dot.style.left = x + "%"; dot.style.top = y + "%";
-    document.querySelectorAll(".tile img").forEach(function (im) {
-      im.style.objectPosition = x + "% " + y + "%";
-      im.style.transformOrigin = x + "% " + y + "%";
-      im.style.transform = "scale(" + z + ")";
+  var pieces = [], big = $("#big"), box = $("#box"), stage = $("#stage");
+  var ratio = 1;          // box shape in real pixels (w / h); 0 = free
+  var crop = null;        // [x, y, w, h] in % of the picture, or null = whole picture
+  function round1(v) { return Math.round(v * 10) / 10; }
+  function text() { return crop ? crop.map(round1).join(",") : ""; }
+  function draw() {
+    box.hidden = !crop;
+    if (crop) { box.style.left = crop[0] + "%"; box.style.top = crop[1] + "%"; box.style.width = crop[2] + "%"; box.style.height = crop[3] + "%"; }
+    // previews: the tile is covered by the crop, centred (exactly what the collage does with the cut-out copy)
+    var nw = big.naturalWidth, nh = big.naturalHeight; if (!nw) return;
+    var c = crop || [0, 0, 100, 100], cx = nw * c[0] / 100, cy = nh * c[1] / 100, cw = nw * c[2] / 100, ch = nh * c[3] / 100;
+    document.querySelectorAll(".tile").forEach(function (t) {
+      var im = t.querySelector("img"), tw = t.clientWidth, th = t.clientHeight, s = Math.max(tw / cw, th / ch);
+      im.style.width = nw * s + "px"; im.style.height = nh * s + "px";
+      im.style.left = (tw / 2 - (cx + cw / 2) * s) + "px"; im.style.top = (th / 2 - (cy + ch / 2) * s) + "px";
     });
-    $("#vals").innerHTML = "Collage focus X: <b>" + x + "</b> &nbsp; Collage focus Y: <b>" + y + "</b> &nbsp; Collage zoom: <b>" + Math.round(z * 100) + "</b>";
+    $("#vals").innerHTML = crop ? "Collage crop: <b>" + text() + "</b>" : "No crop: the collage shows the whole picture (Focus X, Y and Zoom still apply).";
   }
-  function load(i) {
-    cur = pieces[i];
-    var src = "/" + String(cur.thumb || cur.i).replace(/^\//, "");
-    big.src = src;
-    document.querySelectorAll(".tile img").forEach(function (im) { im.src = src; });
-    var p = (cur.fx != null && cur.fy != null) ? [cur.fx, cur.fy] : (PRESET[cur.focus] || [50, 50]);
-    fx.value = p[0]; fy.value = p[1]; zoom.value = cur.zoom || 100;
-    apply();
+  // pointer position in % of the picture
+  function pct(e) { var r = big.getBoundingClientRect(); return [Math.max(0, Math.min(100, (e.clientX - r.left) / r.width * 100)), Math.max(0, Math.min(100, (e.clientY - r.top) / r.height * 100))]; }
+  // height in % for a width in %, keeping the chosen shape in real pixels
+  function hFor(w) { return w * big.naturalWidth / big.naturalHeight / ratio; }
+  function fit(x, y, w, h) {
+    if (ratio) { h = hFor(w); if (h > 100) { h = 100; w = h * ratio * big.naturalHeight / big.naturalWidth; } }
+    w = Math.min(w, 100); h = Math.min(h, 100);
+    x = Math.max(0, Math.min(100 - w, x)); y = Math.max(0, Math.min(100 - h, y));
+    return [x, y, w, h];
   }
-  $("#stage").addEventListener("click", function (e) {
-    var r = big.getBoundingClientRect();
-    fx.value = Math.round(Math.max(0, Math.min(1, (e.clientX - r.left) / r.width)) * 100);
-    fy.value = Math.round(Math.max(0, Math.min(1, (e.clientY - r.top) / r.height)) * 100);
-    apply();
+  var drag = null;
+  stage.addEventListener("pointerdown", function (e) {
+    if (!big.naturalWidth) return;
+    stage.setPointerCapture(e.pointerId);
+    var p = pct(e);
+    if (e.target.id === "grip") drag = { mode: "size", start: p, c: crop.slice() };
+    else if (e.target === box) drag = { mode: "move", start: p, c: crop.slice() };
+    else { drag = { mode: "new", start: p }; crop = null; draw(); }
+    e.preventDefault();
   });
-  [fx, fy, zoom].forEach(function (el) { el.addEventListener("input", apply); });
+  stage.addEventListener("pointermove", function (e) {
+    if (!drag) return;
+    var p = pct(e), s = drag.start;
+    if (drag.mode === "move") crop = fit(drag.c[0] + p[0] - s[0], drag.c[1] + p[1] - s[1], drag.c[2], drag.c[3]);
+    else if (drag.mode === "size") {
+      var w = Math.max(2, Math.min(100 - drag.c[0], drag.c[2] + p[0] - s[0])), h = Math.max(2, Math.min(100 - drag.c[1], drag.c[3] + p[1] - s[1]));
+      crop = fit(drag.c[0], drag.c[1], w, h);
+    } else {
+      var w2 = Math.abs(p[0] - s[0]); if (w2 < 1) return;
+      var h2 = ratio ? hFor(w2) : Math.abs(p[1] - s[1]);
+      crop = fit(p[0] < s[0] ? s[0] - w2 : s[0], p[1] < s[1] ? s[1] - h2 : s[1], w2, h2);
+    }
+    draw();
+  });
+  stage.addEventListener("pointerup", function () { drag = null; });
+  document.querySelectorAll("#shapes button").forEach(function (b) {
+    b.addEventListener("click", function () {
+      document.querySelectorAll("#shapes button").forEach(function (x) { x.classList.toggle("on", x === b); });
+      ratio = +b.dataset.r;
+      if (crop && ratio) { var cx = crop[0] + crop[2] / 2, cy = crop[1] + crop[3] / 2, w = crop[2], h = hFor(w); crop = fit(cx - w / 2, cy - h / 2, w, h); }
+      draw();
+    });
+  });
+  function load(i) {
+    var cur = pieces[i];
+    var n = String(cur.crop || "").split(",").map(Number);
+    crop = n.length === 4 && n.every(isFinite) && n[2] > 0 && n[3] > 0 ? n : null;
+    big.onload = draw;
+    big.src = "/" + String(cur.thumb || cur.i).replace(/^\//, "");
+    document.querySelectorAll(".tile img").forEach(function (im) { im.src = big.src; });
+  }
   $("#piece").addEventListener("change", function () { load(+this.value); });
-  $("#reset").addEventListener("click", function () { fx.value = 50; fy.value = 50; zoom.value = 100; apply(); });
+  $("#reset").addEventListener("click", function () { crop = null; draw(); });
   $("#copy").addEventListener("click", function () {
-    var t = "X " + fx.value + ", Y " + fy.value + ", Zoom " + zoom.value;
-    var done = function () { $("#copy").textContent = "Copied: " + t; setTimeout(function () { $("#copy").textContent = "Copy the numbers"; }, 2500); };
+    var t = text();
+    var done = function () { $("#copy").textContent = t ? "Copied: " + t : "Copied (empty: whole picture)"; setTimeout(function () { $("#copy").textContent = "Copy"; }, 2500); };
     if (navigator.clipboard) navigator.clipboard.writeText(t).then(done, done); else done();
   });
+  window.addEventListener("resize", draw);
   fetch("/data/portfolio.json", { cache: "no-cache" }).then(function (r) { return r.json(); }).then(function (d) {
     pieces = (d.items || []).filter(function (p) { return p && p.i; }).sort(function (a, b) { return a.t.localeCompare(b.t); });
     $("#piece").innerHTML = pieces.map(function (p, i) { return '<option value="' + i + '">' + p.t.replace(/</g, "&lt;") + (p.hidden ? " (hidden)" : "") + "</option>"; }).join("");
-    var want = decodeURIComponent((location.hash || "").slice(1));
+    var want = decodeURIComponent((location.search.match(/[?&]piece=([^&]+)/) || [])[1] || "");
     var start = Math.max(0, pieces.findIndex(function (p) { return p.id === want || p.t === want; }));
     $("#piece").value = start; load(start);
   });

@@ -865,10 +865,12 @@ function siteMain() {
       return css ? ' style="' + css + '"' : "";
     };
     var collageThumb = function (u) { var m = THUMB_RE.exec(u || ""); return m && m[1] === "portfolio" ? "assets/img/thumbs/collage/" + m[2] + ".webp" : u; };
+    // "Collage crop" in /admin: the build has cut that rectangle out as the piece's own collage copy (p.ct),
+    // so the tile simply shows it centred, and focus / zoom no longer apply
     var tileHtml = function (it) {
       return '<button type="button" class="collage-tile' + (it.kind ? " is-" + it.kind : "") + '" data-index="' + PROJECTS.indexOf(it.p) + '" aria-label="Open ' + esc(it.p.t) + '"' +
         ' style="grid-row:' + (it.r + 1) + " / span " + it.h + ";grid-column:" + (it.c + 1) + " / span " + it.w + '">' +
-        '<img src="' + esc(collageThumb(it.p.thumb || it.p.i)) + '" alt="" loading="lazy" decoding="async"' + focusStyle(it.p) +
+        '<img src="' + esc(it.p.ct || collageThumb(it.p.thumb || it.p.i)) + '" alt="" loading="lazy" decoding="async"' + (it.p.ct ? "" : focusStyle(it.p)) +
         ' onerror="this.onerror=null;this.src=\'' + esc(it.p.thumb || it.p.i) + '\'" />' +
         '<span class="collage-name">' + esc(it.p.t) + '</span></button>';
     };
@@ -972,6 +974,20 @@ function siteMain() {
     }
     layoutCollage();
     collageShown = collageAll;
+    // Shuffle: a new random order and a new mix of shapes, without reloading the page (from a category: back to All)
+    var shuffleBtn = $("#collageShuffle");
+    if (shuffleBtn) shuffleBtn.addEventListener("click", function () {
+      shuffleBtn.classList.remove("spin"); void shuffleBtn.offsetWidth; shuffleBtn.classList.add("spin");
+      collageEl.classList.add("is-shuffling");
+      setTimeout(function () {
+        collageOrder = shuffle(PROJECTS.slice());
+        ["big", "tall", "wide"].forEach(function (k) { pool[k] = collageOrder.filter(function (p) { return p[k]; }); });
+        layoutCollage();
+        if (collageFilter !== "all") setFilter("all");
+        collageShown = collageAll;
+        collageEl.classList.remove("is-shuffling");
+      }, 250);
+    });
     if (PAGE_INFO.cat && BROWSE_CATS.some(function (b) { return b.slug === PAGE_INFO.cat; })) setFilter(PAGE_INFO.cat);
     window.addEventListener("resize", function () { if (collageFilter !== "all") return; if (collageCols !== colsNow()) { layoutCollage(); collageShown = collageAll; } else sizeRows(); });
     // the collage's own width can change without a window resize (scrollbar appearing, zoom): keep the rows square
@@ -1405,7 +1421,10 @@ function siteMain() {
     var id = ytId(p.yt);
     return (
       '<article class="game-card reveal" data-yt="' + esc(id) + '" tabindex="0" role="button" aria-label="Play video: ' + esc(p.t) + '" style="transition-delay:' + (i % 3) * 90 + 'ms">' +
-        '<img src="https://img.youtube.com/vi/' + id + '/hqdefault.jpg" alt="' + esc(p.t) + '" loading="lazy" />' +
+        // the site's own copy (made by tools/build.js from the post's Thumbnail, or YouTube's picture); YouTube's if missing.
+        // On the Blog page itself they load at once instead of waiting for the scroll down to the section.
+        '<img src="assets/img/thumbs/blog/' + esc(id) + '.webp" alt="' + esc(p.t) + '"' + (PAGE_INFO.section === "blog" ? ' fetchpriority="high"' : ' loading="lazy"') + ' decoding="async"' +
+        ' onerror="this.onerror=null;this.src=\'https://img.youtube.com/vi/' + esc(id) + '/hqdefault.jpg\'" />' +
         '<span class="game-play" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></span>' +
         '<div class="game-info"><div><span class="game-title">' + esc(p.t) + '</span></div><span class="game-tag">Watch video</span></div>' +
       '</article>'
@@ -1511,7 +1530,8 @@ function siteMain() {
     if (!sections.length) return; // sub-pages highlight their own link via the markup
     var current = sections[0];
     var probe = y + window.innerHeight * 0.35;
-    sections.forEach(function (s) { if (s.offsetTop <= probe) current = s; });
+    // a section hidden in /admin has no box (offsetTop 0), so it must never count as the one on screen
+    sections.forEach(function (s) { if (s.offsetParent !== null && s.offsetTop <= probe) current = s; });
     navLinks.forEach(function (a) { a.classList.toggle("active", a.getAttribute("href") === "#" + current.id); });
     // The address follows the highlighted menu item (/ , /portfolio/, /team/ …) once the visitor is
     // moving around, never while an artwork is open in the viewer (that shows the artwork's own link).
