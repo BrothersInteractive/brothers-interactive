@@ -1,15 +1,15 @@
 {
   "order": 260,
+  "hidden": false,
+  "nocollage": false,
+  "big": false,
+  "wide": false,
+  "tall": false,
+  "thumb": "",
+  "crop": "58.8,12.9,34.8,46.4",
   "t": "Pot Boy",
   "c": "mid-night-walk",
   "cats": [],
-  "id": "ayRb09",
-  "i": "/assets/img/portfolio/pot-boy-ayrb09.webp",
-  "imgs": [],
-  "desc": "Pot Boy is a small clay boy from The Midnight Walk with a pot for a head: big hollow eyes, a wide toothy grin and carved swirls all over his body.\n\nThe game's characters began as handmade clay sculpts that were scanned for production. Our job was to turn those scans into game assets: cleaning up the scan data, improving the sculpt and textures, building the game-res version, then rigging and skinning it so it could go straight into the game, all without losing the handmade, pressed-clay look the game is known for.\n\nNeed scanned or handmade characters made game-ready? We'll build yours to your style, budget and platform.",
-  "tags": [],
-  "w": 1500,
-  "h": 1125,
   "project": "The Midnight Walk",
   "software": "ZBrush, Maya, Substance Painter",
   "polys": "About 10K to 15K tris",
@@ -28,5 +28,14 @@
       "value": "In-game character in a released title"
     }
   ],
-  "focus": "left"
+  "id": "ayRb09",
+  "i": "/assets/img/portfolio/pot-boy-ayrb09.webp",
+  "imgs": [],
+  "desc": "Pot Boy is a small clay boy from The Midnight Walk with a pot for a head: big hollow eyes, a wide toothy grin and carved swirls all over his body.\n\nThe game's characters began as handmade clay sculpts that were scanned for production. Our job was to turn those scans into game assets: cleaning up the scan data, improving the sculpt and textures, building the game-res version, then rigging and skinning it so it could go straight into the game, all without losing the handmade, pressed-clay look the game is known for.\n\nNeed scanned or handmade characters made game-ready? We'll build yours to your style, budget and platform.",
+  "tags": [],
+  "sketchfab": "",
+  "marmoset": "",
+  "focus": "left",
+  "h": 1125,
+  "w": 1500
 }
