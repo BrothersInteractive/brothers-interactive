@@ -1,15 +1,15 @@
 {
   "order": 470,
+  "hidden": false,
+  "nocollage": false,
+  "big": false,
+  "wide": false,
+  "tall": false,
+  "thumb": "",
+  "crop": "20.2,8.7,69.1,69.1",
   "t": "RobotDuke",
   "c": "lost-in-random",
   "cats": [],
-  "id": "8w1KXn",
-  "i": "/assets/img/portfolio/robotduke-8w1kxn.webp",
-  "imgs": [],
-  "desc": "RobotDuke is an armored mechanical duke from Lost in Random, with a riveted steel body, a glowing eye and a huge hammer.\n\nLost in Random was the first game our studio contributed to. We built its characters from scratch through the full standard pipeline (high-poly sculpt, retopology, UVs, baking and texturing), at around 10K to 15K tris on 2K maps, keeping the game's dark storybook look of thin limbs, oversized heads and worn, handmade materials.\n\nNeed characters built to match your game's art direction? We'll build yours to your style, budget and platform.",
-  "tags": [],
-  "w": 2000,
-  "h": 2000,
   "project": "Lost in Random",
   "software": "ZBrush, Maya, Substance Painter",
   "polys": "About 10K to 15K tris",
@@ -27,5 +27,14 @@
       "label": "Use",
       "value": "In-game character in a released title"
     }
-  ]
+  ],
+  "id": "8w1KXn",
+  "i": "/assets/img/portfolio/robotduke-8w1kxn.webp",
+  "imgs": [],
+  "desc": "RobotDuke is an armored mechanical duke from Lost in Random, with a riveted steel body, a glowing eye and a huge hammer.\n\nLost in Random was the first game our studio contributed to. We built its characters from scratch through the full standard pipeline (high-poly sculpt, retopology, UVs, baking and texturing), at around 10K to 15K tris on 2K maps, keeping the game's dark storybook look of thin limbs, oversized heads and worn, handmade materials.\n\nNeed characters built to match your game's art direction? We'll build yours to your style, budget and platform.",
+  "tags": [],
+  "sketchfab": "",
+  "marmoset": "",
+  "h": 2000,
+  "w": 2000
 }
