@@ -6,13 +6,7 @@
   "wide": false,
   "tall": true,
   "thumb": "",
-  "focus": "center",
-  "crop": "",
-  "cropWide": "",
-  "cropTall": "",
-  "fx": null,
-  "fy": null,
-  "zoom": 150,
+  "crop": "14,5.6,67.4,68.1",
   "t": "Turtle (TLR-1)",
   "c": "the-last-rebel",
   "cats": [],
@@ -47,6 +41,12 @@
   "tags": [],
   "sketchfab": "",
   "marmoset": "",
+  "cropTall": "",
+  "cropWide": "",
+  "focus": "center",
+  "fx": null,
+  "fy": null,
   "h": 1836,
-  "w": 1854
+  "w": 1854,
+  "zoom": 150
 }
