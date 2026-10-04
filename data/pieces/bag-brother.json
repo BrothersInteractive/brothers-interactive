@@ -3,7 +3,7 @@
   "hidden": false,
   "big": false,
   "wide": false,
-  "tall": true,
+  "tall": false,
   "thumb": "",
   "focus": "center",
   "fx": null,
