@@ -1,14 +1,12 @@
 {
   "order": 70,
   "hidden": false,
+  "nocollage": false,
   "big": true,
   "wide": false,
-  "tall": false,
+  "tall": true,
   "thumb": "/assets/img/portfolio/lee-body-ydeg2x-3.webp",
-  "focus": "left",
-  "fx": 50,
-  "fy": null,
-  "zoom": 150,
+  "crop": "4.5,0,46,55.2",
   "t": "Lee Body",
   "c": "realistic-humans",
   "cats": [],
@@ -54,6 +52,10 @@
   "tags": [],
   "sketchfab": "",
   "marmoset": "",
+  "focus": "left",
+  "fx": 50,
+  "fy": null,
   "h": 2000,
-  "w": 2400
+  "w": 2400,
+  "zoom": 150
 }
