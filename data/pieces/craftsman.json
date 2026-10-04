@@ -1,15 +1,21 @@
 {
   "order": 140,
+  "hidden": false,
+  "nocollage": false,
+  "big": false,
+  "wide": false,
+  "tall": false,
+  "thumb": "",
+  "focus": "center",
+  "crop": "",
+  "cropWide": "",
+  "cropTall": "",
+  "fx": null,
+  "fy": null,
+  "zoom": null,
   "t": "Craftsman",
   "c": "mid-night-walk",
   "cats": [],
-  "id": "lEVXDY",
-  "i": "/assets/img/portfolio/craftsman-levxdy.webp",
-  "imgs": [],
-  "desc": "Craftsman is a towering, stooped figure from The Midnight Walk, draped in gray rags and straps, with long, bony arms and a mask-like head crowned with spikes.\n\nThe game's characters began as handmade clay sculpts that were scanned for production. Our job was to turn those scans into game assets: cleaning up the scan data, improving the sculpt and textures, building the game-res version, then rigging and skinning it so it could go straight into the game, all without losing the handmade, pressed-clay look the game is known for.\n\nNeed scanned or handmade characters made game-ready? We'll build yours to your style, budget and platform.",
-  "tags": [],
-  "w": 1500,
-  "h": 1237,
   "project": "The Midnight Walk",
   "software": "ZBrush, Maya, Substance Painter",
   "polys": "About 10K to 15K tris",
@@ -28,5 +34,13 @@
       "value": "In-game character in a released title"
     }
   ],
-  "focus": "left"
+  "id": "lEVXDY",
+  "i": "/assets/img/portfolio/craftsman-levxdy.webp",
+  "imgs": [],
+  "desc": "Craftsman is a towering, stooped figure from The Midnight Walk, draped in gray rags and straps, with long, bony arms and a mask-like head crowned with spikes.\n\nThe game's characters began as handmade clay sculpts that were scanned for production. Our job was to turn those scans into game assets: cleaning up the scan data, improving the sculpt and textures, building the game-res version, then rigging and skinning it so it could go straight into the game, all without losing the handmade, pressed-clay look the game is known for.\n\nNeed scanned or handmade characters made game-ready? We'll build yours to your style, budget and platform.",
+  "tags": [],
+  "sketchfab": "",
+  "marmoset": "",
+  "h": 1237,
+  "w": 1500
 }
