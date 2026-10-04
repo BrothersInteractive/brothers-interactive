@@ -1542,6 +1542,7 @@ img.is-soft { filter: blur(1.5px); }
   font-family: var(--font-display); font-size: 0.74rem; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase;
   animation: shuffleBlink 1.8s ease-in-out infinite;
 }
+.collage-shuffle[hidden] { display: none; }
 .collage-shuffle svg { width: 17px; height: 17px; transition: transform 0.5s var(--ease); }
 .collage-shuffle:hover, .collage-shuffle:focus-visible { animation: none; background: var(--accent); color: #160f00; box-shadow: var(--glow); }
 .collage-shuffle:hover svg { transform: rotate(180deg); }

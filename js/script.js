@@ -961,6 +961,8 @@ function siteMain() {
       setAddress(f === "all" ? collageHome : URLS.categoryPath(f));
       var all = f === "all";
       collageEl.hidden = !all;
+      // Shuffle only means something on All (a category shows its pieces as cards, and Shuffle would jump back to All)
+      var shBtn = $("#collageShuffle"); if (shBtn) shBtn.hidden = !all;
       if (collageCatEl) collageCatEl.hidden = all;
       if (all) { if (collageCols !== colsNow()) layoutCollage(); sizeRows(); collageShown = collageAll; }
       else showCategory(f);
