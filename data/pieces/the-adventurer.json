@@ -1,15 +1,12 @@
 {
   "order": 10,
   "hidden": false,
+  "nocollage": false,
   "big": false,
   "wide": false,
   "tall": false,
   "thumb": "",
-  "focus": "right",
-  "crop": "",
-  "fx": null,
-  "fy": null,
-  "zoom": null,
+  "crop": "48.6,2,45.8,61.1",
   "t": "The Adventurer",
   "c": "stylized-human",
   "cats": [],
@@ -37,6 +34,10 @@
   "tags": [],
   "sketchfab": "",
   "marmoset": "",
+  "focus": "right",
+  "fx": null,
+  "fy": null,
   "h": 1680,
-  "w": 2240
+  "w": 2240,
+  "zoom": null
 }
