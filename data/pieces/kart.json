@@ -1,8 +1,31 @@
 {
   "order": 370,
+  "hidden": false,
+  "big": false,
+  "wide": false,
+  "tall": false,
+  "thumb": "",
+  "focus": "center",
+  "fx": null,
+  "fy": null,
+  "zoom": null,
   "t": "Kart",
   "c": "props",
   "cats": [],
+  "project": "Studio work",
+  "software": "ZBrush, Maya, Substance Painter, Marmoset Toolbag",
+  "polys": "29K tris",
+  "textures": "PBR, single 4K texture set",
+  "specs": [
+    {
+      "label": "Target platforms",
+      "value": "PC, PlayStation 5, Xbox Series X|S, Nintendo Switch"
+    },
+    {
+      "label": "Use",
+      "value": "Hero prop or set piece for towns, markets and hub areas"
+    }
+  ],
   "id": "lGYlmV",
   "i": "/assets/img/portfolio/kart-lgylmv.webp",
   "imgs": [
@@ -20,21 +43,8 @@
   ],
   "desc": "Kart is a stylized desert drink stall on wheels: a leaning wooden wagon with a cactus sign, a sun umbrella, barrels, clay pots and glowing potion bottles, all built as one set piece. It's the kind of prop that gives a town, market or hub area its personality.\n\nThe shapes are pushed for readability, with exaggerated planks, chunky wheels and a tilted roof that read from any camera angle. Everything is sculpted first for clean bakes, then packed into a single 4K texture set with distinct material IDs, which keeps draw calls low for a prop this busy. Pivots are set properly, so the pieces can be moved and dressed in engine.\n\nNeed hero props or set pieces for a stylized game world? We can match this look, or take it wherever your project needs to go.",
   "tags": [],
-  "w": 1487,
+  "sketchfab": "",
+  "marmoset": "",
   "h": 1200,
-  "project": "Studio work",
-  "polys": "29K tris",
-  "textures": "PBR, single 4K texture set",
-  "software": "ZBrush, Maya, Substance Painter, Marmoset Toolbag",
-  "specs": [
-    {
-      "label": "Target platforms",
-      "value": "PC, PlayStation 5, Xbox Series X|S, Nintendo Switch"
-    },
-    {
-      "label": "Use",
-      "value": "Hero prop or set piece for towns, markets and hub areas"
-    }
-  ],
-  "big": true
+  "w": 1487
 }
