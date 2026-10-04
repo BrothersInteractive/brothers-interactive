@@ -1,26 +1,25 @@
 {
   "order": 30,
+  "hidden": false,
+  "nocollage": false,
+  "big": true,
+  "wide": false,
+  "tall": false,
+  "thumb": "",
+  "focus": "center",
+  "crop": "4.2,6,42.1,45.5",
+  "cropWide": "",
+  "cropTall": "",
+  "fx": null,
+  "fy": null,
+  "zoom": null,
   "t": "Cute Monster",
   "c": "stylized-creature",
   "cats": [],
-  "id": "xdAzDY",
-  "i": "/assets/img/portfolio/cute-monster-xdazdy.webp",
-  "imgs": [
-    "/assets/img/portfolio/cute-monster-xdazdy-3.webp",
-    "/assets/img/portfolio/cute-monster-xdazdy-4.webp",
-    "/assets/img/portfolio/cute-monster-xdazdy-2.webp",
-    "/assets/img/portfolio/cute-monster-xdazdy-5.webp",
-    "/assets/img/portfolio/cute-monster-xdazdy-6.webp",
-    "/assets/img/portfolio/cute-monster-xdazdy-7.webp"
-  ],
-  "desc": "Cute Monster is one creature in four evolutions: a chubby little lizard at level 1 that grows armor, horns, spikes and finally wings by level 4. Each stage is its own model, so the player sees the creature level up, not just change color.\n\nIt's built in a clean hand-painted style for mobile, Switch and PC, with each level on a single 1K diffuse map and tri counts rising from about 7K to 12.5K as the armor builds up. Bright colors and big, simple shapes keep him readable on a small screen, and the topology is ready for rigging and animation across all four stages.\n\nMaking a creature collector, strategy or idle game with evolving monsters? We can match this look, or take it wherever your project needs to go.",
-  "tags": [],
-  "w": 2500,
-  "h": 2310,
   "project": "Studio work",
+  "software": "ZBrush, Maya, Substance Painter, Unreal Engine",
   "polys": "7,090 / 7,582 / 9,548 / 12,548 tris (levels 1 to 4)",
   "textures": "Hand-painted, one 1K diffuse map per level",
-  "software": "ZBrush, Maya, Substance Painter, Unreal Engine",
   "specs": [
     {
       "label": "Stages",
@@ -35,5 +34,20 @@
       "value": "Evolving creature or pet for collector and strategy games"
     }
   ],
-  "big": true
+  "id": "xdAzDY",
+  "i": "/assets/img/portfolio/cute-monster-xdazdy.webp",
+  "imgs": [
+    "/assets/img/portfolio/cute-monster-xdazdy-3.webp",
+    "/assets/img/portfolio/cute-monster-xdazdy-4.webp",
+    "/assets/img/portfolio/cute-monster-xdazdy-2.webp",
+    "/assets/img/portfolio/cute-monster-xdazdy-5.webp",
+    "/assets/img/portfolio/cute-monster-xdazdy-6.webp",
+    "/assets/img/portfolio/cute-monster-xdazdy-7.webp"
+  ],
+  "desc": "Cute Monster is one creature in four evolutions: a chubby little lizard at level 1 that grows armor, horns, spikes and finally wings by level 4. Each stage is its own model, so the player sees the creature level up, not just change color.\n\nIt's built in a clean hand-painted style for mobile, Switch and PC, with each level on a single 1K diffuse map and tri counts rising from about 7K to 12.5K as the armor builds up. Bright colors and big, simple shapes keep him readable on a small screen, and the topology is ready for rigging and animation across all four stages.\n\nMaking a creature collector, strategy or idle game with evolving monsters? We can match this look, or take it wherever your project needs to go.",
+  "tags": [],
+  "sketchfab": "",
+  "marmoset": "",
+  "h": 2310,
+  "w": 2500
 }
