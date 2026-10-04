@@ -3,7 +3,7 @@
   "hidden": true,
   "nocollage": false,
   "big": false,
-  "wide": false,
+  "wide": true,
   "tall": false,
   "thumb": "",
   "crop": "9.3,1.7,60.1,83.5",
