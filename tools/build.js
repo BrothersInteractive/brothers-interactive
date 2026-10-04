@@ -85,15 +85,13 @@ async function makeThumbs() {
   console.log("Collage thumbnails (480px short side): made " + cmade + ".");
   // the dragged crops: that rectangle of the picture, 640px on the short side (sharp in a 2x2 tile)
   let crmade = 0;
-  for (const p of PROJECTS) for (const [field, key] of CROPS) {
+  for (const p of PROJECTS) for (const [field, key, shape] of CROPS) {
     if (!p[key]) continue;
     const out = path.join(OUT, p[key]), from = path.join(csrc, path.basename(String(p.thumb || p.i)));
     if (fs.existsSync(out) || !fs.existsSync(from)) continue;
     try {
-      const c = parseCrop(p[field]), img = sharp(fs.readFileSync(from)), m = await img.metadata();
-      const left = Math.round(m.width * c[0] / 100), top = Math.round(m.height * c[1] / 100);
-      const width = Math.max(1, Math.min(m.width - left, Math.round(m.width * c[2] / 100))), height = Math.max(1, Math.min(m.height - top, Math.round(m.height * c[3] / 100)));
-      const buf = await img.extract({ left, top, width, height }).resize({ width: 640, height: 640, fit: "outside", withoutEnlargement: true }).webp({ quality: 80 }).toBuffer();
+      const own = parseCrop(p[field]), img = sharp(fs.readFileSync(from)), m = await img.metadata();
+      const buf = await img.extract(cropRect(own || parseCrop(p.crop), own ? "" : shape, m.width, m.height)).resize({ width: 640, height: 640, fit: "outside", withoutEnlargement: true }).webp({ quality: 80 }).toBuffer();
       fs.writeFileSync(out, buf); crmade++;
     } catch (e) { console.log("Collage crop failed for " + p.t + ": " + e.message); }
   }
@@ -188,15 +186,26 @@ const ALL_PIECES = fs.readdirSync(path.join(ROOT, "data/pieces")).filter((f) => 
 // "Collage crop" (x,y,w,h in % of the picture, drawn on /admin/focus.html): the collage copy is that rectangle,
 // cut out in makeThumbs; its name carries the numbers, so a new crop always makes a new file
 const parseCrop = (c) => { const n = String(c || "").split(",").map((v) => +v); return n.length === 4 && n.every((v) => isFinite(v)) && n[2] > 0 && n[3] > 0 ? n.map((v) => Math.max(0, Math.min(100, v))) : null; };
-// one per tile shape: crop (square 1x1 and 2x2) -> p.ct, cropWide (2x1) -> p.ctw, cropTall (1x2) -> p.ctt
-const CROPS = [["crop", "ct"], ["cropWide", "ctw"], ["cropTall", "ctt"]];
+// The one crop (square tiles) -> p.ct. Wide (2x1) and tall (1x2) tiles get their own cut-out made from it
+// (p.ctw / p.ctt, see cropRect), for pieces with that shape ticked. A cropWide / cropTall still in a file from
+// before is used as it is.
+const CROPS = [["crop", "ct", ""], ["cropWide", "ctw", "w"], ["cropTall", "ctt", "t"]];
 for (const p of ALL_PIECES) {
-  const src = String(p.thumb || p.i || "");
+  const src = String(p.thumb || p.i || ""), base = parseCrop(p.crop);
   if (!/^\/?assets\/img\/portfolio\//.test(src)) continue;
-  for (const [field, key] of CROPS) {
-    const c = parseCrop(p[field]);
-    if (c) p[key] = "assets/img/thumbs/collage/" + path.basename(src).replace(/\.(webp|jpe?g|png)$/i, "") + "-crop-" + c.map((v) => Math.round(v * 10)).join("-") + ".webp";
+  for (const [field, key, shape] of CROPS) {
+    const own = parseCrop(p[field]), c = own || (shape && base && ((shape === "w" && p.wide) || (shape === "t" && p.tall)) ? base : null);
+    if (c) p[key] = "assets/img/thumbs/collage/" + path.basename(src).replace(/\.(webp|jpe?g|png)$/i, "") + "-crop-" + c.map((v) => Math.round(v * 10)).join("-") + (own || !shape ? "" : "-" + shape) + ".webp";
   }
+}
+// the cut-out in pixels: the crop itself, or for a wide / tall tile the same centre stretched to 2:1 / 1:2
+function cropRect(c, shape, W, H) {
+  let w = W * c[2] / 100, h = H * c[3] / 100;
+  const cx = W * (c[0] + c[2] / 2) / 100, cy = H * (c[1] + c[3] / 2) / 100;
+  if (shape === "w") { w = 2 * h; if (w > W) { w = W; h = W / 2; } }
+  if (shape === "t") { h = 2 * w; if (h > H) { h = H; w = H / 2; } }
+  const left = Math.round(Math.max(0, Math.min(W - w, cx - w / 2))), top = Math.round(Math.max(0, Math.min(H - h, cy - h / 2)));
+  return { left, top, width: Math.max(1, Math.min(W - left, Math.round(w))), height: Math.max(1, Math.min(H - top, Math.round(h))) };
 }
 fs.writeFileSync(path.join(OUT, "data/portfolio.json"), JSON.stringify({ items: ALL_PIECES }, null, 2) + "\n");
 console.log("Portfolio: " + ALL_PIECES.length + " pieces joined from data/pieces/");

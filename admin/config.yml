@@ -319,68 +319,14 @@ collections:
         name: "thumb"
         widget: "image"
         required: false
-        hint: "The picture used for this piece's tile in the homepage collage. Leave empty to use the Main Image. Pick one of this piece's pictures, or upload a new one made for the collage. Then drag the crop boxes below to choose the part each tile shape shows."
+        hint: "The picture used for this piece's tile in the homepage collage. Leave empty to use the Main Image. Pick one of this piece's pictures, or upload a new one made for the collage. Then drag the Collage crop box below."
 
-      - label: "Collage focus (old way: only used without a crop)"
-        name: "focus"
-        widget: "select"
-        required: false
-        default: "center"
-        options:
-          - { label: "Center", value: "center" }
-          - { label: "Left (e.g. the front figure of a front/back pair)", value: "left" }
-          - { label: "Right", value: "right" }
-          - { label: "Top (e.g. keep the face)", value: "top" }
-          - { label: "Bottom", value: "bottom" }
-        hint: "Which part of the picture stays in view when the tile crops it to a square, wide or tall shape. For any other spot, use Focus X and Y below."
-
-      - label: "Collage crop: square tiles (1x1 and 2x2)"
+      - label: "Collage crop"
         name: "crop"
         widget: "collagecrop"
         ratio: 1
         required: false
-        hint: "Drag a box over the part of the picture the square tiles should show, then Save. The small tile beside it is the preview. If you change the Collage picture above, save first, then crop. Clear = the middle of the whole picture."
-
-      - label: "Collage crop: wide 2x1 tiles"
-        name: "cropWide"
-        widget: "collagecrop"
-        ratio: 2
-        required: false
-        hint: "Only used when 'Collage: can be 2x1 (wide)' is ticked. Empty = wide tiles use the square crop."
-
-      - label: "Collage crop: tall 1x2 tiles"
-        name: "cropTall"
-        widget: "collagecrop"
-        ratio: 0.5
-        required: false
-        hint: "Only used when 'Collage: can be 1x2 (tall)' is ticked. Empty = tall tiles use the square crop."
-
-      - label: "Collage focus X (%) (old way)"
-        name: "fx"
-        widget: "number"
-        value_type: "int"
-        min: 0
-        max: 100
-        required: false
-        hint: "0 = left edge, 100 = right edge. With Focus Y it places the focus anywhere (and replaces the choice above). Easiest: open /admin/focus.html, click on the picture and copy the numbers."
-
-      - label: "Collage focus Y (%) (old way)"
-        name: "fy"
-        widget: "number"
-        value_type: "int"
-        min: 0
-        max: 100
-        required: false
-        hint: "0 = top edge, 100 = bottom edge."
-
-      - label: "Collage zoom (%) (old way)"
-        name: "zoom"
-        widget: "number"
-        value_type: "int"
-        min: 100
-        max: 300
-        required: false
-        hint: "100 = no zoom. 150 shows the focus area 1.5 times bigger in the tile."
+        hint: "Drag a box over the best part of the picture, then Save. That is what the piece's tile shows; wide and tall tiles are made from the same spot automatically. It shows on the website about two minutes after saving. If you change the Collage picture, save first, then crop."
 
       - label: "Title"
         name: "t"
