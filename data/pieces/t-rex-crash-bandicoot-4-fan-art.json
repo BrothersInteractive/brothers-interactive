@@ -1,15 +1,12 @@
 {
   "order": 90,
   "hidden": false,
+  "nocollage": false,
   "big": false,
   "wide": true,
   "tall": false,
   "thumb": "",
-  "focus": "top",
-  "crop": "",
-  "fx": null,
-  "fy": null,
-  "zoom": null,
+  "crop": "24.9,0,50.2,56.3",
   "t": "T-Rex - Crash Bandicoot 4 Fan Art",
   "c": "stylized-creature",
   "cats": [],
@@ -40,6 +37,10 @@
   "tags": [],
   "sketchfab": "",
   "marmoset": "",
+  "focus": "top",
+  "fx": null,
+  "fy": null,
   "h": 1435,
-  "w": 1611
+  "w": 1611,
+  "zoom": null
 }
