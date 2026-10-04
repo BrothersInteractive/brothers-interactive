@@ -1,18 +1,18 @@
 {
   "order": 10,
+  "hidden": false,
+  "big": false,
+  "wide": false,
+  "tall": false,
+  "thumb": "",
+  "focus": "right",
+  "crop": "",
+  "fx": null,
+  "fy": null,
+  "zoom": null,
   "t": "The Adventurer",
   "c": "stylized-human",
   "cats": [],
-  "id": "mOZqAe",
-  "i": "/assets/img/portfolio/the-adventures-mozqae.webp",
-  "imgs": [
-    "/assets/img/portfolio/the-adventures-mozqae-3.webp",
-    "/assets/img/portfolio/the-adventures-mozqae-4.webp"
-  ],
-  "desc": "The Adventurer is a high-poly sculpt of a stylized young explorer: messy red hair, a cheerful face, a knit sweater, cargo pants and sneakers, and a big hiking backpack carrying a bedroll and a water bottle. The look is clean and appealing, close to modern animated-film style.\n\nThe shapes stay simple and readable while each material keeps its own feel: soft knit folds in the sweater, heavier canvas in the pants and pack, and leather straps and buckles on the backpack. The backpack is sculpted as its own piece, so it can be swapped or removed in game. This is the high-poly stage, ready for retopology, baking and texturing to whatever budget a project needs.\n\nNeed stylized heroes with a friendly, film-quality look? We can match this look, or take it wherever your project needs to go.",
-  "tags": [],
-  "w": 2240,
-  "h": 1680,
   "project": "Studio work",
   "software": "ZBrush (sculpt and polypaint)",
   "polys": "",
@@ -27,6 +27,16 @@
       "value": "Stylized hero or NPC character"
     }
   ],
-  "wide": true,
-  "focus": "right"
+  "id": "mOZqAe",
+  "i": "/assets/img/portfolio/the-adventures-mozqae.webp",
+  "imgs": [
+    "/assets/img/portfolio/the-adventures-mozqae-3.webp",
+    "/assets/img/portfolio/the-adventures-mozqae-4.webp"
+  ],
+  "desc": "The Adventurer is a high-poly sculpt of a stylized young explorer: messy red hair, a cheerful face, a knit sweater, cargo pants and sneakers, and a big hiking backpack carrying a bedroll and a water bottle. The look is clean and appealing, close to modern animated-film style.\n\nThe shapes stay simple and readable while each material keeps its own feel: soft knit folds in the sweater, heavier canvas in the pants and pack, and leather straps and buckles on the backpack. The backpack is sculpted as its own piece, so it can be swapped or removed in game. This is the high-poly stage, ready for retopology, baking and texturing to whatever budget a project needs.\n\nNeed stylized heroes with a friendly, film-quality look? We can match this look, or take it wherever your project needs to go.",
+  "tags": [],
+  "sketchfab": "",
+  "marmoset": "",
+  "h": 1680,
+  "w": 2240
 }
