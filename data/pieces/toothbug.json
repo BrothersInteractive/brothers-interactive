@@ -1,20 +1,15 @@
 {
   "order": 380,
+  "hidden": true,
+  "nocollage": false,
+  "big": false,
+  "wide": false,
+  "tall": false,
+  "thumb": "",
+  "crop": "9.3,1.7,60.1,83.5",
   "t": "Toothbug",
   "c": "stylized-creature",
   "cats": [],
-  "id": "LR56mr",
-  "i": "/assets/img/portfolio/toothbug-lr56mr.webp",
-  "imgs": [
-    "/assets/img/portfolio/toothbug-lr56mr-3.webp",
-    "/assets/img/portfolio/toothbug-lr56mr-4.webp",
-    "/assets/img/portfolio/toothbug-lr56mr-2.webp",
-    "/assets/img/portfolio/toothbug-lr56mr-5.webp"
-  ],
-  "desc": "Toothbug is a sculpt of Tooth Wu's creature concept: a many-legged beast with a gaping, tusked jaw, a back of curved spines and plated, segmented armor down its body. It's a pure sculpting piece, about turning a 2D design into convincing 3D form.\n\nThe work is all in the forms. The jaw and tusks read from any angle, the spines flow along the body instead of sitting on it, and the legs and claws carry the weight of a heavy creature. It's the kind of high-poly master a game team bakes from, ready to be retopologized and textured for any budget.\n\nNeed creature sculpts that stay true to your concept art? We can match this look, or take it wherever your project needs to go.",
-  "tags": [],
-  "w": 1500,
-  "h": 1080,
   "project": "Fan art / studio piece",
   "software": "ZBrush",
   "polys": "",
@@ -33,5 +28,18 @@
       "value": "Creature sculpt for enemies and bosses"
     }
   ],
-  "hidden": true
+  "id": "LR56mr",
+  "i": "/assets/img/portfolio/toothbug-lr56mr.webp",
+  "imgs": [
+    "/assets/img/portfolio/toothbug-lr56mr-3.webp",
+    "/assets/img/portfolio/toothbug-lr56mr-4.webp",
+    "/assets/img/portfolio/toothbug-lr56mr-2.webp",
+    "/assets/img/portfolio/toothbug-lr56mr-5.webp"
+  ],
+  "desc": "Toothbug is a sculpt of Tooth Wu's creature concept: a many-legged beast with a gaping, tusked jaw, a back of curved spines and plated, segmented armor down its body. It's a pure sculpting piece, about turning a 2D design into convincing 3D form.\n\nThe work is all in the forms. The jaw and tusks read from any angle, the spines flow along the body instead of sitting on it, and the legs and claws carry the weight of a heavy creature. It's the kind of high-poly master a game team bakes from, ready to be retopologized and textured for any budget.\n\nNeed creature sculpts that stay true to your concept art? We can match this look, or take it wherever your project needs to go.",
+  "tags": [],
+  "sketchfab": "",
+  "marmoset": "",
+  "h": 1080,
+  "w": 1500
 }
